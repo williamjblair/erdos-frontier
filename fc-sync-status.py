@@ -118,6 +118,45 @@ def get_claims():
 claimed, claims_available = get_claims()
 
 
+def get_wontfix():
+    """FC issues the maintainers labelled `won't fix` are explicit do-not-link calls
+    (e.g. 678, where the hosted proof is not actually complete). Respect them."""
+    import urllib.parse
+    s = set()
+    hdr = {"Authorization": f"Bearer {TOKEN}"} if TOKEN else {}
+    try:
+        page = 1
+        while True:
+            url = (f"https://api.github.com/repos/{REPO}/issues?state=all&labels="
+                   + urllib.parse.quote("won't fix") + f"&per_page=100&page={page}")
+            batch = json.loads(fetch(url, hdr))
+            if not batch:
+                break
+            for it in batch:
+                if it.get("pull_request"):
+                    continue
+                m = re.search(r"Problem (\d+)", it.get("title", ""))
+                if m:
+                    s.add(int(m.group(1)))
+            if len(batch) < 100:
+                break
+            page += 1
+    except (urllib.error.HTTPError, urllib.error.URLError):
+        pass
+    return s
+
+
+wontfix = get_wontfix()
+
+# Maintainer judgments that live in an issue comment, not in a label or the structured
+# data, so the join can't infer them. Kept short and transparent; prune as the data
+# catches up.
+MANUAL_SKIP = {678}    # mo271: the hosted proof "is not actually complete" (FC#4051)
+MANUAL_CLAIMS = {613}  # Paul-Lez claimed it on FC#3965 (an issue comment, not a PR)
+wontfix |= MANUAL_SKIP
+claimed |= MANUAL_CLAIMS
+
+
 def action(n):
     f = fc.get(n, {"has_file": False, "linked": False})
     p = proofs.get(n)
@@ -125,6 +164,8 @@ def action(n):
         return "done"
     if not p:
         return "no-proof"
+    if n in wontfix:
+        return "wont-fix"
     if n in claimed:
         return "in-pr"
     if not p["complete"]:
@@ -143,12 +184,13 @@ rows = [(n, action(n), erdos[n].get("status", {}).get("state", "?")) for n in so
 
 from collections import Counter
 counts = Counter(a for _, a, _ in rows)
-ORDER = ["statement", "link", "docstring", "in-pr", "done", "no-proof"]
+ORDER = ["statement", "link", "docstring", "in-pr", "wont-fix", "done", "no-proof"]
 DESC = {
     "statement": "**Write the FC statement + link.** A complete hosted proof exists, FC has no file yet. The #3998 batch.",
     "link":      "**Add the `formal_proof` link.** FC already has the statement; the hosted proof just isn't linked.",
     "docstring": "**Docstring note, not a `formal_proof` tag.** The hosted proof is conditional, axiomatic, or trust-extended.",
-    "in-pr":     "**Claimed.** An open FC pull request already touches this file.",
+    "in-pr":     "**Claimed.** An open FC pull request (or a tracked issue claim) already covers this.",
+    "wont-fix":  "**Maintainer marked `won't fix`** (e.g. the hosted proof is not actually complete). Skip it.",
     "done":      "Already linked in FC.",
     "no-proof":  "No hosted Lean proof to link (nothing to do here yet).",
 }
@@ -180,8 +222,11 @@ def md():
     out.append("| status | count | meaning |\n|---|---:|---|")
     for a in ORDER:
         out.append(f"| `{a}` | {counts.get(a,0)} | {DESC[a]} |")
-    out.append("")
-    for a in ("statement", "link", "docstring"):
+    out.append("\n*A short manual list carries two maintainer calls that live in issue "
+               "comments rather than the structured sources: 678 (`wont-fix`, mo271 flagged the "
+               "proof as not actually complete) and 613 (`in-pr`, claimed by Paul-Lez). "
+               "Everything else is computed.*\n")
+    for a in ("statement", "link", "docstring", "wont-fix"):
         ns = [n for n, x, _ in rows if x == a]
         out.append(f"\n## `{a}` — {len(ns)} problem(s)\n\n{DESC[a]}\n")
         out.append(" ".join(f"[{n}]({EPC}/{n}){srcs(n)}" for n in ns) or "_none_")
