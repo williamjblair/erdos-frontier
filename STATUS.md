@@ -1,6 +1,6 @@
 # Erdős ↔ Formal Conjectures sync status
 
-*Regenerated 2026-06-28 by [`fc-sync-status.py`](fc-sync-status.py). Do not edit by hand.*
+*Regenerated 2026-06-29 by [`fc-sync-status.py`](fc-sync-status.py). Do not edit by hand.*
 
 This is a **computed** view, not a hand-kept list. It joins the machine-readable sources on the problem number so the status can't drift:
 
@@ -18,8 +18,8 @@ Reconciled **1217** problems.
 |---|---:|---|
 | `statement` | 77 | **Write the FC statement + link.** A complete hosted proof exists, FC has no file yet. The #3998 batch. |
 | `link` | 1 | **Add the `formal_proof` link.** FC already has the statement; the hosted proof just isn't linked. |
-| `docstring` | 11 | **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional (assumes an unformalized axiom) or axiomatic / trust-extended. |
-| `partial` | 8 | **Partial proof.** Proves a specific variant, not the full erdosproblems statement. May be linkable to that FC variant; needs a per-problem look (per @plby). |
+| `docstring` | 10 | **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional (assumes an unformalized axiom) or axiomatic / trust-extended. |
+| `partial` | 9 | **Partial proof.** Proves a specific variant, not the full erdosproblems statement. May be linkable to that FC variant; needs a per-problem look (per @plby). |
 | `in-pr` | 46 | **Claimed.** An open FC pull request (or a tracked issue claim) already covers this. |
 | `wont-fix` | 1 | **Maintainer marked `won't fix`** (e.g. the hosted proof is not actually complete). Skip it. |
 | `done` | 88 | Already linked in FC. |
@@ -40,17 +40,17 @@ Reconciled **1217** problems.
 
 [330](https://www.erdosproblems.com/330)ʲ
 
-## `docstring` — 11 problem(s)
+## `docstring` — 10 problem(s)
 
 **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional (assumes an unformalized axiom) or axiomatic / trust-extended.
 
-[192](https://www.erdosproblems.com/192)ʲ [231](https://www.erdosproblems.com/231)ʲ [237](https://www.erdosproblems.com/237)ᵖʲ [291](https://www.erdosproblems.com/291)ᵖ [490](https://www.erdosproblems.com/490)ᵖʲ [610](https://www.erdosproblems.com/610)ʲ [658](https://www.erdosproblems.com/658)ᵖʲ [659](https://www.erdosproblems.com/659)ᵖʲ [694](https://www.erdosproblems.com/694)ᵖʲ [964](https://www.erdosproblems.com/964)ᵖʲ [1148](https://www.erdosproblems.com/1148)ᵖʲ
+[192](https://www.erdosproblems.com/192)ʲ [231](https://www.erdosproblems.com/231)ʲ [237](https://www.erdosproblems.com/237)ᵖʲ [490](https://www.erdosproblems.com/490)ᵖʲ [610](https://www.erdosproblems.com/610)ʲ [658](https://www.erdosproblems.com/658)ᵖʲ [659](https://www.erdosproblems.com/659)ᵖʲ [694](https://www.erdosproblems.com/694)ᵖʲ [964](https://www.erdosproblems.com/964)ᵖʲ [1148](https://www.erdosproblems.com/1148)ᵖʲ
 
-## `partial` — 8 problem(s)
+## `partial` — 9 problem(s)
 
 **Partial proof.** Proves a specific variant, not the full erdosproblems statement. May be linkable to that FC variant; needs a per-problem look (per @plby).
 
-[124](https://www.erdosproblems.com/124)ᵖ [264](https://www.erdosproblems.com/264)ᵖ [368](https://www.erdosproblems.com/368)ᵖ [485](https://www.erdosproblems.com/485)ᵖ [866](https://www.erdosproblems.com/866)ᵖ [1056](https://www.erdosproblems.com/1056)ᵖ [1095](https://www.erdosproblems.com/1095)ᵖ [1187](https://www.erdosproblems.com/1187)ᵖ
+[124](https://www.erdosproblems.com/124)ᵖ [264](https://www.erdosproblems.com/264)ᵖ [291](https://www.erdosproblems.com/291)ᵖ [368](https://www.erdosproblems.com/368)ᵖ [485](https://www.erdosproblems.com/485)ᵖ [866](https://www.erdosproblems.com/866)ᵖ [1056](https://www.erdosproblems.com/1056)ᵖ [1095](https://www.erdosproblems.com/1095)ᵖ [1187](https://www.erdosproblems.com/1187)ᵖ
 
 ## `wont-fix` — 1 problem(s)
 
