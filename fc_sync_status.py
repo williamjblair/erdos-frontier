@@ -367,6 +367,35 @@ def load_wiki_registry(path: Path = WIKI_REGISTRY_PATH) -> dict[int, dict]:
     return out
 
 
+CANDIDATE_CLAIMS_PATH = Path(__file__).resolve().parent / "gpt_erdos_registry.json"
+CANDIDATE_SOURCE = "https://github.com/neelsomani/gpt-erdos"
+
+
+def load_candidate_claims(path: Path = CANDIDATE_CLAIMS_PATH) -> dict[int, dict]:
+    """Independent human classification of GPT-5.2-Pro candidate solutions
+    (neelsomani/gpt-erdos), keyed by problem.
+
+    A CLAIMS source for cross-reference, not a proof corpus: it reviews informal GPT
+    output, while this audit reads hosted Lean proofs. Where the two overlap they
+    often differ (different artifacts), which is the point of carrying it. Empty if
+    the snapshot is absent.
+    """
+    try:
+        doc = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    out: dict[int, dict] = {}
+    for key, rec in (doc.get("problems") or {}).items():
+        try:
+            problem = int(key)
+        except (TypeError, ValueError):
+            continue
+        out[problem] = {"category": rec.get("category"),
+                        "category_label": rec.get("category_label"),
+                        "source": "gpt-erdos"}
+    return out
+
+
 def build_fc(conjectures: dict) -> dict[int, dict]:
     entries = []
     for value in conjectures.values():
@@ -691,6 +720,7 @@ def row_for_problem(
     override: dict | None,
     fidelity: dict | None = None,
     wiki: dict | None = None,
+    candidate: dict | None = None,
 ) -> dict:
     fc_data = fc_record or {"has_file": False, "linked": False, "path": None, "formal_proof_link": None}
     bucket = classify(problem, fc_data, proof, claims, override, fidelity)
@@ -736,6 +766,7 @@ def row_for_problem(
         "override": override or None,
         "wiki": wiki_field(wiki),
         "discrepancy": discrepancy,
+        "candidate_claims": candidate,
         "fidelity": fidelity_field(fidelity, fc_data),
         "machine": (
             {
@@ -761,12 +792,14 @@ def build_status(
     overrides: dict[int, dict],
     fidelity: dict[int, dict] | None = None,
     wiki: dict[int, dict] | None = None,
+    candidate_claims: dict[int, dict] | None = None,
     cleared: set[int] | None = None,
     generated_at: str | None = None,
 ) -> dict:
     generated_at = generated_at or _datetime.date.today().isoformat()
     fidelity = fidelity or {}
     wiki = wiki or {}
+    candidate_claims = candidate_claims or {}
     rows = [
         row_for_problem(
             problem,
@@ -777,6 +810,7 @@ def build_status(
             overrides.get(problem),
             fidelity.get(problem),
             wiki.get(problem),
+            candidate_claims.get(problem),
         )
         for problem in sorted(erdos)
     ]
@@ -799,6 +833,7 @@ def build_status(
             "vlp": VLP_URL,
             "fidelity": FIDELITY_URL,
             "wiki": WIKI_SOURCE,
+            "gpt_erdos": CANDIDATE_SOURCE,
             "fc_repo": FC_REPO,
         },
         "counts": {bucket: counts.get(bucket, 0) for bucket in BUCKET_ORDER},
@@ -984,6 +1019,7 @@ def render_verdicts_feed(payload: dict) -> dict:
         machine = r.get("machine") or {}
         fidelity = r.get("fidelity") or {}
         wiki = r.get("wiki") or {}
+        candidate = r.get("candidate_claims") or {}
         rows.append({
             "problem": r["problem"],
             "erdos_url": r["erdos_url"],
@@ -1005,6 +1041,8 @@ def render_verdicts_feed(payload: dict) -> dict:
             "discrepancy": bool(r.get("discrepancy")),
             # a flag on a celebrated proof, held for human review (not auto-published).
             "held_for_review": bool(r.get("held_for_review")),
+            # independent human review of the GPT-5.2 candidate (neelsomani/gpt-erdos).
+            "gpt_erdos": candidate.get("category"),
             "signed_fidelity_verdict": fidelity.get("verdict"),
             "signed_by": fidelity.get("reviewer") if fidelity.get("signed") else None,
             "recommended_action": r.get("recommended_action"),
@@ -1024,6 +1062,15 @@ def render_verdicts_feed(payload: dict) -> dict:
             ],
             "discrepancies": [r["problem"] for r in rows if r["discrepancy"]],
             "held_for_review": [r["problem"] for r in rows if r["held_for_review"]],
+            "gpt_erdos_problems": sum(1 for r in rows if r["gpt_erdos"] is not None),
+            # where an independent human review (gpt-erdos) and this proof audit both
+            # speak to the same problem — they examine different artifacts (informal
+            # GPT output vs the hosted Lean proof), so overlap is the interesting part.
+            "cross_reference": [
+                {"problem": r["problem"], "machine_verdict": r["machine_verdict"],
+                 "gpt_erdos": r["gpt_erdos"]}
+                for r in rows if r["gpt_erdos"] is not None and r["machine_verdict"] is not None
+            ],
         },
         "rows": rows,
     }
@@ -1053,6 +1100,7 @@ def load_live_status(overrides_path: str | Path = "overrides.yaml") -> dict:
     overrides = load_overrides(overrides_path)
     fidelity = load_fidelity(FIDELITY_URL)
     wiki = load_wiki_registry()
+    candidate_claims = load_candidate_claims()
     cleared = load_staging_cleared()
     for problem in fetch_wontfix():
         overrides.setdefault(
@@ -1072,6 +1120,7 @@ def load_live_status(overrides_path: str | Path = "overrides.yaml") -> dict:
         overrides=overrides,
         fidelity=fidelity,
         wiki=wiki,
+        candidate_claims=candidate_claims,
         cleared=cleared,
     )
 

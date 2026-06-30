@@ -103,6 +103,15 @@
       cases an axiom check alone would pass.</p>
   </div>
 
+  <div class="lead" id="xref" hidden style="background:transparent;border-left-color:var(--hair)">
+    <h2 style="color:var(--ink)">Two reviews, different lenses</h2>
+    <p class="sub">Where an independent human review of the GPT-5.2 candidate
+      (<a href="https://github.com/neelsomani/gpt-erdos">gpt-erdos</a>) and this proof
+      audit both speak to a problem. They read different artifacts — the informal
+      argument versus the hosted Lean proof — so where they diverge is the signal.</p>
+    <table id="xref-rows"></table>
+  </div>
+
   <div class="controls">
     <input id="q" type="search" placeholder="problem #…" autocomplete="off">
     <span class="chip disc" data-f="discrepancy">discrepancy</span>
@@ -111,12 +120,13 @@
     <span class="chip" data-f="axiomblind">axiom-invisible</span>
     <span class="chip" data-f="unconditional">unconditional</span>
     <span class="chip" data-f="wiki">in wiki</span>
+    <span class="chip" data-f="gpterdos">gpt-erdos</span>
     <span class="chip" data-f="signed">signed</span>
     <span class="chip" data-f="all">all</span>
     <span class="count" id="count"></span>
   </div>
   <table class="grid">
-    <thead><tr><th>#</th><th>machine verdict</th><th>conditional on</th><th>wiki claim</th><th>signed</th></tr></thead>
+    <thead><tr><th>#</th><th>machine verdict</th><th>conditional on</th><th>external claim</th><th>signed</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 
@@ -137,6 +147,7 @@ const FILTERS = {
   axiomblind,
   discrepancy: r => r.discrepancy,
   wiki: r => r.wiki_outcome != null,
+  gpterdos: r => r.gpt_erdos != null,
   signed: r => !!r.signed_fidelity_verdict,
 };
 
@@ -147,12 +158,22 @@ function condOn(r){
   if(r.non_kernel_axioms.length) return r.non_kernel_axioms.map(esc).join(", ");
   return r.machine_verdict==="incomplete" ? "<span class='named'>incomplete (sorry)</span>" : "";
 }
+const GPT = {
+  new_proof:"new proof", literature:"literature", partial_literature:"partial lit.",
+  typo:"typo", hidden_constraints:"hidden constraints", non_improving:"non-improving",
+  conditional_conjecture:"conditional on conjecture", subtle_error:"subtle error",
+};
 function wikiCell(r){
-  if(r.wiki_outcome == null) return "";
-  const dot = COLOR[r.wiki_color] || "";
-  const ai = (r.wiki_ai_systems||[]).join(", ");
-  return `<span class="o">${dot} ${esc(r.wiki_outcome)}</span>`
-    + (ai ? `<span class="ai">${esc(ai)}</span>` : "");
+  let out = "";
+  if(r.wiki_outcome != null){
+    const dot = COLOR[r.wiki_color] || "";
+    const ai = (r.wiki_ai_systems||[]).join(", ");
+    out += `<span class="o">${dot} ${esc(r.wiki_outcome)}</span>`
+      + (ai ? `<span class="ai">${esc(ai)}</span>` : "");
+  }
+  if(r.gpt_erdos)
+    out += `<span class="ai">gpt-erdos: ${esc(GPT[r.gpt_erdos]||r.gpt_erdos)}</span>`;
+  return out;
 }
 
 function render(){
@@ -206,10 +227,22 @@ fetch("verdicts.json").then(r=>r.json()).then(d=>{
         + `<td class="on">conditional on ${condOn(r)}${inv}</td></tr>`;
     }).join("");
   }
+  const xref = (d.summary.cross_reference || []).slice().sort((a,b)=>a.problem-b.problem);
+  if(xref.length){
+    document.getElementById("xref").hidden = false;
+    document.getElementById("xref-rows").innerHTML = xref.map(x => {
+      const vcl = x.machine_verdict==="conditional" ? "cond" : x.machine_verdict==="unconditional" ? "uncond" : "";
+      return `<tr><td class="p"><a href="https://www.erdosproblems.com/${x.problem}">${x.problem}</a></td>`
+        + `<td><span class="v ${vcl}">proof: ${esc(x.machine_verdict)}</span></td>`
+        + `<td class="on">gpt-erdos: ${esc(GPT[x.gpt_erdos]||x.gpt_erdos)}</td></tr>`;
+    }).join("");
+  }
   document.getElementById("foot").innerHTML =
     `Generated ${esc(d.generated_at)} · ${d.summary.wiki_problems} problems cross-referenced from the frozen `
     + `<a href="https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems">AI-contributions wiki</a>`
-    + ` (2026-06-30) · proofs: formal-conjectures, plby / Jayyhk / williamjblair · feed: `
+    + ` (2026-06-30) · ${d.summary.gpt_erdos_problems} candidate claims from `
+    + `<a href="https://github.com/neelsomani/gpt-erdos">gpt-erdos</a>`
+    + ` · proofs: formal-conjectures, alphaproof-nexus, plby / Jayyhk / williamjblair · feed: `
     + `<a href="verdicts.json">verdicts.json</a> · method: `
     + `<a href="https://github.com/williamjblair/erdos-fc-sync/tree/main/lean_assumptions">lean_assumptions</a>`;
   render();

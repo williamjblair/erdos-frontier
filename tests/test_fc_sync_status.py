@@ -7,6 +7,7 @@ from fc_sync_status import (
     build_proofs,
     build_status,
     classify,
+    load_candidate_claims,
     load_fidelity,
     load_machine_audit,
     load_wiki_registry,
@@ -437,3 +438,30 @@ def test_non_celebrated_conditional_flag_is_not_held():
 
     assert row["held_for_review"] is False
     assert row["discrepancy"] is True
+
+
+# --- gpt-erdos: independent human classification, cross-referenced -----------
+
+def test_load_candidate_claims_reads_gpt_erdos_snapshot():
+    claims = load_candidate_claims()
+    assert claims[281]["category"] == "new_proof"   # Neel credits a new GPT proof
+    assert claims[281]["source"] == "gpt-erdos"
+
+
+def test_candidate_claim_rides_the_row_and_the_cross_reference():
+    # #281: gpt-erdos says "new proof"; our extractor flags the Lean proof conditional.
+    # The overlap (different artifacts, different verdicts) is the point.
+    proof = machine_conditional_proof(281, named=["h : Erdos281.Hyp"])
+    cand = {"category": "new_proof", "category_label": "New proofs", "source": "gpt-erdos"}
+    payload = build_status(
+        erdos=erdos_records(281), fc={}, proofs={281: proof},
+        claims_by_problem={}, claims_available=True, overrides={},
+        candidate_claims={281: cand}, generated_at="2026-06-30")
+    row = payload["rows"][0]
+
+    assert row["candidate_claims"]["category"] == "new_proof"
+
+    feed = render_verdicts_feed(payload)
+    assert feed["rows"][0]["gpt_erdos"] == "new_proof"
+    assert {"problem": 281, "machine_verdict": "conditional", "gpt_erdos": "new_proof"} \
+        in feed["summary"]["cross_reference"]
