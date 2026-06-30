@@ -1,5 +1,7 @@
 # Match-check packet — Erdős problem 1148
 
+> **Discrepancy** — the frozen AI-contributions wiki records this as a full solution, but the hosted Lean proof is conditional. The resolution decision (L3) at the bottom is the point of this packet.
+
 Computed bucket: `hypothesis-conditional`
 Signed verdict: `variant` (hub, reviewer:will-blair)
 
@@ -9,6 +11,12 @@ Signed verdict: `variant` (hub, reviewer:will-blair)
 - **Undischarged named assumptions** (theorem parameters — `#print axioms` cannot see these):
   - `h_duke : Erdos1148.DukeTheoremStatement`
   → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
+
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Full solution
+- AI systems: Claude Opus 4.6, GPT-5.2 Pro, GPT-5.2 Thinking, GPT-5.4, GPT-5.4 Pro, GPT-5.5 Pro, Gemini 3 Pro, Gemini 3.1, Gemini 3.1 Pro, UlamAI Prover
+- Humans: Ingo Althöfer, Przemek Chojecki, Wouter van Doorn
 
 ## 1. Upstream statement
 
@@ -29,8 +37,15 @@ Signed verdict: `variant` (hub, reviewer:will-blair)
 - Jayyhk/erdos-lean — state `axiomatic` (conditional)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/1148/Erdos1148.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.
 - [ ] unfaithful — does not prove the boxed problem; mismatch.
+
+## Decision — resolution (L3): does the conditional proof justify “formally solved”?
+
+- [ ] solved — the proof is unconditional after all; the machine flag is wrong (if so, clear the problem in `staging_cleared.yaml` only after confirming).
+- [ ] conditional — established ONLY under the named assumption; record as conditional, not as a solve.
+- [ ] not-solved — the assumption is the crux; this does not resolve the boxed problem.
+- [ ] needs-source-update — the boxed problem/answer text needs revision first.

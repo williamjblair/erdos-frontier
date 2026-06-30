@@ -1,37 +1,37 @@
-# Match-check packet — Erdős problem 281
+# Match-check packet — Erdős problem 694
 
 > **Discrepancy** — the frozen AI-contributions wiki records this as a full solution, but the hosted Lean proof is conditional. The resolution decision (L3) at the bottom is the point of this packet.
 
-Computed bucket: `hypothesis-conditional`
+Computed bucket: `docstring`
 
 ## Machine evidence (L1) — deterministic, no human/model judgment
 
 - Verdict: `conditional`
-- **Undischarged named assumptions** (theorem parameters — `#print axioms` cannot see these):
-  - `h : Erdos281.Erdos281Hyp n hmono hnpos`
-  → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
+- Non-kernel axioms: `mertens_product, linnik_dvd` (visible to `#print axioms`)
 
 ## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
 
 - Recorded outcome: Full solution
-- AI systems: Aristotle, GPT-5.2 Pro, Gemini 3 Flash
+- AI systems: Aristotle, Claude Code, Claude Opus 4.7, GPT-5.5 Pro
 
 ## 1. Upstream statement
 
-- Boxed problem: https://www.erdosproblems.com/281
-- LaTeX source: https://www.erdosproblems.com/latex/281
-- Upstream state: `proved (Lean)`
+- Boxed problem: https://www.erdosproblems.com/694
+- LaTeX source: https://www.erdosproblems.com/latex/694
+- Upstream state: `solved (Lean)`
 
 ## 2. FC theorem
 
-- No Formal Conjectures file for this problem yet.
+- File: `FormalConjectures/ErdosProblems/694.lean`
+- View: https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/694.lean
+- Linked formal_proof: no
 
 ## 3. Hosted theorem signature(s)
 
-- plby/lean-proofs — state `complete` (complete)
-  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos281.lean
-- Jayyhk/erdos-lean — state `complete` (complete)
-  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/281/Erdos281.lean
+- plby/lean-proofs — state `conditional` (conditional)
+  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos694.lean
+- Jayyhk/erdos-lean — state `axiomatic` (conditional)
+  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/694/Erdos694.lean
 
 ## Decision — statement fidelity (L2)
 

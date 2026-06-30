@@ -3,6 +3,12 @@
 Computed bucket: `needs-human-match-check`
 Override note: Previously dropped from a batch because no hosted proof cleanly matched the boxed statement.
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Full solution
+- AI systems: GPT-5.4 Pro, GPT-5.5 Pro, Unspecified
+- Humans: Boon Suan Ho, Przemek Chojecki
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/202
@@ -20,7 +26,7 @@ Override note: Previously dropped from a batch because no hosted proof cleanly m
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/202/Erdos202.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

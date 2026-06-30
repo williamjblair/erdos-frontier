@@ -1,26 +1,24 @@
-# Match-check packet — Erdős problem 281
+# Match-check packet — Erdős problem 1197
 
 > **Discrepancy** — the frozen AI-contributions wiki records this as a full solution, but the hosted Lean proof is conditional. The resolution decision (L3) at the bottom is the point of this packet.
 
-Computed bucket: `hypothesis-conditional`
+Computed bucket: `docstring`
 
 ## Machine evidence (L1) — deterministic, no human/model judgment
 
 - Verdict: `conditional`
-- **Undischarged named assumptions** (theorem parameters — `#print axioms` cannot see these):
-  - `h : Erdos281.Erdos281Hyp n hmono hnpos`
-  → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
+- Non-kernel axioms: `Erdos1197.bm_approx_data` (visible to `#print axioms`)
 
 ## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
 
-- Recorded outcome: Full solution
-- AI systems: Aristotle, GPT-5.2 Pro, Gemini 3 Flash
+- Recorded outcome: Full solution (Lean)
+- AI systems: Aristotle, Claude Opus 4.7, GPT-5.4 Pro
 
 ## 1. Upstream statement
 
-- Boxed problem: https://www.erdosproblems.com/281
-- LaTeX source: https://www.erdosproblems.com/latex/281
-- Upstream state: `proved (Lean)`
+- Boxed problem: https://www.erdosproblems.com/1197
+- LaTeX source: https://www.erdosproblems.com/latex/1197
+- Upstream state: `disproved (Lean)`
 
 ## 2. FC theorem
 
@@ -28,10 +26,10 @@ Computed bucket: `hypothesis-conditional`
 
 ## 3. Hosted theorem signature(s)
 
-- plby/lean-proofs — state `complete` (complete)
-  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos281.lean
+- plby/lean-proofs — state `conditional` (conditional)
+  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos1197.lean
 - Jayyhk/erdos-lean — state `complete` (complete)
-  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/281/Erdos281.lean
+  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/1197/Erdos1197.lean
 
 ## Decision — statement fidelity (L2)
 

@@ -7,6 +7,11 @@ Override note: Previously dropped from a batch because no hosted proof cleanly m
 
 - Verdict: `unconditional`
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Formalization
+- AI systems: Aristotle
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/150
@@ -24,7 +29,7 @@ Override note: Previously dropped from a batch because no hosted proof cleanly m
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/150/Erdos150.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

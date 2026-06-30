@@ -24,7 +24,7 @@ Computed bucket: `hypothesis-conditional`
 - plby/lean-proofs — state `partial` (partial)
   - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos1100.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

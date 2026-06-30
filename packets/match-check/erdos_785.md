@@ -9,6 +9,11 @@ Computed bucket: `hypothesis-conditional`
   - `h_hyp : Erdos785.exact_complements A B`
   → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Formalization
+- AI systems: Aristotle
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/785
@@ -26,7 +31,7 @@ Computed bucket: `hypothesis-conditional`
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/785/Erdos785.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

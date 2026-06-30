@@ -9,6 +9,11 @@ Computed bucket: `hypothesis-conditional`
   - `hp : Erdos1187b.Prime p`
   → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Formalization
+- AI systems: Codex, GPT-5.5
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/1187
@@ -24,7 +29,7 @@ Computed bucket: `hypothesis-conditional`
 - plby/lean-proofs — state `partial` (partial)
   - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos1187.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

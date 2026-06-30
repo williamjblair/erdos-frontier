@@ -1,4 +1,4 @@
-# Match-check packet — Erdős problem 224
+# Match-check packet — Erdős problem 296
 
 Computed bucket: `hypothesis-conditional`
 
@@ -6,18 +6,18 @@ Computed bucket: `hypothesis-conditional`
 
 - Verdict: `conditional`
 - **Undischarged named assumptions** (theorem parameters — `#print axioms` cannot see these):
-  - `hNo : Erdos224.NoObtuse A`
+  - `h : Erdos296.HasDisjointUnitDecomps N k`
   → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
 
 ## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
 
-- Recorded outcome: New proof found (Lean)
-- AI systems: Codex, GPT-5.2 Thinking
+- Recorded outcome: Formalization
+- AI systems: Aristotle
 
 ## 1. Upstream statement
 
-- Boxed problem: https://www.erdosproblems.com/224
-- LaTeX source: https://www.erdosproblems.com/latex/224
+- Boxed problem: https://www.erdosproblems.com/296
+- LaTeX source: https://www.erdosproblems.com/latex/296
 - Upstream state: `proved (Lean)`
 
 ## 2. FC theorem
@@ -27,9 +27,9 @@ Computed bucket: `hypothesis-conditional`
 ## 3. Hosted theorem signature(s)
 
 - plby/lean-proofs — state `complete` (complete)
-  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos224.lean
+  - https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos296.lean
 - Jayyhk/erdos-lean — state `complete` (complete)
-  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/224/Erdos224.lean
+  - https://github.com/Jayyhk/erdos-lean/blob/main/problems/296/Erdos296.lean
 
 ## Decision — statement fidelity (L2)
 

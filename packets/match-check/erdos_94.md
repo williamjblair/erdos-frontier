@@ -9,6 +9,11 @@ Computed bucket: `hypothesis-conditional`
   - `hconv : Erdos94.ConvexPosition P`
   → the proof is conditional on the above; it is NOT an unconditional resolution even if kernel-clean.
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Formalization
+- AI systems: Codex, GPT-5.2 Thinking; Seed Prover
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/94
@@ -26,7 +31,7 @@ Computed bucket: `hypothesis-conditional`
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/94/Erdos94.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

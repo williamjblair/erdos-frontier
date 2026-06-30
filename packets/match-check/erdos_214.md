@@ -7,6 +7,11 @@ Signed verdict: `unfaithful` (hub, reviewer:will-blair)
 
 - Verdict: `unconditional`
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Formalization
+- AI systems: Aristotle
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/214
@@ -24,7 +29,7 @@ Signed verdict: `unfaithful` (hub, reviewer:will-blair)
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/214/Erdos214.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.

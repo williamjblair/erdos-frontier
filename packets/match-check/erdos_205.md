@@ -7,6 +7,11 @@ Signed verdict: `variant` (hub, reviewer:will-blair)
 
 - Verdict: `unconditional`
 
+## Wiki claim (frozen AI-contributions wiki, 2026-06-30)
+
+- Recorded outcome: Full solution (Lean)
+- AI systems: Aristotle, GPT-5.2 Thinking
+
 ## 1. Upstream statement
 
 - Boxed problem: https://www.erdosproblems.com/205
@@ -24,7 +29,7 @@ Signed verdict: `variant` (hub, reviewer:will-blair)
 - Jayyhk/erdos-lean — state `complete` (complete)
   - https://github.com/Jayyhk/erdos-lean/blob/main/problems/205/Erdos205.lean
 
-## Decision
+## Decision — statement fidelity (L2)
 
 - [ ] faithful — the formal theorem states the boxed problem; safe to link.
 - [ ] variant — proves a weaker/variant statement; do not link as complete.
