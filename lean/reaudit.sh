@@ -15,10 +15,10 @@ HERE="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$HERE"
 
 echo "==> plby fork (Lean 4.29.1)"
-python3 lean_assumptions/extract_assumptions.py --repo plby
+python3 lean/extract_assumptions.py --repo plby
 
 echo "==> alphaproof-nexus (Lean 4.27.0)"
-python3 lean_assumptions/extract_assumptions.py --repo alphaproof
+python3 lean/extract_assumptions.py --repo alphaproof
 
 echo "==> regenerate the join (status.json + verdicts.json + STATUS.md + packets feed)"
 python3 erdos_frontier.py

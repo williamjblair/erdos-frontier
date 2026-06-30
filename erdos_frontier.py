@@ -243,7 +243,7 @@ def build_proofs(
     return proofs
 
 
-LEAN_AUDIT_DIR = Path(__file__).resolve().parent / "lean_assumptions"
+LEAN_AUDIT_DIR = Path(__file__).resolve().parent / "lean"
 _VERDICT_RANK = {"unconditional": 2, "conditional": 1, "incomplete": 0}
 
 

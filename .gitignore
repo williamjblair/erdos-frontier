@@ -4,8 +4,8 @@ __pycache__/
 .pytest_cache/
 # transient extractor scripts — regenerated each run from the template in
 # extract_assumptions.py; the audit_feed*.json results are what we commit.
-lean_assumptions/extract_*.lean
+lean/extract_*.lean
 # intermediate per-theorem records — folded into audit_feed*.json, read by nothing
-lean_assumptions/assumptions*.jsonl
+lean/assumptions*.jsonl
 # review packets — regenerated on demand by match_packet.py (a local worklist)
 packets/

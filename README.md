@@ -15,7 +15,7 @@ cannot see. This reads each hosted Lean proof mechanically and reports it, then:
   human classification of GPT-5.2 candidates, where the two reviews read different
   artifacts and the divergences are the signal;
 - audits proofs across multiple Lean toolchains (plby 4.29.1, alphaproof-nexus 4.27.0)
-  via [`lean_assumptions/`](lean_assumptions/), keeping the strongest verdict per problem.
+  via [`lean/`](lean/), keeping the strongest verdict per problem.
 
 The machine layer carries no human or model judgment; signed verdicts carry a named
 reviewer. The underlying FC↔erdos proof-status join (below) is what the audit sits on.
@@ -46,11 +46,11 @@ boxed statement).
 
 [`erdos_frontier.py`](erdos_frontier.py) computes the audit instead of tracking it. It fetches the
 proof corpora and erdos/FC status fresh, folds in the machine fidelity verdicts
-([`lean_assumptions/`](lean_assumptions/)), the frozen-wiki and gpt-erdos claim snapshots
+([`lean/`](lean/)), the frozen-wiki and gpt-erdos claim snapshots
 ([`sources/`](sources/)), live open FC pull requests, human overrides
 ([`overrides.yaml`](overrides.yaml)), and any signed reviewer verdicts, then writes the generated
 artifacts. A GitHub Action regenerates them daily; the heavier Lean re-audit
-([`scripts/reaudit.sh`](scripts/reaudit.sh)) runs on demand.
+([`lean/reaudit.sh`](lean/reaudit.sh)) runs on demand.
 
 It regenerates everything under [`site/`](site/) (the published surface, do not edit by hand):
 
@@ -72,10 +72,12 @@ sources/              ingested claim sources, snapshotted + reproducible offline
   wiki/               the frozen teorth AI-contributions wiki + its parser
   gpt_erdos/          neelsomani/gpt-erdos classification + its parser
   fidelity_cache.json offline fallback for signed statement-fidelity verdicts
-lean_assumptions/     the L1 Lean assumption-extractor (multi-toolchain) + its feeds
+lean/                 the L1 Lean assumption-extractor (multi-toolchain) + its feeds
+  extract_assumptions.py  the extractor harness
+  audit_feed*.json        the committed machine verdicts (the audit joins on these)
+  reaudit.sh              re-run the heavy Lean audit + regenerate everything
 overrides.yaml        the only hand-maintained classification input
 staging_cleared.yaml  human clearances for held celebrated-proof flags
-scripts/reaudit.sh    re-run the heavy Lean audit and regenerate the feeds
 ```
 
 ## The status categories

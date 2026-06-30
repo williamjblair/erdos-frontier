@@ -30,7 +30,7 @@ discovers headline theorems per problem, generates a transient `extract_<tag>.le
 - `audit_feed[_<tag>].json` — one row per problem (joined with `../site/status.json`).
 
 `erdos_frontier` merges every `audit_feed*.json`, keeping the strongest verdict per
-problem with provenance. To rebuild every feed at once, use `scripts/reaudit.sh`.
+problem with provenance. To rebuild every feed at once, use `reaudit.sh`.
 
 Neutral: no Vela dependency. The signed/replayable tier lives in the Vela frontier;
 this is the public machine-evidence generator.
