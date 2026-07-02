@@ -59,8 +59,7 @@ VF=$("$VELA" finding add "$HERE" \
   --informal-ref "erdosproblems.com/$N" --formal-ref "$FORMAL_REF" \
   --formal-statement-hash "$HASH" --note "$NOTE" --as "$REVIEWER" "${KEYARG[@]}"
 
-"$VELA" frontier materialize "$HERE"
 echo
-echo "signed $N=$VERDICT as $REVIEWER, and re-materialized."
-echo "next: git add .vela/ frontier.json frontier.yaml vela.lock proof/ && git commit && git push"
-echo "      (the Verify-the-signed-frontier Action re-derives the state on push)"
+echo "signed $N=$VERDICT as $REVIEWER."
+echo "(v0.731+: the review verb materialized, committed, and pushed itself —"
+echo " decisions self-publish; the Action re-derives the state on the push.)"
