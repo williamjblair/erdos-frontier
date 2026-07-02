@@ -1,0 +1,100 @@
+{
+  "verdicts": [
+    {
+      "target": "vf_26db4ef00c9c85d3",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/71",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/71/71.lean",
+      "formal_statement_hash": "8b264cec8edb8ecc23577eb716c48973ccaf87e4889f4035dc009085e94057f4",
+      "note": ""
+    },
+    {
+      "target": "vf_3263be545f221622",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/206",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/206/206.lean",
+      "formal_statement_hash": "5a3e35b9494ed5e247277937a74281820dffcdf5d5f2a38e4e5fa10cac278a60",
+      "note": ""
+    },
+    {
+      "target": "vf_38f267b397cc798d",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/209",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/209/209.lean",
+      "formal_statement_hash": "ed07a4852b7cf986138397e4f03009b1e701a49182e94d2f356492a3d6c5524e",
+      "note": ""
+    },
+    {
+      "target": "vf_e5080e1afb275c9d",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/328",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/328/328.lean",
+      "formal_statement_hash": "81883f814710546524b4199c90220f6fb9fde3d5f0558899839e1148c732e634",
+      "note": ""
+    },
+    {
+      "target": "vf_a5e3623f0f66509e",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/353",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/353/353.lean",
+      "formal_statement_hash": "5815447c9a2ebf2432a8c82e15a45ee3be4d55a8fc2ced8077b9b2f55e711f23",
+      "note": ""
+    },
+    {
+      "target": "vf_dd36e58bce419435",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/403",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/403/403.lean",
+      "formal_statement_hash": "0fa99d72c9d2b05e89d4ff941b375329652bacd821a43f87869215d455076df3",
+      "note": ""
+    },
+    {
+      "target": "vf_f91499810715b37f",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/426",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/426/426.lean",
+      "formal_statement_hash": "cf5739d754499e1e5b18777465b199b2876ea180e66fea1cd49867ecbd2c4382",
+      "note": ""
+    },
+    {
+      "target": "vf_d46e388b94a2b462",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/464",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/464/464.lean",
+      "formal_statement_hash": "2c7f3f0ad03052bf21e02f52b66f80a8f8a934b67455bbdf6f1c1e9a615fca44",
+      "note": ""
+    },
+    {
+      "target": "vf_ee0b039efc7d1c08",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/512",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/512/512.lean",
+      "formal_statement_hash": "ce92a8526c520cb05d3452c5bbcec13b616ec3624f8bab4301f3d9368907a382",
+      "note": ""
+    },
+    {
+      "target": "vf_601a2ae535c8cb1a",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/621",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/621/621.lean",
+      "formal_statement_hash": "a77338b8772ac6c7fa5409601afc76ddde41ce3c9c912fef97453c0d391a11b8",
+      "note": ""
+    },
+    {
+      "target": "vf_4154b8641266c084",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/639",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/639/639.lean",
+      "formal_statement_hash": "7bd2e4299eb59c58b703b6d70f1bffeef2d62d0097080c18df7b92efde52e865",
+      "note": ""
+    },
+    {
+      "target": "vf_591a2f3c1930bedb",
+      "verdict": "",
+      "informal_ref": "erdosproblems.com/648",
+      "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/648/648.lean",
+      "formal_statement_hash": "c2c5bfb4984a6988fa869a7069eacc660379d98a33aa97afade2eacc93e6aa83",
+      "note": ""
+    }
+  ]
+}

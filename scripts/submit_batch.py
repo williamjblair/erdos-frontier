@@ -94,7 +94,9 @@ def prepare(name: str) -> int:
             continue
         lean_path.write_text(new)
         print(f"  ok {n}: linked {pinned[:90]}…")
-    print("\nnow: re-run scripts/gate_draft.sh + match_packet.py --draft, then sign.")
+    print("\nnow: re-run scripts/gate_draft.sh <problems>, review each statements/<n>/inputs.md"
+          " against its .lean, fill statements/<batch>-verdicts.json, then"
+          " `vela review . --batch statements/<batch>-verdicts.json` and re-run assemble.")
     return 0
 
 
