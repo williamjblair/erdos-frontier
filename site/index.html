@@ -38,32 +38,26 @@
   .xref h2 { font-family: var(--font-sans); font-weight: 600; font-size: var(--text-h3); }
   .xref .lede { font-size: var(--text-small); color: var(--ink-3); max-width: var(--measure-wide); }
 
-  .controls { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); align-items: center; margin-bottom: var(--s-2); }
-  .controls input {
-    font: inherit; font-size: var(--text-small);
-    padding: 0.4rem 0.65rem; width: 13rem;
-    background: var(--paper-1); color: inherit;
-    border: 1px solid var(--paper-edge); border-radius: var(--radius-sm);
-  }
-  .count { color: var(--ink-4); font-size: 13px; margin-left: auto; font-variant-numeric: tabular-nums; }
-
   table.board { border-collapse: collapse; width: 100%; font-size: var(--text-small); table-layout: fixed; }
-  .board col.c-num { width: 6.5rem; }
+  .board col.c-num { width: 7.5rem; }
   .board col.c-proof { width: 8rem; }
-  .board col.c-stmt { width: 9rem; }
+  .board col.c-stmt { width: 9.5rem; }
   .board col.c-claim { width: 22%; }
   .board thead th {
     position: sticky; top: 0; z-index: 1;
-    background: var(--paper-0);
+    background: var(--paper-1);
     text-align: left; font-weight: 600; font-size: 11px;
     letter-spacing: var(--track-label); text-transform: uppercase;
     color: var(--ink-3);
-    padding: 0.55rem 0.6rem 0.55rem 0;
+    padding: 0.6rem 0.6rem 0.6rem 0;
     border-bottom: 1px solid var(--rule-3);
   }
-  .board td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid var(--rule-1); vertical-align: top; }
+  .board th:first-child, .board td:first-child { padding-left: var(--s-3); }
+  .board th:last-child, .board td:last-child { padding-right: var(--s-3); }
+  .board td { padding: 0.6rem 0.6rem 0.6rem 0; border-bottom: 1px solid var(--rule-1); vertical-align: top; }
+  .board tbody tr:last-child td { border-bottom: 0; }
   .board tbody tr.row { cursor: pointer; }
-  .board tbody tr.row:hover { background: var(--paper-2); }
+  .board tbody tr.row:hover td { background: var(--paper-2); }
   tr.disc td { background: var(--cinnabar-soft); }
   td.p { font-family: var(--font-mono); white-space: nowrap; font-variant-numeric: tabular-nums; }
   td.p .expand {
@@ -85,14 +79,13 @@
 
   @media (max-width: 720px) {
     .axes { grid-template-columns: 1fr; gap: var(--s-3); }
-    .controls input { width: 100%; }
-    .count { margin-left: 0; }
-    table.board thead { display: none; }
+    table.board { table-layout: auto; }
+    table.board thead, .board colgroup { display: none; }
     table.board, .board tbody, .board tr, .board td { display: block; width: 100%; }
-    .board tbody tr.row { border: 1px solid var(--paper-edge); border-radius: var(--radius-sm); margin-bottom: 0.7rem; padding: 0.4rem 0.2rem 0.5rem; }
+    .board tbody tr.row { border: 1px solid var(--paper-edge); border-radius: var(--radius-lg); margin: 0.7rem var(--s-2); padding: 0.4rem 0.2rem 0.5rem; width: auto; }
     tr.disc { border-color: color-mix(in oklch, var(--cinnabar) 50%, transparent); }
     tr.disc td { background: transparent; }
-    .board td { border: none; padding: 0.15rem 0.9rem; }
+    .board td, .board td:first-child, .board td:last-child { border: none; padding: 0.15rem 0.9rem; }
     .board td:empty { display: none; }
     .board td::before {
       content: attr(data-label); display: block; color: var(--ink-4);
@@ -101,21 +94,24 @@
     }
     .board td.p::before, tr.detailrow td::before { display: none; }
     .board td.p { font-size: 1.05rem; padding: 0.2rem 0.9rem 0.35rem; }
+    tr.detailrow { margin: -0.4rem var(--s-2) 0.7rem; display: block; }
     tr.detailrow > td { padding: 0 0.4rem 0.6rem; }
   }
 </style>
 </head>
 <body>
-<div class="page">
+<header class="site-header"><div class="site-header__inner">
+  <a class="site-mark" href="index.html">Erdős<span> Frontier</span></a>
   <nav class="site-nav" aria-label="Site">
     <a href="index.html" aria-current="page">Audit</a>
     <a href="conditions.html">Conditions</a>
     <a href="map.html">Map</a>
     <a href="method.html">Method</a>
-    <a class="nav-mark" href="https://hub.constellate.science/entries/vfr_0a25edabc16db143">constellate · vfr_0a25edab</a>
   </nav>
-
-  <header class="hero">
+  <a class="site-vela" href="https://hub.constellate.science/entries/vfr_0a25edabc16db143">constellate · vfr_0a25edab</a>
+</div></header>
+<div class="page">
+  <div class="hero">
     <p class="kicker">Formal-proof fidelity audit</p>
     <h1>The Erdős frontier, read from the proofs</h1>
     <p class="lede">Which “formally solved” Erdős problems rest on an <em>unconditional</em> Lean proof,
@@ -124,7 +120,7 @@
       <code>#print axioms</code>-clean and still prove the problem only conditionally, by taking a deep
       theorem as a hypothesis parameter the axiom check never sees.
       <a class="quiet-link" href="method.html">How the audit works, and what it cannot do →</a></p>
-  </header>
+  </div>
 
   <ol class="funnel" id="funnel" aria-label="Audit funnel"></ol>
 
@@ -164,8 +160,8 @@
     <table class="ledger" id="xref-rows"></table>
   </section>
 
-  <section aria-label="All problems">
-    <div class="controls">
+  <section aria-label="All problems" class="panel">
+    <div class="toolbar">
       <label class="t-label" for="q" style="margin-right:-0.4rem">Filter</label>
       <input id="q" type="search" placeholder="#, condition, axiom, wiki, gpt-erdos" autocomplete="off">
       <div class="facets" role="group" aria-label="Row filters">
@@ -181,8 +177,9 @@
       </div>
       <span class="count" id="count" aria-live="polite"></span>
     </div>
-    <noscript><p>The table needs JavaScript; the same data is in
+    <noscript><p style="padding:0 24px">The table needs JavaScript; the same data is in
       <a href="verdicts.json">verdicts.json</a>.</p></noscript>
+    <div class="table-scroll">
     <table class="board">
       <colgroup>
         <col class="c-num"><col class="c-proof"><col><col class="c-stmt"><col class="c-claim">
@@ -200,6 +197,7 @@
         <tr class="skeleton-row"><td colspan="5"></td></tr>
       </tbody>
     </table>
+    </div>
   </section>
 
   <p class="site-foot" id="foot" data-url="https://williamjblair.github.io/erdos-frontier/"></p>

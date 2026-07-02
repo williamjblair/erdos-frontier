@@ -1,0 +1,39 @@
+{
+  "problem": 621,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:56+00:00",
+  "upstream_state": "proved (Lean)",
+  "latex_sha256": "05db4d22cef357b02b0ceaf138e198a3f91071763de002f4a10f9c9223609996",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "plby",
+      "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos621.lean",
+      "file_sha256": "a4cc274dbeae879d43922e3b61986a0d916e129ddb89007943d5e749b9c15bf9",
+      "error": null
+    },
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/621/Erdos621.lean",
+      "file_sha256": "da11fee5cebb8a8c1e379085456e13b2ff73706ad176e2392c446f120a80724a",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:55+00:00",
+    "open_prs": [],
+    "issues": [
+      {
+        "number": 835,
+        "title": "Erd\u0151s 621"
+      }
+    ]
+  },
+  "divergence_notes": [
+    "vs plby (P4_le_D, P4_add_C4_le_K13): hosted proof works in a bespoke `Trigraph` reformulation and proves inequalities between abstract quantities (P4, C4, D, K13) with no n^2/4 normalization and no alpha_1/tau_1 extremal values; our draft states the literal problem over Mathlib `SimpleGraph (Fin n)` with alpha_1/tau_1 as IsGreatest/IsLeast of edge-subset cardinalities and the explicit n^2/4 bound.",
+    "vs jayyhk (Trigraph structure with c/s indicator functions): hosted formalization encodes graphs as {0,1}-valued integer indicator functions with a triangle_free side condition and sums divided by 2 (S_size); our draft uses Mathlib `SimpleGraph`, Finset edge subsets, and explicit triangle quantification (pairwise-adjacent x y z), with no indicator arithmetic.",
+    "formalization choices: triangles quantified as pairwise-adjacent vertex triples x y z with edge set {s(x,y), s(y,z), s(x,z)}; 'at most one edge from every triangle' = card of intersection with A <= 1; 'at least one edge from every triangle' = nonempty intersection with T; both A and T constrained to subsets of G.edgeFinset; the inequality alpha_1+tau_1 <= n^2/4 is stated as 4*(a+t) <= n^2, which is equivalent over the integers and avoids rational division."
+  ]
+}

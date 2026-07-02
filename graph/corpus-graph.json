@@ -12,26 +12,26 @@
   "williamjblair_lean_proofs": "sha256:b0e681bf4"
  },
  "counts": {
-  "nodes": 2724,
-  "edges": 1324,
+  "nodes": 2736,
+  "edges": 1336,
   "by_node_kind": {
    "attestation": 62,
    "claim": 342,
    "condition": 24,
    "problem": 1217,
    "proof": 392,
-   "statement": 687
+   "statement": 699
   },
   "by_edge_kind": {
    "contradicts": 11,
    "depends_on": 26,
-   "derived_from": 687,
+   "derived_from": 699,
    "replicates": 165,
    "specializes": 2,
    "supports": 433
   },
   "by_trust": {
-   "declared": 886,
+   "declared": 898,
    "machine": 367,
    "recorded": 9,
    "signed": 62
@@ -11640,10 +11640,28 @@
    "linked": true
   },
   {
+   "id": "fc:206",
+   "kind": "statement",
+   "label": "Erdos206.erdos_206",
+   "stage": "draft",
+   "path": "statements/206/206.lean",
+   "gates_passed": true,
+   "linked": false
+  },
+  {
    "id": "fc:208",
    "kind": "statement",
    "label": "Erdos208.erdos_208.variants.log_bound",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos208.erdos_208.variants.log_bound",
+   "linked": false
+  },
+  {
+   "id": "fc:209",
+   "kind": "statement",
+   "label": "Erdos209.erdos_209",
+   "stage": "draft",
+   "path": "statements/209/209.lean",
+   "gates_passed": true,
    "linked": false
   },
   {
@@ -12272,6 +12290,15 @@
    "linked": false
   },
   {
+   "id": "fc:328",
+   "kind": "statement",
+   "label": "Erdos328.erdos_328",
+   "stage": "draft",
+   "path": "statements/328/328.lean",
+   "gates_passed": true,
+   "linked": false
+  },
+  {
    "id": "fc:329",
    "kind": "statement",
    "label": "Erdos329.erdos_329",
@@ -12391,6 +12418,15 @@
    "kind": "statement",
    "label": "Erdos352.erdos_352",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos352.erdos_352",
+   "linked": false
+  },
+  {
+   "id": "fc:353",
+   "kind": "statement",
+   "label": "Erdos353.erdos_353",
+   "stage": "draft",
+   "path": "statements/353/353.lean",
+   "gates_passed": true,
    "linked": false
   },
   {
@@ -12673,6 +12709,15 @@
    "linked": false
   },
   {
+   "id": "fc:403",
+   "kind": "statement",
+   "label": "Erdos403.erdos_403",
+   "stage": "draft",
+   "path": "statements/403/403.lean",
+   "gates_passed": true,
+   "linked": false
+  },
+  {
    "id": "fc:405",
    "kind": "statement",
    "label": "FC 405 (PR #3881)",
@@ -12797,6 +12842,15 @@
    "label": "FC 425 (PR #4068)",
    "stage": "in-pr",
    "url": "https://github.com/google-deepmind/formal-conjectures/pull/4068"
+  },
+  {
+   "id": "fc:426",
+   "kind": "statement",
+   "label": "Erdos426.erdos_426",
+   "stage": "draft",
+   "path": "statements/426/426.lean",
+   "gates_passed": true,
+   "linked": false
   },
   {
    "id": "fc:427",
@@ -12979,6 +13033,15 @@
    "kind": "statement",
    "label": "Erdos463.erdos_463",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos463.erdos_463",
+   "linked": false
+  },
+  {
+   "id": "fc:464",
+   "kind": "statement",
+   "label": "Erdos464.erdos_464",
+   "stage": "draft",
+   "path": "statements/464/464.lean",
+   "gates_passed": true,
    "linked": false
   },
   {
@@ -13248,6 +13311,15 @@
    "kind": "statement",
    "label": "Erdos510.erdos_510",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos510.erdos_510",
+   "linked": false
+  },
+  {
+   "id": "fc:512",
+   "kind": "statement",
+   "label": "Erdos512.erdos_512",
+   "stage": "draft",
+   "path": "statements/512/512.lean",
+   "gates_passed": true,
    "linked": false
   },
   {
@@ -13628,6 +13700,15 @@
    "linked": true
   },
   {
+   "id": "fc:621",
+   "kind": "statement",
+   "label": "Erdos621.erdos_621",
+   "stage": "draft",
+   "path": "statements/621/621.lean",
+   "gates_passed": true,
+   "linked": false
+  },
+  {
    "id": "fc:623",
    "kind": "statement",
    "label": "Erdos623.erdos_623",
@@ -13663,6 +13744,15 @@
    "linked": false
   },
   {
+   "id": "fc:639",
+   "kind": "statement",
+   "label": "Erdos639.erdos_639",
+   "stage": "draft",
+   "path": "statements/639/639.lean",
+   "gates_passed": true,
+   "linked": false
+  },
+  {
    "id": "fc:64",
    "kind": "statement",
    "label": "Erdos64.erdos_64",
@@ -13691,6 +13781,15 @@
    "label": "Erdos647.erdos_647",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos647.erdos_647",
    "linked": false
+  },
+  {
+   "id": "fc:648",
+   "kind": "statement",
+   "label": "Erdos648.erdos_648",
+   "stage": "draft",
+   "path": "statements/648/648.lean",
+   "gates_passed": true,
+   "linked": true
   },
   {
    "id": "fc:650",
@@ -13929,6 +14028,15 @@
    "label": "Erdos707.erdos_707",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos707.erdos_707",
    "linked": true
+  },
+  {
+   "id": "fc:71",
+   "kind": "statement",
+   "label": "Erdos71.erdos_71",
+   "stage": "draft",
+   "path": "statements/71/71.lean",
+   "gates_passed": true,
+   "linked": false
   },
   {
    "id": "fc:711",
@@ -22658,11 +22766,25 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:206",
+   "to": "erdos:206",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
+  },
+  {
    "from": "fc:208",
    "to": "erdos:208",
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:209",
+   "to": "erdos:209",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:212",
@@ -23281,6 +23403,13 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:328",
+   "to": "erdos:328",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
+  },
+  {
    "from": "fc:329",
    "to": "erdos:329",
    "kind": "derived_from",
@@ -23398,6 +23527,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:353",
+   "to": "erdos:353",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:354",
@@ -23673,6 +23809,13 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:403",
+   "to": "erdos:403",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
+  },
+  {
    "from": "fc:405",
    "to": "erdos:405",
    "kind": "derived_from",
@@ -23797,6 +23940,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "open FC PR #4068 proposes the statement"
+  },
+  {
+   "from": "fc:426",
+   "to": "erdos:426",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:427",
@@ -23972,6 +24122,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:464",
+   "to": "erdos:464",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:467",
@@ -24231,6 +24388,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:512",
+   "to": "erdos:512",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:513",
@@ -24604,6 +24768,13 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:621",
+   "to": "erdos:621",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
+  },
+  {
    "from": "fc:623",
    "to": "erdos:623",
    "kind": "derived_from",
@@ -24639,6 +24810,13 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:639",
+   "to": "erdos:639",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
+  },
+  {
    "from": "fc:64",
    "to": "erdos:64",
    "kind": "derived_from",
@@ -24665,6 +24843,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:648",
+   "to": "erdos:648",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:650",
@@ -24903,6 +25088,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:71",
+   "to": "erdos:71",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "staged campaign draft (statements/), mechanically gated"
   },
   {
    "from": "fc:711",

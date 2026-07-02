@@ -1,0 +1,33 @@
+{
+  "problem": 328,
+  "status": "drafted",
+  "staged_at": "2026-07-02T16:12:37+00:00",
+  "upstream_state": "disproved (Lean)",
+  "latex_sha256": "fbe4232ff6516742d1d73cf2000588929d4e49680f6fde6c98095c77b71651fe",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/328/Erdos328.lean",
+      "file_sha256": "d1e616c8ea2e8c0e3d1aec2a68de2b816bb382a59a00a60390e5c8e73ff35634",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:35+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "Polarity/wrapper: stated as answer(False) ↔ P where P = (∀ C > 0, ∃ t, ∀ A with 1_A∗1_A ≤ C, ∃ partition into t parts each with 1_{A_i}∗1_{A_i} < C) — FC house style for a disproved yes/no question (cf. FC 871, batch-3 333). jayyhk's hosted erdos_328 is the direct negation ¬P.",
+    "Representation function: we use FC's AdditiveCombinatorics.sumRep (antidiagonal-filter card, ordered pairs); jayyhk defines its own additiveRepresentation as Set.ncard {p : ℕ × ℕ | p.1 ∈ A ∧ p.2 ∈ A ∧ p.1 + p.2 = n} — the same ordered-pair count (diagonal counted once), propositionally equal, different spelling.",
+    "Type of C: the text says C>0 with no integrality; we (and jayyhk) take C : ℕ with 0 < C (jayyhk writes 1 ≤ C, definitionally the same on ℕ). Since 1_A∗1_A is ℕ-valued this is the non-degenerate reading: for non-integer real C the hypothesis ≤ C and conclusion < C both collapse to ≤ ⌊C⌋ and the question trivializes to yes with t = 1; Erdős' partial results are for C = 3, 4 (integers).",
+    "Positivity of t: jayyhk additionally requires 1 ≤ t inside the ∃; we drop it — t is quantified before A, so t = 0 already fails for any nonempty admissible A (⋃ over Fin 0 is ∅), and for A = ∅ the choice of t is immaterial. Truth value unchanged.",
+    "Partition: indexed family P : Fin t → Set ℕ with (⋃ i, P i) = A ∧ Set.univ.PairwiseDisjoint P, inlined; jayyhk bundles the identical two conjuncts as its own IsPartition. Empty parts are allowed in both — 'partitioned into t many subsets' with t depending only on C makes t an in-spirit upper bound, and forbidding empty parts would spuriously fail e.g. finite A with |A| < t.",
+    "Indexing: the text's 1 ≤ i ≤ t becomes i : Fin t (both we and jayyhk)."
+  ],
+  "ams_rationale": "11 = number theory (additive representation functions 1_A∗1_A, Erdős–Newman; cf. FC 28/40/871 which tag sumRep problems AMS 11).",
+  "category": "research solved"
+}

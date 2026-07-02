@@ -1,0 +1,29 @@
+{
+  "problem": 512,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:13:08+00:00",
+  "upstream_state": "proved (Lean)",
+  "latex_sha256": "fdb8258448d0d27460a1bcab3739aff15a954b2681b2d1ec95cfda22b25ba8e2",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/512/Erdos512.lean",
+      "file_sha256": "94cb638ae74481d2d6c7e14da0e5bbc925adfdd7b91217dfebfe22ff15c4305e",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:13:07+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "jayyhk hosts the statement on `AddCircle (1 : ℝ)` with `haarAddCircle` and the `fourier` monomials; we integrate over θ ∈ [0,1] with `intervalIntegral`, following the problem text's ∫_0^1 literally.",
+    "jayyhk phrases the lower bound via a `harmonic N` sum (with `Real.log N ≤ harmonic N` as a bridging lemma); we state the Vinogradov ≫ directly as `∃ c > 0, c * Real.log N ≤ ∫ …` per the problem text.",
+    "jayyhk builds co-analytic trig-polynomial machinery (`CoAnalytic`, `TrigPolyNeg`) as proof infrastructure; our statement quantifies plainly over `A : Finset ℤ` with `A.card = N` and none of that machinery.",
+    "The hosted extract in inputs.md is truncated before jayyhk's main theorem, so divergences are recorded against the visible portion only."
+  ]
+}

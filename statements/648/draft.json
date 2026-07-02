@@ -1,0 +1,37 @@
+{
+  "problem": 648,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:57+00:00",
+  "upstream_state": "solved (Lean)",
+  "latex_sha256": "a61874040a1272ba13a3e823136fdb1ee93e3f5e94d5a1e6d529c865c20a621b",
+  "machine_verdict": "unconditional",
+  "machine_source": "plby",
+  "link_allowed": true,
+  "hosted": [
+    {
+      "source": "plby",
+      "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos648.lean",
+      "file_sha256": "45e94c2411dd383c88dbfcc54d341e2741e7d8e42f7e8ce6e47845fe1dc38837",
+      "error": null
+    },
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/648/Erdos648.lean",
+      "file_sha256": "023b83f0a3962c556f5e10a80d0e7ea873116d0299aa0e10dfe980fe548f1923",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:56+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "range: the draft follows the problem text, 2 <= a_1 < ... < a_t < n (Set.Ico 2 n); both hosted theorems (plby, jayyhk) constrain sequence members to Set.Ioc 0 n, admitting 1 and n and dropping the lower bound 2. Asymptotically immaterial (affects g by O(1)), but a real statement-level divergence.",
+    "P: the draft uses FC-house Nat.maxPrimeFac (sSup of prime divisors; junk value 0 at n <= 1); both hosted define P n = (n.primeFactors.max).getD 1 (junk value 1 at n <= 1). The two agree on every m >= 2, which covers the draft's whole sequence domain.",
+    "sequence encoding: the draft uses a strictly monotone a : Fin t -> Nat with StrictAnti (fun i => (a i).maxPrimeFac), the FC house shape (cf. FC 1056, 1102); both hosted use l : List Nat with l.IsChain (. < .) and (l.map P).IsChain (. > .). Equivalent data.",
+    "g: the draft takes sSup {t | exists a : Fin t -> Nat, ...} in Nat, mirroring the hosted sSup {k | exists l, is_valid_seq n l and l.length = k}; t = 0 (empty sequence) is always achievable, and t is bounded by n, so the sSup is well-defined.",
+    "theorem shape: identical to both hosted theorems, (fun n => (g n : R)) =Theta[atTop] fun n => Real.sqrt (n / Real.log n). No answer() elaborator: the solved estimate is stated directly as the Theta result, following FC precedent (erdos_296, erdos_390.variants.theta); neither hosted theorem uses answer either.",
+    "scope: Cambie's further question (exists c with g(n) ~ c*sqrt(n/log n)) is quoted in the docstring but not formalized as a variant; it remains open and neither hosted file formalizes it."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "problem": 209,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:32+00:00",
+  "upstream_state": "disproved (Lean)",
+  "latex_sha256": "2866fa5f1c03f3011d864ea96a441ac41692f057ff2cf01beabcca5467ece0ca",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/209/Erdos209.lean",
+      "file_sha256": "e172ff29de69f31aad013aac4f8c8c1f7f82b9d67b9f161195cd6af69ba2ce83",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:31+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "jayyhk states the bare negation `¬ ∀ d, ...`; we use the FC house form for disproved yes/no problems, `answer(False) ↔ ∀ d, ...` (logically equivalent, matches e.g. FC 1128).",
+    "jayyhk uses bespoke opaque types (`LineArrangement`, `PlanePoint`, `A.pairwiseNonParallel`, `A.pointMultiplicity`, `A.hasGallaiTriangle`) whose definitions are not in the extract; we define everything from Mathlib primitives: a line is the affine span of two distinct points of ℝ² (`IsLine`, same shape as FC 101's determined lines), non-parallel is `AffineSubspace.Parallel` negated pairwise over the (deduplicated) Finset, and `pointMultiplicity` is the ncard of the set of lines of A through the point.",
+    "jayyhk's `A.hasGallaiTriangle` internals are unknown; our `HasGallaiTriangle` makes 'three lines which intersect in three points' explicit: the three lines are pairwise distinct and the three intersection points are pairwise distinct, and each point has multiplicity exactly 2 ('only intersects two lines from A').",
+    "'no points where at least four lines from A meet' is rendered as `∀ p, pointMultiplicity A p ≤ 3` (identical to jayyhk's `≤ 3` form; trivial rewrite of ¬(4 ≤ ·)).",
+    "AMS tag set to 52 (discrete geometry, 52C30 arrangements of lines) rather than the scaffold default 11; matches FC 101 (point-line incidence)."
+  ]
+}

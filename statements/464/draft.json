@@ -1,0 +1,30 @@
+{
+  "problem": 464,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:53+00:00",
+  "upstream_state": "proved (Lean)",
+  "latex_sha256": "c3a0d2e285bdf726c9cc13fe06b6148acaa6cd98eb1f799e46758bc6fa889cdf",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/464/Erdos464.lean",
+      "file_sha256": "1f04d2e0bc7d1264b6d4abe2109c0c23d1a62a61edc90829ef858266160cca64",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:45+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "vs problem text: the literal conclusion ('{||theta n_k||} is not dense in [0,1]') is vacuously true since ||x|| <= 1/2; formalized instead as the intended content, the sequence (theta n_k) is not dense modulo one: `¬ Dense (Set.range fun k => (↑(θ * n k) : AddCircle (1 : ℝ)))`, matching FC's `pollington_de_mathan` (BugeaudDistributionModuloOne/Problem10_6.lean), which states the full-Hausdorff-dimension version of the same de Mathan-Pollington theorem. The hosted jayyhk file records the same vacuity trap in its own comments.",
+    "vs problem text: lacunarity ('exists eps>0 with n_{k+1} >= (1+eps) n_k for all k') is rendered by the house predicate `IsLacunary` (exists c>1 with c*n_k < n_{k+1} eventually), following the erdos_355 precedent (verbatim docstring, IsLacunary in the statement). For strictly increasing positive sequences the verbatim condition implies IsLacunary; quantifying over the (slightly broader) eventual class does not change truth, since modifying finitely many terms does not affect density modulo one.",
+    "vs hosted jayyhk erdos_464: hosted concludes 0 ∉ closure(range k ↦ |θ·aₖ − round(θ·aₖ)|) (values bounded away from 0, the inf>0 form actually proved); our conclusion (not dense modulo one) is strictly weaker and is what the problem asks. Hosted's theorem implies ours.",
+    "vs hosted jayyhk erdos_464: hosted hypotheses are StrictMono a, 0 < a 0, and the verbatim for-all lacunarity (1+eps)*a k <= a (k+1); ours are StrictMono n, ∀ k 0 < n k (equivalent given StrictMono), and IsLacunary n (see note above).",
+    "vs hosted jayyhk erdos_464: hosted is an unconditional proved theorem in its own repo (imports all of Mathlib, own ndist def); ours is the FC question form `answer(True) ↔ ∀ ...` with a sorry body (statement bucket; link_allowed=false so no formal_proof attribute is attached)."
+  ]
+}

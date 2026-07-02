@@ -1,0 +1,41 @@
+{
+  "problem": 426,
+  "status": "drafted",
+  "staged_at": "2026-07-02T16:12:53+00:00",
+  "upstream_state": "disproved (Lean)",
+  "latex_sha256": "cb6c489edbdc0d14fa430f15caa79adf30705db5021dcb1a90cf8bf8d832dd53",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "plby",
+      "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos426.lean",
+      "file_sha256": "6851e8c9f226657b81b77c23c19a9fd39cd74ef480ba29e67a1305472a62de6c",
+      "error": null
+    },
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/426/Erdos426.lean",
+      "file_sha256": "c925aa69a06534b5e6392f81134993da95097eac2658ed716b0c767f2f962cdc",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:47+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "STATEMENT DIRECTION: the drafted theorem states the QUESTION positively as `answer(False) <-> P` (upstream state 'disproved (Lean)' maps to FC category 'research solved' with answer False, per the batch-3 429 precedent). Both hosted files instead build machinery pointed at the refutation itself: jayyhk defines the normalized count fH and the maximum fSeq (visibly heading toward the o() bound); the visible plby excerpt is definitions plus an equivalence lemma (isUniqueSubgraph_iff), its final theorem lies past the excerpt cutoff. Modulo the notes below, the negation of the drafted P is exactly the Bradac-Christoph theorem f(n) = o(2^(n choose 2)/n!).",
+    "READING OF >>: formalized as `exists c > 0` valid for ARBITRARILY LARGE n (frequently atTop), giving the exact equivalence not-P <-> f(n) = o(2^(n choose 2)/n!). A for-all-large-n reading would make not-P strictly weaker than the published o() bound; a single-n reading degenerates (any nonempty count satisfies it for c small enough). Neither hosted excerpt shows its final quantifier shape; jayyhk's fSeq suggests a Tendsto-to-0 statement, whose negation-free form matches this frequently reading.",
+    "UNIQUE-SUBGRAPH CARRIER: drafted directly in the subgraph lattice (`exists! G' : SimpleGraph (Fin n), G' <= H and Nonempty (G.Iso G')`). Both hosted files use `exists! S : H.Subgraph, S.IsSpanning and Nonempty (S.spanningCoe.Iso G)`; plby's own lemma isUniqueSubgraph_iff proves the two forms equivalent. The lattice form avoids Subgraph/spanningCoe plumbing with no content change.",
+    "SPANNING RESTRICTION VS TEXT: the problem text says 'subgraph (not necessarily induced)' and does not say spanning; both hosted theorems nevertheless count only spanning subgraphs on the same n vertices, and the draft follows them. Rationale: isomorphism classes of subgraphs on fewer than n non-isolated-padded vertices number at most ~ 2 * 2^((n-1) choose 2)/(n-1)! = o(2^(n choose 2)/n!), so admitting them changes neither side of the answer(False) verdict; and the comparison quantity 2^(n choose 2)/n! is itself the n-vertex unlabeled-graph count.",
+    "COUNTING: jayyhk counts isomorphism classes via a Setoid/Quotient (uniqueSubgraphClasses = Finset.image of Quotient.mk over a filtered univ, requiring decidability instances); the draft counts `{G | G <= H and IsUniqueSubgraph G H}.ncard` instead. The two agree: a unique class contains exactly one subgraph representative G <= H, and two distinct representatives cannot be isomorphic without violating uniqueness. ncard is the idiomatic Mathlib spelling and needs no Fintype/DecidableEq plumbing (batch-3 429 precedent).",
+    "NORMALIZATION: jayyhk normalizes by paperDenom (fH = card / paperDenom, real-valued) and takes fSeq = sup' over all H; the draft keeps the raw inequality c * 2^(n choose 2)/n! <= count, matching the problem text's display, and needs no sup since the question asks for the existence of a graph.",
+    "OMITTED HOSTED MACHINERY: jayyhk's embedding apparatus (IsEmbedding, embeddingFinset, numEmbeddings, UniquelyEmbeds, autFinset) and plby's spanningSubgraphOf/isUniqueSubgraph_iff are proof machinery, not statement content; the draft omits them.",
+    "LINK RULE: no formal_proof attribute, although upstream marks the problem disproved (Lean) and both hosted repos carry proof files -- draft.json says link_allowed=false (no machine-unconditional verdict), and the gate's link rule forbids the attribute in that state."
+  ],
+  "category": "research solved",
+  "ams_rationale": "AMS 5 (combinatorics): counting isomorphism classes of (unique) subgraphs of an n-vertex graph against the ~2^(n choose 2)/n! unlabeled-graph count; pure graph theory, no number-theoretic content. Scaffold default AMS 11 replaced."
+}

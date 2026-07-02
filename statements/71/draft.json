@@ -1,0 +1,32 @@
+{
+  "problem": 71,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:27+00:00",
+  "upstream_state": "proved (Lean)",
+  "latex_sha256": "82a9c197e3842f2a9cbaeffda66159947508ad13f6a0d69d74287ec7d6d9d44f",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/71/Erdos71.lean",
+      "file_sha256": "28f6f1579222e4456cac532905281bb0c5286545d875e1cfd7dc286a860d2483",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:25+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "vs jayyhk: AP encoded with the house predicate Set.IsAPOfLength (⊤ : ℕ∞) on Set ℕ instead of a bespoke InfiniteAP structure; infinite cardinality forces d ≥ 1, so no explicit d_pos field is needed.",
+    "vs jayyhk: no first-term positivity constraint (jayyhk requires a_pos : 1 ≤ a; the problem text does not, and a = 0 progressions are mathematically harmless since cycle lengths are ≥ 3).",
+    "vs jayyhk: average degree is the house SimpleGraph.averageDegree = (∑ deg v)/|V| : ℚ, not 2|E|/|V| (equal by the handshake lemma but definitionally different).",
+    "vs jayyhk: the constant c is bound as c : ℚ (matching the ℚ-valued averageDegree) instead of c : ℕ cast to ℚ; equivalent in strength by rounding up.",
+    "vs jayyhk: no [Nonempty V] hypothesis; the empty graph has averageDegree 0 and any witness c can be taken positive, so nonemptiness is not needed.",
+    "vs jayyhk: 'cycle whose length is in P' stated directly as w.IsCycle ∧ w.length ∈ P rather than via HasCycleOfLength/HasCycleOfLengthMod auxiliary definitions.",
+    "vs jayyhk: quantifies V : Type (Type 0) rather than V : Type*, per FC ErdosProblems house style (e.g. 128, 594, 619, 1080)."
+  ]
+}

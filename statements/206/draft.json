@@ -1,0 +1,35 @@
+{
+  "problem": 206,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:28+00:00",
+  "upstream_state": "disproved (Lean)",
+  "latex_sha256": "dc8adfc73612a59621292b671d2139a590317c3af2ea589f4d4a096cd5e11653",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "plby",
+      "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos206.lean",
+      "file_sha256": "601809a4589e177ae71c2682627f8774541782c38fc0c4c7a6d4d55acd299db7",
+      "error": null
+    },
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/206/Erdos206.lean",
+      "file_sha256": "e4958cda43538b65e65a148703ae6f166dcda548241eb3649962ceb0a7b4dda5",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:27+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "vs plby + jayyhk (identical defs in both hosted excerpts): egyptianSum, ValidEgyptian, IsUnderapprox, IsBestNTerm, EventuallyGreedy adopted verbatim; plby marks egyptianSum `noncomputable def`, jayyhk plain `def` — ours is `noncomputable` (real division), matching plby.",
+    "vs both hosted: harmonicNumber and X_set are omitted — they are scaffolding for Kovač's measure-zero proof (the X_{s,t} covering sets), not part of the question statement.",
+    "vs both hosted: the hosted excerpts truncate before their main theorem, so the top-level form is ours: FC house question-form `answer(False) ↔ ∀ᵐ x ∂(volume.restrict (Set.Ioi 0)), EventuallyGreedy x` (disproved upstream state; Kovač shows the eventually-greedy set has Lebesgue measure zero, so the almost-all claim is false).",
+    "vs problem text: the greedy recursion R_{n+1}=R_n+1/m (m minimal unused with RHS < x) is rendered as the hosted nested-prefix form (EventuallyGreedy); equivalence argued in the Formalization notes block of 206.lean — a nested chain of best sets forces the appended denominator to be the minimal admissible one, and conversely."
+  ]
+}

@@ -89,10 +89,13 @@
   --measure-page: 1180px;    /* board/instrument pages */
   --container-px: clamp(20px, 4vw, 48px);
 
-  /* ── Radii ────────────────────────────────────────────────────────── */
-  --radius-xs: 3px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  /* ── Radii — the shape system: pill interactives, 12px panels,
+       8px inputs, 4px inline tags ─────────────────────────────────── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
 
   /* ── Elevation — paper stack ─────────────────────────────────────── */
   --lift-1: 0 1px 0 var(--rule-2);

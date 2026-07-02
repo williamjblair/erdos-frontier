@@ -1,0 +1,34 @@
+{
+  "problem": 353,
+  "status": "staged",
+  "staged_at": "2026-07-02T16:12:41+00:00",
+  "upstream_state": "proved (Lean)",
+  "latex_sha256": "adbca374b33c3845459c9412b0ff97276714facc9a7f184272ee9fbd47006e65",
+  "machine_verdict": null,
+  "machine_source": null,
+  "link_allowed": false,
+  "hosted": [
+    {
+      "source": "jayyhk",
+      "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/353/Erdos353.lean",
+      "file_sha256": "6ee1bc163137a8f9c0de529b598f37071a33d15d62276bf2b99b595b794772b2",
+      "error": null
+    }
+  ],
+  "collision": {
+    "checked_at": "2026-07-02T16:12:40+00:00",
+    "open_prs": [],
+    "issues": []
+  },
+  "divergence_notes": [
+    "Structure: hosted (jayyhk) packs all five sub-questions into one conjunction theorem erdos_353; draft follows FC house style with headline erdos_353 = the leading isosceles-trapezoid question as answer(True) <-> ..., plus four variants (isosceles_triangle, right_angled_triangle, cyclic_quadrilateral, congruent_sides).",
+    "Triangle hypotheses: hosted sub-claims (2) and (3) state Koizumi's stronger theorem (MeasurableSet S, 0 < volume S, not Bornology.IsBounded S); draft states the problem as posed (volume A = \u22a4, infinite measure). Infinite measure implies positive measure and unboundedness, so hosted is a strengthening; the draft is the faithful problem statement.",
+    "Area vocabulary: hosted uses the shoelace formula on the ordered vertex tuple (quadArea / area2); draft uses volume (convexHull \u211d {..}) (Lebesgue measure of the hull). The two agree for vertices in convex position. Hosted's IsoTrapArea1 requires only pairwise distinctness, not convexity, so crossed orderings with |shoelace| = 1 are not excluded there; the draft's IsCcwConvexPolygon requirement excludes them.",
+    "Trapezoid definition: hosted = shoelace area 1 + coordinate cross-product parallelism (B-A)x(C-D)=0 + equal legs + equal diagonals + 6 distinctness conjuncts; draft = strictly convex ccw position (IsCcwConvexPolygon ![a,b,c,d]) + affine parallelism line[\u211d,a,b] \u2225 line[\u211d,c,d] + equal diagonals. Equal legs is omitted in the draft since it follows from parallel bases + equal diagonals in a convex quadrilateral. Both characterizations rule out non-rectangular parallelograms (rectangles qualify, as isosceles trapezoids).",
+    "Right angle: hosted via inner products (<B-A, C-A> = 0, etc.); draft via undirected angle (\u2220 b a c = \u03c0/2, etc.). Equivalent on non-degenerate triangles; in both formalizations degenerate junk values are excluded by the area-1 condition, so neither needs a separate non-degeneracy hypothesis.",
+    "Cyclic quadrilateral: hosted UnitCyclicQuad = Concyclic4 (common circle of positive radius) + ConvexQuadCCW + shoelace area 1 on named points; draft = \u2203 Q \u2286 A, Q.ncard = 4 \u2227 Cospherical Q \u2227 volume (convexHull \u211d Q) = 1 (FC 213 style). Four distinct concyclic points are automatically in convex position, so both capture 'the quadrilateral determined by four distinct points on a circle'; Mathlib's Cospherical does not itself demand positive radius, but four distinct points force it.",
+    "Congruent-sides polygon: hosted quantifies over C : ZMod n -> Pt with 3 <= n, strict convexity via cross-positivity of cyclically adjacent edges, and \u2203 a > 0 common side length; draft quantifies over v : Fin (n+3) -> \u211d\u00b2 with FC's IsCcwConvexPolygon and all sides equal to the first side (dist (v i) (v (i+1)) = dist (v 0) (v 1), wrap-around Fin addition). Draft additionally requires the counterexample set to be MeasurableSet (the problem quantifies over measurable sets; hosted sub-claim (5) omits measurability).",
+    "Negative answer form: both hosted and draft render the congruent-sides answer in the strong KoPr24 form (every such polygon has area < 1) rather than the bare negation (no such polygon of area exactly 1); this matches the solution sentence quoted on the problem page.",
+    "Proof status: hosted is a fully proved theorem with no answer() wrapper; draft is an FC statement draft with sorry bodies, answer(True) on the headline, and no proof-link attribute (link_allowed = false)."
+  ]
+}
