@@ -7,12 +7,16 @@
 <style>
   :root{
     color-scheme: light dark;
-    --paper:#faf8f3; --ink:#1b1916; --faint:#6f675c; --hair:#dcd5c8;
-    --accent:#9a3b2e; --accent-bg:#9a3b2e12; --ok:#5b6e4f; --warn:#9a7b2e;
+    --paper:oklch(97.2% 0.008 248); --ink:oklch(25% 0.03 262);
+    --faint:oklch(48% 0.022 258); --hair:oklch(88% 0.012 250);
+    --accent:oklch(50% 0.13 35); --accent-bg:oklch(50% 0.13 35 / 0.07);
+    --ok:oklch(48% 0.08 145); --warn:oklch(55% 0.1 85); --gold:oklch(62% 0.12 86);
   }
   @media (prefers-color-scheme: dark){
-    :root{ --paper:#15120e; --ink:#e9e3d8; --faint:#9a9082; --hair:#332c23;
-           --accent:#d2735f; --accent-bg:#d2735f1a; --ok:#9fb18c; --warn:#cbab63; }
+    :root{ --paper:oklch(21% 0.022 262); --ink:oklch(92% 0.012 250);
+           --faint:oklch(66% 0.016 255); --hair:oklch(33% 0.02 258);
+           --accent:oklch(70% 0.12 35); --accent-bg:oklch(70% 0.12 35 / 0.1);
+           --ok:oklch(72% 0.08 145); --warn:oklch(74% 0.09 85); --gold:oklch(74% 0.11 86); }
   }
   *{ box-sizing:border-box; }
   body{ margin:0; background:var(--paper); color:var(--ink);
@@ -167,13 +171,24 @@ function render(r, conds){
     + `<h2>Proof chain</h2><ul class="chain">${chain.join("")}</ul>`
     + `<h2>Load-bearing conditions</h2>${neigh}`
     + `<h2>Recorded claims</h2>${claims}`
+    + `<h2>Cite this finding</h2>`
+    + `<div class="repro" style="white-space:pre;overflow-x:auto;">@misc{erdos_${r.problem}_fidelity,\n`
+    + `  title  = {Erdős problem ${r.problem}: formal-proof fidelity finding},\n`
+    + `  author = {Blair, William},\n`
+    + `  url    = {https://williamjblair.github.io/erdos-frontier/finding.html?n=${r.problem}},\n`
+    + `  note   = {Signed frontier vfr_0a25edabc16db143 · audit of ${esc((DGEN||"").slice(0,10))} ·\n`
+    + `            verify: git clone github.com/williamjblair/erdos-frontier && vela check . --strict}\n}`
+    + `</div>`
     + `<p class="foot">The proof side is mechanical and reproducible; the statement verdict is signed by a named reviewer. `
+    + `Also served from the <a href="https://hub.constellate.science/entries/vfr_0a25edabc16db143">hub index</a>, re-derived by strict replay. `
     + `<a href="index.html">Overview</a> · <a href="conditions.html">Conditions</a> · <a href="verdicts.json">feed</a></p>`;
 }
 
+let DGEN = "";
 (function(){
   const n = Number(new URLSearchParams(location.search).get("n"));
   fetch("verdicts.json").then(r=>r.json()).then(d=>{
+    DGEN = d.generated_at || "";
     const r = d.rows.find(x => x.problem===n);
     if(!r){ document.getElementById("content").innerHTML =
       `<h1>Problem ${n||"?"}</h1><p class="muted">Not in the audit feed. <a href="index.html">Browse all problems.</a></p>`; return; }

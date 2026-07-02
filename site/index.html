@@ -7,12 +7,16 @@
 <style>
   :root{
     color-scheme: light dark;
-    --paper:#faf8f3; --ink:#1b1916; --faint:#6f675c; --hair:#dcd5c8;
-    --accent:#9a3b2e; --accent-bg:#9a3b2e12; --ok:#5b6e4f; --warn:#9a7b2e;
+    --paper:oklch(97.2% 0.008 248); --ink:oklch(25% 0.03 262);
+    --faint:oklch(48% 0.022 258); --hair:oklch(88% 0.012 250);
+    --accent:oklch(50% 0.13 35); --accent-bg:oklch(50% 0.13 35 / 0.07);
+    --ok:oklch(48% 0.08 145); --warn:oklch(55% 0.1 85); --gold:oklch(62% 0.12 86);
   }
   @media (prefers-color-scheme: dark){
-    :root{ --paper:#15120e; --ink:#e9e3d8; --faint:#9a9082; --hair:#332c23;
-           --accent:#d2735f; --accent-bg:#d2735f1a; --ok:#9fb18c; --warn:#cbab63; }
+    :root{ --paper:oklch(21% 0.022 262); --ink:oklch(92% 0.012 250);
+           --faint:oklch(66% 0.016 255); --hair:oklch(33% 0.02 258);
+           --accent:oklch(70% 0.12 35); --accent-bg:oklch(70% 0.12 35 / 0.1);
+           --ok:oklch(72% 0.08 145); --warn:oklch(74% 0.09 85); --gold:oklch(74% 0.11 86); }
   }
   *{ box-sizing:border-box; }
   body{ margin:0; background:var(--paper); color:var(--ink);
@@ -112,6 +116,13 @@
 
   .foot{ margin-top:2.6rem; padding-top:1.4rem; border-top:1px solid var(--hair);
     color:var(--faint); font-size:.85rem; }
+  .verify,.cite{ margin-top:2.6rem; }
+  .verify h2,.cite h2{ font-size:1.05rem; font-weight:600; margin:0 0 .3rem; }
+  .vnote{ color:var(--faint); font-size:.9rem; max-width:44rem; margin:.2rem 0 .9rem; }
+  .vcmd{ font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:.82rem; line-height:1.55;
+    background:oklch(25% 0.03 262 / 0.05); border:1px solid var(--hair); border-radius:4px;
+    padding:.9rem 1.1rem; overflow-x:auto; margin:0 0 .6rem; }
+  @media (prefers-color-scheme: dark){ .vcmd{ background:oklch(92% 0.012 250 / 0.05); } }
 
   @media (max-width:640px){
     .wrap{ padding:2.6rem 1.1rem 4rem; }
@@ -225,6 +236,30 @@
     </div>
   </details>
 
+  <div class="verify">
+    <h2>Verify this yourself</h2>
+    <p class="vnote">The dashboard is a materialized view. The authority is a signed,
+    replayable event log in this repository — you do not have to trust this page,
+    the wiki, or us.</p>
+    <pre class="vcmd">git clone https://github.com/williamjblair/erdos-frontier
+cd erdos-frontier
+vela check . --strict     # replay the signed frontier; any tampered event fails
+vela frontier next .      # what is open to work on right now</pre>
+    <p class="vnote">The same state, three more doors:
+    the <a href="https://hub.constellate.science/entries/vfr_0a25edabc16db143">hub index entry</a>
+    (re-derived from this repo by strict replay on every push) ·
+    the <a href="https://hub.constellate.science/entries/vfr_0a25edabc16db143/reproduce">reproduce walkthrough</a> ·
+    an agent? connect to <code>https://hub.constellate.science/mcp</code>
+    (MCP, streamable HTTP, read-only — no clone needed).</p>
+  </div>
+
+  <div class="cite">
+    <h2>Cite the audit</h2>
+    <pre class="vcmd" id="citation">loading…</pre>
+    <p class="vnote">Pin by commit for immutable citation; the event-log hash binds
+    the signed verdicts you cite.</p>
+  </div>
+
   <p class="foot" id="foot"></p>
 </div>
 
@@ -247,6 +282,21 @@ const FILTERS = {
 };
 
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+function renderCitation(d){
+  const when = (d.generated_at || "").slice(0, 10);
+  const year = when.slice(0, 4) || new Date().getFullYear();
+  document.getElementById("citation").textContent =
+`@misc{erdos_fidelity_audit,
+  title  = {Erdős formal-proof fidelity audit},
+  author = {Blair, William},
+  year   = {${year}},
+  url    = {https://williamjblair.github.io/erdos-frontier/},
+  note   = {Signed frontier vfr_0a25edabc16db143; audit of ${when};
+            verify: git clone github.com/williamjblair/erdos-frontier
+            && vela check . --strict}
+}`;
+}
 function condName(a){ return a.split(" : ").pop(); }
 function condOn(r){
   if(r.named_assumptions.length)
@@ -367,6 +417,7 @@ function render(){
 
 fetch("verdicts.json").then(r=>r.json()).then(d=>{
   DATA = d;
+  renderCitation(d);
   const rows = d.rows;
   const n = f => rows.filter(f).length;
   const proof = rows.filter(r => r.bucket!=="no-proof").length;
