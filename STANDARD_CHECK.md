@@ -140,12 +140,53 @@ merges a statement. In this repository's terms: the machine tier reports
 facts, and a statement-fidelity verdict exists only as a named reviewer's
 signed event. Nothing in L0–L3 signs anything.
 
+## Phase 0: CI latency (measured)
+
+Review cycles include waiting for CI, and the numbers say most of that wait
+buys PRs nothing. `build-and-docs.yml` runs one job for both PR validation
+and site deployment, and the deploy half runs on every PR even though the
+deploy job itself is main-only. Step timings from two recent PR runs
+(runs 28612552108 and 28608145267, 100 and 115 minutes):
+
+| step | time | needed for a PR? |
+|---|---|---|
+| `lake --wfail build` (the actual gate) | ~28 min | yes |
+| Verso literate source pages | **52–53 min** | no, deployed only from main |
+| doc-gen documentation | 7–31 min (cache luck) | no |
+| growth plots, stats, website build, Pages artifact | ~5 min | no |
+
+So roughly **two thirds of every PR's CI is building artifacts the PR can
+never deploy**. At 100+ runs of this workflow per week, that is on the order
+of 100 wasted runner-hours weekly.
+
+The cache design compounds it. The repository sits at GitHub's 10 GB cache
+limit with LRU eviction, and every PR run saves its own olean and doc cache
+under `refs/pull/N/merge`, where no other PR can restore it (GitHub scopes
+cache reads to a branch and its base). Dozens of unreadable PR-scoped
+entries crowd out the main-branch caches every other run needs, which is
+consistent with the 28-minute "incremental" build and the 7-vs-31-minute
+doc-build lottery.
+
+Two small workflow changes, no behavior change on main:
+
+1. Gate the literate/docs/plots/website/artifact steps on
+   `github.event_name != 'pull_request'` (or split a `pr-build.yml` out of
+   the deploy workflow). PR CI drops from ~100 to ~30 minutes.
+2. Save caches only on main; restore everywhere. Main's caches stop being
+   evicted by unreadable PR-scoped saves, so PR builds restore fresher
+   oleans, which should pull the 28-minute build down further.
+
+This is independent of everything below and is arguably the first PR to
+make: it shortens every contributor's feedback loop, not just this
+pipeline's.
+
 ## Rollout
 
 **Phase 1, no infrastructure.** The L0 checklist as a small PR to the
 ErdosProblems README, plus L3-format self-reviews posted on my own open
 batch PRs so maintainers can judge from real artifacts whether the format
-saves cycles. Costs the maintainers nothing but a read.
+saves cycles. Costs the maintainers nothing but a read. Phase 0 (the CI
+split) can ship in parallel; it needs only a workflow review.
 
 **Phase 2, if Phase 1 reads as useful.** The L1 workflow behind a
 `statement-check` label, run on ~10 PRs. Measure review cycles per merged
