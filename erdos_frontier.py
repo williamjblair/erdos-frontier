@@ -868,6 +868,23 @@ def build_status(
         for problem in sorted(erdos)
     ]
     held_for_review = apply_staging_gate(rows, cleared or set())
+    # Row hygiene for the override side-channel: a signed verdict
+    # structurally supersedes any overrides.yaml row (see classify), so a
+    # shadowed row is dead weight that misleads the next editor. Surface
+    # them; the fix is deleting the row, never touching the verdict.
+    shadowed = sorted(
+        row["problem"]
+        for row in rows
+        if row.get("override") and verdict_bucket(fidelity.get(row["problem"]), row["fc"])
+    )
+    if shadowed:
+        import sys as _sys
+
+        print(
+            f"overrides.yaml: {len(shadowed)} row(s) shadowed by a signed verdict "
+            f"(delete them): {shadowed}",
+            file=_sys.stderr,
+        )
     counts = Counter(row["bucket"] for row in rows)
     bloom_formalized = {
         problem
@@ -877,6 +894,7 @@ def build_status(
     coverage_gap = sorted(bloom_formalized - (set(proofs) | set(fc)))
     return {
         "generated_at": generated_at,
+        "shadowed_overrides": shadowed,
         "claims_available": claims_available,
         "sources": {
             "formal_conjectures": CONJ_URL,
