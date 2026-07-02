@@ -2,7 +2,7 @@
 
 A formal-proof fidelity audit over the Erdős frontier: **which "formally solved"
 problems rest on an unconditional Lean proof, and which silently assume an unproven
-result.** Live at [williamjblair.github.io/erdos-frontier](https://williamjblair.github.io/erdos-frontier/).
+result.** Live at [erdos.constellate.science](https://erdos.constellate.science/).
 
 A proof can be `sorry`-free and `#print axioms`-clean and still prove the goal only
 *conditionally*, by taking a deep theorem as a hypothesis parameter the axiom check
@@ -65,7 +65,7 @@ bash scripts/graph.sh serve                       # the frontier over HTTP
 [`graph/corpus-edges.jsonl`](graph/): retract the Maynard–Tao theorem and
 problems 237 and 997 lose their solved support, through their proofs, down to
 the wiki claim that recorded them. The browsable view is the
-[frontier map](https://williamjblair.github.io/erdos-frontier/map.html).
+[frontier map](https://erdos.constellate.science/map.html).
 
 **MCP:** the repo ships [`.mcp.json`](.mcp.json) — any MCP client opened here
 (Claude Code included) gets the read-only Vela tool set over the signed
