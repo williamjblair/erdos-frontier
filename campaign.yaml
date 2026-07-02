@@ -4,17 +4,17 @@ batches:
   state: merged
   pr: https://github.com/google-deepmind/formal-conjectures/pull/4319
   problems:
+  - 134
   - 178
-  - 214
-  - 245
-  - 257
-  - 290
-  - 351
-  - 459
-  - 499
-  - 674
-  - 686
-  - 1150
+  - 493
+  - 532
+  - 729
+  - 871
+  - 904
+  - 923
+  - 1090
+  - 1125
+  - 1126
   note: The conventions-calibration batch; mo271's review nits became the house template.
 - name: batch-2a
   state: pr-open
@@ -40,8 +40,20 @@ batches:
     280) — it does; Will to reply + add "Closes #469" to the PR body.
 
     '
+- name: batch-2c
+  state: pr-open
+  pr: https://github.com/google-deepmind/formal-conjectures/pull/4346
+  problems:
+  - 281
+  - 419
+  - 453
+  - 476
+  - 519
+  - 540
+  note: Fixes #470. mo271 review comments; replies posted 2026-06-29, awaiting re-review.
 - name: batch-3
   state: pr-open
+  pr: https://github.com/google-deepmind/formal-conjectures/pull/4369
   problems:
   - 24
   - 93
@@ -54,5 +66,5 @@ batches:
   - 429
   - 435
   note: All ten drafted from the boxed text, gated (lake build + extract_names + link-rule)
-    with SHA-pinned formal_proof links, packets generated 2026-07-01. Awaiting Will's
-    fidelity session.
+    with SHA-pinned formal_proof links. Fidelity attested 2026-07-01 (two vsa_ per
+    problem in the signed spine); PR opened the same day. Unreviewed.
