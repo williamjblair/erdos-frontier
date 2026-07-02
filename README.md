@@ -8,12 +8,12 @@ A proof can be `sorry`-free and `#print axioms`-clean and still prove the goal o
 *conditionally*, by taking a deep theorem as a hypothesis parameter the axiom check
 cannot see. This reads each hosted Lean proof mechanically and reports it, then:
 
-- **cross-references the frozen [AI-contributions wiki](https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems)**
-  (retired 2026-06-30) to surface problems it records as a full solution where the proof
-  is actually conditional — the discrepancy view;
-- **cross-references [gpt-erdos](https://github.com/neelsomani/gpt-erdos)**, an independent
-  human classification of GPT-5.2 candidates, where the two reviews read different
-  artifacts and the divergences are the signal;
+- **cross-references the [AI-contributions wiki](https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems)**
+  that Nat Sothanaphan created and maintained (frozen 2026-06-30) to surface problems it
+  records as a full solution where the proof is actually conditional: the discrepancy view;
+- **cross-references Neel Somani's [gpt-erdos](https://github.com/neelsomani/gpt-erdos)**, an
+  independent human classification of GPT-5.2 candidates, where the two reviews read
+  different artifacts and the divergences are the signal;
 - audits proofs across multiple Lean toolchains (plby 4.29.1, alphaproof-nexus 4.27.0)
   via [`lean/`](lean/), keeping the strongest verdict per problem.
 

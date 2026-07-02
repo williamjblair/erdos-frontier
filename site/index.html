@@ -362,9 +362,9 @@ fetchJSON("data/summary.json").then(d => {
 
   const sig = (S.signed_fidelity || []).length;
   document.getElementById("foot").innerHTML =
-    `Generated ${esc(d.generated_at)} · ${S.wiki_problems} problems cross-referenced from the frozen `
+    `Generated ${esc(d.generated_at)} · ${S.wiki_problems} problems cross-referenced from Nat Sothanaphan’s `
     + `<a href="https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems">AI-contributions wiki</a>`
-    + ` (2026-06-30) · ${S.gpt_erdos_problems} candidate claims from `
+    + ` (frozen 2026-06-30) · ${S.gpt_erdos_problems} candidate claims from Neel Somani’s `
     + `<a href="https://github.com/neelsomani/gpt-erdos">gpt-erdos</a>`
     + ` · ${sig} signed statement verdict${sig === 1 ? "" : "s"}`
     + ` · feed: <a href="verdicts.json">verdicts.json</a>`
