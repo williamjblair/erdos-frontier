@@ -3,7 +3,7 @@
 Nat Sothanaphan screens claimed solutions at
 [erdosproblems.com](https://www.erdosproblems.com/forum) with a structured,
 model-assisted read: the transcript is always published, and the result is
-reported as a screening, never a verdict. This page writes that procedure
+reported as a screening rather than a verdict. This page writes that procedure
 down and adapts it to a different target: whether a formal Lean statement
 faithfully states the problem it names.
 
@@ -12,14 +12,14 @@ corrections welcome.
 
 ## Why statements need it
 
-The Lean kernel guarantees a proof, not a meaning. A statement can elaborate,
-pass every linter, and still say something other than the problem; when the
-miniF2F benchmark was re-audited
+The Lean kernel checks proofs, and no part of the toolchain checks meaning.
+A statement can elaborate, pass every linter, and still say something other
+than the problem; when the miniF2F benchmark was re-audited
 ([arXiv:2511.03108](https://arxiv.org/abs/2511.03108)), over half of its
-type-checking statements disagreed with their informal originals. For
-solution claims the screening runs in front of a human referee. For
-statements it runs in front of nothing: there is no kernel for faithfulness.
-That argues for more structure, not less.
+type-checking statements disagreed with their informal originals. A screening
+of a solution claim also has a human referee behind it who will read the
+proof anyway. A screening of a statement has no such backstop, so the
+procedure has to carry more of the weight.
 
 ## The procedure
 
@@ -48,10 +48,10 @@ short and their clauses are enumerable, so the per-clause table can be
 complete, and the length-dependent reliability decay that limits screening on
 long writeups mostly disappears.
 
-Two probes complement the read, because acting on a statement catches more
-than reading it (LLM judges caught 63% of statement drift in the
-[Faithfulness Gap](https://arxiv.org/abs/2606.16541) measurements; behavioral
-probes about 90%):
+Two probes complement the read. In the
+[Faithfulness Gap](https://arxiv.org/abs/2606.16541) measurements, LLM judges
+comparing texts caught 63% of statement drift, and probes that act on the
+statement caught about 90%:
 
 - run a prover briefly against the statement *and its negation*: a genuinely
   open problem survives both, and a missing hypothesis usually doesn't.
@@ -93,8 +93,8 @@ probes about 90%):
    > Transcript: {link}. A screening is not comprehensive and is not a
    > confirmation stamp.
 
-A screening on a statement takes minutes, not hours; the artifact is short
-and the clauses run out.
+A statement screening takes minutes; the artifact is short and has finitely
+many clauses.
 
 ## Known failure modes
 
@@ -107,12 +107,12 @@ and the clauses run out.
 
 ## What a screening never does
 
-A screening informs; it does not decide. In
+A screening never decides anything. In
 [formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 maintainer approval merges a statement. On
 [erdos-frontier](https://erdos.constellate.science/method.html), a
 statement-fidelity verdict exists only as a named reviewer's signed event.
-The screening's output is provenance for those decisions, nothing more.
+The screening's output is provenance those decisions can cite.
 
 First runs of this format: self-reviews on my own open formal-conjectures
 statement PRs. The broader review-process context lives in
