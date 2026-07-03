@@ -134,7 +134,11 @@ def assemble(name: str) -> int:
         ready.append(n)
         linked = "yes" if b"formal_proof" in data else "no (statement only)"
         div = "; ".join(meta.get("divergence_notes") or []) or "none recorded"
-        table.append(f"| {n} | {meta.get('upstream_state')} | {linked} | {div[:220]} |")
+        if len(div) > 240:
+            cut = div[:240]
+            i = max(cut.rfind("; "), cut.rfind(". "))
+            div = (cut[:i] + "; …") if i > 120 else (cut[: cut.rfind(" ")] + " …")
+        table.append(f"| {n} | {meta.get('upstream_state')} | {linked} | {div} |")
 
     if not ready:
         sys.exit("nothing signed+gated to assemble")
@@ -168,7 +172,7 @@ def assemble(name: str) -> int:
         "",
         "Part of #3998.",
     ])
-    body_path = STAGING / f"_batch-{name}-pr-body.md"
+    body_path = STAGING / f"_{name}-pr-body.md"
     body_path.write_text(body + "\n")
     print(f"\nassembled {len(ready)}/{len(problems)} on branch {branch!r} in {FC_DIR}")
     print(f"PR body: {body_path}")
