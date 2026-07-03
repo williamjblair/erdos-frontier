@@ -3,12 +3,12 @@
     "digest": "sha256:2de6244bc3c695cd83adf7d17fd9c52b6586ce060874b37814cc35aff340d5ee",
     "kernel": "carina@0.1.0"
   },
-  "event_count": 229,
-  "event_log_hash": "sha256:a85a13ba9edbad019463623c811a56dc8a916c8de44e5e3f6aa76379fb1a2994",
+  "event_count": 230,
+  "event_log_hash": "sha256:d1da8eedadfec80c707aef66afc2d320d953ee51dfe37c004dea7de999fb7360",
   "freshness": "fresh",
-  "frontier_hash": "sha256:41b695808cc9269a70801049ec37ad74d4e5a1ad6bd5ea8dc60a74cafa924825",
+  "frontier_hash": "sha256:c4a7ccdf0808e4df2d5ad8868a6284a7b0d3f53eccd5075f2b48ed5f6e0022b4",
   "frontier_id": "vfr_0a25edabc16db143",
-  "materialized_at": "2026-07-03T17:52:14Z",
+  "materialized_at": "2026-07-03T23:22:31Z",
   "paths": {
     "events_authority": ".vela/events/",
     "events_manifest": "proof/events.manifest.jsonl",
@@ -16,12 +16,12 @@
     "lockfile": "vela.lock",
     "replay_trace": "proof/replay.trace.jsonl"
   },
-  "proposal_state_hash": "sha256:a4ccc5c7ae0eb44001a6cba08b6a78dba141088c40d1fa277351dc670e18e592",
+  "proposal_state_hash": "sha256:10f6f92f72c960294e3e77dd46ddb4ab859eec94ed36295615c4264899e1ab15",
   "reducer": {
-    "digest": "sha256:9f5865b94d78106c6a78b30af1f556e7e614fcf5e749c15a93167c5a9cdb5ad7",
+    "digest": "sha256:9ff9794523fbcc31e0ab83c993d14a039bd064d7cda896c5a2c99b84fe89cfd6",
     "name": "vela",
-    "package": "vela@0.736.0",
-    "version": "0.736.0"
+    "package": "vela@0.740.1",
+    "version": "0.740.1"
   },
   "schema": "vela.frontier_repo_proof.v0.1",
   "warning": "Do not edit frontier.json directly. Use Vela commands to propose, accept, reject, materialize, and prove frontier state."
