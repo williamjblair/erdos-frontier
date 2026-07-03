@@ -1,14 +1,14 @@
 # The screening check, adapted to statements
 
-Nat Sothanaphan runs a screening check on claimed solutions at
-[erdosproblems.com](https://www.erdosproblems.com/forum): a structured,
-model-assisted read that has caught real gaps in real writeups, always
-published with its transcript, never presented as a verdict. This page writes
-that procedure down and adapts it to a different target: whether a formal
-Lean statement faithfully states the problem it names.
+Nat Sothanaphan screens claimed solutions at
+[erdosproblems.com](https://www.erdosproblems.com/forum) with a structured,
+model-assisted read: the transcript is always published, and the result is
+reported as a screening, never a verdict. This page writes that procedure
+down and adapts it to a different target: whether a formal Lean statement
+faithfully states the problem it names.
 
-I reconstructed the procedure from his forum posts. Corrections are welcome,
-especially from him.
+The procedure is reconstructed from his forum posts, so details may be off;
+corrections welcome.
 
 ## Why statements need it
 
