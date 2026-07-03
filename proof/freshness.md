@@ -2,11 +2,11 @@
 
 Current proof status: fresh
 
-`frontier.json` was materialized from `.vela/events/` at 2026-07-03T16:32:39Z.
+`frontier.json` was materialized from `.vela/events/` at 2026-07-03T17:52:14Z.
 
 Accepted events: 229
 Event log hash: `sha256:a85a13ba9edbad019463623c811a56dc8a916c8de44e5e3f6aa76379fb1a2994`
-Snapshot hash: `sha256:a805fa40b32174662f7a33724c88318ad3e0114ed56fe2e852b5a01799cc026a`
+Snapshot hash: `sha256:41b695808cc9269a70801049ec37ad74d4e5a1ad6bd5ea8dc60a74cafa924825`
 
 Run:
 
