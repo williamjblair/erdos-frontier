@@ -28,7 +28,31 @@ One rule sits under all of it, the same rule this repository's signed
 frontier runs on: mechanical checks may gate, model output never does.
 Machines report facts. A named human signs judgment.
 
-## The check, in layers
+## The shape of it
+
+| layer | what it does | acts | can it block a merge? | status |
+|---|---|---|---|---|
+| author checklist | recurring review corrections, ticked off before review | author (or their agent) | no | open as [FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378) |
+| statement facts | one CI comment: attributes, status agreement, axiom/hypothesis audit of linked proofs | deterministic CI | no | proposed |
+| behavioral probes | prover run + suspicious-pattern linters, flags only | deterministic CI | no | proposed |
+| screening check | curated model-assisted per-clause review, transcript published | a person running a model | no | format documented below |
+| signature | reads the mathematics, approves, signs | maintainer / named reviewer | **yes, the only thing that does** | unchanged |
+
+```mermaid
+flowchart LR
+    A["author + checklist"] --> B["CI: build + linters (gate)"]
+    B --> C["statement-facts comment"]
+    P["probes: prover run, pattern linters"] -. flags .-> C
+    S["screening check (transcript linked)"] -. advisory .-> H
+    C --> H{"human reviewer"}
+    H -- "signs, approves" --> M["merge"]
+    H -- "requests changes" --> A
+```
+
+Solid arrows are the gate path; dotted arrows only inform the human. Nothing
+model-generated touches the solid path.
+
+## The layers
 
 **The author's checklist.** A "Before requesting review" section in
 `FormalConjectures/ErdosProblems/README.md`, distilled from corrections that
@@ -37,19 +61,19 @@ paraphrasing, and for solved problems also quote the attribution sentence
 below the box; search `FormalConjecturesForMathlib` and neighboring files
 before defining anything; keep notes-to-reviewers in the PR description; give
 new attribute behavior demo tests. Every line traces to a review comment on a
-merged PR. Needs no infrastructure, and the welcome bot already points
-contributors at the README. Open as
-[FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378).
+merged PR. Needs no infrastructure; the welcome bot already points
+contributors at the README.
 
 **Statement facts, computed in CI.** One sticky comment per ErdosProblems PR,
 edited in place (mathlib's `PR_summary` pattern; a new comment per run is how
-review bots get disabled). It reports: category, AMS tag, and docstring per
-declaration; whether the file's category agrees with erdosproblems.com's live
-status, which `scripts/check_erdos_status.py` already computes; and for any
-`formal_proof` link, the linked proof's axiom set, sorry state, and the Prop
-hypotheses it takes as parameters, from the extractor behind this
-repository's audit and
-[FC#4368](https://github.com/google-deepmind/formal-conjectures/pull/4368).
+review bots get disabled). What it reports:
+
+| fact | source |
+|---|---|
+| category, AMS tag, docstring per declaration | the repo's own linters, surfaced per-PR |
+| does the file's category agree with erdosproblems.com's live status | `scripts/check_erdos_status.py`, already in the repo |
+| for each `formal_proof` link: axiom set, sorry state, Prop hypotheses taken as parameters | the extractor behind this repository's audit and [FC#4368](https://github.com/google-deepmind/formal-conjectures/pull/4368) |
+
 The mechanical half of a review, precomputed.
 [FC#3973](https://github.com/google-deepmind/formal-conjectures/issues/3973)
 asks for this class of metadata check in CI, and
@@ -74,32 +98,24 @@ result is a flag for the reviewer, a reason to look and nothing more.
 **The screening check.** For contested or high-stakes statements: the
 procedure Nat Sothanaphan developed for solution claims on erdosproblems.com,
 adapted to statement fidelity. I reconstructed it from his forum posts, so
-corrections are welcome, his especially. His hygiene is the part to keep
-intact:
+corrections are welcome, his especially.
 
-- A fresh model session, every time. A model that shares context with
-  whoever produced the statement is convinced by its own reading.
-- Overview first, then rank the places most worth scrutinizing (quantifier
-  order, hypothesis strength, definitional unfolding, domain conventions),
-  audit each, then one full pass. No "be adversarial" instruction; demanding
-  errors produces hallucinated ones.
-- A per-clause table: every quantifier, hypothesis, and conclusion mapped to
-  the source text, one verdict per clause. After correcting any misreading,
-  re-verify every clause, not just the corrected one.
-- His verdict language: the check "found no mismatch", or "claimed a mismatch
-  in clause X". Never "the statement is faithful". Positive error reports
-  are themselves unverified claims.
-- The transcript published with every result, with the standing disclaimer
-  that a screening is not comprehensive and not a confirmation stamp.
+| step | rule | why |
+|---|---|---|
+| 1 | fresh model session, every time | a model sharing context with whoever produced the statement is convinced by its own reading |
+| 2 | overview → rank the riskiest spots (quantifier order, hypothesis strength, definitional unfolding) → audit each → one full pass | triage produces adversarial attention; a "be adversarial" instruction produces hallucinated errors |
+| 3 | per-clause table: every quantifier, hypothesis, and conclusion mapped to source text, one verdict per clause | mismatches hide in single clauses; after correcting any misreading, re-verify **every** clause |
+| 4 | say the check "**found** no mismatch" or "**claimed** a mismatch in clause X", never "the statement is faithful" | positive error reports are themselves unverified claims |
+| 5 | publish the transcript, with the standing disclaimer: a screening, not comprehensive, not a confirmation stamp | the verdict is auditable provenance, not an oracle |
 
-The failure modes have receipts. Models confirm the artifact in front of
-them ([BrokenMath](https://arxiv.org/abs/2510.04721) measured a 29%
-sycophantic-proof rate for the best model tested). Independent runs share
-blind spots, so a union of flags adjudicated by a human beats majority voting;
-the [FrontierMath v2 audit](https://epoch.ai/frontiermath/the-benchmark)
-found errors in 42% of problems that had already passed human review. And the
-check has to read the original source, not the repo's own docstring, or it
-validates the formalizer's reading against itself.
+And the failure modes have receipts:
+
+| failure mode | evidence | guard |
+|---|---|---|
+| the model confirms the artifact in front of it | [BrokenMath](https://arxiv.org/abs/2510.04721): 29% sycophantic-proof rate, best model tested | ask what does *not* match, never "verify this is right" |
+| independent runs share blind spots | [FrontierMath v2 audit](https://epoch.ai/frontiermath/the-benchmark): errors in 42% of problems that had passed human review | union of flags, human adjudicates each; no majority voting |
+| circularity | models citing the site's own status as evidence the problem is open | the check reads the original source, never the repo's docstring |
+| local matching without back-propagation | Nat's Chojecki case: one clause corrected, the already-passed clause never re-checked | step 3's re-verify-all rule |
 
 **The signature.** Maintainer approval stays the only thing that merges a
 statement. In this repository's terms, a statement-fidelity verdict exists
@@ -150,19 +166,12 @@ evicted.
 
 ## Rollout
 
-Phase 1 needs nothing from anyone. The README checklist is open as
-[FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378),
-and I'll post screening-format self-reviews on my own open batch PRs so the
-maintainers can judge from real artifacts whether the format saves cycles.
-The CI split can ship in parallel; it needs one workflow review.
-
-Phase 2, if that reads as useful: the statement-facts comment behind a
-`statement-check` label on about ten PRs, measured as review cycles per
-merged PR against the recent baseline. Adopt, adjust, or delete on the
-numbers.
-
-Phase 3, if Phase 2 pays for itself: probes, one at a time, each with its own
-hit-rate ledger.
+| phase | what | needs | decided by |
+|---|---|---|---|
+| 1 | README checklist ([FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378), open) + screening-format self-reviews on my own open batch PRs | a read | do the artifacts save cycles? |
+| CI split | gate deploy-only steps off PRs, save caches from main only | one workflow review; composes with [FC#4302](https://github.com/google-deepmind/formal-conjectures/pull/4302) | the run timings above |
+| 2 | statement-facts comment behind a `statement-check` label, ~10 PRs | a label | review cycles per merged PR vs recent baseline |
+| 3 | probes, one at a time | phase 2 paying for itself | a hit-rate ledger per probe |
 
 Across all of it: a check earns its noise or it goes.
 
