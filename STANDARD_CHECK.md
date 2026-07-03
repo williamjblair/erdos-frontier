@@ -56,13 +56,17 @@ Solid arrows gate; dotted arrows only inform the reviewer.
 
 **The author's checklist.** A "Before requesting review" section in
 `FormalConjectures/ErdosProblems/README.md`, collected from corrections that
-keep coming up in review: quote erdosproblems.com verbatim instead of
-paraphrasing, and for solved problems also quote the attribution sentence
-below the box; search `FormalConjecturesForMathlib` and neighboring files
-before defining anything; keep notes-to-reviewers in the PR description; give
-new attribute behavior demo tests. Every line traces to a review comment on a
-merged PR. It needs no infrastructure, and the welcome bot already points
-contributors at the README.
+keep coming up in review. Every line traces to a review comment on a merged
+PR:
+
+- [ ] docstrings quote erdosproblems.com verbatim, no paraphrasing
+- [ ] solved problems also quote the attribution sentence below the box
+- [ ] searched `FormalConjecturesForMathlib` and neighboring files before defining anything
+- [ ] notes-to-reviewers live in the PR description, not the Lean file
+- [ ] new attribute behavior comes with demo tests
+
+It needs no infrastructure, and the welcome bot already points contributors
+at the README.
 
 **Statement facts, computed in CI.** One comment per ErdosProblems PR, edited
 in place on each push (mathlib's `PR_summary` pattern; posting a new comment
@@ -85,16 +89,14 @@ comment.
 source catches less than trying to use the statement. When the
 [Faithfulness Gap paper](https://arxiv.org/abs/2606.16541) measured LLM
 judges on statement drift, they caught 63% of it; probes that act on the
-statement caught about 90%. Two probes look worth having here. First, run a
-prover briefly against the statement and against its negation. A genuinely
-open problem survives both, and a statement missing a hypothesis usually
-does not: Boris Alexeev
-[ran Aristotle against Erdős 56](https://xenaproject.wordpress.com/2025/12/05/formalization-of-erdos-problems/)
-and a size-2 counterexample exposed the missing hypothesis. Second, extend
-the repo's own suspicious-pattern linters. `ExistsImplicationLinter` and
-`AnswerLinter` already catch two misformalization shapes at elaboration time,
-and the same mold fits vacuous hypotheses and trivially-true goals. A probe
-result is a flag for the reviewer, not a verdict.
+statement caught about 90%. Two probes look worth having here:
+
+| probe | what it exposes | precedent |
+|---|---|---|
+| run a prover briefly against the statement *and its negation* | a genuinely open problem survives both; a missing hypothesis usually doesn't | Boris Alexeev [ran Aristotle against Erdős 56](https://xenaproject.wordpress.com/2025/12/05/formalization-of-erdos-problems/); a size-2 counterexample exposed the missing hypothesis |
+| suspicious-pattern linters | vacuous hypotheses, trivially-true goals | the repo's own `ExistsImplicationLinter` and `AnswerLinter` already catch two such shapes at elaboration time |
+
+A probe result is a flag for the reviewer, not a verdict.
 
 **The screening check.** For contested or high-stakes statements: the
 procedure Nat Sothanaphan developed for solution claims on erdosproblems.com,
@@ -139,31 +141,39 @@ minutes total):
 | growth plots, stats, website build, Pages artifact | ~5 min | no |
 
 Roughly two thirds of every PR's CI goes to artifacts the PR can never
-deploy, and the workflow runs 100+ times a week.
+deploy, and the workflow runs 100+ times a week. Two workflow conditions fix
+it, with no behavior change on main:
+
+```mermaid
+flowchart TB
+    subgraph today["today — every PR and every push to main"]
+        direction LR
+        T1["build (~28 min)"] --> T2["Verso literate (~53 min)"] --> T3["docs, plots, website (~15 min)"] --> T4["Pages artifact"]
+    end
+    subgraph after["after the split"]
+        direction LR
+        P1["PR: build only (~30 min)"]
+        M1["main: build + docs + site + deploy (unchanged)"]
+    end
+    today ==> after
+```
+
+The second condition is about caching. The repository sits at GitHub's 10 GB
+cache ceiling with LRU eviction, and every PR run saves olean and doc caches
+under `refs/pull/N/merge`, a scope no other PR can read. Dozens of unreadable
+PR-scoped entries evict the main-branch caches that every run actually
+restores from, which would explain both the 28-minute "incremental" build and
+the 7-versus-31-minute spread on doc builds. Saving caches only from main
+(and restoring everywhere) should pull the build step down further.
 
 Part of this is already in motion:
 [FC#4302](https://github.com/google-deepmind/formal-conjectures/pull/4302)
-removes docgen outright, citing its build time. The run data says #4302
-helps but doesn't fix the PR lane on its own. Verso literate is the dominant
-per-PR cost at 52–53 minutes every run, docgen the smaller one, and
+removes docgen outright, citing its build time. It helps but doesn't fix the
+PR lane on its own, since Verso literate is the dominant per-PR cost and
 [FC#4306](https://github.com/google-deepmind/formal-conjectures/issues/4306)
-would extend Verso to `FormalConjecturesForMathlib`, which grows it. The two
-changes fit together: #4302 decides which doc artifacts exist, gating decides
-when they build. With both, PR CI lands around 30 minutes however the
-docgen-versus-Verso question resolves.
-
-Caching makes the remaining third slower than it should be. The repository
-sits at GitHub's 10 GB cache ceiling with LRU eviction, and every PR run
-saves olean and doc caches under `refs/pull/N/merge`, a scope no other PR
-can read. Dozens of unreadable PR-scoped entries evict the main-branch
-caches that every run actually restores from, which would explain both the
-28-minute "incremental" build and the 7-versus-31-minute spread on doc
-builds.
-
-Two workflow conditions fix it: build the literate/docs/website/artifact
-steps only when the ref is main, and save caches only from main while
-restoring everywhere. PR CI drops from ~100 to ~30 minutes, and the build
-step should fall further once main's caches stop being evicted.
+would grow it. The two changes fit together: #4302 decides which doc
+artifacts exist, gating decides when they build. With both, PR CI lands
+around 30 minutes however the docgen-versus-Verso question resolves.
 
 ## Rollout
 
