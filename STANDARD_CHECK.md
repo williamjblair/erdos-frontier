@@ -100,25 +100,12 @@ A probe result is a flag for the reviewer, not a verdict.
 
 **The screening check.** For contested or high-stakes statements: the
 procedure Nat Sothanaphan developed for solution claims on erdosproblems.com,
-adapted to statement fidelity. I reconstructed it from his forum posts, so
-corrections are welcome, especially from him.
-
-| step | rule | why |
-|---|---|---|
-| 1 | fresh model session, every time | a model sharing context with whoever produced the statement is convinced by its own reading |
-| 2 | overview → rank the riskiest spots (quantifier order, hypothesis strength, definitional unfolding) → audit each → one full pass | ranking risks produces careful scrutiny; a "be adversarial" instruction produces hallucinated errors |
-| 3 | per-clause table: every quantifier, hypothesis, and conclusion mapped to source text, one verdict per clause | mismatches hide in single clauses; after correcting any misreading, re-verify **every** clause |
-| 4 | say the check "**found** no mismatch" or "**claimed** a mismatch in clause X", never "the statement is faithful" | positive error reports are themselves unverified claims |
-| 5 | publish the transcript, with the standing disclaimer: a screening, not comprehensive, not a confirmation stamp | anyone can audit the prompt and the reasoning behind a verdict |
-
-Known ways this fails, and the guard for each:
-
-| failure mode | evidence | guard |
-|---|---|---|
-| the model confirms whatever artifact is in front of it | [BrokenMath](https://arxiv.org/abs/2510.04721): 29% sycophantic-proof rate, best model tested | ask what does *not* match, never "verify this is right" |
-| independent runs share blind spots | [FrontierMath v2 audit](https://epoch.ai/frontiermath/the-benchmark): errors in 42% of problems that had passed human review | take the union of flags and have a human adjudicate each; no majority voting |
-| circularity | models citing the site's own status as evidence a problem is open | the check reads the original source, never the repo's docstring |
-| one clause corrected, the rest assumed fine | Nat's Chojecki case: a fixed misreading, and the already-passed clause never re-checked | step 3's re-verify-all rule |
+adapted to statement fidelity. The full write-up, with the step-by-step
+procedure, verdict language, and known failure modes, is
+[SCREENING.md](SCREENING.md). The short version: fresh model session, ranked
+scrutiny rather than an "be adversarial" instruction, a per-clause
+correspondence table, "found"/"claimed" verdict language, and a published
+transcript with every result.
 
 **The signature.** Maintainer approval stays the only thing that merges a
 statement. In this repository's terms, a statement-fidelity verdict exists
