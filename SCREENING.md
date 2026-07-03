@@ -49,6 +49,31 @@ probes about 90%):
 - have a fresh model back-translate the Lean into English *without seeing
   the informal original*, then compare the two English statements.
 
+## Running one
+
+1. Open a fresh session with a capable model. Paste the problem's source
+   text (from erdosproblems.com or the cited paper, not the repo's
+   docstring) and the formal statement. Nothing else; no PR discussion, no
+   author notes.
+2. Ask for an overview: what each side says, in the model's own words,
+   before any comparison.
+3. Ask it to rank the places most worth scrutinizing, then work through
+   them one at a time.
+4. Ask for the per-clause table and check it yourself as it fills in:
+
+   | clause | source says | formal statement says | verdict |
+   |---|---|---|---|
+   | *quantifier over n* | | | *found no mismatch* |
+   | *hypothesis: n ≥ 3* | | | *claimed: strict vs non-strict* |
+   | *conclusion* | | | |
+
+   If any clause gets corrected along the way, re-run the whole table.
+5. One full pass over both texts, then write the result in found/claimed
+   language and link the transcript.
+
+A screening on a statement takes minutes, not hours; the artifact is short
+and the clauses run out.
+
 ## Known failure modes
 
 | failure mode | evidence | guard |
