@@ -15,7 +15,7 @@ things a machine or the author could have caught first, instead of on the one
 question that actually needs a person: does the formal statement say what the
 problem says?
 
-Most review comments are repetitive; as one maintainer put it, "pretty much
+Most review comments are repetitive; as Moritz put it, "pretty much
 what we write during review is repetitive and should just be in a checklist
 for the Author or their agents to tick off." Meanwhile faithfulness, the property
 reviewers are really there to judge, is invisible to the toolchain. A
