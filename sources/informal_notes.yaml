@@ -1,0 +1,18 @@
+# Recorded notes on the informal argument behind a hosted proof — the third
+# axis: does the formal proof follow the informal argument it cites, or did
+# it repair it along the way? A kernel-verified formal proof does not certify
+# the informal argument it was formalized from; when the two are known to
+# diverge, that fact is recorded here with its source.
+#
+# Hand-curated, recorded tier (recorded is not verified). Sparse: most
+# problems have no entry. Every entry carries a source.
+"650":
+  kind: formal_repairs_informal
+  note: >-
+    The informal lower-bound proof (GPT 5.4 Pro, prompted by He, Li, and
+    Tang) contained a gap; Aristotle's Lean formalization repaired it
+    in-flight, so the kernel-verified proof does not certify the informal
+    argument as written. The authors found and fixed the gap in the arXiv
+    write-up.
+  source: https://www.erdosproblems.com/forum/thread/650
+  credit: timeline and gap description posted by Woett on the problem thread, 31 Mar 2026

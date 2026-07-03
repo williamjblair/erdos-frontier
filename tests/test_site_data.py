@@ -67,3 +67,15 @@ def test_discrepancy_rows_match_feed(feed, tmp_path):
     summary = json.loads((tmp_path / "data" / "summary.json").read_text())
     listed = {d["problem"] for d in summary["summary"]["discrepancy_rows"]}
     assert listed == {r["problem"] for r in feed["rows"] if r["discrepancy"]}
+
+
+def test_informal_note_recorded_for_650(feed):
+    """Axis 3: the recorded divergence between the formal proof and the
+    informal argument it cites survives into the feed and the shard."""
+    row = next(r for r in feed["rows"] if str(r["problem"]) == "650")
+    note = row.get("informal_note")
+    assert note and note["kind"] == "formal_repairs_informal"
+    assert note["source"].startswith("https://www.erdosproblems.com/forum/thread/650")
+    # sparse: rows without an entry carry no key at all
+    other = next(r for r in feed["rows"] if str(r["problem"]) == "347")
+    assert "informal_note" not in other

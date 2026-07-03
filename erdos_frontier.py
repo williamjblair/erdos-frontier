@@ -372,6 +372,18 @@ def load_wiki_registry(path: Path = WIKI_REGISTRY_PATH) -> dict[int, dict]:
 CANDIDATE_CLAIMS_PATH = Path(__file__).resolve().parent / "sources/gpt_erdos/registry.json"
 CANDIDATE_SOURCE = "https://github.com/neelsomani/gpt-erdos"
 
+INFORMAL_NOTES_PATH = Path(__file__).resolve().parent / "sources/informal_notes.yaml"
+
+
+def load_informal_notes(path: Path = INFORMAL_NOTES_PATH) -> dict[str, dict]:
+    """Recorded divergences between a hosted formal proof and the informal
+    argument it cites (axis 3), keyed by problem number as a string.
+    Hand-curated and sourced; empty if the file is absent."""
+    if not path.exists():
+        return {}
+    data = yaml.safe_load(path.read_text()) or {}
+    return {str(k): v for k, v in data.items()}
+
 
 def load_candidate_claims(path: Path = CANDIDATE_CLAIMS_PATH) -> dict[int, dict]:
     """Independent human classification of GPT-5.2-Pro candidate solutions
@@ -1172,6 +1184,7 @@ def render_verdicts_feed(payload: dict) -> dict:
     a benchmark builder consumes this to avoid counting a conditional proof as a
     solve. Machine evidence is deterministic; signed verdicts carry a reviewer.
     """
+    informal_notes = load_informal_notes()
     rows = []
     for r in payload["rows"]:
         machine = r.get("machine") or {}
@@ -1219,6 +1232,11 @@ def render_verdicts_feed(payload: dict) -> dict:
             "fidelity_source": fidelity.get("source"),
             "recommended_action": r.get("recommended_action"),
         })
+        # axis 3 — recorded divergence between the formal proof and the
+        # informal argument it cites (sparse; sourced; recorded ≠ verified).
+        note = informal_notes.get(str(r["problem"]))
+        if note:
+            rows[-1]["informal_note"] = note
     flagged = [r for r in rows if r["machine_verdict"] == "conditional"]
     return {
         "schema": "erdos-fidelity-audit.v1",

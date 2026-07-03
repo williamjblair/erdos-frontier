@@ -165,6 +165,11 @@ function render(r, conds, generatedAt){
   if(r.gpt_erdos)
     claims += `<div class="claim"><span class="chip chip--stale">${esc(GPT_LABEL[r.gpt_erdos] || r.gpt_erdos)}</span>`
       + ` <span class="src">gpt-erdos, independent human review of the informal argument</span></div>`;
+  if(r.informal_note){
+    const n = r.informal_note;
+    claims += `<div class="claim"><span class="chip chip--contested">formal proof diverges from the informal argument</span>`
+      + ` <span class="src">${esc(n.note)} <a href="${esc(n.source)}">source</a>${n.credit ? " · " + esc(n.credit) : ""}</span></div>`;
+  }
   if(!claims) claims = `<p class="muted">No external claim recorded.</p>`;
 
   c.innerHTML =
