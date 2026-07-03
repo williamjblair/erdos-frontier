@@ -1,235 +1,176 @@
 # A standard check for statement review
 
-**Status: proposal.** Written 2026-07-02, seeking feedback from the
-formal-conjectures maintainers before any of it is built. Discussion:
-[leanprover Zulip, #Formal conjectures](https://leanprover.zulipchat.com/#narrow/channel/524981-Formal-conjectures).
+Working notes and a proposal, July 2026. None of this is built into
+formal-conjectures yet; I'm collecting feedback from its maintainers first.
+Discussion: [leanprover Zulip, #Formal conjectures](https://leanprover.zulipchat.com/#narrow/channel/524981-Formal-conjectures).
 
 ## The problem
 
 Merging a conjecture statement into
 [formal-conjectures](https://github.com/google-deepmind/formal-conjectures)
 requires a maintainer to read it carefully against the source. Yaël Dillies
-put numbers on it: roughly ten minutes per problem, a ~200-hour lower bound
-for the Erdős corpus alone. The variable worth optimizing is **maintainer
-review cycles per merged statement**: every round trip a reviewer spends on
-something a machine or the author could have caught is a round trip not spent
-on the one judgment that needs them, whether the formal statement faithfully
-states the problem.
+put numbers on it: about ten minutes per problem, a ~200-hour lower bound for
+the Erdős corpus alone. The scarce resource is maintainer review cycles.
+Every round trip spent on something a machine or the author could have caught
+is a round trip not spent on the one judgment that needs a person: does the
+formal statement say what the problem says?
 
-Two facts shape the design. First, most review comments are repetitive;
+Two observations shape everything below. Most review comments are repetitive.
 Moritz Firsching: "pretty much what we write during review is repetitive and
 should just be in a checklist for the Author or their agents to tick off."
-Second, faithfulness is exactly the property the toolchain does not check: a
-statement can elaborate, pass every linter, and be wrong by meaning. The
-miniF2F re-audit ([arXiv:2511.03108](https://arxiv.org/abs/2511.03108)) found
-informal/formal discrepancies in over half of a benchmark's type-checking
-statements.
+And faithfulness is the one property the toolchain does not check. A
+statement can elaborate, pass every linter, and be wrong by meaning; when the
+miniF2F benchmark was re-audited
+([arXiv:2511.03108](https://arxiv.org/abs/2511.03108)), over half of its
+type-checking statements disagreed with their informal originals.
 
-## Principles
+One rule sits under all of it, the same rule this repository's signed
+frontier runs on: mechanical checks may gate, model output never does.
+Machines report facts. A named human signs judgment.
 
-1. **Mechanical checks may gate; model output never does.** No LLM judgment
-   becomes repo state, blocks a merge, or is reported as a verdict. This
-   matches how every mature review bot converged (advisory commentary,
-   deterministic gates) and how this repo's signed frontier already works:
-   machines report facts, a named human signs judgment.
-2. **One sticky comment per PR, edited in place.** The mathlib
-   `PR_summary` pattern. Never comment-per-run; noise is why AI review
-   workflows get disabled.
-3. **Evidence or silence.** A claimed issue names the clause, the line, and
-   the source text it conflicts with, or it is not posted.
-4. **Checks earn their noise or get removed.** Rule-hit counts and review
-   cycles are measured; anything that flags without changing outcomes is
-   deleted.
+## The check, in layers
 
-## The layers
-
-### L0. Author checklist
-
-A "Before requesting review" section in
+**The author's checklist.** A "Before requesting review" section in
 `FormalConjectures/ErdosProblems/README.md`, distilled from corrections that
-actually recur in review (each line traces to a real review comment on a
-merged PR):
+recur in real reviews: quote erdosproblems.com verbatim instead of
+paraphrasing, and for solved problems also quote the attribution sentence
+below the box; search `FormalConjecturesForMathlib` and neighboring files
+before defining anything; keep notes-to-reviewers in the PR description; give
+new attribute behavior demo tests. Every line traces to a review comment on a
+merged PR. Needs no infrastructure, and the welcome bot already points
+contributors at the README. Open as
+[FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378).
 
-- Quote erdosproblems.com verbatim in docstrings; do not paraphrase unless
-  fixing a genuine error in the original.
-- For solved problems, also quote the attribution sentence below the box
-  (who solved it, where) verbatim.
-- Search `FormalConjecturesForMathlib` and neighboring problem files before
-  defining anything; notation and API often already exist.
-- Meta-commentary belongs in the PR description, not the Lean file.
-- New attribute or utility behavior needs demo tests in
-  `FormalConjecturesTest`.
-
-Zero infrastructure. The welcome bot already points contributors at this
-README.
-
-### L1. Statement facts
-
-A deterministic sticky comment on ErdosProblems PRs, computed in CI, facts
-only:
-
-- per declaration: `@[category]`, `@[AMS]`, docstring presence (the existing
-  linters already enforce these; the comment surfaces them per-PR);
-- agreement between the file's category and erdosproblems.com's live status
-  (the logic already exists in `scripts/check_erdos_status.py`);
-- for any `formal_proof` link: the linked proof's axiom set, `sorry` state,
-  and the Prop hypotheses it takes as parameters, from the same extractor
-  behind this repository's audit and
-  [FC#4368](https://github.com/google-deepmind/formal-conjectures/pull/4368).
-
-This is the mechanical half of a review, precomputed. A reviewer opens the
-PR and the facts are already on the table.
-
-Parts of this are already community-requested:
+**Statement facts, computed in CI.** One sticky comment per ErdosProblems PR,
+edited in place (mathlib's `PR_summary` pattern; a new comment per run is how
+review bots get disabled). It reports: category, AMS tag, and docstring per
+declaration; whether the file's category agrees with erdosproblems.com's live
+status, which `scripts/check_erdos_status.py` already computes; and for any
+`formal_proof` link, the linked proof's axiom set, sorry state, and the Prop
+hypotheses it takes as parameters, from the extractor behind this
+repository's audit and
+[FC#4368](https://github.com/google-deepmind/formal-conjectures/pull/4368).
+The mechanical half of a review, precomputed.
 [FC#3973](https://github.com/google-deepmind/formal-conjectures/issues/3973)
-asks for exactly this class of metadata integrity checks in CI, and
+asks for this class of metadata check in CI, and
 [FC#4367](https://github.com/google-deepmind/formal-conjectures/pull/4367)
-proposes automating erdos-status fixes on top of the same drift detector.
-L1 is a surface those efforts can share, not a competitor to them.
+builds status-fixing on the same drift detector; this can be a surface those
+efforts share.
 
-### L2. Behavioral probes
+**Behavioral probes.** Reading a statement against its source is the weak
+check; acting on the statement is the strong one. When the
+[Faithfulness Gap paper](https://arxiv.org/abs/2606.16541) measured LLM
+judges on statement drift, they caught 63% of it; behavioral probing caught
+about 90%. Two probes are worth having. Run a prover briefly against the
+statement and against its negation: a genuinely open problem survives both,
+while a statement missing a hypothesis usually does not. Boris Alexeev
+[ran Aristotle against Erdős 56](https://xenaproject.wordpress.com/2025/12/05/formalization-of-erdos-problems/)
+and a size-2 counterexample exposed the missing hypothesis. Second, extend
+the repo's own suspicious-pattern linters: `ExistsImplicationLinter` and
+`AnswerLinter` already catch two misformalization shapes at elaboration time,
+and the same mold fits vacuous hypotheses and trivially-true goals. A probe
+result is a flag for the reviewer, a reason to look and nothing more.
 
-The strongest known fidelity checks act on the statement rather than reading
-it ([Faithfulness Gap, arXiv:2606.16541](https://arxiv.org/abs/2606.16541):
-LLM judges detected statement drift at 63%, behavioral probing at ~90%):
+**The screening check.** For contested or high-stakes statements: the
+procedure Nat Sothanaphan developed for solution claims on erdosproblems.com,
+adapted to statement fidelity. I reconstructed it from his forum posts, so
+corrections are welcome, his especially. His hygiene is the part to keep
+intact:
 
-- **Trivial proof/disproof attempt.** Run a prover briefly against the
-  statement and its negation. A genuinely open problem should survive both;
-  a missing hypothesis usually does not. Precedent: Boris Alexeev's
-  [Aristotle run on Erdős 56](https://xenaproject.wordpress.com/2025/12/05/formalization-of-erdos-problems/),
-  where a size-2 counterexample exposed a missing hypothesis instantly.
-- **Suspicious-pattern linters.** Vacuous hypotheses, trivially-true shapes,
-  inconsistent hypothesis sets, in the mold of the repo's existing
-  `ExistsImplicationLinter` and `AnswerLinter`. These are the only two
-  semantic misformalization linters deployed anywhere in the Lean ecosystem;
-  the pattern is proven and extensible.
+- A fresh model session, every time. A model that shares context with
+  whoever produced the statement is convinced by its own reading.
+- Overview first, then rank the places most worth scrutinizing (quantifier
+  order, hypothesis strength, definitional unfolding, domain conventions),
+  audit each, then one full pass. No "be adversarial" instruction; demanding
+  errors produces hallucinated ones.
+- A per-clause table: every quantifier, hypothesis, and conclusion mapped to
+  the source text, one verdict per clause. After correcting any misreading,
+  re-verify every clause, not just the corrected one.
+- His verdict language: the check "found no mismatch", or "claimed a mismatch
+  in clause X". Never "the statement is faithful". Positive error reports
+  are themselves unverified claims.
+- The transcript published with every result, with the standing disclaimer
+  that a screening is not comprehensive and not a confirmation stamp.
 
-Probe results are flags in the L1 comment for the human reviewer. A flag is
-a reason to look, never a verdict.
+The failure modes have receipts. Models confirm the artifact in front of
+them ([BrokenMath](https://arxiv.org/abs/2510.04721) measured a 29%
+sycophantic-proof rate for the best model tested). Independent runs share
+blind spots, so a union of flags adjudicated by a human beats majority voting;
+the [FrontierMath v2 audit](https://epoch.ai/frontiermath/the-benchmark)
+found errors in 42% of problems that had already passed human review. And the
+check has to read the original source, not the repo's own docstring, or it
+validates the formalizer's reading against itself.
 
-### L3. The screening check
+**The signature.** Maintainer approval stays the only thing that merges a
+statement. In this repository's terms, a statement-fidelity verdict exists
+only as a named reviewer's signed event. None of the layers above signs
+anything.
 
-For contested or high-stakes statements: a curated, model-assisted check in
-the format Nat Sothanaphan developed for solution claims on
-erdosproblems.com, adapted to statement fidelity. The procedure, with his
-hygiene imported wholesale:
+## The CI problem, measured
 
-1. **Fresh session, always.** The checking model never shares context with
-   whoever produced the statement; a model re-reading its own work is
-   convinced by it.
-2. **Triage, then audit.** Overview of the statement and source; rank the
-   places most worth scrutinizing (quantifier order, hypothesis strength,
-   definitional unfoldings, domain conventions); audit each; one full pass.
-   No "be adversarial" instruction; demanding errors exist produces
-   hallucinated ones.
-3. **Per-clause correspondence table.** Every quantifier, hypothesis, and
-   conclusion of the formal statement mapped to the source text, one verdict
-   per clause. After correcting any misreading, re-verify all clauses, not
-   just the corrected one.
-4. **Verdict lexicon.** "Check **found** no mismatch" (absence of findings)
-   vs "check **claimed** a mismatch in clause X" (positive reports are
-   themselves unverified claims). Never "the statement is faithful."
-5. **Transcript published** with every result, plus the fixed disclaimer:
-   this is a screening, not comprehensive, and not a confirmation stamp.
-
-Anyone can run one; documenting the format is what makes results comparable
-across people and time. Known failure modes to design against: sycophancy
-toward the artifact ([BrokenMath, arXiv:2510.04721](https://arxiv.org/abs/2510.04721));
-correlated errors across model runs, so prefer flag-union with human
-adjudication over majority voting (the FrontierMath v2 audit found errors in
-42% of problems that had already passed human review); and circularity, the
-check must read the original source, not the repo's own docstring.
-
-### L4. The human signature
-
-Unchanged, and the point. Maintainer approval remains the only thing that
-merges a statement. In this repository's terms: the machine tier reports
-facts, and a statement-fidelity verdict exists only as a named reviewer's
-signed event. Nothing in L0–L3 signs anything.
-
-## Phase 0: CI latency (measured)
-
-Review cycles include waiting for CI, and the numbers say most of that wait
-buys PRs nothing. `build-and-docs.yml` runs one job for both PR validation
-and site deployment, and the deploy half runs on every PR even though the
-deploy job itself is main-only. Step timings from two recent PR runs
-(runs 28612552108 and 28608145267, 100 and 115 minutes):
+Review cycles include waiting for CI, and most of that wait buys a PR
+nothing. `build-and-docs.yml` serves both PR validation and site deployment
+with one job, so the deploy half runs on every PR even though only main
+deploys. Step timings from two recent PR runs (28612552108 and 28608145267;
+100 and 115 minutes total):
 
 | step | time | needed for a PR? |
 |---|---|---|
 | `lake --wfail build` (the actual gate) | ~28 min | yes |
-| Verso literate source pages | **52–53 min** | no, deployed only from main |
-| doc-gen documentation | 7–31 min (cache luck) | no |
+| Verso literate source pages | 52–53 min | no, deployed only from main |
+| doc-gen documentation | 7–31 min, cache luck | no |
 | growth plots, stats, website build, Pages artifact | ~5 min | no |
 
-So roughly **two thirds of every PR's CI is building artifacts the PR can
-never deploy**. At 100+ runs of this workflow per week, that is on the order
-of 100 wasted runner-hours weekly.
+Roughly two thirds of every PR's CI builds artifacts the PR can never
+deploy, and the workflow runs 100+ times a week.
 
-The maintainers are already attacking one term of this:
+Moritz is already attacking part of this:
 [FC#4302](https://github.com/google-deepmind/formal-conjectures/pull/4302)
-(mo271) removes docgen outright, citing its build time, with Verso as the
-surviving doc system. The run data above says #4302 helps but does not fix
-the PR lane: Verso literate is the dominant per-PR cost (52–53 minutes,
-every run), docgen the smaller one, and
+removes docgen outright, citing its build time. The run data says #4302 is
+necessary but not sufficient for the PR lane. Verso literate is the dominant
+per-PR cost at 52–53 minutes every run, docgen the smaller one, and
 [FC#4306](https://github.com/google-deepmind/formal-conjectures/issues/4306)
-proposes extending Verso to `FormalConjecturesForMathlib`, which grows it.
-The two changes compose: #4302 decides *which* doc artifacts exist; the
-gating below decides *when* they build. With both, PR CI is ~30 minutes
-regardless of how the docgen-vs-Verso question resolves.
+would extend Verso to `FormalConjecturesForMathlib` and grow it. The two
+changes compose: #4302 decides which doc artifacts exist, gating decides when
+they build. With both, PR CI is about 30 minutes however docgen-versus-Verso
+resolves.
 
-The cache design compounds it. The repository sits at GitHub's 10 GB cache
-limit with LRU eviction, and every PR run saves its own olean and doc cache
-under `refs/pull/N/merge`, where no other PR can restore it (GitHub scopes
-cache reads to a branch and its base). Dozens of unreadable PR-scoped
-entries crowd out the main-branch caches every other run needs, which is
-consistent with the 28-minute "incremental" build and the 7-vs-31-minute
-doc-build lottery.
+Caching compounds it. The repository sits at GitHub's 10 GB cache ceiling
+with LRU eviction, and every PR run saves olean and doc caches under
+`refs/pull/N/merge`, a scope no other PR can read. Dozens of unreadable
+PR-scoped entries evict the main-branch caches that every run actually
+restores from, which fits both the 28-minute "incremental" build and the
+7-versus-31-minute doc-build lottery.
 
-Two small workflow changes, no behavior change on main:
-
-1. Gate the literate/docs/plots/website/artifact steps on
-   `github.event_name != 'pull_request'` (or split a `pr-build.yml` out of
-   the deploy workflow). PR CI drops from ~100 to ~30 minutes.
-2. Save caches only on main; restore everywhere. Main's caches stop being
-   evicted by unreadable PR-scoped saves, so PR builds restore fresher
-   oleans, which should pull the 28-minute build down further.
-
-This is independent of everything below and is arguably the first PR to
-make: it shortens every contributor's feedback loop, not just this
-pipeline's.
+The fix is two conditions, not a redesign: build the
+literate/docs/website/artifact steps only off pull requests, and save caches
+only from main while restoring everywhere. PR CI drops from ~100 to ~30
+minutes, and the build step should fall further once main's caches stop being
+evicted.
 
 ## Rollout
 
-**Phase 1, no infrastructure.** The L0 checklist as a small PR to the
-ErdosProblems README, plus L3-format self-reviews posted on my own open
-batch PRs so maintainers can judge from real artifacts whether the format
-saves cycles. Costs the maintainers nothing but a read. Phase 0 (the CI
-split) can ship in parallel; it needs only a workflow review.
+Phase 1 needs nothing from anyone. The README checklist is open as
+[FC#4378](https://github.com/google-deepmind/formal-conjectures/pull/4378),
+and I'll post screening-format self-reviews on my own open batch PRs so the
+maintainers can judge from real artifacts whether the format saves cycles.
+The CI split can ship in parallel; it needs one workflow review.
 
-**Phase 2, if Phase 1 reads as useful.** The L1 workflow behind a
-`statement-check` label, run on ~10 PRs. Measure review cycles per merged
-PR against the recent baseline. Adopt, adjust, or delete on the numbers.
+Phase 2, if that reads as useful: the statement-facts comment behind a
+`statement-check` label on about ten PRs, measured as review cycles per
+merged PR against the recent baseline. Adopt, adjust, or delete on the
+numbers.
 
-**Phase 3, if Phase 2 pays.** L2 probes, added one at a time, each with its
-own hit-rate ledger.
+Phase 3, if Phase 2 pays for itself: probes, one at a time, each with its own
+hit-rate ledger.
 
-Kill criterion at every phase: anything that adds noise instead of removing
-cycles goes.
-
-## What this is not
-
-- Not an AI reviewer. No model approves, requests changes, or gates.
-- Not comment automation. One sticky comment, severity-floored, or nothing.
-- Not a replacement for reading the mathematics. It clears the mechanical
-  underbrush so the ten human minutes land on the judgment only a human can
-  sign.
+Across all of it: a check earns its noise or it goes.
 
 ## Sources
 
 Nat Sothanaphan's standard-check posts on the
 [erdosproblems.com forum](https://www.erdosproblems.com/forum) (method,
-verdict lexicon, calibration retrospectives) ·
+verdict language, calibration retrospectives) ·
 [mathlib PR_summary workflow](https://github.com/leanprover-community/mathlib4/blob/master/.github/workflows/PR_summary.yml) ·
 [FC's linter framework](https://github.com/google-deepmind/formal-conjectures/tree/main/FormalConjectures/Util/Linters) ·
 [Alexeev, "Formalization of Erdős problems"](https://xenaproject.wordpress.com/2025/12/05/formalization-of-erdos-problems/) ·
@@ -238,5 +179,5 @@ verdict lexicon, calibration retrospectives) ·
 [BrokenMath](https://arxiv.org/abs/2510.04721) ·
 [FormalAlign](https://arxiv.org/abs/2410.10135) ·
 [Epoch AI, FrontierMath v2 audit](https://epoch.ai/frontiermath/the-benchmark) ·
-[leanprover-community/intentions](https://github.com/leanprover-community/intentions)
-(the claim/queue primitive, if review ever becomes a claimable task board).
+[leanprover-community/intentions](https://github.com/leanprover-community/intentions),
+the claim/queue primitive if review ever becomes a claimable task board.
