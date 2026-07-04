@@ -25,6 +25,27 @@ cold_min_producers: 2
 # Attempts older than this (vs the newest event in the log) weigh 0.5.
 decay_days: 45
 
+# Bedrock cores (six-excavation measurement, 2026-07-04): every reachable
+# open problem in this pool routes through one of a handful of hard cores.
+# These are NOT per-problem channels; they are the walls the swarm hits. A
+# channel that `reduces_to` a core is cold until the core moves — the
+# briefing surfaces these so a session does not respend a bedrock core at
+# 3am. Documentation for the harvest briefing; the reducer adjudicates the
+# per-problem channels under `problems`.
+cores:
+  - id: "core:effectivity"
+    title: "effective bounds (S-unit / Baker-type; ineffective constants are the wall)"
+    status: bedrock
+  - id: "core:binary_correlations"
+    title: "two-point / binary correlations (just outside current two-point technology)"
+    status: bedrock
+  - id: "core:prime_gaps"
+    title: "prime gaps / short intervals (conditional on unproven interval results)"
+    status: bedrock
+  - id: "core:abc"
+    title: "abc / Szpiro (the conjecture-shaped wall)"
+    status: bedrock
+
 problems:
   "647":
     - id: "erdos647:prime"
@@ -40,3 +61,37 @@ problems:
       title: "parametric / polynomial identity families"
     - id: "erdos242:finite_confirm"
       title: "finite computational confirmation (verifier, not a solve)"
+  # Harvest pool (batch-6). Finite-confirmation channels are LIVE (a frozen
+  # verifier extends the bound); reduction channels reduce to a bedrock core
+  # and are cold until it moves.
+  "366":
+    - id: "erdos366:finite_confirm"
+      title: "no 2-full n with 3-full n+1 in range (frozen verifier, LIVE)"
+    - id: "erdos366:reduction"
+      title: "reduction to effectivity"
+      reduces_to: "core:effectivity"
+  "364":
+    - id: "erdos364:finite_confirm"
+      title: "no three consecutive powerful in range (SPF sieve, LIVE)"
+  "398":
+    - id: "erdos398:finite_confirm"
+      title: "Brocard n!+1=m^2 only n in {4,5,7} in range (modular, LIVE)"
+  "475":
+    - id: "erdos475:finite_confirm"
+      title: "distinct partial sums over F_p, complete small-p coverage (LIVE)"
+  "727":
+    - id: "erdos727:route_k2"
+      title: "k=2 route: assembly-complete minus Theorem 7 (carry-aware divisor correlation)"
+      reduces_to: "core:binary_correlations"
+  "699":
+    - id: "erdos699:rungs"
+      title: "fixed-i rungs via split + forced-digit + S-unit finiteness (rungs 1–3 proved)"
+      reduces_to: "core:effectivity"
+    - id: "erdos699:mid_regime"
+      title: "mid-regime (i between polylog and gap-bound) — open kernel"
+      reduces_to: "core:prime_gaps"
+  "686":
+    - id: "erdos686:nine_variant"
+      title: "'nine' variant: assembly-complete, PR-ready (Lean)"
+    - id: "erdos686:full"
+      title: "full four-three equation — open"
