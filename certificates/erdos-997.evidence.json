@@ -1,0 +1,31 @@
+{
+  "schema": "formal-verification-evidence.v0",
+  "layer": "evidence",
+  "note": "Machine-computed facts about a formal proof object. Reproducible; no human or model judgment is in this path. A Formal Verification certificate is a named human vouching that they ran this and it reproduces.",
+  "subject": {
+    "problem": "Erdős 997",
+    "source_claim": "https://www.erdosproblems.com/997",
+    "formal_statement": "Erdos997.erdos_997",
+    "proof": {
+      "url": "https://live.lean-lang.org/#project=mathlib-v4.28.0&url=https://gist.githubusercontent.com/pitmonticone/016f2ed66b4cd1c4c4b9998095170e60/raw/b7dfc05c525ae385b5835f89f1ada721443e4305/Erdos997.lean",
+      "host": "plby/lean-proofs",
+      "toolchain": "Lean 4, plby/lean-proofs fork (toolchain 4.29.1)"
+    }
+  },
+  "checks": {
+    "compiles": true,
+    "sorry_free": true,
+    "axioms_beyond_standard": [
+      "maynardTaoBFT"
+    ],
+    "hypothesis_parameters": []
+  },
+  "verdict": "conditional",
+  "verdict_basis": "Not unconditional. axioms asserted rather than proved: `maynardTaoBFT`. An unconditional verdict requires all three of: sorry-free, no non-standard axioms, no Prop hypothesis parameters.",
+  "reproduce": {
+    "portable": "Clone the pinned proof, build it in the stated toolchain, then in Lean run `#print axioms Erdos997.erdos_997` and inspect the theorem's non-instance Prop parameters.",
+    "tool": "python3 lean/extract_assumptions.py --repo plby   (in github.com/williamjblair/erdos-frontier)"
+  },
+  "generated_by": "erdos-frontier audit — mechanical, multi-toolchain; no human or model in this path",
+  "record": "https://erdos.constellate.science/finding.html?n=997"
+}
