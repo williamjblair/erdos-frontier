@@ -6,7 +6,7 @@
         "serve",
         ".",
         "--profile",
-        "read-only"
+        "draft"
       ],
       "command": "vela",
       "env": {
