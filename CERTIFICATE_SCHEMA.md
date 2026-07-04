@@ -1,108 +1,100 @@
-# A machine-facts formal-verification certificate
+# A formal-verification certificate as a projection of signed state
 
 Notes toward certificate design for [Project Diderot](https://projectdiderot.com),
 July 2026. Diderot's principle is that only humans may issue certificates; AI
-agents cannot self-certify. This proposes a shape for the Formal Verification
-certificate that keeps that principle exact while separating the two claims
-that "formalised" currently runs together.
+agents cannot self-certify. This describes a certificate that keeps that
+principle exact by making it mechanical: a certificate is a *view* of two
+layers a signed frontier already holds.
 
-## Evidence and certificate are different things
+## Two layers, both authoritative
 
-The distinction that makes "only humans issue certificates" coherent:
+A formal-verification certificate for a problem is a projection of frontier
+[`vfr_0a25edabc16db143`](https://erdos.constellate.science/method.html), joining:
 
-- **Evidence** is reproducible and needs no human. A Lean proof compiles in a
-  given toolchain, is `sorry`-free, uses a specific axiom set, and takes a
-  specific set of Prop hypotheses as parameters. Anyone can re-derive these
-  facts, an agent can generate them, and they carry no judgment.
-- **A certificate** is a named human saying "I ran this and it reproduces, and
-  I vouch for it." The accountability is the human's name.
+| layer | what it holds | who is accountable | reproducible? |
+|---|---|---|---|
+| **evidence** (machine tier) | compiles, `sorry`-free, axiom set, and the Prop hypotheses the theorem takes as parameters | nobody; a machine computed it | yes, re-run the extractor |
+| **faithfulness** (signed tier) | a named reviewer's verdict that the formal statement states the boxed problem | the reviewer, by Ed25519 signature | no; it is a signed judgment, verified by replay |
 
-An agent can produce the evidence; a human issues the certificate over it. That
-is Diderot's rule, made mechanical.
+The two are independent, which is the whole reason to separate them. A proof
+can be unconditional yet formalise the wrong statement; a statement can be
+faithful yet the proof only conditional. The certificate shows both and lets a
+reader see which is which.
 
-## Why Formal Verification is doing two jobs
+## The evidence layer
 
-"A proof object exists and type-checks" is evidence. "The formalisation
-captures the paper's claim, and the proof follows the paper's argument" is a
-human judgment. These come apart:
-[Erdős 650](https://erdos.constellate.science/finding.html?n=650) is a case
-where the first held and the second did not, because the formalisation silently
-repaired a gap the paper never fixed. A single "Formal Verification" badge
-cannot carry both claims without one of them being read into the other.
-
-So: two layers, and they map onto Nat Sothanaphan's credit / disclosure /
-accountability axes.
-
-| axis | where it lives | who is accountable |
-|---|---|---|
-| credit | authorship field (human, AI-assisted, agent co-author) | nobody vouches; it is a declaration |
-| disclosure | the AI Tool Disclosure certificate | declared, not judged |
-| accountability (mechanical) | **Formal Verification, evidence layer** — the facts below | reproducible; an agent may generate it |
-| accountability (judgment) | **a faithfulness layer** — a human attests the formalisation matches the paper | a named human, with a method and transcript |
-
-## The evidence layer: fields
-
-A machine-facts formal-verification record carries:
-
-| field | meaning |
-|---|---|
-| `subject.source_claim` | the informal claim being formalised (a URL, a paper + hash) |
-| `subject.formal_statement` | the exact declaration name that is the formal statement |
-| `subject.proof` | the proof object: pinned URL, host, and the toolchain it builds in |
-| `checks.compiles` | the proof object type-checks in that toolchain |
-| `checks.sorry_free` | no `sorry` in the proof |
-| `checks.axioms_beyond_standard` | axioms the theorem depends on beyond the standard kernel set (`#print axioms`) |
-| `checks.hypothesis_parameters` | the non-instance Prop hypotheses the theorem takes as parameters — the case an axiom check does not see |
-| `verdict` | `unconditional` iff sorry-free **and** no non-standard axioms **and** no Prop hypothesis parameters; otherwise `conditional` |
-| `reproduce` | the command to re-derive every field above from scratch |
-| `generated_by` | the tool or agent that computed the facts (not a certifier) |
-
-`hypothesis_parameters` is the field that does the work an axiom check misses: a
-proof can be `sorry`-free and `#print axioms`-clean and still prove its goal
-only under a deep theorem passed in as a hypothesis.
-
-## Worked examples
-
-Both generated mechanically by [`certificate.py`](certificate.py) from the
-[audit feed](https://erdos.constellate.science/), no hand-editing.
-
-**Unconditional** — [`certificates/erdos-16.evidence.json`](certificates/erdos-16.evidence.json):
-`compiles: true`, `sorry_free: true`, no non-standard axioms, no hypothesis
-parameters, so `verdict: unconditional`.
-
-**Conditional** — [`certificates/erdos-997.evidence.json`](certificates/erdos-997.evidence.json):
-compiles and is `sorry`-free, but depends on the axiom `maynardTaoBFT` (the
-Maynard–Tao theorem, asserted rather than proved in the proof), so
-`verdict: conditional`. A plain "formalised" badge would read as a full
-solution; the evidence layer says exactly what it rests on.
-
-```
-python certificate.py 997
-```
+Machine-computed facts about the proof object, from the frozen multi-toolchain
+extractor (`lean/audit_feed*.json`, joined into `site/verdicts.json`). It
+carries the axiom set and, the field an axiom check does not see, the Prop
+hypotheses the theorem takes as parameters. A proof can be `sorry`-free and
+`#print axioms`-clean and still prove its goal only under a deep theorem passed
+in as a hypothesis. Every evidence record names its own reproduction.
 
 ## The faithfulness layer
 
-The human-judgment half is a separate attestation, not part of the mechanical
-record. The [screening procedure](SCREENING.md) is one way to produce it: a
-named reviewer works a per-clause table of formal statement against source, and
-reports the result as "found no mismatch" or "claimed a mismatch in clause X",
-never "faithful", with the transcript linked. It is not reproducible; it is a
-signed judgment, and the reviewer's name is the accountability.
+This is not a description of a future feature; the frontier already holds these
+as signed events. A [`statement.attested`](https://erdos.constellate.science/)
+event carries a `StatementAttestation` (`vsa_`) with:
 
-Stopgap while that layer is unbuilt: Formal Verification can honestly say "the
-result is formalised, but the formalisation does not necessarily follow the
-paper's argument."
+- `verdict`: `faithful`, `variant`, or `unfaithful` (a first-class negative
+  result, not an absence);
+- `attested_by`: a `reviewer:` identity. The substrate **refuses** an agent
+  actor here and **requires** a reasoned note, so "only humans may certify" is
+  enforced in the kernel, not by convention;
+- `formal_ref` + `formal_statement_hash`: the exact statement bytes attested;
+- `signature` + `signer_pubkey_hex`: an Ed25519 signature over the canonical
+  body.
 
-## Reproduce
+Because the signature is over pinned bytes, a reader does not trust the
+certificate: they replay the log and verify it (`vela check . --strict`).
 
-Every evidence record names its own reproduction. For the examples here:
+## Worked examples
+
+All generated by [`certificate.py`](certificate.py) from live frontier state,
+no hand-editing.
+
+**[Erdős 224](certificates/erdos-224.certificate.json)** — the two layers on
+one problem. Evidence: `conditional`, because the theorem takes
+`hNo : Erdos224.NoObtuse A` as a hypothesis parameter (kernel-clean on axioms,
+so an axiom check alone would pass it). Faithfulness: signed `faithful` by
+`reviewer:will-blair`, `vsa_923f442721de9905`, with the real signature. So: the
+statement is the right problem, and the proof holds only under an assumed
+hypothesis.
+
+**[Erdős 214](certificates/erdos-214.certificate.json)** — the axes pulling
+apart. Evidence: `unconditional`. Faithfulness: signed **`unfaithful`**. An
+unconditional proof of a statement a human judged does not state the problem. A
+single "formalised" badge would call this solved.
+
+**[Erdős 997](certificates/erdos-997.certificate.json)** — evidence only.
+Compiles and is `sorry`-free but depends on the axiom `maynardTaoBFT` (the
+Maynard–Tao theorem, asserted), so `conditional`. No faithfulness attestation
+on the frontier yet, and the certificate says so rather than implying one.
 
 ```
-# clone the pinned proof, build it in the stated toolchain, then in Lean:
-#print axioms Erdos997.erdos_997
-# and inspect the theorem's non-instance Prop parameters
+python certificate.py 224
 ```
 
-or, through the audit's own extractor,
-`python3 lean/extract_assumptions.py --repo plby`. The point of the evidence
-layer is that a reader does not have to trust the certificate: they can re-run it.
+## How this maps onto Diderot's certificates
+
+- **Formal Verification** becomes the evidence layer: the machine facts, with a
+  reproduce command, so it is checkable by anyone (including an agent). It says
+  what the proof rests on, not just that it compiled.
+- A **faithfulness** certificate is the signed layer: a named human's verdict
+  that the formalisation states the problem. The [screening
+  procedure](SCREENING.md) is one way to produce that judgment. This is where
+  Diderot's "only humans certify" rule lives, and Vela already enforces it.
+- Stopgap while a faithfulness layer is unbuilt: Formal Verification can
+  honestly say "the result is formalised, but the formalisation does not
+  necessarily follow the paper's argument."
+
+## Provenance, stated honestly
+
+The faithfulness layer is fully frontier-native: each is a real signed `vsa_`
+event, verifiable by replay. The evidence layer is currently the frozen audit's
+output rather than a signed frontier object. Vela has a first-class shape for
+it too, a `VerifierAttachment` (`vva_`) whose `undischarged_hypotheses` field is
+exactly the hypothesis-parameter list above; recording the audit's verdicts as
+`vva_` attachments would make the evidence layer replayable frontier state on
+the same footing as the signatures. That is the next step, and it is
+agent-doable (machine facts are reproducible, not a human judgment).
