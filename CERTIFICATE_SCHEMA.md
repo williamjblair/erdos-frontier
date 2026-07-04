@@ -46,9 +46,8 @@ names its own reproduction.
 
 ## The faithfulness layer
 
-The frontier already holds these as signed events. A
-[`statement.attested`](https://erdos.constellate.science/) event carries a
-`StatementAttestation` (`vsa_`) with:
+The frontier already holds these as signed events. A `statement.attested` event
+carries a `StatementAttestation` (`vsa_`) with:
 
 - `verdict`: `faithful`, `variant`, or `unfaithful` (a first-class negative
   result, not an absence);
