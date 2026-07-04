@@ -2,9 +2,8 @@
 
 Notes toward certificate design for [Project Diderot](https://projectdiderot.com),
 July 2026. Diderot's principle is that only humans may issue certificates; AI
-agents cannot self-certify. This describes a certificate that keeps that
-principle exact by making it mechanical: a certificate is a *view* of two
-layers a signed frontier already holds.
+agents cannot self-certify. This describes a certificate that makes that
+principle mechanical: a *view* of two layers a signed frontier already holds.
 
 ```mermaid
 flowchart LR
@@ -37,24 +36,25 @@ The certificate shows both axes, so a reader sees which cell a claim is in.
 
 ## The evidence layer
 
-Machine-computed facts about the proof object, from the frozen multi-toolchain
-extractor (`lean/audit_feed*.json`, joined into `site/verdicts.json`). It
-carries the axiom set and, the field an axiom check does not see, the Prop
-hypotheses the theorem takes as parameters. A proof can be `sorry`-free and
-`#print axioms`-clean and still prove its goal only under a deep theorem passed
-in as a hypothesis. Every evidence record names its own reproduction.
+The evidence layer is machine-computed facts about the proof object, from the
+frozen multi-toolchain extractor (`lean/audit_feed*.json`, joined into
+`site/verdicts.json`). It carries the axiom set, and the Prop hypotheses the
+theorem takes as parameters. That last field is the one an axiom check does not
+see: a proof can be `sorry`-free and `#print axioms`-clean and still prove its
+goal only under a deep theorem passed in as a hypothesis. Every evidence record
+names its own reproduction.
 
 ## The faithfulness layer
 
-This is not a description of a future feature; the frontier already holds these
-as signed events. A [`statement.attested`](https://erdos.constellate.science/)
-event carries a `StatementAttestation` (`vsa_`) with:
+The frontier already holds these as signed events. A
+[`statement.attested`](https://erdos.constellate.science/) event carries a
+`StatementAttestation` (`vsa_`) with:
 
 - `verdict`: `faithful`, `variant`, or `unfaithful` (a first-class negative
   result, not an absence);
 - `attested_by`: a `reviewer:` identity. The substrate **refuses** an agent
-  actor here and **requires** a reasoned note, so "only humans may certify" is
-  enforced in the kernel, not by convention;
+  actor here and **requires** a reasoned note, so the kernel enforces "only
+  humans may certify";
 - `formal_ref` + `formal_statement_hash`: the exact statement bytes attested;
 - `signature` + `signer_pubkey_hex`: an Ed25519 signature over the canonical
   body.
@@ -71,12 +71,12 @@ no hand-editing. The shape, abbreviated, from
 ```jsonc
 {
   "subject": { "problem": "Erdős 224", "frontier": "vfr_0a25edabc16db143" },
-  "evidence": {                     // machine tier — reproducible, no human
+  "evidence": {                     // machine tier: reproducible, no human
     "verdict": "conditional",
     "hypothesis_parameters": ["hNo : Erdos224.NoObtuse A"],
     "reproduce": "python3 lean/extract_assumptions.py --repo plby"
   },
-  "faithfulness": {                 // signed tier — a named human's judgment
+  "faithfulness": {                 // signed tier: a named human's judgment
     "verdict": "faithful",
     "attested_by": "reviewer:will-blair",
     "attestation_id": "vsa_923f442721de9905",
@@ -87,20 +87,20 @@ no hand-editing. The shape, abbreviated, from
 }
 ```
 
-**[Erdős 224](certificates/erdos-224.certificate.json)** — the two layers on
-one problem. Evidence: `conditional`, because the theorem takes
+**[Erdős 224](certificates/erdos-224.certificate.json)**: both layers on one
+problem. Evidence `conditional`, because the theorem takes
 `hNo : Erdos224.NoObtuse A` as a hypothesis parameter (kernel-clean on axioms,
-so an axiom check alone would pass it). Faithfulness: signed `faithful` by
-`reviewer:will-blair`, `vsa_923f442721de9905`, with the real signature. So: the
+so an axiom check alone would pass it). Faithfulness signed `faithful` by
+`reviewer:will-blair`, `vsa_923f442721de9905`, with the real signature. The
 statement is the right problem, and the proof holds only under an assumed
 hypothesis.
 
-**[Erdős 214](certificates/erdos-214.certificate.json)** — the axes pulling
-apart. Evidence: `unconditional`. Faithfulness: signed **`unfaithful`**. An
-unconditional proof of a statement a human judged does not state the problem. A
-single "formalised" badge would call this solved.
+**[Erdős 214](certificates/erdos-214.certificate.json)**: the axes pulling
+apart. Evidence `unconditional`, faithfulness signed **`unfaithful`**. An
+unconditional proof of a statement a reviewer signed as not stating the problem,
+which a bare "formalised" badge would count as solved.
 
-**[Erdős 997](certificates/erdos-997.certificate.json)** — evidence only.
+**[Erdős 997](certificates/erdos-997.certificate.json)**: evidence only.
 Compiles and is `sorry`-free but depends on the axiom `maynardTaoBFT` (the
 Maynard–Tao theorem, asserted), so `conditional`. No faithfulness attestation
 on the frontier yet, and the certificate says so rather than implying one.
@@ -130,5 +130,5 @@ output rather than a signed frontier object. Vela has a first-class shape for
 it too, a `VerifierAttachment` (`vva_`) whose `undischarged_hypotheses` field is
 exactly the hypothesis-parameter list above; recording the audit's verdicts as
 `vva_` attachments would make the evidence layer replayable frontier state on
-the same footing as the signatures. That is the next step, and it is
-agent-doable (machine facts are reproducible, not a human judgment).
+the same footing as the signatures. That is the next step. An agent can produce
+it, since the machine facts are reproducible and carry no judgment.
