@@ -4,15 +4,15 @@
   "counts": {
     "blocked-claim": 3,
     "defer": 0,
-    "docstring": 8,
+    "docstring": 9,
     "done": 98,
     "hypothesis-conditional": 7,
-    "in-pr": 296,
+    "in-pr": 298,
     "link": 0,
     "mismatch": 2,
     "needs-human-match-check": 2,
     "needs-statement-update": 1,
-    "no-proof": 716,
+    "no-proof": 713,
     "partial": 7,
     "statement": 76,
     "wont-fix": 1
@@ -31,14 +31,20 @@
     1148,
     1197
   ],
-  "generated_at": "2026-07-03",
+  "generated_at": "2026-07-04",
   "held_for_review": [],
-  "hosted_proofs_tracked": 210,
+  "hosted_proofs_tracked": 211,
   "rows": [
     {
       "bucket": "in-pr",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "erdos1-formal-proof-link",
+          "number": 4382,
+          "title": "feat(ErdosProblems/1): link a complete formal proof of lb_strong",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4382"
+        },
         {
           "head_ref": "erdos-1-least-n6",
           "number": 4118,
@@ -2803,7 +2809,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/71",
@@ -2816,7 +2829,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/71/71.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/71",
       "machine": null,
@@ -5072,9 +5093,16 @@
       "wiki": null
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-132",
+          "number": 4389,
+          "title": "feat(ErdosProblems): 132",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4389"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "open",
       "erdos_url": "https://www.erdosproblems.com/132",
@@ -5095,7 +5123,7 @@
       "problem": 132,
       "proof_links": [],
       "proof_sources": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "source_tags": "",
       "wiki": null
     },
@@ -7875,7 +7903,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/206",
@@ -7888,7 +7923,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/206/206.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/206",
       "machine": null,
@@ -7991,7 +8034,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/209",
@@ -8004,7 +8054,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/209/209.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/209",
       "machine": null,
@@ -12549,7 +12607,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/328",
@@ -12562,7 +12627,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/328/328.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/328",
       "machine": null,
@@ -13719,7 +13792,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/353",
@@ -13732,7 +13812,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/353/353.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/353",
       "machine": null,
@@ -15807,7 +15895,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/403",
@@ -15820,7 +15915,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/403/403.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/403",
       "machine": null,
@@ -16676,7 +16779,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/426",
@@ -16689,7 +16799,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/426/426.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/426",
       "machine": null,
@@ -18342,7 +18460,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/464",
@@ -18355,7 +18480,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/464/464.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/464",
       "machine": null,
@@ -20373,7 +20506,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/512",
@@ -20386,7 +20526,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/512/512.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/512",
       "machine": null,
@@ -20800,6 +20948,12 @@
       "bucket": "in-pr",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "fix-erdos-522-h-unif",
+          "number": 4387,
+          "title": "fix(ErdosProblems): 522 \u2014 make h_unif satisfiable (counting-measure reference for the discrete coefficient sets)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4387"
+        },
         {
           "head_ref": "bump_v4.31",
           "number": 4356,
@@ -24281,7 +24435,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/621",
@@ -24294,7 +24455,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/621/621.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/621",
       "machine": null,
@@ -24865,7 +25034,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/639",
@@ -24878,7 +25054,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/639/639.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/639",
       "machine": null,
@@ -25262,7 +25446,14 @@
     {
       "bucket": "statement",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-campaign-batch-5",
+          "number": 4385,
+          "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "solved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/648",
@@ -25275,7 +25466,15 @@
         "path": null,
         "theorem": null
       },
-      "fidelity": null,
+      "fidelity": {
+        "formal_ref": "williamjblair/erdos-frontier@d3e41b8ffc22:statements/648/648.lean",
+        "note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+        "reviewer": "reviewer:will-blair",
+        "signed": true,
+        "source": "local",
+        "stale": null,
+        "verdict": "faithful"
+      },
       "held_for_review": false,
       "latex_url": "https://www.erdosproblems.com/latex/648",
       "machine": {
@@ -27730,9 +27929,16 @@
       }
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-708",
+          "number": 4388,
+          "title": "feat(ErdosProblems): 708",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4388"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "open",
       "erdos_url": "https://www.erdosproblems.com/708",
@@ -27753,7 +27959,7 @@
       "problem": 708,
       "proof_links": [],
       "proof_sources": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "source_tags": "",
       "wiki": null
     },
@@ -33220,7 +33426,7 @@
       "wiki": null
     },
     {
-      "bucket": "no-proof",
+      "bucket": "docstring",
       "candidate_claims": null,
       "claims": [],
       "discrepancy": false,
@@ -33241,10 +33447,22 @@
       "machine": null,
       "override": null,
       "problem": 865,
-      "proof_links": [],
-      "proof_sources": [],
-      "recommended_action": "No action until a hosted proof appears.",
-      "source_tags": "",
+      "proof_links": [
+        {
+          "complete": false,
+          "conditional": true,
+          "label": "Jayyhk/erdos-lean",
+          "partial": false,
+          "source": "jayyhk",
+          "state": "axiomatic",
+          "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean"
+        }
+      ],
+      "proof_sources": [
+        "jayyhk"
+      ],
+      "recommended_action": "Add only a docstring note if useful; do not add formal_proof.",
+      "source_tags": "\u02b2",
       "wiki": {
         "ai_systems": [
           "GPT-5.5 Pro"
@@ -33963,6 +34181,12 @@
       "bucket": "in-pr",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "erdos-884-formal-proof",
+          "number": 4391,
+          "title": "feat(ErdosProblems/884): link formal proof of Larsen's unconditional disproof",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4391"
+        },
         {
           "head_ref": "codex/latex-docstrings",
           "number": 4004,
@@ -40746,6 +40970,12 @@
       "bucket": "in-pr",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "erdos-1050",
+          "number": 4390,
+          "title": "feat(ErdosProblems/1050): the series \u2211 1/(2\u207f\u22123) is irrational",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4390"
+        },
         {
           "head_ref": "erdos-all",
           "number": 3422,

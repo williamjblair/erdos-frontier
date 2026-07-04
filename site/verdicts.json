@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03",
+  "generated_at": "2026-07-04",
   "rows": [
     {
       "bucket": "in-pr",
@@ -2386,8 +2386,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -2408,8 +2408,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle",
         "Claude Opus 4.7",
@@ -4398,7 +4398,7 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "discrepancy": false,
       "erdos_state": "open",
       "erdos_url": "https://www.erdosproblems.com/132",
@@ -4417,7 +4417,7 @@
       "problem": 132,
       "proof_link": null,
       "proof_links": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "signed_by": null,
       "signed_fidelity_verdict": null,
       "wiki_ai_systems": [],
@@ -6921,8 +6921,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -6952,8 +6952,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -7032,8 +7032,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -7054,8 +7054,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "AxiomProver"
       ],
@@ -11153,8 +11153,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -11175,8 +11175,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "AxiomProver"
       ],
@@ -12097,8 +12097,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -12119,8 +12119,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -13883,8 +13883,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -13905,8 +13905,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "AxiomProver"
       ],
@@ -14647,8 +14647,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -14678,8 +14678,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -16051,8 +16051,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -16073,8 +16073,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -17774,8 +17774,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -17796,8 +17796,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -21308,8 +21308,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -21339,8 +21339,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -21879,8 +21879,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": null,
@@ -21910,8 +21910,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -22217,8 +22217,8 @@
       "fc_linked": false,
       "fc_theorem": null,
       "fc_url": null,
-      "fidelity_note": null,
-      "fidelity_source": null,
+      "fidelity_note": "Read the draft docstring (verbatim boxed problem text) and encoding notes against the theorem statement; gates green.",
+      "fidelity_source": "local",
       "gpt_erdos": null,
       "held_for_review": false,
       "machine_source": "plby",
@@ -22248,8 +22248,8 @@
         }
       ],
       "recommended_action": "Write the FC statement and link the matching hosted proof.",
-      "signed_by": null,
-      "signed_fidelity_verdict": null,
+      "signed_by": "reviewer:will-blair",
+      "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
         "Aristotle"
       ],
@@ -24350,7 +24350,7 @@
       "wiki_outcome": "Formalization"
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "discrepancy": false,
       "erdos_state": "open",
       "erdos_url": "https://www.erdosproblems.com/708",
@@ -24369,7 +24369,7 @@
       "problem": 708,
       "proof_link": null,
       "proof_links": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "signed_by": null,
       "signed_fidelity_verdict": null,
       "wiki_ai_systems": [],
@@ -29523,7 +29523,7 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "no-proof",
+      "bucket": "docstring",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/865",
@@ -29541,8 +29541,18 @@
       "non_kernel_axioms": [],
       "problem": 865,
       "proof_link": null,
-      "proof_links": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "proof_links": [
+        {
+          "complete": false,
+          "conditional": true,
+          "label": "Jayyhk/erdos-lean",
+          "partial": false,
+          "source": "jayyhk",
+          "state": "axiomatic",
+          "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean"
+        }
+      ],
+      "recommended_action": "Add only a docstring note if useful; do not add formal_proof.",
       "signed_by": null,
       "signed_fidelity_verdict": null,
       "wiki_ai_systems": [
@@ -41956,6 +41966,11 @@
         "verdict": "faithful"
       },
       {
+        "problem": 71,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
         "problem": 93,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
@@ -41984,6 +41999,16 @@
         "problem": 205,
         "reviewer": "reviewer:will-blair",
         "verdict": "variant"
+      },
+      {
+        "problem": 206,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
+        "problem": 209,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
       },
       {
         "problem": 214,
@@ -42036,6 +42061,11 @@
         "verdict": "faithful"
       },
       {
+        "problem": 328,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
         "problem": 333,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
@@ -42044,6 +42074,11 @@
         "problem": 337,
         "reviewer": "reviewer:will-blair",
         "verdict": "unfaithful"
+      },
+      {
+        "problem": 353,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
       },
       {
         "problem": 363,
@@ -42061,7 +42096,17 @@
         "verdict": "faithful"
       },
       {
+        "problem": 403,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
         "problem": 419,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
+        "problem": 426,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
       },
@@ -42082,6 +42127,11 @@
       },
       {
         "problem": 453,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
+        "problem": 464,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
       },
@@ -42121,6 +42171,11 @@
         "verdict": "faithful"
       },
       {
+        "problem": 512,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
         "problem": 519,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
@@ -42151,7 +42206,22 @@
         "verdict": "faithful"
       },
       {
+        "problem": 621,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
+        "problem": 639,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
         "problem": 646,
+        "reviewer": "reviewer:will-blair",
+        "verdict": "faithful"
+      },
+      {
+        "problem": 648,
         "reviewer": "reviewer:will-blair",
         "verdict": "faithful"
       },

@@ -1,12 +1,12 @@
 # Next Erdős FC Sync Batch
 
-*Generated 2026-07-03 from [`status.json`](status.json).*
+*Generated 2026-07-04 from [`status.json`](status.json).*
 
 This file lists safe `statement` candidates only: no open PR claim, no human override, and at least one complete hosted proof source.
 
 ## Suggested Batch — 8 problem(s)
 
-[24](https://www.erdosproblems.com/24)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [31](https://www.erdosproblems.com/31)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [34](https://www.erdosproblems.com/34)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [47](https://www.erdosproblems.com/47)ᵖʲ ([#4354](https://github.com/google-deepmind/formal-conjectures/pull/4354), [#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [93](https://www.erdosproblems.com/93)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [164](https://www.erdosproblems.com/164)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [206](https://www.erdosproblems.com/206)ᵖʲ [280](https://www.erdosproblems.com/280)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345))
+[24](https://www.erdosproblems.com/24)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [31](https://www.erdosproblems.com/31)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [34](https://www.erdosproblems.com/34)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [47](https://www.erdosproblems.com/47)ᵖʲ ([#4354](https://github.com/google-deepmind/formal-conjectures/pull/4354), [#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345)) [93](https://www.erdosproblems.com/93)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [164](https://www.erdosproblems.com/164)ᵖʲ ([#4369](https://github.com/google-deepmind/formal-conjectures/pull/4369)) [206](https://www.erdosproblems.com/206)ᵖʲ ([#4385](https://github.com/google-deepmind/formal-conjectures/pull/4385)) [280](https://www.erdosproblems.com/280)ᵖʲ ([#4345](https://github.com/google-deepmind/formal-conjectures/pull/4345))
 
 ## Top 20 Safe Candidates
 

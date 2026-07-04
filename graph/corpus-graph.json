@@ -3,35 +3,35 @@
  "note": "Derived index of what the ingested sources declare \u2014 typed in the Vela EdgeKind vocabulary with a trust tier per edge. Not signed state: the signed spine is .vela/ + frontier.json.",
  "source_locks": {
   "erdos": "sha256:7739effb0",
-  "fidelity": "sha256:9cfb449de",
+  "fidelity": "sha256:de9c589d3",
   "formal_conjectures": "sha256:6bd2d2434",
   "gpt_erdos": "sha256:c0f626a47",
-  "jayyhk": "sha256:e2db2d0f2",
+  "jayyhk": "sha256:09cbf636f",
   "plby": "sha256:56caee303",
   "wiki": "sha256:65f7f510a",
   "williamjblair_lean_proofs": "sha256:b0e681bf4"
  },
  "counts": {
-  "nodes": 2784,
-  "edges": 1384,
+  "nodes": 2787,
+  "edges": 1386,
   "by_node_kind": {
    "attestation": 111,
    "claim": 342,
    "condition": 24,
    "problem": 1217,
-   "proof": 392,
-   "statement": 698
+   "proof": 393,
+   "statement": 700
   },
   "by_edge_kind": {
    "contradicts": 11,
    "depends_on": 26,
-   "derived_from": 698,
+   "derived_from": 700,
    "replicates": 165,
    "specializes": 2,
    "supports": 482
   },
   "by_trust": {
-   "declared": 897,
+   "declared": 899,
    "machine": 367,
    "recorded": 9,
    "signed": 111
@@ -2258,7 +2258,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 132",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/132"
   },
   {
@@ -7370,7 +7370,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 708",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/708"
   },
   {
@@ -8762,7 +8762,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 865",
    "state": "proved (Lean)",
-   "bucket": "no-proof",
+   "bucket": "docstring",
    "url": "https://www.erdosproblems.com/865"
   },
   {
@@ -10358,9 +10358,9 @@
   {
    "id": "fc:1050",
    "kind": "statement",
-   "label": "FC 1050 (PR #3422)",
+   "label": "FC 1050 (PR #4390)",
    "stage": "in-pr",
-   "url": "https://github.com/google-deepmind/formal-conjectures/pull/3422"
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4390"
   },
   {
    "id": "fc:1051",
@@ -11322,6 +11322,13 @@
    "linked": false
   },
   {
+   "id": "fc:132",
+   "kind": "statement",
+   "label": "FC 132 (PR #4389)",
+   "stage": "in-pr",
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4389"
+  },
+  {
    "id": "fc:134",
    "kind": "statement",
    "label": "Erdos134.erdos_134",
@@ -11646,7 +11653,8 @@
    "stage": "draft",
    "path": "statements/206/206.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:208",
@@ -11662,7 +11670,8 @@
    "stage": "draft",
    "path": "statements/209/209.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:212",
@@ -12296,7 +12305,8 @@
    "stage": "draft",
    "path": "statements/328/328.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:329",
@@ -12427,7 +12437,8 @@
    "stage": "draft",
    "path": "statements/353/353.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:354",
@@ -12715,7 +12726,8 @@
    "stage": "draft",
    "path": "statements/403/403.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:405",
@@ -12850,7 +12862,8 @@
    "stage": "draft",
    "path": "statements/426/426.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:427",
@@ -13043,7 +13056,8 @@
    "stage": "draft",
    "path": "statements/464/464.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:467",
@@ -13319,7 +13333,8 @@
    "stage": "draft",
    "path": "statements/512/512.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:513",
@@ -13708,7 +13723,8 @@
    "stage": "draft",
    "path": "statements/621/621.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:623",
@@ -13752,7 +13768,8 @@
    "stage": "draft",
    "path": "statements/639/639.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:64",
@@ -13792,7 +13809,8 @@
    "stage": "draft",
    "path": "statements/648/648.lean",
    "gates_passed": true,
-   "linked": true
+   "linked": true,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:650",
@@ -14033,13 +14051,21 @@
    "linked": true
   },
   {
+   "id": "fc:708",
+   "kind": "statement",
+   "label": "FC 708 (PR #4388)",
+   "stage": "in-pr",
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4388"
+  },
+  {
    "id": "fc:71",
    "kind": "statement",
    "label": "Erdos71.erdos_71",
    "stage": "draft",
    "path": "statements/71/71.lean",
    "gates_passed": true,
-   "linked": false
+   "linked": false,
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
   },
   {
    "id": "fc:711",
@@ -16164,6 +16190,13 @@
    "label": "jayyhk proof of 862",
    "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/862/Erdos862.lean",
    "state": "complete"
+  },
+  {
+   "id": "proof:jayyhk:865",
+   "kind": "proof",
+   "label": "jayyhk proof of 865",
+   "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean",
+   "state": "axiomatic"
   },
   {
    "id": "proof:jayyhk:867",
@@ -21835,7 +21868,7 @@
    "to": "erdos:1050",
    "kind": "derived_from",
    "trust": "declared",
-   "evidence": "open FC PR #3422 proposes the statement"
+   "evidence": "open FC PR #4390 proposes the statement"
   },
   {
    "from": "fc:1051",
@@ -22795,6 +22828,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:132",
+   "to": "erdos:132",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "open FC PR #4389 proposes the statement"
   },
   {
    "from": "fc:134",
@@ -25427,6 +25467,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:708",
+   "to": "erdos:708",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "open FC PR #4388 proposes the statement"
   },
   {
    "from": "fc:71",

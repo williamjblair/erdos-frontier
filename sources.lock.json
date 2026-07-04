@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T09:36:53+00:00",
+  "generated_at": "2026-07-04T09:03:11+00:00",
   "sources": {
     "erdos": {
       "commit": "4dca667491376391fac3bd2f05284d0e41776339",
@@ -12,7 +12,7 @@
     "fidelity": {
       "home": "self (.vela/ -> frontier.json)",
       "kind": "statement_attestations",
-      "sha256": "sha256:9cfb449deb4c443c2535e585eeb9a36f93d0c8f98b1533cae9278629a0462a92"
+      "sha256": "sha256:de9c589d3ac3bb5f40c7832941a2f826fc68a0fcc54ad773ab0bfb9019916318"
     },
     "formal_conjectures": {
       "kind": "formal_statement_registry",
@@ -27,11 +27,11 @@
       "sha256": "sha256:c0f626a4792d6b150b79268807ea2f9316f2b09be5475fb6ee1b14f630bc1136"
     },
     "jayyhk": {
-      "commit": "b12d53bd274d885babf694ef3fef0b5f199095cc",
+      "commit": "7ff46e5de76b42f21909e5959cd620db82828975",
       "kind": "proof_manifest",
       "ref": "main",
       "repo": "Jayyhk/erdos-lean",
-      "sha256": "sha256:e2db2d0f227523d6c1c9f257e5c89baf3e9591d47ebed54c7b9e6c7843df8610",
+      "sha256": "sha256:09cbf636f50359e8731b6687dd5b5a0e8b0642dd64bcbf6e0672d650ce7161d2",
       "url": "https://raw.githubusercontent.com/Jayyhk/erdos-lean/main/data/problems.yaml"
     },
     "plby": {
