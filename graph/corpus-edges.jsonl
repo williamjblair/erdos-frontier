@@ -466,6 +466,7 @@
 {"from": "fc:502", "to": "erdos:502", "kind": "derived_from"}
 {"from": "fc:503", "to": "erdos:503", "kind": "derived_from"}
 {"from": "fc:505", "to": "erdos:505", "kind": "derived_from"}
+{"from": "fc:506", "to": "erdos:506", "kind": "derived_from"}
 {"from": "fc:507", "to": "erdos:507", "kind": "derived_from"}
 {"from": "fc:508", "to": "erdos:508", "kind": "derived_from"}
 {"from": "fc:509", "to": "erdos:509", "kind": "derived_from"}
@@ -542,6 +543,7 @@
 {"from": "fc:655", "to": "erdos:655", "kind": "derived_from"}
 {"from": "fc:659", "to": "erdos:659", "kind": "derived_from"}
 {"from": "fc:66", "to": "erdos:66", "kind": "derived_from"}
+{"from": "fc:660", "to": "erdos:660", "kind": "derived_from"}
 {"from": "fc:663", "to": "erdos:663", "kind": "derived_from"}
 {"from": "fc:667", "to": "erdos:667", "kind": "derived_from"}
 {"from": "fc:67", "to": "erdos:67", "kind": "derived_from"}

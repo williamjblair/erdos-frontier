@@ -3,7 +3,7 @@
  "note": "Derived index of what the ingested sources declare \u2014 typed in the Vela EdgeKind vocabulary with a trust tier per edge. Not signed state: the signed spine is .vela/ + frontier.json.",
  "source_locks": {
   "erdos": "sha256:7739effb0",
-  "fidelity": "sha256:de9c589d3",
+  "fidelity": "sha256:4fb5819ae",
   "formal_conjectures": "sha256:6bd2d2434",
   "gpt_erdos": "sha256:c0f626a47",
   "jayyhk": "sha256:09cbf636f",
@@ -12,26 +12,26 @@
   "williamjblair_lean_proofs": "sha256:b0e681bf4"
  },
  "counts": {
-  "nodes": 2787,
-  "edges": 1386,
+  "nodes": 2789,
+  "edges": 1388,
   "by_node_kind": {
    "attestation": 111,
    "claim": 342,
    "condition": 24,
    "problem": 1217,
    "proof": 393,
-   "statement": 700
+   "statement": 702
   },
   "by_edge_kind": {
    "contradicts": 11,
    "depends_on": 26,
-   "derived_from": 700,
+   "derived_from": 702,
    "replicates": 165,
    "specializes": 2,
    "supports": 482
   },
   "by_trust": {
-   "declared": 899,
+   "declared": 901,
    "machine": 367,
    "recorded": 9,
    "signed": 111
@@ -5578,7 +5578,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 506",
    "state": "decidable",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/506"
   },
   {
@@ -6946,7 +6946,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 660",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/660"
   },
   {
@@ -8762,7 +8762,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 865",
    "state": "proved (Lean)",
-   "bucket": "docstring",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/865"
   },
   {
@@ -13292,6 +13292,13 @@
    "linked": true
   },
   {
+   "id": "fc:506",
+   "kind": "statement",
+   "label": "FC 506 (PR #4396)",
+   "stage": "in-pr",
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4396"
+  },
+  {
    "id": "fc:507",
    "kind": "statement",
    "label": "Erdos507.erdos_507.upper",
@@ -13846,6 +13853,13 @@
    "label": "Erdos66.erdos_66",
    "url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos66.erdos_66",
    "linked": false
+  },
+  {
+   "id": "fc:660",
+   "kind": "statement",
+   "label": "FC 660 (PR #4397)",
+   "stage": "in-pr",
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4397"
   },
   {
    "id": "fc:663",
@@ -24734,6 +24748,13 @@
    "evidence": "FormalConjectures file exists"
   },
   {
+   "from": "fc:506",
+   "to": "erdos:506",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "open FC PR #4396 proposes the statement"
+  },
+  {
    "from": "fc:507",
    "to": "erdos:507",
    "kind": "derived_from",
@@ -25264,6 +25285,13 @@
    "kind": "derived_from",
    "trust": "declared",
    "evidence": "FormalConjectures file exists"
+  },
+  {
+   "from": "fc:660",
+   "to": "erdos:660",
+   "kind": "derived_from",
+   "trust": "declared",
+   "evidence": "open FC PR #4397 proposes the statement"
   },
   {
    "from": "fc:663",

@@ -4,15 +4,15 @@
   "counts": {
     "blocked-claim": 3,
     "defer": 0,
-    "docstring": 9,
+    "docstring": 8,
     "done": 98,
     "hypothesis-conditional": 7,
-    "in-pr": 298,
+    "in-pr": 301,
     "link": 0,
     "mismatch": 2,
     "needs-human-match-check": 2,
     "needs-statement-update": 1,
-    "no-proof": 713,
+    "no-proof": 711,
     "partial": 7,
     "statement": 76,
     "wont-fix": 1
@@ -31,7 +31,7 @@
     1148,
     1197
   ],
-  "generated_at": "2026-07-04",
+  "generated_at": "2026-07-05",
   "held_for_review": [],
   "hosted_proofs_tracked": 211,
   "rows": [
@@ -20326,9 +20326,16 @@
       }
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-506-circles",
+          "number": 4396,
+          "title": "feat(ErdosProblems/506): add circles-determined-by-n-points statement",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4396"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "decidable",
       "erdos_url": "https://www.erdosproblems.com/506",
@@ -20349,7 +20356,7 @@
       "problem": 506,
       "proof_links": [],
       "proof_sources": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "source_tags": "",
       "wiki": null
     },
@@ -26013,9 +26020,16 @@
       }
     },
     {
-      "bucket": "no-proof",
+      "bucket": "in-pr",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos-660-distances",
+          "number": 4397,
+          "title": "feat(ErdosProblems/660): add convex-polyhedron distinct-distances statement",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4397"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "open",
       "erdos_url": "https://www.erdosproblems.com/660",
@@ -26036,7 +26050,7 @@
       "problem": 660,
       "proof_links": [],
       "proof_sources": [],
-      "recommended_action": "No action until a hosted proof appears.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "source_tags": "",
       "wiki": null
     },
@@ -33426,9 +33440,22 @@
       "wiki": null
     },
     {
-      "bucket": "docstring",
+      "bucket": "in-pr",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "fix-erdos-865-status",
+          "number": 4395,
+          "title": "fix(ErdosProblems): mark 865 as formally solved",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4395"
+        },
+        {
+          "head_ref": "feat/erdos-status-autofix",
+          "number": 4367,
+          "title": " feat(tooling): implement auto-fixer for Erdos statuses and automate via GitHub Actions",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4367"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/865",
@@ -33461,7 +33488,7 @@
       "proof_sources": [
         "jayyhk"
       ],
-      "recommended_action": "Add only a docstring note if useful; do not add formal_proof.",
+      "recommended_action": "Skip because an open PR already touches this problem.",
       "source_tags": "\u02b2",
       "wiki": {
         "ai_systems": [

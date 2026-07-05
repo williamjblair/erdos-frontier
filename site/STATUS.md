@@ -1,6 +1,6 @@
 # Erdős frontier — proof status
 
-*Regenerated 2026-07-04 by [`erdos_frontier.py`](../erdos_frontier.py). Do not edit by hand.*
+*Regenerated 2026-07-05 by [`erdos_frontier.py`](../erdos_frontier.py). Do not edit by hand.*
 
 This is a **computed** view, not a hand-kept list. It joins erdosproblems.com, Formal Conjectures, hosted Lean proof indexes, live open PRs, and explicit human overrides on the problem number so the status cannot drift silently.
 
@@ -18,14 +18,14 @@ Reconciled **1217** problems.
 | `needs-human-match-check` | 2 | **Needs match-check.** A hosted proof exists, but the proof/statement relation has not been audited. |
 | `mismatch` | 2 | **Skip for now.** The hosted proof is complete, but it does not prove the boxed FC statement. |
 | `hypothesis-conditional` | 7 | **Do not link as complete.** The theorem carries a non-problem hypothesis even if `#print axioms` is clean. |
-| `docstring` | 9 | **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional, axiomatic, or trust-extended. |
+| `docstring` | 8 | **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional, axiomatic, or trust-extended. |
 | `partial` | 7 | **Partial proof.** Proves a variant, not the full erdosproblems statement. |
 | `blocked-claim` | 3 | **Claimed outside an open PR.** Skip until the claim is resolved. |
-| `in-pr` | 298 | **Claimed by an open FC PR.** Skip to avoid collisions. |
+| `in-pr` | 301 | **Claimed by an open FC PR.** Skip to avoid collisions. |
 | `wont-fix` | 1 | **Maintainer marked `won't fix`.** Skip. |
 | `defer` | 0 | **Deferred.** A human override says to leave this out of the next batch. |
 | `done` | 98 | Already linked in FC. |
-| `no-proof` | 713 | No hosted Lean proof to link yet. |
+| `no-proof` | 711 | No hosted Lean proof to link yet. |
 
 Human override judgments live in [`overrides.yaml`](overrides.yaml). They encode known claims, theorem mismatches, and conditional-proof traps that are not visible in the upstream machine-readable sources.
 
@@ -74,11 +74,11 @@ _none_
 - [1148](https://www.erdosproblems.com/1148)ᵖʲ — Do not add a formal_proof link; document or wait for an unconditional theorem.
 - [1187](https://www.erdosproblems.com/1187)ᵖ — Do not add a formal_proof link; document or wait for an unconditional theorem.
 
-## `docstring` — 9 problem(s)
+## `docstring` — 8 problem(s)
 
 **Docstring note, not a `formal_proof` tag.** The hosted proof is conditional, axiomatic, or trust-extended.
 
-[192](https://www.erdosproblems.com/192)ʲ [231](https://www.erdosproblems.com/231)ʲ [237](https://www.erdosproblems.com/237)ᵖʲ [490](https://www.erdosproblems.com/490)ᵖʲ [610](https://www.erdosproblems.com/610)ʲ [659](https://www.erdosproblems.com/659)ᵖʲ [694](https://www.erdosproblems.com/694)ᵖʲ [865](https://www.erdosproblems.com/865)ʲ [1197](https://www.erdosproblems.com/1197)ᵖʲ
+[192](https://www.erdosproblems.com/192)ʲ [231](https://www.erdosproblems.com/231)ʲ [237](https://www.erdosproblems.com/237)ᵖʲ [490](https://www.erdosproblems.com/490)ᵖʲ [610](https://www.erdosproblems.com/610)ʲ [659](https://www.erdosproblems.com/659)ᵖʲ [694](https://www.erdosproblems.com/694)ᵖʲ [1197](https://www.erdosproblems.com/1197)ᵖʲ
 
 ## `partial` — 7 problem(s)
 

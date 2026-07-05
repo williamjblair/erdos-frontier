@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T09:03:11+00:00",
+  "generated_at": "2026-07-05T09:24:49+00:00",
   "sources": {
     "erdos": {
       "commit": "4dca667491376391fac3bd2f05284d0e41776339",
@@ -12,7 +12,7 @@
     "fidelity": {
       "home": "self (.vela/ -> frontier.json)",
       "kind": "statement_attestations",
-      "sha256": "sha256:de9c589d3ac3bb5f40c7832941a2f826fc68a0fcc54ad773ab0bfb9019916318"
+      "sha256": "sha256:4fb5819ae080def6fd369b8da6cd8da4afa222fe31aae0440cef6f154f9a3ee4"
     },
     "formal_conjectures": {
       "kind": "formal_statement_registry",
