@@ -2,9 +2,9 @@
   "artifacts_hash": "sha256:007ee8d7de4cfbbf0ba501062b50ccef1f523a068a675649a6082caea29581c1",
   "event_log_hash": "sha256:e0fbce4d2cdfd3802d7686ed7f2c4cc1957ae6bf2483e566a358fbcac6957393",
   "frontier_id": "vfr_0a25edabc16db143",
-  "proposal_state_hash": "sha256:6d1741c04fa4f6de1840aa0ee03781ac756f6a7c056d9a7d65b34cc83827bc0f",
+  "proposal_state_hash": "sha256:eb0f888a9b891d1f360f35ac593d41a68571a51becfecde39156242605d08eb4",
   "review_hash": "sha256:bb74af13f787e6f1357d243a3ff50e8efea86aaa7bc83c5291ab04afd0533ace",
   "schema": "vela.frontier_repo_hashes.v0.1",
-  "snapshot_hash": "sha256:031ae22e64f140c5f76ea70485d56078da2a45c064fdc641c582c6cd2dcc7e7a",
+  "snapshot_hash": "sha256:8d69c5f5362b07d3b7cd141338e097dcb46b974a4fc3c4cb25cb154c40ced4d1",
   "sources_hash": "sha256:dddea39aa89321d064df1f4e9d9c749d9a97d4920faa0e5afafae085eb1ca627"
 }
