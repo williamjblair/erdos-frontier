@@ -56,7 +56,7 @@
     "gap": false,
     "negative_space": false,
     "contested": false,
-    "retracted": false,
+    "retracted": true,
     "declining": false,
     "gravity_well": false
   },
