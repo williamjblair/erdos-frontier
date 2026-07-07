@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-07-06T11:06:00+00:00",
+  "generated_at": "2026-07-07T10:03:20+00:00",
   "sources": {
     "erdos": {
-      "commit": "4b26687f6e6ffe95b0c6c21fabeefc6ec012eb91",
+      "commit": "6dc24ad8f74f94d07264fcdec085e136a6e891d5",
       "kind": "problem_registry",
       "ref": "main",
       "repo": "teorth/erdosproblems",
-      "sha256": "sha256:bceff49b5d244597e37af3b57c28f2d5e90ed4f2545b8cca9f79b1cd8bd5642e",
+      "sha256": "sha256:0b817a8f0bc786a24613063d93defe5a862f5fde144a0198cc79455808dfb523",
       "url": "https://raw.githubusercontent.com/teorth/erdosproblems/main/data/problems.yaml"
     },
     "fidelity": {
       "home": "self (.vela/ -> frontier.json)",
       "kind": "statement_attestations",
-      "sha256": "sha256:0a96bf33ff8f83071ba76d3692c1887577b1e56b7c9c0593f7b469418a797f6f"
+      "sha256": "sha256:1ea3e6ca049fbaa147470025c1403ead81f7e62e6695283762fee3ac974da53b"
     },
     "formal_conjectures": {
       "kind": "formal_statement_registry",
       "repo": "google-deepmind/formal-conjectures",
-      "sha256": "sha256:d176db7473fc47ef3c35ca79d1735f2ea2809d2fc3581f326405b1f858125abf",
+      "sha256": "sha256:208647c4f756badf49327a2f8136feb263d5dbf59e39307aa42b9af8c8831a60",
       "url": "https://google-deepmind.github.io/formal-conjectures/data/conjectures.json"
     },
     "gpt_erdos": {

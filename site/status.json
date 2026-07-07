@@ -1,11 +1,11 @@
 {
-  "bloom_formalized_count": 486,
+  "bloom_formalized_count": 496,
   "claims_available": true,
   "counts": {
     "blocked-claim": 3,
     "defer": 0,
     "docstring": 8,
-    "done": 99,
+    "done": 109,
     "hypothesis-conditional": 7,
     "in-pr": 303,
     "link": 0,
@@ -14,7 +14,7 @@
     "needs-statement-update": 1,
     "no-proof": 708,
     "partial": 7,
-    "statement": 76,
+    "statement": 66,
     "wont-fix": 1
   },
   "coverage_gap": [],
@@ -29,7 +29,7 @@
     1148,
     1197
   ],
-  "generated_at": "2026-07-06",
+  "generated_at": "2026-07-07",
   "held_for_review": [],
   "hosted_proofs_tracked": 211,
   "rows": [
@@ -1201,27 +1201,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-2",
-          "number": 4345,
-          "title": "ErdosProblems: add 31, 34, 47, 280 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4345"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/31",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos31.erdos_31",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos31.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/31.lean",
+        "theorem": "Erdos31.erdos_31"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/31.lean@8fd558fc8f3c",
@@ -1266,7 +1259,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -1352,27 +1345,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-2",
-          "number": 4345,
-          "title": "ErdosProblems: add 31, 34, 47, 280 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4345"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/34",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos34.erdos_34",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos34.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/34.lean",
+        "theorem": "Erdos34.erdos_34"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/34.lean@8fd558fc8f3c",
@@ -1417,7 +1403,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -1990,7 +1976,7 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
       "claims": [
         {
@@ -1998,25 +1984,19 @@
           "number": 4354,
           "title": "Add survey-backed Erd\u0151s formalizations",
           "url": "https://github.com/google-deepmind/formal-conjectures/pull/4354"
-        },
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-2",
-          "number": 4345,
-          "title": "ErdosProblems: add 31, 34, 47, 280 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4345"
         }
       ],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/47",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos47.erdos_47",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos47.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/47.lean",
+        "theorem": "Erdos47.erdos_47"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/47.lean@8fd558fc8f3c",
@@ -2061,7 +2041,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": null
     },
@@ -10654,27 +10634,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-2",
-          "number": 4345,
-          "title": "ErdosProblems: add 31, 34, 47, 280 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4345"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/280",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos280.erdos_280",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos280.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/280.lean",
+        "theorem": "Erdos280.erdos_280"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/280.lean@8fd558fc8f3c",
@@ -10719,7 +10692,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -10734,31 +10707,24 @@
       }
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": {
         "category": "new_proof",
         "category_label": "New proofs",
         "source": "gpt-erdos"
       },
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": true,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/281",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos281.erdos_281",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos281.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/281.lean",
+        "theorem": "Erdos281.erdos_281"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/281.lean@4e4447c450b6",
@@ -10805,7 +10771,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -11794,7 +11760,14 @@
     {
       "bucket": "done",
       "candidate_claims": null,
-      "claims": [],
+      "claims": [
+        {
+          "head_ref": "erdos307-barrier-sixty",
+          "number": 4403,
+          "title": "Erd\u0151s 307: strengthen the barrier to |P \u222a Q| \u2265 60 (machine-checked)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4403"
+        }
+      ],
       "discrepancy": false,
       "erdos_state": "verifiable",
       "erdos_url": "https://www.erdosproblems.com/307",
@@ -14876,7 +14849,7 @@
       "erdos_url": "https://www.erdosproblems.com/379",
       "fc": {
         "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos379.erdos_379",
-        "formal_proof_link": "https://github.com/XC0R/formal-conjectures/blob/80a965e9a85d3f3dabd0a398a49adab6742ea6e0/FormalConjectures/ErdosProblems/379.lean#L123",
+        "formal_proof_link": "https://github.com/teorth/analysis/blob/4f623b0f4cacdb967f1f8132db0becaee0f1fb3d/Analysis/Misc/erdos_379.lean#L90",
         "has_file": true,
         "has_proof": true,
         "linked": true,
@@ -16469,27 +16442,20 @@
       }
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "solved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/419",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos419.erdos_419",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos419.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/419.lean",
+        "theorem": "Erdos419.erdos_419"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/419.lean@4e4447c450b6",
@@ -16534,7 +16500,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -17966,27 +17932,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/453",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos453.erdos_453",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos453.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/453.lean",
+        "theorem": "Erdos453.erdos_453"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/453.lean@4e4447c450b6",
@@ -18031,7 +17990,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -18865,27 +18824,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/476",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos476.erdos_476",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos476.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/476.lean",
+        "theorem": "Erdos476.erdos_476"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/476.lean@4e4447c450b6",
@@ -18930,7 +18882,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -20796,27 +20748,20 @@
       "wiki": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/519",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos519.erdos_519",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos519.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/519.lean",
+        "theorem": "Erdos519.erdos_519"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/519.lean@4e4447c450b6",
@@ -20861,7 +20806,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -21671,27 +21616,20 @@
       }
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "candidate_claims": null,
-      "claims": [
-        {
-          "head_ref": "codex/erdos-fc-sync-batch-3",
-          "number": 4346,
-          "title": "ErdosProblems: add 281, 419, 453, 476, 519, 540 (#3998 sync)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4346"
-        }
-      ],
+      "claims": [],
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/540",
       "fc": {
-        "fc_url": null,
-        "formal_proof_link": null,
-        "has_file": false,
-        "has_proof": false,
-        "linked": false,
-        "path": null,
-        "theorem": null
+        "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos540.erdos_540",
+        "formal_proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos540.lean",
+        "has_file": true,
+        "has_proof": true,
+        "linked": true,
+        "path": "FormalConjectures/ErdosProblems/540.lean",
+        "theorem": "Erdos540.erdos_540"
       },
       "fidelity": {
         "formal_ref": "FormalConjectures/ErdosProblems/540.lean@4e4447c450b6",
@@ -21736,7 +21674,7 @@
         "plby",
         "jayyhk"
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "source_tags": "\u1d56\u02b2",
       "wiki": {
         "ai_systems": [
@@ -34344,12 +34282,6 @@
       },
       "claims": [
         {
-          "head_ref": "update-888",
-          "number": 4376,
-          "title": "fix(ErdosProblems): 888",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4376"
-        },
-        {
           "head_ref": "feat/erdos-status-autofix",
           "number": 4367,
           "title": " feat(tooling): implement auto-fixer for Erdos statuses and automate via GitHub Actions",
@@ -38043,12 +37975,6 @@
           "number": 4385,
           "title": "ErdosProblems: add 71, 206, 209, 328, 353, 403, 426, 464, 512, 621, 639, 648 (#3998 sync)",
           "url": "https://github.com/google-deepmind/formal-conjectures/pull/4385"
-        },
-        {
-          "head_ref": "codex/add-erdos-formalizations",
-          "number": 4354,
-          "title": "Add survey-backed Erd\u0151s formalizations",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4354"
         }
       ],
       "discrepancy": false,
@@ -41109,6 +41035,12 @@
       "bucket": "done",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "erdos-1052-formal-proof-link",
+          "number": 4405,
+          "title": "ErdosProblems 1052: add formal_proof (lean4) links for even/87360/Wall unitary perfect statements",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4405"
+        },
         {
           "head_ref": "erdos-1052-link-87360",
           "number": 4360,

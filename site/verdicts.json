@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06",
+  "generated_at": "2026-07-07",
   "rows": [
     {
       "bucket": "in-pr",
@@ -989,14 +989,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/31",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos31.erdos_31",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos31.erdos_31",
       "fidelity_note": "batch-2b statement (PR #4345) for Erd\u0151s 31",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -1006,7 +1006,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 31,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos31.lean",
       "proof_links": [
         {
           "complete": true,
@@ -1027,7 +1027,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/31/Erdos31.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -1101,14 +1101,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/34",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos34.erdos_34",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos34.erdos_34",
       "fidelity_note": "batch-2b statement (PR #4345) for Erd\u0151s 34",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -1118,7 +1118,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 34,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos34.lean",
       "proof_links": [
         {
           "complete": true,
@@ -1139,7 +1139,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/34/Erdos34.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -1604,14 +1604,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/47",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos47.erdos_47",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos47.erdos_47",
       "fidelity_note": "batch-2b statement (PR #4345) for Erd\u0151s 47",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -1621,7 +1621,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 47,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos47.lean",
       "proof_links": [
         {
           "complete": true,
@@ -1642,7 +1642,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/47/Erdos47.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [],
@@ -9439,14 +9439,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/280",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos280.erdos_280",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos280.erdos_280",
       "fidelity_note": "batch-2b statement (PR #4345) for Erd\u0151s 280",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -9456,7 +9456,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 280,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos280.lean",
       "proof_links": [
         {
           "complete": true,
@@ -9477,7 +9477,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/280/Erdos280.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -9490,14 +9490,14 @@
       "wiki_outcome": "Formalization"
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": true,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/281",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos281.erdos_281",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos281.erdos_281",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 281",
       "fidelity_source": "local",
       "gpt_erdos": "new_proof",
@@ -9509,7 +9509,7 @@
       ],
       "non_kernel_axioms": [],
       "problem": 281,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos281.lean",
       "proof_links": [
         {
           "complete": true,
@@ -9530,7 +9530,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/281/Erdos281.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -13027,7 +13027,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 379,
-      "proof_link": "https://github.com/XC0R/formal-conjectures/blob/80a965e9a85d3f3dabd0a398a49adab6742ea6e0/FormalConjectures/ErdosProblems/379.lean#L123",
+      "proof_link": "https://github.com/teorth/analysis/blob/4f623b0f4cacdb967f1f8132db0becaee0f1fb3d/Analysis/Misc/erdos_379.lean#L90",
       "proof_links": [
         {
           "complete": true,
@@ -14399,14 +14399,14 @@
       "wiki_outcome": "Formalization"
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "solved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/419",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos419.erdos_419",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos419.erdos_419",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 419",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -14416,7 +14416,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 419,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos419.lean",
       "proof_links": [
         {
           "complete": true,
@@ -14437,7 +14437,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/419/Erdos419.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -15641,14 +15641,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "disproved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/453",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos453.erdos_453",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos453.erdos_453",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 453",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -15658,7 +15658,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 453,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos453.lean",
       "proof_links": [
         {
           "complete": true,
@@ -15679,7 +15679,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/453/Erdos453.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -16415,14 +16415,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/476",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos476.erdos_476",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos476.erdos_476",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 476",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -16432,7 +16432,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 476,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos476.lean",
       "proof_links": [
         {
           "complete": true,
@@ -16453,7 +16453,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/476/Erdos476.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -17996,14 +17996,14 @@
       "wiki_outcome": null
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/519",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos519.erdos_519",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos519.erdos_519",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 519",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -18013,7 +18013,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 519,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos519.lean",
       "proof_links": [
         {
           "complete": true,
@@ -18034,7 +18034,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/519/Erdos519.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
@@ -18712,14 +18712,14 @@
       "wiki_outcome": "Partial result (Lean)"
     },
     {
-      "bucket": "statement",
+      "bucket": "done",
       "discrepancy": false,
       "erdos_state": "proved (Lean)",
       "erdos_url": "https://www.erdosproblems.com/540",
-      "fc_has_proof": false,
-      "fc_linked": false,
-      "fc_theorem": null,
-      "fc_url": null,
+      "fc_has_proof": true,
+      "fc_linked": true,
+      "fc_theorem": "Erdos540.erdos_540",
+      "fc_url": "https://google-deepmind.github.io/formal-conjectures/theorem/?name=Erdos540.erdos_540",
       "fidelity_note": "batch-2c statement (PR #4346) for Erd\u0151s 540",
       "fidelity_source": "local",
       "gpt_erdos": null,
@@ -18729,7 +18729,7 @@
       "named_assumptions": [],
       "non_kernel_axioms": [],
       "problem": 540,
-      "proof_link": null,
+      "proof_link": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos540.lean",
       "proof_links": [
         {
           "complete": true,
@@ -18750,7 +18750,7 @@
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/540/Erdos540.lean"
         }
       ],
-      "recommended_action": "Write the FC statement and link the matching hosted proof.",
+      "recommended_action": "No action.",
       "signed_by": "reviewer:will-blair",
       "signed_fidelity_verdict": "faithful",
       "wiki_ai_systems": [
