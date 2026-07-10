@@ -29,7 +29,7 @@
     1148,
     1197
   ],
-  "generated_at": "2026-07-09",
+  "generated_at": "2026-07-10",
   "held_for_review": [],
   "hosted_proofs_tracked": 211,
   "rows": [
@@ -10431,6 +10431,12 @@
         "source": "gpt-erdos"
       },
       "claims": [
+        {
+          "head_ref": "erdos-274-abelian-formal-proof",
+          "number": 4415,
+          "title": "ErdosProblems/274: add formal_proof link for the abelian variant",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4415"
+        },
         {
           "head_ref": "codex/latex-docstrings",
           "number": 4004,
@@ -33439,12 +33445,12 @@
       "problem": 865,
       "proof_links": [
         {
-          "complete": false,
-          "conditional": true,
+          "complete": true,
+          "conditional": false,
           "label": "Jayyhk/erdos-lean",
           "partial": false,
           "source": "jayyhk",
-          "state": "axiomatic",
+          "state": "complete",
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean"
         }
       ],

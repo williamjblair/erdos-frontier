@@ -6,14 +6,14 @@
   "fidelity": "sha256:1ea3e6ca0",
   "formal_conjectures": "sha256:208647c4f",
   "gpt_erdos": "sha256:c0f626a47",
-  "jayyhk": "sha256:09cbf636f",
+  "jayyhk": "sha256:0a52b5572",
   "plby": "sha256:56caee303",
   "wiki": "sha256:65f7f510a",
   "williamjblair_lean_proofs": "sha256:b0e681bf4"
  },
  "counts": {
   "nodes": 2790,
-  "edges": 1389,
+  "edges": 1390,
   "by_node_kind": {
    "attestation": 111,
    "claim": 342,
@@ -28,10 +28,10 @@
    "derived_from": 703,
    "replicates": 165,
    "specializes": 2,
-   "supports": 482
+   "supports": 483
   },
   "by_trust": {
-   "declared": 902,
+   "declared": 903,
    "machine": 367,
    "recorded": 9,
    "signed": 111
@@ -16217,7 +16217,7 @@
    "kind": "proof",
    "label": "jayyhk proof of 865",
    "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean",
-   "state": "axiomatic"
+   "state": "complete"
   },
   {
    "id": "proof:jayyhk:867",
@@ -28596,6 +28596,13 @@
    "kind": "replicates",
    "trust": "machine",
    "evidence": "independent hosted proof of the same problem"
+  },
+  {
+   "from": "proof:jayyhk:865",
+   "to": "erdos:865",
+   "kind": "supports",
+   "trust": "declared",
+   "evidence": "producer-declared complete; not yet machine-audited"
   },
   {
    "from": "proof:jayyhk:867",

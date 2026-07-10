@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-09T10:04:20+00:00",
+  "generated_at": "2026-07-10T09:55:44+00:00",
   "sources": {
     "erdos": {
-      "commit": "52b288fdda37b6f14b54f39eb6fb93d2e643a101",
+      "commit": "8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
       "kind": "problem_registry",
       "ref": "main",
       "repo": "teorth/erdosproblems",
@@ -27,11 +27,11 @@
       "sha256": "sha256:c0f626a4792d6b150b79268807ea2f9316f2b09be5475fb6ee1b14f630bc1136"
     },
     "jayyhk": {
-      "commit": "7ff46e5de76b42f21909e5959cd620db82828975",
+      "commit": "32434b3a0859bb1e485fa7e530f38eee73a3debf",
       "kind": "proof_manifest",
       "ref": "main",
       "repo": "Jayyhk/erdos-lean",
-      "sha256": "sha256:09cbf636f50359e8731b6687dd5b5a0e8b0642dd64bcbf6e0672d650ce7161d2",
+      "sha256": "sha256:0a52b5572933426450b12b544141e38a1c185ac97fde18d6927b64a82361ecf4",
       "url": "https://raw.githubusercontent.com/Jayyhk/erdos-lean/main/data/problems.yaml"
     },
     "plby": {

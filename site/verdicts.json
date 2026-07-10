@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09",
+  "generated_at": "2026-07-10",
   "rows": [
     {
       "bucket": "in-pr",
@@ -29543,12 +29543,12 @@
       "proof_link": null,
       "proof_links": [
         {
-          "complete": false,
-          "conditional": true,
+          "complete": true,
+          "conditional": false,
           "label": "Jayyhk/erdos-lean",
           "partial": false,
           "source": "jayyhk",
-          "state": "axiomatic",
+          "state": "complete",
           "url": "https://github.com/Jayyhk/erdos-lean/blob/main/problems/865/Erdos865.lean"
         }
       ],
