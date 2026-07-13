@@ -9,7 +9,7 @@
   "jayyhk": "sha256:0a52b5572",
   "plby": "sha256:56caee303",
   "wiki": "sha256:65f7f510a",
-  "williamjblair_lean_proofs": "sha256:a410a5c26"
+  "williamjblair_lean_proofs": "sha256:e6e68819a"
  },
  "counts": {
   "nodes": 2794,
@@ -14196,9 +14196,9 @@
   {
    "id": "fc:768",
    "kind": "statement",
-   "label": "FC 768 (PR #4089)",
+   "label": "FC 768 (PR #4425)",
    "stage": "in-pr",
-   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4089"
+   "url": "https://github.com/google-deepmind/formal-conjectures/pull/4425"
   },
   {
    "id": "fc:77",
@@ -17735,7 +17735,7 @@
    "id": "proof:vlp:686",
    "kind": "proof",
    "label": "vlp proof of 686",
-   "url": "https://github.com/williamjblair/lean-proofs/blob/main/ErdosProblems/Erdos686AllOwnerAssembly.lean",
+   "url": "https://github.com/williamjblair/lean-proofs/blob/main/ErdosProblems/Erdos686FinalResidual.lean",
    "state": "axioms_clean"
   },
   {
@@ -25662,7 +25662,7 @@
    "to": "erdos:768",
    "kind": "derived_from",
    "trust": "declared",
-   "evidence": "open FC PR #4089 proposes the statement"
+   "evidence": "open FC PR #4425 proposes the statement"
   },
   {
    "from": "fc:77",

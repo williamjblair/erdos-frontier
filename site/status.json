@@ -29,7 +29,7 @@
     1148,
     1197
   ],
-  "generated_at": "2026-07-12",
+  "generated_at": "2026-07-13",
   "held_for_review": [],
   "hosted_proofs_tracked": 215,
   "rows": [
@@ -26995,7 +26995,7 @@
           "partial": false,
           "source": "vlp",
           "state": "axioms_clean",
-          "url": "https://github.com/williamjblair/lean-proofs/blob/main/ErdosProblems/Erdos686AllOwnerAssembly.lean"
+          "url": "https://github.com/williamjblair/lean-proofs/blob/main/ErdosProblems/Erdos686FinalResidual.lean"
         }
       ],
       "proof_sources": [
@@ -29126,12 +29126,6 @@
           "number": 4367,
           "title": " feat(tooling): implement auto-fixer for Erdos statuses and automate via GitHub Actions",
           "url": "https://github.com/google-deepmind/formal-conjectures/pull/4367"
-        },
-        {
-          "head_ref": "formalize-erdos-742",
-          "number": 2200,
-          "title": "feat: formalize Erd\u0151s Problem 742 (Murty-Simon Conjecture)",
-          "url": "https://github.com/google-deepmind/formal-conjectures/pull/2200"
         }
       ],
       "discrepancy": false,
@@ -30099,6 +30093,12 @@
       "bucket": "in-pr",
       "candidate_claims": null,
       "claims": [
+        {
+          "head_ref": "erdos-768",
+          "number": 4425,
+          "title": "Add Erd\u0151s Problem 768 (research solved)",
+          "url": "https://github.com/google-deepmind/formal-conjectures/pull/4425"
+        },
         {
           "head_ref": "erdos-530-768",
           "number": 4089,
