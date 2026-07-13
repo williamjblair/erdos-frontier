@@ -1,4 +1,9 @@
+import hashlib
 import json
+
+import yaml
+
+import erdos_frontier
 
 from erdos_frontier import (
     Claim,
@@ -467,3 +472,78 @@ def test_candidate_claim_rides_the_row_and_the_cross_reference():
     assert feed["rows"][0]["gpt_erdos"] == "new_proof"
     assert {"problem": 281, "machine_verdict": "conditional", "gpt_erdos": "new_proof"} \
         in feed["summary"]["cross_reference"]
+
+
+def test_source_lock_refresh_preserves_operational_pins_and_selected_paths(
+    tmp_path, monkeypatch
+):
+    frozen_payload = b"frozen registry"
+    frozen_path = tmp_path / "sources" / "frozen.json"
+    frozen_path.parent.mkdir()
+    frozen_path.write_bytes(frozen_payload)
+    (tmp_path / "sources.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "sources": {
+                    "live": {
+                        "kind": "proof_manifest",
+                        "repo": "example/live",
+                        "ref": "main",
+                        "path": "data/proofs.yaml",
+                        "url": "https://example.invalid/proofs.yaml",
+                    },
+                    "frozen": {
+                        "kind": "frozen_snapshot",
+                        "repo": "example/frozen",
+                        "commit": "c" * 40,
+                        "path": "sources/frozen.json",
+                        "paths": ["README.md"],
+                    },
+                }
+            }
+        )
+    )
+    work_sources = {
+        "producer": {
+            "repo": "example/producer",
+            "commit": "a" * 40,
+            "paths": ["proofs.yaml"],
+            "sha256": "sha256:" + "b" * 64,
+        }
+    }
+    (tmp_path / "sources.lock.json").write_text(
+        json.dumps(
+            {
+                "generated_at": "old",
+                "sources": {"stale": {"sha256": "sha256:stale"}},
+                "work_sources": work_sources,
+            }
+        )
+        + "\n"
+    )
+
+    live_payload = b"live registry"
+
+    def fake_fetch(url, _headers=None):
+        if "api.github.com" in url:
+            return json.dumps({"sha": "d" * 40}).encode()
+        return live_payload
+
+    monkeypatch.setattr(erdos_frontier, "claims_headers", lambda: {})
+    monkeypatch.setattr(erdos_frontier, "fetch", fake_fetch)
+
+    refreshed = erdos_frontier.write_sources_lock(tmp_path)
+
+    assert refreshed["work_sources"] == work_sources
+    assert "stale" not in refreshed["sources"]
+    assert refreshed["sources"]["live"]["path"] == "data/proofs.yaml"
+    assert refreshed["sources"]["live"]["commit"] == "d" * 40
+    assert refreshed["sources"]["live"]["sha256"] == (
+        "sha256:" + hashlib.sha256(live_payload).hexdigest()
+    )
+    assert refreshed["sources"]["frozen"]["path"] == "sources/frozen.json"
+    assert refreshed["sources"]["frozen"]["paths"] == ["README.md"]
+    assert refreshed["sources"]["frozen"]["commit"] == "c" * 40
+    assert refreshed["sources"]["frozen"]["sha256"] == (
+        "sha256:" + hashlib.sha256(frozen_payload).hexdigest()
+    )

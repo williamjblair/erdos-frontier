@@ -1,0 +1,723 @@
+schema: erdos-frontier.recovered-attempts.v1
+records:
+  - record_id: recovered-erdos-12-v1
+    attempt_id: vat_02273e8429509697
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_0982c345601dffde.json#Erdos12.isGood_example@sha256:ef715580d798185182c4c392d29a85d8ac6845088583a07ecf27c53026e6f8a4'
+    problem: 12
+    classification: importable_attempt
+    claim: >-
+      Erdős #12: the good example (Erdos12.isGood_example). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx — ported AlphaProof reference. Produced by the vela prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_0982c345601dffde.json
+      declaration: Erdos12.isGood_example
+      sha256: sha256:ef715580d798185182c4c392d29a85d8ac6845088583a07ecf27c53026e6f8a4
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lean_kernel, alphaproof_port]
+    named_obstructions: [full_three_part_statement]
+    remaining_obligations:
+      - The source result is the good-example lemma; it does not establish all three parts of Erdős 12.
+
+  - record_id: recovered-erdos-17-v1
+    attempt_id: vat_ea694e0e355e315b
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_5751eab49ec9d684.json#Erdos17.isClusterPrime_97_isLeast_non_cluster@sha256:70d019b615f0a94e3cda9a9d7a220971e99b573d9bc34d17da0f427cca642840'
+    problem: 17
+    classification: importable_attempt
+    claim: >-
+      Erdős #17: 97 is the least non-cluster-prime (Erdos17.isClusterPrime_97_isLeast_non_cluster). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx — via a decidable reformulation (cluster_iff) + interval_cases. Produced by the prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_5751eab49ec9d684.json
+      declaration: Erdos17.isClusterPrime_97_isLeast_non_cluster
+      sha256: sha256:70d019b615f0a94e3cda9a9d7a220971e99b573d9bc34d17da0f427cca642840
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lean_kernel, decidable_reformulation, interval_cases]
+    named_obstructions: [cluster_prime_infinitude]
+    remaining_obligations:
+      - Prove that the set of cluster primes is infinite.
+
+  - record_id: recovered-erdos-18-v1
+    attempt_id: vat_0cd8d57beb510c6d
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_f563216b028daf69.json#Erdos18.practicalH_six@sha256:4ebac30f7bb406967946c3434544d3178831c48cd06cfd8b178530e9a4f47770'
+    problem: 18
+    classification: importable_attempt
+    claim: >-
+      Erdős #18: 6 is a practical number (Erdos18.practicalH_six). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx — via le_antisymm. Produced by the vela prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_f563216b028daf69.json
+      declaration: Erdos18.practicalH_six
+      sha256: sha256:4ebac30f7bb406967946c3434544d3178831c48cd06cfd8b178530e9a4f47770
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lean_kernel, order_antisymmetry]
+    named_obstructions: [asymptotic_practical_number_questions]
+    remaining_obligations:
+      - The finite value practicalH 6 = 2 does not establish the asymptotic parts of Erdős 18.
+
+  - record_id: recovered-erdos-42-v1
+    attempt_id: vat_a2cafb68508935da
+    evidence_key: 'source:vela-science/vela-internal@3c874050fc0ef0f56ff7898845b5a1e70b533f94:examples/erdos-problems/attack/erdos42-lean-resolution-replay.v1.json#Erdos42.FormalConjecturesShape.erdos_42_via_cayley@sha256:e2b196c731ce94163991161596cc03431bcdf66d5a2004421dbef26f956ea2ef'
+    problem: 42
+    classification: importable_attempt
+    claim: >-
+      Erdős problem #42 is marked SOLVED (LEAN) by erdosproblems.com, and the linked Lean proof file type-checks locally with only Mathlib core axioms reported.
+    source:
+      repository: vela-science/vela-internal
+      commit: 3c874050fc0ef0f56ff7898845b5a1e70b533f94
+      path: examples/erdos-problems/attack/erdos42-lean-resolution-replay.v1.json
+      declaration: Erdos42.FormalConjecturesShape.erdos_42_via_cayley
+      sha256: sha256:e2b196c731ce94163991161596cc03431bcdf66d5a2004421dbef26f956ea2ef
+    activity_type: audit
+    mathematical_scope: full
+    trust: machine_reproduced
+    lifecycle: historical
+    location: git_history_only
+    method_families: [lean_kernel_replay, pinned_external_proof_audit]
+    named_obstructions: []
+    remaining_obligations: []
+
+  - record_id: recovered-erdos-64-v1
+    attempt_id: vat_9430dce340578f1e
+    evidence_key: 'source:vela-science/vela-internal@ae9a4f1a2351d163a951a695dfc3c32a568a161f:examples/erdos-problems/attack/erdos64-girth5-exhaustive.v1.json@sha256:2da44d876a43c44c7e1551209f5272b656bc1e7b867523882d3aa862ab0726fa'
+    problem: 64
+    classification: importable_attempt
+    claim: >-
+      EXHAUSTIVE NULL: every girth>=5 cubic graph on <= 22 vertices has a power-of-two cycle
+    source:
+      repository: vela-science/vela-internal
+      commit: ae9a4f1a2351d163a951a695dfc3c32a568a161f
+      path: examples/erdos-problems/attack/erdos64-girth5-exhaustive.v1.json
+      sha256: sha256:2da44d876a43c44c7e1551209f5272b656bc1e7b867523882d3aa862ab0726fa
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: banked
+    location: git_history_only
+    method_families: [nauty_exhaustion, exact_cycle_detection, networkx_crosscheck, cp_sat_crosscheck]
+    named_obstructions: [unbounded_graph_order, non_cubic_regime]
+    remaining_obligations:
+      - Cover graph orders above 22 and every graph class outside the source's connected cubic girth-at-least-5 regime.
+
+  - record_id: recovered-erdos-92-v1
+    attempt_id: vat_c0f415a9241cd81b
+    evidence_key: 'source:vela-science/vela-internal@fbdf4cfb31ebd2c44eaada488e1f3217739477de:scripts/foundry/prover-wave/ERDOS92_BDDABOVE_SIGNING_BRIEF.md#Erdos92.possible_f_values_BddAbove@sha256:542d58829dbfcc677cad03fc372975f36d8fb28f20fdf8f682ee6ceafd33f813'
+    problem: 92
+    classification: importable_attempt
+    claim: >-
+      theorem possible_f_values_BddAbove (n : Nat) : BddAbove (possible_f_values n)
+    source:
+      repository: vela-science/vela-internal
+      commit: fbdf4cfb31ebd2c44eaada488e1f3217739477de
+      path: scripts/foundry/prover-wave/ERDOS92_BDDABOVE_SIGNING_BRIEF.md
+      declaration: Erdos92.possible_f_values_BddAbove
+      sha256: sha256:542d58829dbfcc677cad03fc372975f36d8fb28f20fdf8f682ee6ceafd33f813
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: recorded
+    lifecycle: paused
+    location: non_main_ref
+    method_families: [finite_set_cardinality, supremum_bound, lean_kernel]
+    named_obstructions: [asymptotic_weak_variant, asymptotic_strong_variant]
+    remaining_obligations:
+      - The asymptotic Erdős 92 weak and strong variants remain open.
+
+  - record_id: recovered-erdos-128-v1
+    attempt_id: vat_0952ae5155f1e091
+    evidence_key: 'source:vela-science/vela-internal@e2193f365c873ad0edf023c35426686980f0abe8:examples/erdos-problems/attack/erdos128-c5-blowup-bound-draft.v1.json@sha256:b9c88db8f56e7ca5ac00447e1ad819e972674ae6a783cb17045e6fa9648423f7'
+    problem: 128
+    classification: importable_attempt
+    claim: >-
+      For every weighted blow-up of C5 with part weights x_i >= 0 and sum x_i = 1, there is a fractional half-subgraph with C5 edge density at most 1/50. The balanced blow-up attains equality.
+    source:
+      repository: vela-science/vela-internal
+      commit: e2193f365c873ad0edf023c35426686980f0abe8
+      path: examples/erdos-problems/attack/erdos128-c5-blowup-bound-draft.v1.json
+      sha256: sha256:b9c88db8f56e7ca5ac00447e1ad819e972674ae6a783cb17045e6fa9648423f7
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [weighted_blowup, exact_inequality, extremal_graph_reduction]
+    named_obstructions: [non_c5_triangle_free_graphs, finite_rounding, alternative_structural_constructions]
+    remaining_obligations:
+      - Treat non-C5 triangle-free graphs, finite rounding effects, and other structural constructions.
+
+  - record_id: recovered-erdos-138-v1
+    attempt_id: vat_921daf16744f90f9
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_9187dee2044a07ec.json#Erdos138.monoAPNumber_two_one@sha256:b7194beb6e40170d5551a41f54cc67ab615f0682b796ae563388a6a38d64b146'
+    problem: 138
+    classification: importable_attempt
+    claim: >-
+      Erdős #138: W(1) = 1 (Erdos138.monoAPNumber_two_one). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx — via sInf le_antisymm. Produced by the prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_9187dee2044a07ec.json
+      declaration: Erdos138.monoAPNumber_two_one
+      sha256: sha256:b7194beb6e40170d5551a41f54cc67ab615f0682b796ae563388a6a38d64b146
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lean_kernel, sInf, order_antisymmetry]
+    named_obstructions: [van_der_waerden_asymptotics]
+    remaining_obligations:
+      - The source's W(1) evaluation does not establish the limiting statement in Erdős 138.
+
+  - record_id: recovered-erdos-141-v1
+    attempt_id: vat_ea17a3257375c638
+    evidence_key: 'source:williamjblair/formal-conjectures@8f6648ff0fbd771db53859cd436d37a8d6a68a57:FormalConjectures/ErdosProblems/141.lean#Erdos141.exists_three_consecutive_primes_in_ap@sha256:a46f65c9f84f55e87a8955ae139a7ca33d8319a9f6f51a9dd2299c3ec64f41c4'
+    problem: 141
+    classification: importable_attempt
+    claim: >-
+      theorem exists_three_consecutive_primes_in_ap : ∃ (s : Set ℕ), s.IsAPAndPrimeProgressionOfLength 3 := by
+    source:
+      repository: williamjblair/formal-conjectures
+      commit: 8f6648ff0fbd771db53859cd436d37a8d6a68a57
+      path: FormalConjectures/ErdosProblems/141.lean
+      declaration: Erdos141.exists_three_consecutive_primes_in_ap
+      sha256: sha256:a46f65c9f84f55e87a8955ae139a7ca33d8319a9f6f51a9dd2299c3ec64f41c4
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: historical
+    location: non_main_ref
+    method_families: [explicit_witness, lean_kernel]
+    named_obstructions: [arbitrary_progression_length]
+    remaining_obligations:
+      - Establish the corresponding existence statement for every k at least 3.
+
+  - record_id: recovered-erdos-154-v1
+    attempt_id: vat_628a0dccd56b9645
+    evidence_key: 'source:williamjblair/lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos154Sumset.lean#Erdos154.erdos_154_sumset@sha256:9ac3fc83bbeba2df4739b5f3d69130876d99ea09c47d0c30977339904d74f457'
+    problem: 154
+    classification: importable_attempt
+    claim: |-
+      theorem erdos_154_sumset :
+          ∀ (m : ℕ) (_hm : 2 ≤ m) (N : ℕ → ℕ) (A : ℕ → Finset ℕ),
+            Tendsto (fun k => (N k : ℝ)) atTop atTop →
+            (∀ k, ∀ x ∈ A k, x ≤ N k) →
+            (∀ k, IsSidon (A k : Set ℕ)) →
+            Tendsto (fun k => ((A k).card : ℝ) / Real.sqrt (N k)) atTop (nhds 1) →
+            ∀ i < m, Tendsto
+              (fun k => (((A k + A k).filter (fun s => s % m = i)).card : ℝ) / ((A k + A k).card : ℝ))
+              atTop (nhds (1 / m)) := by
+    source:
+      repository: williamjblair/lean-proofs
+      commit: eab646ceae7f270c024d5d08a8917305b07fd35d
+      path: ErdosProblems/Erdos154Sumset.lean
+      declaration: Erdos154.erdos_154_sumset
+      sha256: sha256:9ac3fc83bbeba2df4739b5f3d69130876d99ea09c47d0c30977339904d74f457
+    activity_type: theorem
+    mathematical_scope: full
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lindstrom_theorem, sidon_sets, asymptotic_equidistribution, lean_kernel]
+    named_obstructions: []
+    remaining_obligations: []
+
+  - record_id: recovered-erdos-257-v1
+    attempt_id: vat_d1b6599eaf5c9e76
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_2df66520d12cbb35.json#Erdos257.erdos_257.variants.tsum_top_eq@sha256:a44e5d9b1ded13950e5913a3c877b209aabbc84018eaf9c575ea0b0b9771f275'
+    problem: 257
+    classification: importable_attempt
+    claim: >-
+      The Lean 4 theorem `Erdos257.erdos_257.variants.tsum_top_eq` is proven and kernel-verified (axioms: propext, Classical.choice, Quot.sound; no sorryAx): the Lambert-series identity ∑_{n≥1} 1/(2^n - 1) = ∑_{n≥1} d(n)/2^n, where d(n) is the number of divisors of n. Closes a previously-open, UNCLAIMED `sorry` (category: textbook) in google-deepmind/formal-conjectures Erdős Problem 257.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_2df66520d12cbb35.json
+      declaration: Erdos257.erdos_257.variants.tsum_top_eq
+      sha256: sha256:a44e5d9b1ded13950e5913a3c877b209aabbc84018eaf9c575ea0b0b9771f275
+    activity_type: theorem
+    mathematical_scope: variant
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [lambert_series, divisor_counting, infinite_sums, lean_kernel]
+    named_obstructions: [original_set_theoretic_statement]
+    remaining_obligations:
+      - The source proves the displayed Lambert-series variant, not the full original Erdős 257 statement.
+
+  - record_id: recovered-erdos-364-v1
+    attempt_id: vat_484c9076261628cf
+    evidence_key: 'source:vela-science/vela-internal@9bdac2f66b17f37fb3267fd296d5635f6b0e209b:docs/history/2026-07-05-erdos-establishment.md@sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d'
+    problem: 364
+    classification: importable_attempt
+    claim: >-
+      Erdős #364, finite confirmation: no three consecutive powerful integers in [1, 1000000] (consecutive powerful pairs do occur, e.g. 8,9). The question over all integers is the open problem.
+    source:
+      repository: vela-science/vela-internal
+      commit: 9bdac2f66b17f37fb3267fd296d5635f6b0e209b
+      path: docs/history/2026-07-05-erdos-establishment.md
+      sha256: sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: machine_reproduced
+    lifecycle: banked
+    location: current_commit
+    method_families: [spf_sieve, exhaustive_bounded_search, frozen_witness_reproduction]
+    named_obstructions: [unbounded_integer_range]
+    remaining_obligations:
+      - Prove or disprove the claim over all positive integers.
+
+  - record_id: recovered-erdos-375-v1
+    attempt_id: vat_52680301dbdb4d3b
+    evidence_key: 'source:vela-science/vela-internal@7815f5fd21f13df75f77c0ea0fd9637b095b1fb3:examples/erdos-problems/attack/erdos375-prime-sdr-search.v1.json@sha256:b79a4cad4af430cdbe108856a6a98a1546b52540d8442b5118a686c978fb546d'
+    problem: 375
+    classification: importable_attempt
+    claim: >-
+      every composite run up to limit has an SDR (honest null)
+    source:
+      repository: vela-science/vela-internal
+      commit: 7815f5fd21f13df75f77c0ea0fd9637b095b1fb3
+      path: examples/erdos-problems/attack/erdos375-prime-sdr-search.v1.json
+      sha256: sha256:b79a4cad4af430cdbe108856a6a98a1546b52540d8442b5118a686c978fb546d
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [bipartite_matching, hall_violation_search, exhaustive_bounded_search]
+    named_obstructions: [unbounded_composite_runs]
+    remaining_obligations:
+      - Replace the bounded search through 12000000 with a uniform argument or a counterexample.
+
+  - record_id: recovered-erdos-398-v1
+    attempt_id: vat_6b97fb5d618568e6
+    evidence_key: 'source:vela-science/vela-internal@9bdac2f66b17f37fb3267fd296d5635f6b0e209b:docs/history/2026-07-05-erdos-establishment.md@sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d'
+    problem: 398
+    classification: importable_attempt
+    claim: >-
+      Erdős #398 (Brocard), finite confirmation: for all 1 ≤ n ≤ 2000, n!+1 is a perfect square exactly for n ∈ {4,5,7}; every other n carries a quadratic-non-residue certificate. The conjecture over all n remains open.
+    source:
+      repository: vela-science/vela-internal
+      commit: 9bdac2f66b17f37fb3267fd296d5635f6b0e209b
+      path: docs/history/2026-07-05-erdos-establishment.md
+      sha256: sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: machine_reproduced
+    lifecycle: banked
+    location: current_commit
+    method_families: [quadratic_nonresidue_certificate, exact_modular_arithmetic, frozen_witness_reproduction]
+    named_obstructions: [unbounded_factorial_range]
+    remaining_obligations:
+      - Settle Brocard's equation for every n greater than 2000.
+
+  - record_id: recovered-erdos-427-v1
+    attempt_id: vat_1f0ef73eb9b0dd0b
+    evidence_key: 'source:vela-science/vela-internal@5b755546df2dcc7155b37207d7f15adcc1bb4ca2:examples/erdos-problems/attack/erdos427-shiu-reduction-draft.v1.json#Erdos427.erdos_427@sha256:460b74e862c8d4a4869d36c3e16210c48d33d22538349f1cabf70012cac81973'
+    problem: 427
+    classification: importable_attempt
+    claim: >-
+      For all n >= 0 and all d >= 1, there exists k >= 1 such that d divides the sum of k consecutive primes starting at the (n+1)-st prime, in the 0-indexed Lean convention.
+    source:
+      repository: vela-science/vela-internal
+      commit: 5b755546df2dcc7155b37207d7f15adcc1bb4ca2
+      path: examples/erdos-problems/attack/erdos427-shiu-reduction-draft.v1.json
+      declaration: Erdos427.erdos_427
+      sha256: sha256:460b74e862c8d4a4869d36c3e16210c48d33d22538349f1cabf70012cac81973
+    activity_type: theorem
+    mathematical_scope: conditional
+    trust: recorded
+    lifecycle: paused
+    location: git_history_only
+    method_families: [shiu_consecutive_primes, modular_cleanup, lean_reduction]
+    named_obstructions: [external_shiu_theorem_boundary, statement_fidelity_review]
+    remaining_obligations:
+      - Formalize or otherwise discharge the single external Shiu theorem boundary and review the official statement mapping.
+
+  - record_id: recovered-erdos-475-v1
+    attempt_id: vat_04adb8ecda1541cc
+    evidence_key: 'source:vela-science/vela-internal@9bdac2f66b17f37fb3267fd296d5635f6b0e209b:docs/history/2026-07-05-erdos-establishment.md@sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d'
+    problem: 475
+    classification: importable_attempt
+    claim: >-
+      Erdős #475 (distinct partial sums), finite confirmation: for every prime p ∈ {2,3,5,7,11,13}, all nonempty A ⊆ F_p\{0} admit an ordering with distinct partial sums mod p (subset counts 1,3,15,63,1023,4095 checked exhaustively). The question over all primes is the open problem.
+    source:
+      repository: vela-science/vela-internal
+      commit: 9bdac2f66b17f37fb3267fd296d5635f6b0e209b
+      path: docs/history/2026-07-05-erdos-establishment.md
+      sha256: sha256:92d14c77eb806524315af1b3931dedbf753b5eceb454f31e3abbebf04cd4d32d
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: machine_reproduced
+    lifecycle: banked
+    location: current_commit
+    method_families: [exhaustive_subset_enumeration, distinct_partial_sums, frozen_witness_reproduction]
+    named_obstructions: [uniform_all_prime_argument]
+    remaining_obligations:
+      - Prove or disprove the statement for every prime above 13.
+
+  - record_id: recovered-erdos-573-v1
+    attempt_id: vat_ce65265f51f2f7c7
+    evidence_key: 'source:vela-science/vela-internal@5fb261cead755bb11acb1977a31752df1d21e97a:examples/erdos-problems/attack/erdos573-incidence-construction.v1.json@sha256:3f7a994126f321b0ab8fc4d857c0d0c03814667ba0dbf69d9b9370cf951ac0d6'
+    problem: 573
+    classification: importable_attempt
+    claim: >-
+      verified lower-bound improvement(s) at unpublished n
+    source:
+      repository: vela-science/vela-internal
+      commit: 5fb261cead755bb11acb1977a31752df1d21e97a
+      path: examples/erdos-problems/attack/erdos573-incidence-construction.v1.json
+      sha256: sha256:3f7a994126f321b0ab8fc4d857c0d0c03814667ba0dbf69d9b9370cf951ac0d6
+    activity_type: computation
+    mathematical_scope: partial
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [projective_plane_incidence_graphs, exact_girth_verification, lower_bound_construction]
+    named_obstructions: [optimality_not_established, unpublished_sequence_rows]
+    remaining_obligations:
+      - Establish optimality or stronger bounds and independently adjudicate the unpublished sequence rows.
+
+  - record_id: recovered-erdos-617-v1
+    attempt_id: vat_f2da80d2105e62ec
+    evidence_key: 'source:williamjblair/lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos617.lean#Erdos617.statement_five_of_extension_demand@sha256:d333db5483ea2cffed9f393994387d9f27eabd519e519ffe0f90fb7b0e43c72e'
+    problem: 617
+    classification: importable_attempt
+    claim: |-
+      theorem statement_five_of_extension_demand
+          (hdemand : ∀ (V : Type) [Fintype V] [DecidableEq V], Fintype.card V = 26 →
+            ∀ coloring : Sym2 V → Fin 5, Balanced coloring →
+              ∃ (w : V) (τ : Fin 5 → ℕ),
+                (∀ k, ∀ B : Finset V, w ∉ B → IsHittingSet coloring w k B → τ k ≤ B.card) ∧
+                  25 < ∑ k, τ k) :
+          Statement 5 := by
+    source:
+      repository: williamjblair/lean-proofs
+      commit: eab646ceae7f270c024d5d08a8917305b07fd35d
+      path: ErdosProblems/Erdos617.lean
+      declaration: Erdos617.statement_five_of_extension_demand
+      sha256: sha256:d333db5483ea2cffed9f393994387d9f27eabd519e519ffe0f90fb7b0e43c72e
+    activity_type: theorem
+    mathematical_scope: conditional
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [extension_demand, balanced_edge_coloring, lean_kernel]
+    named_obstructions: [k26_extension_demand, lrat_rat_certificate]
+    remaining_obligations:
+      - Prove the K26 extension-demand premise, including a replayable LRAT or RAT certificate if the finite SAT route is used.
+      - Extend the fixed r=5 result to the upstream all-r statement.
+
+  - record_id: recovered-erdos-672-v1
+    attempt_id: vat_3a0e4f1010f2491f
+    evidence_key: 'source:vela-science/vela-internal@9bd3aa7d41ec3b439696a10629d24828772a8571:examples/erdos-problems/attack/erdos672-perfect-power-ap-search.v1.json@sha256:d721bbac5a297a0394d9299414da4ffe00ea70e02f7b6aa89332b22e06a3d1e8'
+    problem: 672
+    classification: importable_attempt
+    claim: >-
+      no perfect-power AP product in box (honest null)
+    source:
+      repository: vela-science/vela-internal
+      commit: 9bd3aa7d41ec3b439696a10629d24828772a8571
+      path: examples/erdos-problems/attack/erdos672-perfect-power-ap-search.v1.json
+      sha256: sha256:d721bbac5a297a0394d9299414da4ffe00ea70e02f7b6aa89332b22e06a3d1e8
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [exact_perfect_power_test, arithmetic_progression_search, exhaustive_bounded_search]
+    named_obstructions: [unbounded_progression_parameters]
+    remaining_obligations:
+      - Replace the finite n, d, and k box with a uniform proof or a counterexample.
+
+  - record_id: recovered-erdos-727-v1
+    attempt_id: vat_d134656bd37b91b9
+    evidence_key: 'source:williamjblair/lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos727.lean#Erdos727.erdosK2_of_explicitDicksonAP12PrimeTupleSupply@sha256:225789a61204d875259b7f5ea0448ee4ea6cc6fe99864a4585f964fbd2ecb1f6'
+    problem: 727
+    classification: importable_attempt
+    claim: |-
+      theorem erdosK2_of_explicitDicksonAP12PrimeTupleSupply
+          (hSupply : ExplicitDicksonAP12PrimeTupleSupplyK2) :
+          erdosFixed 2 :=
+    source:
+      repository: williamjblair/lean-proofs
+      commit: eab646ceae7f270c024d5d08a8917305b07fd35d
+      path: ErdosProblems/Erdos727.lean
+      declaration: Erdos727.erdosK2_of_explicitDicksonAP12PrimeTupleSupply
+      sha256: sha256:225789a61204d875259b7f5ea0448ee4ea6cc6fe99864a4585f964fbd2ecb1f6
+    activity_type: theorem
+    mathematical_scope: conditional
+    trust: recorded
+    lifecycle: banked
+    location: current_commit
+    method_families: [dickson_prime_tuple_reduction, arithmetic_progressions, lean_theorem]
+    named_obstructions: [ExplicitDicksonAP12PrimeTupleSupplyK2, all_fixed_k]
+    remaining_obligations:
+      - Prove the explicit four-prime AP12 supply proposition.
+      - Treat every fixed k at least 2 beyond the conditional k=2 result.
+
+  - record_id: recovered-erdos-730-v1
+    attempt_id: vat_0c8dc882f87af131
+    evidence_key: 'source:williamjblair/lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos730FirstPowerRoutes.lean#Erdos730.FirstPowerRoutes.first_power_fixed_upper_slope@sha256:ba313bb107c06cec137efced15da5a3c334c77082e981ac351b2d8db659d1825'
+    problem: 730
+    classification: importable_attempt
+    claim: |-
+      theorem first_power_fixed_upper_slope
+          (A B C u p z : ℤ) :
+          p ^ 2 ∣
+            quadraticBranch A p B C (u + p * z) -
+              quadraticBranch A p B C u - p * z * B := by
+    source:
+      repository: williamjblair/lean-proofs
+      commit: eab646ceae7f270c024d5d08a8917305b07fd35d
+      path: ErdosProblems/Erdos730FirstPowerRoutes.lean
+      declaration: Erdos730.FirstPowerRoutes.first_power_fixed_upper_slope
+      sha256: sha256:ba313bb107c06cec137efced15da5a3c334c77082e981ac351b2d8db659d1825
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [quadratic_congruence, first_power_block_identity, lean_kernel]
+    named_obstructions: [exhaustive_event_cover_23, explicit_delta_budget_24]
+    remaining_obligations:
+      - Prove the exhaustive common-multiplicity event cover (23).
+      - Supply an explicit positive delta for the uniform budget (24).
+
+  - record_id: recovered-erdos-773-v1
+    evidence_key: 'source:vela-science/vela-internal@040f24977220a65ef9b4aa16bd2d3b07231e4ca3:examples/erdos-problems/attack/erdos773-optimality.v1.json@sha256:0c70ddf6efc80d3e763c38d74062f30f9ca64cb5cf644ce915ada30844f71dd1'
+    problem: 773
+    classification: deferred_with_reason
+    reason: >-
+      The pinned result artifacts contain structured validation rows and a timeout, but no result-level textual claim that can be copied verbatim into an Attempt. A curator must author and review that claim instead of promoting the timeout or synthesizing a conclusion.
+    claim: largest Sidon subset of the first n perfect squares
+    source:
+      repository: vela-science/vela-internal
+      commit: 040f24977220a65ef9b4aa16bd2d3b07231e4ca3
+      path: examples/erdos-problems/attack/erdos773-optimality.v1.json
+      sha256: sha256:0c70ddf6efc80d3e763c38d74062f30f9ca64cb5cf644ce915ada30844f71dd1
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [sidon_square_search, optimality_search]
+    named_obstructions: [solver_timeout, missing_result_level_claim]
+    remaining_obligations:
+      - Author a source-faithful claim for review before importing the activity.
+
+  - record_id: recovered-erdos-828-v1
+    attempt_id: vat_ce0f1705c81b3101
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_99c872a66cc24fb6.json#Erdos828.erdos_828.variants.phi_dvd_self_iff_pow2_pow3@sha256:97627a7d725ced9ce83dc8d3e8fee20ba63ed09d63b362348df66d52331db75e'
+    problem: 828
+    classification: importable_attempt
+    claim: >-
+      The Lean 4 theorem `Erdos828.erdos_828.variants.phi_dvd_self_iff_pow2_pow3` is proven and kernel-verified (axioms: propext, Classical.choice, Quot.sound; no sorryAx): for n : ℕ, Euler's totient φ(n) divides n if and only if n ≤ 1 or n = 2^a · 3^b for some a > 0 and b ≥ 0. Closes a previously-open `sorry` (category: textbook) in google-deepmind/formal-conjectures Erdős Problem 828.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_99c872a66cc24fb6.json
+      declaration: Erdos828.erdos_828.variants.phi_dvd_self_iff_pow2_pow3
+      sha256: sha256:97627a7d725ced9ce83dc8d3e8fee20ba63ed09d63b362348df66d52331db75e
+    activity_type: theorem
+    mathematical_scope: variant
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [euler_totient, divisibility_characterization, lean_kernel]
+    named_obstructions: [shifted_totient_divisibility_infinitude]
+    remaining_obligations:
+      - The source closes the phi(n)-divides-n variant, not the original shifted infinitude question.
+
+  - record_id: recovered-erdos-829-v1
+    attempt_id: vat_850a6e944be1edbb
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_48d089ada508111d.json#Erdos829.sumRep_cubes_three@sha256:101355c48792f80b8e512f18c7a8275f3ff2343e3f624830d332a1a513360c33'
+    problem: 829
+    classification: importable_attempt
+    claim: >-
+      The Lean 4 theorem `Erdos829.sumRep_cubes_three` is proven and kernel-verified (axioms: propext, Classical.choice, Quot.sound; no sorryAx): the number of ordered representations of 3 as a sum of two perfect cubes is 0, i.e. 3 is not the sum of two cubes. Closes a previously-open `sorry` (category: test) in google-deepmind/formal-conjectures Erdős Problem 829.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_48d089ada508111d.json
+      declaration: Erdos829.sumRep_cubes_three
+      sha256: sha256:101355c48792f80b8e512f18c7a8275f3ff2343e3f624830d332a1a513360c33
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [finite_cube_representation, lean_kernel]
+    named_obstructions: [unbounded_representation_limsup]
+    remaining_obligations:
+      - The finite value at 3 does not establish the unbounded representation statement in Erdős 829.
+
+  - record_id: recovered-erdos-835-v1
+    attempt_id: vat_0024e813f77341f7
+    evidence_key: 'source:vela-science/vela-internal@e2193f365c873ad0edf023c35426686980f0abe8:examples/erdos-problems/attack/erdos835-alltop-reduction-draft.v1.json@sha256:c3dd179b01f344ffd0e14a4c9478dfe3663fd3b6007ee196f6a4774439d07cb5'
+    problem: 835
+    classification: importable_attempt
+    claim: >-
+      For odd prime p > 3, Alltop extension/derivation shifts the remaining prime case from LS[p](p-2,p-1,2p-2) to LS[p](p-3,p-2,2p-3).
+    source:
+      repository: vela-science/vela-internal
+      commit: e2193f365c873ad0edf023c35426686980f0abe8
+      path: examples/erdos-problems/attack/erdos835-alltop-reduction-draft.v1.json
+      sha256: sha256:c3dd179b01f344ffd0e14a4c9478dfe3663fd3b6007ee196f6a4774439d07cb5
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [alltop_extension, design_derivation, parameter_audit]
+    named_obstructions: [external_design_theorems, fixed_depth_barrier, remaining_prime_cases]
+    remaining_obligations:
+      - Prove the cited external design-theory inputs and settle the remaining prime cases.
+
+  - record_id: recovered-erdos-848-v1
+    attempt_id: vat_fccaacdbfb4a6283
+    evidence_key: 'source:vela-science/vela-internal@040f24977220a65ef9b4aa16bd2d3b07231e4ca3:examples/erdos-problems/attack/erdos848-square-class-count-certificate-draft.v1.json@sha256:ada860130e66abb6d4ee76c335d55a6bb17e5c3e4897eab018c8101b8046641d'
+    problem: 848
+    classification: importable_attempt
+    claim: >-
+      For every 1 <= b <= 10^10, with M_b=floor((b*10^10+1)/19200000^2), R(b) times the number of 1 <= m <= M_b whose inverse is a square modulo b is at most 813802.
+    source:
+      repository: vela-science/vela-internal
+      commit: 040f24977220a65ef9b4aa16bd2d3b07231e4ca3
+      path: examples/erdos-problems/attack/erdos848-square-class-count-certificate-draft.v1.json
+      sha256: sha256:ada860130e66abb6d4ee76c335d55a6bb17e5c3e4897eab018c8101b8046641d
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: banked
+    location: git_history_only
+    method_families: [square_class_count_certificate, prefix_enumeration, exact_integer_arithmetic]
+    named_obstructions: [sawhney_analytic_boundary, all_finite_n]
+    remaining_obligations:
+      - Formalize the analytic argument that consumes the count certificate.
+      - Settle every finite N rather than only the N=10^10 threshold audit.
+
+  - record_id: recovered-erdos-849-v1
+    attempt_id: vat_834177e9c3b153b9
+    evidence_key: 'source:vela-science/vela-internal@3cb9e4c0dc5acb12a2b204799e557624185ff242:scripts/erdos849_singmaster_verifier.py@sha256:ac22146a1174a72a325d77e999343212cf124195f7e71a11b637bc5518a6c7eb'
+    problem: 849
+    classification: importable_attempt
+    claim: >-
+      Exact exhaustive search (this script) to B=10^18: only N(a)=4 value is 3003; NO value has N(a)>=5; max # of k>=3 reps for any value is 2 (only 3003).
+    source:
+      repository: vela-science/vela-internal
+      commit: 3cb9e4c0dc5acb12a2b204799e557624185ff242
+      path: scripts/erdos849_singmaster_verifier.py
+      sha256: sha256:ac22146a1174a72a325d77e999343212cf124195f7e71a11b637bc5518a6c7eb
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [exact_binomial_enumeration, triangular_closed_form, bounded_exhaustion]
+    named_obstructions: [uniform_multiplicity_bound]
+    remaining_obligations:
+      - Decide the unbounded Singmaster multiplicity question; the B=10^18 search is not a uniform proof.
+
+  - record_id: recovered-erdos-850-v1
+    attempt_id: vat_9701945e004f59f9
+    evidence_key: 'source:vela-science/vela-internal@e2193f365c873ad0edf023c35426686980f0abe8:examples/erdos-problems/attack/erdos850-radical-triples-prefix200m-draft.v1.json@sha256:63cbda147e76ac7adf73f09a35501d93996807af8af70d55eea4c9e1118e158f'
+    problem: 850
+    classification: importable_attempt
+    claim: >-
+      bounded exact prefix search only; a collision would solve positively, but no-collision prefixes are not a full solution
+    source:
+      repository: vela-science/vela-internal
+      commit: e2193f365c873ad0edf023c35426686980f0abe8
+      path: examples/erdos-problems/attack/erdos850-radical-triples-prefix200m-draft.v1.json
+      sha256: sha256:63cbda147e76ac7adf73f09a35501d93996807af8af70d55eea4c9e1118e158f
+    activity_type: computation
+    mathematical_scope: bounded
+    trust: recorded
+    lifecycle: historical
+    location: git_history_only
+    method_families: [radical_sieve, signature_sort, exact_collision_search]
+    named_obstructions: [no_positive_witness_below_200m, unbounded_search]
+    remaining_obligations:
+      - Find a collision beyond the searched prefix or prove one exists uniformly.
+
+  - record_id: recovered-erdos-961-v1
+    attempt_id: vat_d130b904fb65c3f2
+    evidence_key: 'source:vela-science/vela-internal@18e48de26c6ae4e03a4abba95ee59b9c4746f89c:projects/formal-conjectures-lean/.vela/findings/vf_bc277af6cc7a3216.json#Erdos961.erdos_961.variants.sylvester_schur_1_1@sha256:a9f39fa25781d1c2a6145a06a449439870f455e6fee21ecc4837d21ac5f74c87'
+    problem: 961
+    classification: importable_attempt
+    claim: >-
+      The Lean 4 theorem `Erdos961.erdos_961.variants.sylvester_schur_1_1` — Erdos961Prop 1 1  (the n=k=1 instance of Sylvester–Schur: every m ≥ 2 has, in {m}, an element that is not 2-smooth) — is formally proven and kernel-verified in formal-conjectures (zero `sorry`, no extra axioms). Verifier: lean4-kernel + Mathlib (lake build green; the declaration's proof term carries no `sorry` and no extra axioms).
+    source:
+      repository: vela-science/vela-internal
+      commit: 18e48de26c6ae4e03a4abba95ee59b9c4746f89c
+      path: projects/formal-conjectures-lean/.vela/findings/vf_bc277af6cc7a3216.json
+      declaration: Erdos961.erdos_961.variants.sylvester_schur_1_1
+      sha256: sha256:a9f39fa25781d1c2a6145a06a449439870f455e6fee21ecc4837d21ac5f74c87
+    activity_type: theorem
+    mathematical_scope: bounded
+    trust: lean_attested
+    lifecycle: banked
+    location: git_history_only
+    method_families: [sylvester_schur_base_case, lean_kernel]
+    named_obstructions: [general_n_k_statement]
+    remaining_obligations:
+      - Extend the n=k=1 instance to the general Erdős 961 statement.
+
+  - record_id: recovered-erdos-1052-v1
+    attempt_id: vat_5a3f35a34694e860
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_70accdbdab5e703e.json#Erdos1052.even_of_isUnitaryPerfect@sha256:07eb899293b0078f4366106542c1a7f567ef4b22fb3cc4abebeccc40b8887636'
+    problem: 1052
+    classification: importable_attempt
+    claim: >-
+      Erdős #1052: every unitary perfect number is even (Erdos1052.even_of_isUnitaryPerfect). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx — reconstructed ~168 lines. Produced by the vela prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_70accdbdab5e703e.json
+      declaration: Erdos1052.even_of_isUnitaryPerfect
+      sha256: sha256:07eb899293b0078f4366106542c1a7f567ef4b22fb3cc4abebeccc40b8887636
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [unitary_divisor_parity, lean_kernel]
+    named_obstructions: [finiteness_of_unitary_perfect_numbers]
+    remaining_obligations:
+      - Prove that the set of unitary perfect numbers is finite.
+
+  - record_id: recovered-erdos-1054-v1
+    attempt_id: vat_b3f6f95e6bc7305a
+    evidence_key: 'source:constellate-science/formal-conjectures-frontier@a143c351f8488e0c621598307e248373d9dc3374:.vela/findings/vf_abf571f858c4861e.json#Erdos1054.f_undefined_at_3@sha256:823a5fdd57d40b0dd0125327869fc9ebc44857be75b41af314500e5b1d7417e4'
+    problem: 1054
+    classification: importable_attempt
+    claim: >-
+      Erdős #1054: f(5) = 0 (Erdos1054.f_undefined_at_3). Kernel-clean Lean proof — axioms {propext, Classical.choice, Quot.sound}, no sorryAx. Produced by the vela prover-in-the-loop foundry; verified by the Lean kernel.
+    source:
+      repository: constellate-science/formal-conjectures-frontier
+      commit: a143c351f8488e0c621598307e248373d9dc3374
+      path: .vela/findings/vf_abf571f858c4861e.json
+      declaration: Erdos1054.f_undefined_at_3
+      sha256: sha256:823a5fdd57d40b0dd0125327869fc9ebc44857be75b41af314500e5b1d7417e4
+    activity_type: theorem
+    mathematical_scope: partial
+    trust: lean_attested
+    lifecycle: banked
+    location: current_commit
+    method_families: [finite_evaluation, lean_kernel]
+    named_obstructions: [asymptotic_parts_i_ii_iii]
+    remaining_obligations:
+      - The finite evaluation f(5)=0 does not establish the three asymptotic parts of Erdős 1054.

@@ -1411,13 +1411,24 @@ def write_sources_lock(root: str | Path = ".") -> dict:
     """
     import hashlib
     root = Path(root)
+    lock_path = root / "sources.lock.json"
+    previous_work_sources: dict = {}
+    if lock_path.exists():
+        previous = json.loads(lock_path.read_text())
+        existing_work_sources = previous.get("work_sources")
+        if isinstance(existing_work_sources, dict):
+            previous_work_sources = existing_work_sources
     registry = (yaml.safe_load((root / "sources.yaml").read_text()) or {}).get("sources", {})
     headers = claims_headers()
     locked: dict[str, dict] = {}
     for name, spec in registry.items():
         entry: dict = {"kind": spec.get("kind")}
-        if spec.get("repo"):
-            entry["repo"] = spec["repo"]
+        # Repository identity and selected paths are part of the lock even for
+        # URL-backed inputs. Keeping them outside the fetch branches prevents a
+        # routine status refresh from erasing the exact inventory provenance.
+        for field in ("repo", "ref", "path", "paths", "commit", "home"):
+            if spec.get(field) is not None:
+                entry[field] = spec[field]
         try:
             if spec.get("url"):
                 data = fetch(spec["url"])
@@ -1437,7 +1448,6 @@ def write_sources_lock(root: str | Path = ".") -> dict:
                 entry["sha256"] = "sha256:" + hashlib.sha256(
                     (root / "frontier.json").read_bytes()).hexdigest()
             elif spec.get("path") and (root / spec["path"]).exists():
-                entry["path"] = spec["path"]
                 entry["sha256"] = "sha256:" + hashlib.sha256(
                     (root / spec["path"]).read_bytes()).hexdigest()
         except (urllib.error.URLError, OSError) as exc:
@@ -1445,7 +1455,9 @@ def write_sources_lock(root: str | Path = ".") -> dict:
         locked[name] = entry
     stamp = _datetime.datetime.now(_datetime.timezone.utc).replace(microsecond=0).isoformat()
     out = {"generated_at": stamp, "sources": locked}
-    (root / "sources.lock.json").write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
+    if previous_work_sources:
+        out["work_sources"] = previous_work_sources
+    lock_path.write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
     return out
 
 
@@ -1470,4 +1482,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

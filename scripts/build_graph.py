@@ -43,6 +43,13 @@ import pathlib
 import re
 import sys
 
+from build_work_inventory import write_outputs as write_work_outputs
+from build_recovered_attempt_ledger import (
+    LEDGER_PATH as RECOVERED_LEDGER_PATH,
+    MAPPING_PATH as RECOVERED_MAPPING_PATH,
+    rendered_outputs as render_recovered_attempt_outputs,
+)
+
 HERE = pathlib.Path(__file__).resolve().parent.parent
 STATUS = HERE / "site" / "status.json"
 VERDICTS = HERE / "site" / "verdicts.json"
@@ -254,6 +261,15 @@ def main() -> int:
     print(f"  node kinds: {c['by_node_kind']}")
     print(f"  edge kinds: {c['by_edge_kind']}")
     print(f"  trust:      {c['by_trust']}")
+    recovered_ledger, recovered_mapping = render_recovered_attempt_outputs()
+    RECOVERED_LEDGER_PATH.write_bytes(recovered_ledger)
+    RECOVERED_MAPPING_PATH.write_bytes(recovered_mapping)
+    work = write_work_outputs()
+    print(
+        "work inventory: "
+        f"{work['counts']['mathematical_work']} mathematical-work problems; "
+        f"{work['operational']['nodes']} operational nodes"
+    )
     return 0
 
 

@@ -12,7 +12,7 @@ scope:
 carina:
   kernel: carina@0.1.0
 vela:
-  reducer: vela@0.757.0
+  reducer: vela@0.758.11
 paths:
   state: frontier.json
   sources: sources/
@@ -31,3 +31,11 @@ dependencies:
   frontiers: []
   packages: []
   adapters: []
+  frontiers_v2:
+  - name: formal-conjectures-frontier
+    source: vela.hub
+    version: null
+    pinned_hash: null
+    vfr_id: vfr_97d7d25957384f80
+    locator: https://raw.githubusercontent.com/constellate-science/formal-conjectures-frontier/a143c351f8488e0c621598307e248373d9dc3374/frontier.json
+    pinned_snapshot_hash: sha256:48ec4e84bb4640fa54023db58d7eabc6a713a46b053b6ccc3050414ab18520ec

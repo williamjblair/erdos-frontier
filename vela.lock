@@ -1,17 +1,17 @@
 schema: vela.frontier_lock.v0.1
-generated_at: 2026-07-06T00:32:40.419143+00:00
-vela_version: 0.757.0
+generated_at: 2026-07-13T19:26:22.000710+00:00
+vela_version: 0.758.11
 carina_kernel: carina@0.1.0
 frontier_id: vfr_0a25edabc16db143
 canonicalization:
   json: vela-canonical-json-v0.1
   yaml: vela-yaml-v0.1
 reducer:
-  package: vela@0.757.0
-  digest: sha256:852962067b9bd1aa5a7e0d780001303f7889b582514bb67b1b816e01fdef7bad
+  package: vela@0.758.11
+  digest: sha256:eb41364ead3e5f90daad21b1d5592422211c6f0220e43f49785e430152ddaace
 verifiers:
-  package: vela-verify@0.757.0
-  digest: sha256:e86bceea149e7888678bd325e6bf94ef1dcc668749e51cf4c65063f7e6c4ca98
+  package: vela-verify@0.758.11
+  digest: sha256:e051c801348ad2d6a10fef70d7f9f672131fe2e241f427b08a330730b551d2ec
   kinds:
   - balanced_coloring
   - binom_deficiency
@@ -34,19 +34,25 @@ verifiers:
 carina:
   kernel: carina@0.1.0
   digest: sha256:2de6244bc3c695cd83adf7d17fd9c52b6586ce060874b37814cc35aff340d5ee
-snapshot_hash: sha256:f55a9d986d525f30333cffd91f0cb4e1e1c186efb6d547212b4c2f3041013214
-event_log_hash: sha256:867291ef9aedbad5bb6ffc18a24272d7885fc39c6e828e7c39dfcff976565a55
-proposal_state_hash: sha256:44e8fce35a53445dd4372404250dc8aa8ff3e6c759e70d8875161e1342de2ec1
-sources_hash: sha256:dddea39aa89321d064df1f4e9d9c749d9a97d4920faa0e5afafae085eb1ca627
+snapshot_hash: sha256:d3db36661e28b7570fc8704bf8455b80d8382beded47d069f2c386144d90a238
+event_log_hash: sha256:e16e57f2e39957ddc2fb529e1b715547c27935fa04730e3c78b4a997eb6f4678
+proposal_state_hash: sha256:603efb0a800cb4d968d769956086ed9c6f5b00e86730c8dcc0cc3eba6141f8de
+sources_hash: sha256:a7498dfa9aa43c5309bdcfd67041ecd884ccb409d9b1804358185bd82a50646a
 artifacts_hash: sha256:007ee8d7de4cfbbf0ba501062b50ccef1f523a068a675649a6082caea29581c1
-review_hash: sha256:bb74af13f787e6f1357d243a3ff50e8efea86aaa7bc83c5291ab04afd0533ace
+review_hash: sha256:b53bbedfef72808bf60e37d37d5bfa72d22219f688c9f0c1484b0d947df0101d
 proof_freshness: fresh
 proof:
   latest: proof/latest.json
-  digest: sha256:f9dd0b6a849b421f3b061a8b605fda2117f75ca9f8ea80e87bb4459361c5a73d
+  digest: sha256:b9ad5ebd9e82bd359bc6f41cdef6f62dc04bcb9aba52743be5515e38bd0a8a92
   freshness: fresh
   events_manifest: proof/events.manifest.jsonl
   replay_trace: proof/replay.trace.jsonl
 paths:
   frontier: frontier.json
   events: .vela/events/
+dependencies:
+- name: formal-conjectures-frontier
+  source: vela.hub
+  vfr_id: vfr_97d7d25957384f80
+  locator: https://raw.githubusercontent.com/constellate-science/formal-conjectures-frontier/a143c351f8488e0c621598307e248373d9dc3374/frontier.json
+  pinned_snapshot_hash: sha256:48ec4e84bb4640fa54023db58d7eabc6a713a46b053b6ccc3050414ab18520ec

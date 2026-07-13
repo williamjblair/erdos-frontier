@@ -4,6 +4,7 @@
     "erdos": {
       "commit": "8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
       "kind": "problem_registry",
+      "path": "data/problems.yaml",
       "ref": "main",
       "repo": "teorth/erdosproblems",
       "sha256": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
@@ -21,14 +22,17 @@
       "url": "https://google-deepmind.github.io/formal-conjectures/data/conjectures.json"
     },
     "gpt_erdos": {
+      "commit": "21b48ae6b97279e9fe6781e3744e1cdd835e2cc1",
       "kind": "frozen_snapshot",
       "path": "sources/gpt_erdos/registry.json",
+      "paths": ["README.md"],
       "repo": "neelsomani/gpt-erdos",
       "sha256": "sha256:c0f626a4792d6b150b79268807ea2f9316f2b09be5475fb6ee1b14f630bc1136"
     },
     "jayyhk": {
       "commit": "32434b3a0859bb1e485fa7e530f38eee73a3debf",
       "kind": "proof_manifest",
+      "path": "data/problems.yaml",
       "ref": "main",
       "repo": "Jayyhk/erdos-lean",
       "sha256": "sha256:0a52b5572933426450b12b544141e38a1c185ac97fde18d6927b64a82361ecf4",
@@ -37,15 +41,18 @@
     "plby": {
       "commit": "97957fb9083d6b321843fbb3c1cbff82e076aa66",
       "kind": "proof_manifest",
+      "path": "data/sources.yaml",
       "ref": "main",
       "repo": "plby/lean-proofs",
       "sha256": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
       "url": "https://raw.githubusercontent.com/plby/lean-proofs/main/data/sources.yaml"
     },
     "wiki": {
+      "commit": "c8ad4309d20120c67cb97faa86daa1443acee018",
       "kind": "frozen_snapshot",
       "path": "sources/wiki/registry.json",
-      "repo": "teorth/erdosproblems",
+      "paths": ["AI-contributions-to-Erdős-problems.md"],
+      "repo": "teorth/erdosproblems.wiki",
       "sha256": "sha256:65f7f510a2f2edaafbb73b6a26e365394228bc48b18d3c54e2dee5c01b7bb092"
     },
     "williamjblair_lean_proofs": {
@@ -55,6 +62,53 @@
       "repo": "williamjblair/lean-proofs",
       "sha256": "sha256:e6e68819ab9f803ff2409639e04e5830864ab4947a68ed6d994a6fee92394ac3",
       "url": "https://raw.githubusercontent.com/williamjblair/lean-proofs/main/proofs.yaml"
+    }
+  },
+  "work_sources": {
+    "erdos_frontier_work": {
+      "commit": "121807e20b06eb8148f594dfe13e440181252b0f",
+      "paths": [
+        "attack/attempt-ledger.v2.json",
+        "frontier.json",
+        "site/status.json",
+        "vela.lock"
+      ],
+      "repo": "vela-science/erdos-frontier",
+      "sha256": "sha256:210e6e1b2ca15973f38386a512f1f8fa66bbae72bb1b9acb1daf2e669ab279c7"
+    },
+    "formal_conjectures_frontier": {
+      "commit": "a143c351f8488e0c621598307e248373d9dc3374",
+      "paths": ["frontier.json", "frontier.yaml", "vela.lock"],
+      "repo": "constellate-science/formal-conjectures-frontier",
+      "sha256": "sha256:826ac6da667709f93b3084ab0fd2db62126a34d85162d2c98cea0508098adc1b"
+    },
+    "formal_conjectures_work": {
+      "commit": "8f6648ff0fbd771db53859cd436d37a8d6a68a57",
+      "paths": ["FormalConjectures/ErdosProblems"],
+      "repo": "williamjblair/formal-conjectures",
+      "sha256": "sha256:6d0afbf6609d6c019d2d8c3cc13bcbe5c8de6d5573e9322ca4e94be2c98a2928"
+    },
+    "lean_proofs_work": {
+      "commit": "eab646ceae7f270c024d5d08a8917305b07fd35d",
+      "paths": ["ErdosProblems", "proofs.yaml", "attestations.json"],
+      "repo": "williamjblair/lean-proofs",
+      "sha256": "sha256:4776f7a203c0b70ea6ee59744fc9d2bf554e6ff86874e6b5bda6336a841cc179"
+    },
+    "vela_erdos_history": {
+      "commit": "9bdac2f66b17f37fb3267fd296d5635f6b0e209b",
+      "paths": [
+        "lean/Vela/Research/Erdos",
+        "docs/erdos-attack",
+        "docs/history/erdos-digest"
+      ],
+      "repo": "vela-science/vela-internal",
+      "sha256": "sha256:9644d68aebfb09708f41c228aaad2f3f0afc810c391048d500d654c749ae3f98"
+    },
+    "verified_combinatorics": {
+      "commit": "3f84ebc061123ec29a5147204b269ab83162af34",
+      "paths": ["erdos-617", "erdos-686", "erdos-993"],
+      "repo": "willblair0708/verified-combinatorics",
+      "sha256": "sha256:2c5d531556d13e1c750695d9ae55e0703a57278db2d69009860eb80bda9076be"
     }
   }
 }
