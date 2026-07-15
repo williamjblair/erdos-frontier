@@ -4603,8 +4603,8 @@
       "inferred": false,
       "relation": "pins",
       "source": "repo:erdosproblems",
-      "source_root": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
-      "target": "commit:erdosproblems:8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
+      "source_root": "sha256:f3722cb9ddc03683dbf87071191e6f49d7b0a1dd0e2d83bf560fceed78b40bcd",
+      "target": "commit:erdosproblems:bc249a9d31024640b865925c0153d928269d8e87",
       "trust": "recorded"
     },
     {
@@ -4792,8 +4792,8 @@
       "inferred": false,
       "relation": "pins",
       "source": "repo:plby_lean_proofs",
-      "source_root": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
-      "target": "commit:plby_lean_proofs:1c781f165e1ec943c1d2318dd51b5373460bc543",
+      "source_root": "sha256:4769f97155f15319f43a15480218767eb36f1987020e575f9320d4b66aee432f",
+      "target": "commit:plby_lean_proofs:11198fa2062d910c9919c964463b41768a1b414c",
       "trust": "recorded"
     },
     {
@@ -48787,12 +48787,12 @@
       "trust": "recorded"
     },
     {
-      "id": "commit:erdosproblems:8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
+      "id": "commit:erdosproblems:bc249a9d31024640b865925c0153d928269d8e87",
       "inferred": false,
       "kind": "commit",
-      "label": "8b46f270eeef",
-      "path": "https://github.com/teorth/erdosproblems/commit/8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
-      "source_root": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
+      "label": "bc249a9d3102",
+      "path": "https://github.com/teorth/erdosproblems/commit/bc249a9d31024640b865925c0153d928269d8e87",
+      "source_root": "sha256:f3722cb9ddc03683dbf87071191e6f49d7b0a1dd0e2d83bf560fceed78b40bcd",
       "trust": "recorded"
     },
     {
@@ -48841,12 +48841,12 @@
       "trust": "recorded"
     },
     {
-      "id": "commit:plby_lean_proofs:1c781f165e1ec943c1d2318dd51b5373460bc543",
+      "id": "commit:plby_lean_proofs:11198fa2062d910c9919c964463b41768a1b414c",
       "inferred": false,
       "kind": "commit",
-      "label": "1c781f165e1e",
-      "path": "https://github.com/plby/lean-proofs/commit/1c781f165e1ec943c1d2318dd51b5373460bc543",
-      "source_root": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
+      "label": "11198fa2062d",
+      "path": "https://github.com/plby/lean-proofs/commit/11198fa2062d910c9919c964463b41768a1b414c",
+      "source_root": "sha256:4769f97155f15319f43a15480218767eb36f1987020e575f9320d4b66aee432f",
       "trust": "recorded"
     },
     {
@@ -59843,7 +59843,7 @@
       "plane": "reference",
       "source_root": "sha256:d3db36661e28b7570fc8704bf8455b80d8382beded47d069f2c386144d90a238",
       "trust": "declared",
-      "upstream_state": "open"
+      "upstream_state": "proved"
     },
     {
       "id": "erdos:794",
@@ -63352,7 +63352,7 @@
       "label": "teorth/erdosproblems",
       "path": "https://github.com/teorth/erdosproblems.git",
       "role": "external_reference",
-      "source_root": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
+      "source_root": "sha256:f3722cb9ddc03683dbf87071191e6f49d7b0a1dd0e2d83bf560fceed78b40bcd",
       "trust": "recorded"
     },
     {
@@ -63412,7 +63412,7 @@
       "label": "plby/lean-proofs",
       "path": "https://github.com/plby/lean-proofs.git",
       "role": "external_reference",
-      "source_root": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
+      "source_root": "sha256:4769f97155f15319f43a15480218767eb36f1987020e575f9320d4b66aee432f",
       "trust": "recorded"
     },
     {
@@ -94930,10 +94930,10 @@
       "sha256": "sha256:210e6e1b2ca15973f38386a512f1f8fa66bbae72bb1b9acb1daf2e669ab279c7"
     },
     "erdosproblems": {
-      "commit": "8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
+      "commit": "bc249a9d31024640b865925c0153d928269d8e87",
       "path": "data/problems.yaml",
       "repo": "teorth/erdosproblems",
-      "sha256": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
+      "sha256": "sha256:f3722cb9ddc03683dbf87071191e6f49d7b0a1dd0e2d83bf560fceed78b40bcd",
       "url": "https://raw.githubusercontent.com/teorth/erdosproblems/main/data/problems.yaml"
     },
     "formal_conjectures": {
@@ -94981,10 +94981,10 @@
       "sha256": "sha256:4776f7a203c0b70ea6ee59744fc9d2bf554e6ff86874e6b5bda6336a841cc179"
     },
     "plby_lean_proofs": {
-      "commit": "1c781f165e1ec943c1d2318dd51b5373460bc543",
+      "commit": "11198fa2062d910c9919c964463b41768a1b414c",
       "path": "data/sources.yaml",
       "repo": "plby/lean-proofs",
-      "sha256": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
+      "sha256": "sha256:4769f97155f15319f43a15480218767eb36f1987020e575f9320d4b66aee432f",
       "url": "https://raw.githubusercontent.com/plby/lean-proofs/main/data/sources.yaml"
     },
     "vela_history": {

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-14T08:31:05+00:00",
+  "generated_at": "2026-07-15T08:38:10+00:00",
   "sources": {
     "erdos": {
-      "commit": "8b46f270eeef01ac6904f2d8053a4ea1df2c7c0c",
+      "commit": "bc249a9d31024640b865925c0153d928269d8e87",
       "kind": "problem_registry",
       "path": "data/problems.yaml",
       "ref": "main",
       "repo": "teorth/erdosproblems",
-      "sha256": "sha256:7108dc960b65c891afd4c9555ef76d6607418b321a786a0457f863d75a7a2605",
+      "sha256": "sha256:f3722cb9ddc03683dbf87071191e6f49d7b0a1dd0e2d83bf560fceed78b40bcd",
       "url": "https://raw.githubusercontent.com/teorth/erdosproblems/main/data/problems.yaml"
     },
     "fidelity": {
@@ -41,12 +41,12 @@
       "url": "https://raw.githubusercontent.com/Jayyhk/erdos-lean/main/data/problems.yaml"
     },
     "plby": {
-      "commit": "1c781f165e1ec943c1d2318dd51b5373460bc543",
+      "commit": "11198fa2062d910c9919c964463b41768a1b414c",
       "kind": "proof_manifest",
       "path": "data/sources.yaml",
       "ref": "main",
       "repo": "plby/lean-proofs",
-      "sha256": "sha256:56caee303150d0c3b320a8ba3fe6444e345ac5bed2f0b6728cf8bd279bf13507",
+      "sha256": "sha256:4769f97155f15319f43a15480218767eb36f1987020e575f9320d4b66aee432f",
       "url": "https://raw.githubusercontent.com/plby/lean-proofs/main/data/sources.yaml"
     },
     "wiki": {

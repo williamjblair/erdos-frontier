@@ -2,24 +2,24 @@
  "schema": "erdos-frontier.corpus-graph.v1",
  "note": "Derived index of what the ingested sources declare \u2014 typed in the Vela EdgeKind vocabulary with a trust tier per edge. Not signed state: the signed spine is .vela/ + frontier.json.",
  "source_locks": {
-  "erdos": "sha256:7108dc960",
+  "erdos": "sha256:f3722cb9d",
   "fidelity": "sha256:5446f89ae",
   "formal_conjectures": "sha256:208647c4f",
   "gpt_erdos": "sha256:c0f626a47",
   "jayyhk": "sha256:0a52b5572",
-  "plby": "sha256:56caee303",
+  "plby": "sha256:4769f9715",
   "wiki": "sha256:65f7f510a",
   "williamjblair_lean_proofs": "sha256:3d0711b33"
  },
  "counts": {
-  "nodes": 2794,
-  "edges": 1394,
+  "nodes": 2795,
+  "edges": 1395,
   "by_node_kind": {
    "attestation": 111,
    "claim": 342,
    "condition": 24,
    "problem": 1217,
-   "proof": 397,
+   "proof": 398,
    "statement": 703
   },
   "by_edge_kind": {
@@ -28,10 +28,10 @@
    "derived_from": 703,
    "replicates": 165,
    "specializes": 2,
-   "supports": 487
+   "supports": 488
   },
   "by_trust": {
-   "declared": 907,
+   "declared": 908,
    "machine": 367,
    "recorded": 9,
    "signed": 111
@@ -266,7 +266,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1003",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1003"
   },
   {
@@ -274,7 +274,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1004",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1004"
   },
   {
@@ -602,7 +602,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1041",
    "state": "falsifiable",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1041"
   },
   {
@@ -722,7 +722,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1055",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1055"
   },
   {
@@ -730,7 +730,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1056",
    "state": "open",
-   "bucket": "partial",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1056"
   },
   {
@@ -754,7 +754,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1059",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1059"
   },
   {
@@ -770,7 +770,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1060",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1060"
   },
   {
@@ -802,7 +802,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1064",
    "state": "proved",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1064"
   },
   {
@@ -810,7 +810,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1065",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1065"
   },
   {
@@ -834,7 +834,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1068",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1068"
   },
   {
@@ -874,7 +874,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1072",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1072"
   },
   {
@@ -882,7 +882,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1073",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1073"
   },
   {
@@ -914,7 +914,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1077",
    "state": "disproved",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1077"
   },
   {
@@ -938,7 +938,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 108",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/108"
   },
   {
@@ -986,7 +986,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1085",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1085"
   },
   {
@@ -1026,7 +1026,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 109",
    "state": "proved",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/109"
   },
   {
@@ -1058,7 +1058,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1093",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1093"
   },
   {
@@ -1066,7 +1066,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1094",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1094"
   },
   {
@@ -1074,7 +1074,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1095",
    "state": "open",
-   "bucket": "partial",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1095"
   },
   {
@@ -1114,7 +1114,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 11",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/11"
   },
   {
@@ -1138,7 +1138,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1101",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1101"
   },
   {
@@ -1170,7 +1170,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1105",
    "state": "proved",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1105"
   },
   {
@@ -1186,7 +1186,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1107",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1107"
   },
   {
@@ -1418,7 +1418,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1133",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1133"
   },
   {
@@ -1450,7 +1450,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1137",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1137"
   },
   {
@@ -1466,7 +1466,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1139",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1139"
   },
   {
@@ -1522,7 +1522,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1145",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1145"
   },
   {
@@ -1530,7 +1530,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1146",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1146"
   },
   {
@@ -1714,7 +1714,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1167",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1167"
   },
   {
@@ -1786,7 +1786,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1175",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1175"
   },
   {
@@ -1914,7 +1914,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 119",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/119"
   },
   {
@@ -1938,7 +1938,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1192",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1192"
   },
   {
@@ -1994,7 +1994,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 1199",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/1199"
   },
   {
@@ -2178,7 +2178,7 @@
    "kind": "problem",
    "label": "Erd\u0151s 123",
    "state": "open",
-   "bucket": "no-proof",
+   "bucket": "link",
    "url": "https://www.erdosproblems.com/123"
   },
   {
@@ -8121,7 +8121,7 @@
    "id": "erdos:793",
    "kind": "problem",
    "label": "Erd\u0151s 793",
-   "state": "open",
+   "state": "proved (Lean)",
    "bucket": "in-pr",
    "url": "https://www.erdosproblems.com/793"
   },
@@ -16638,6 +16638,13 @@
    "label": "plby proof of 1197",
    "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos1197.lean",
    "state": "conditional"
+  },
+  {
+   "id": "proof:plby:123",
+   "kind": "proof",
+   "label": "plby proof of 123",
+   "url": "https://github.com/plby/lean-proofs/blob/main/src/v4.29.1/ErdosProblems/Erdos123.lean",
+   "state": "complete"
   },
   {
    "id": "proof:plby:124",
@@ -29207,6 +29214,13 @@
    "trust": "machine",
    "conditional": true,
    "evidence": "holds only under the conditions it depends on"
+  },
+  {
+   "from": "proof:plby:123",
+   "to": "erdos:123",
+   "kind": "supports",
+   "trust": "declared",
+   "evidence": "producer-declared complete; not yet machine-audited"
   },
   {
    "from": "proof:plby:124",
