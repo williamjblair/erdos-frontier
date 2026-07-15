@@ -16,5 +16,6 @@ frontier.yaml -filter -ident -working-tree-encoding -merge diff text eol=lf
 frontier.json -filter -ident -working-tree-encoding -merge diff text eol=lf
 vela.lock -filter -ident -working-tree-encoding -merge diff text eol=lf
 
-# Large witnesses may use LFS. Receipt digests remain their content identity.
-witnesses/** filter=lfs diff=lfs merge=lfs -text
+# Witnesses are small reviewed JSON and stay as ordinary Git blobs. Disabling
+# checkout filters explicitly keeps a fresh clone byte-stable and reproducible.
+witnesses/** -filter -ident -working-tree-encoding -merge diff text eol=lf

@@ -1,5 +1,7 @@
 import hashlib
 import json
+import subprocess
+from pathlib import Path
 
 import yaml
 
@@ -21,6 +23,24 @@ from erdos_frontier import (
     render_status_md,
     render_verdicts_feed,
 )
+
+
+def test_witnesses_are_ordinary_git_blobs_without_checkout_filters():
+    witnesses = sorted(Path("witnesses").glob("*.witness.json"))
+    assert len(witnesses) == 38
+
+    checked = subprocess.run(
+        ["git", "check-attr", "filter", "--", *(str(path) for path in witnesses)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert {line.rsplit(": ", 1)[-1] for line in checked.stdout.splitlines()} == {"unset"}
+
+    for witness in witnesses:
+        payload = witness.read_bytes()
+        assert not payload.startswith(b"version https://git-lfs.github.com/spec/v1")
+        json.loads(payload)
 
 
 def test_machine_audit_overrides_flags_and_buckets_hypothesis_conditional():
