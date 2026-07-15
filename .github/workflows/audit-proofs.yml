@@ -13,8 +13,6 @@ name: Re-audit Lean proofs (heavy)
 # last local audit, it will commit changed feeds (which is the point, just review them).
 on:
   workflow_dispatch: {}
-  schedule:
-    - cron: "23 7 * * 1"   # weekly, Mondays — proof-repo drift is caught automatically
 
 permissions:
   contents: write

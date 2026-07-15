@@ -27,6 +27,8 @@ on:
       - "tests/test_work_inventory.py"
       - "tests/test_developed_campaign_proposals.py"
       - "tests/test_recovered_attempts.py"
+      - "tests/test_workflow_contracts.py"
+      - ".github/workflows/audit-proofs.yml"
       - ".github/workflows/work-map.yml"
   pull_request:
     paths:
@@ -51,6 +53,8 @@ on:
       - "tests/test_work_inventory.py"
       - "tests/test_developed_campaign_proposals.py"
       - "tests/test_recovered_attempts.py"
+      - "tests/test_workflow_contracts.py"
+      - ".github/workflows/audit-proofs.yml"
       - ".github/workflows/work-map.yml"
   workflow_dispatch: {}
 
@@ -77,3 +81,4 @@ jobs:
           tests/test_work_inventory.py
           tests/test_developed_campaign_proposals.py
           tests/test_recovered_attempts.py
+          tests/test_workflow_contracts.py
