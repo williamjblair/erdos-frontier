@@ -8,10 +8,7 @@
         "--profile",
         "draft"
       ],
-      "command": "vela",
-      "env": {
-        "VELA_WORKTREE": "."
-      }
+      "command": "vela"
     }
   }
 }

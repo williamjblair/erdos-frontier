@@ -26,16 +26,32 @@ next -> work -> land -> sign
 
 - `vela next --json` — the offer: ranked open targets with the compounding
   payload pre-loaded (premises to build on, banked routes, prior attempts,
-  dead channels). Returns `{targets: [{lane, id, title, why, next_command}]}`.
+  dead channels). Returns `{targets: [{lane, id, title, why, next_command, task?}]}`.
   Trust the ranking; it already encodes what the frontier knows.
 - `vela work <target> --as agent:<you> --json` — claim the lease, load the
-  briefing into `.vela/work/<target>/` (`offer.json`). Read the briefing
-  before working: dead channels listed there are dead — do not respend them.
-- `vela land receipt.json --as agent:<you> --json` — the write edge. Artifacts
-  are hashed at land time, a pending proposal lands, and the frontier's signed
-  policy routes it.
+  briefing, and write one typed private `session.json` under `.vela/work/`.
+  Read the returned briefing before working; do not edit the session record.
+- `vela land --work <target> --claim <result> --artifact <path>:<kind>
+  --caveat <limit> --as agent:<you> --json` — build Receipt v1 from the exact
+  session and use the shared write edge. With exactly one active session for
+  this actor, `--work` is inferred. A committed Permit or Defer closes only
+  `session.json`; Deny or invalid input keeps it for repair. Foreign producers
+  may still use `vela land receipt.json`.
+- `vela work <target> --drop --reason <why> --as agent:<you> --json` — sign a
+  same-owner zero-TTL lease update, then remove private scratch. Deleting files
+  by hand does not release a lease.
+- `vela artifact retract <frontier> <va_id> --as agent:<you> --reason <why>
+  --json` — draft retirement of a malformed or obsolete artifact. It remains
+  pending; only the human ceremony may remove its active proof-readiness weight.
 - `vela sign` — the one human ceremony. Not yours: it refuses `agent:` actors
   (exit 4) by design.
+
+For a frozen-verifier witness, run `vela reproduce <witness>` first, then land
+the result through the active work session with `vela land --work <target>
+--artifact <witness>:witness --as agent:<you> --json`. A producer outside the
+frontier can instead emit the same portable Receipt v1 and call `vela land
+receipt.json`. Both paths cross the one Receipt/land write edge; the frontier's
+Action may separately run `vela ci verdict` for merge policy.
 
 Every verb takes `--json` and returns one object with `ok` and `command`; no
 prose leaks into a JSON stream. Exit codes: 0 ok, 1 domain failure, 2 usage,
@@ -73,15 +89,15 @@ Landing routes by the frontier's signed policy:
   authority arrived earlier, once, as the policy signature; the event carries
   the certificate and replay verifies it.
 - **Defer** — parked in the human's sign queue for `vela sign`.
-- **Deny** — nothing lands.
+- **Deny** — refuses canonical admission. The returned structured result states
+  what, if anything, was retained; zero-delta Deny is not assumed by clients.
 
 Truth-bearing claims stay human-keyed in every mode. There is no configuration
 in which an agent's proposal becomes accepted state without a human key.
 
 ## Custody
 
-- Never run the decision verbs bare: `sign`, `accept`, `review`, and
-  `proposals reject` are key-custody human acts, and the engine refuses
+- Never run `sign`: it is the one key-custody human decision ceremony, and the engine refuses
   `agent:` actors on them.
 - Every write carries an explicit acting identity: `--as agent:<you>`, or set
   `VELA_ACTOR_ID=agent:<you>` for the session. Never write as a human.
@@ -90,19 +106,25 @@ in which an agent's proposal becomes accepted state without a human key.
   may check it, and only a key-holding human accepts a truth-bearing proposal.
 - Never pre-fill a verdict the human did not explicitly give. Presenting
   evidence is yours; the judgment is not.
+- Artifact retirement preserves the record and its historical audit issues. It
+  does not retract or judge the truth or quality of linked findings.
 - Never hand-edit accepted events or derived views (`frontier.json`, proof
   packets); regenerate with `vela frontier materialize`. Never bulk-move
   Vela-canonical paths (`examples/`, `projects/`, `lean/`, `.vela/`).
 
 ## The gate
 
-Frontier repos carry a conformance gate (conventionally
-`./scripts/full-conformance.sh --mode=ci`); it must report 0 FAIL after every
-change, and it is the bar `git push` is held to. `vela check . --strict` is
-the same bar the hub's ingestor enforces. `vela reproduce <frontier>` re-runs
-the frozen verifiers over stored witnesses from scratch — run it before
-claiming a reproduction, and never silently break the reproduction of a
-banked result.
+Frontier repos carry a conformance gate. When the harness supports suites, run
+the suites selected from the affected paths and require 0 FAIL in each one.
+Trust-path changes run every deterministic suite selected from their affected
+paths. Release certification runs the deterministic full Vela union. Live
+network and platform-pinned adapter checks stay explicit and cannot block an
+unrelated Vela release. A selected suite fails if a required verifier toolchain
+is absent; a non-selected suite is not a pass.
+`vela check . --strict` is the same frontier-state bar the hub's ingestor
+enforces. `vela reproduce <frontier>` re-runs the frozen verifiers over stored
+witnesses from scratch. Run it before claiming a reproduction, and never
+silently break the reproduction of a banked result.
 
 ## Reading state
 
@@ -110,6 +132,6 @@ banked result.
 policy mode, sign-queue depth, compounding metrics). `vela state <vf_id>` is
 one finding's claim-state cell; `vela log <dir> <vf_id>` its history. The MCP
 server (`vela serve . --profile draft`) exposes the read surface plus the
-non-finalizing writes (`propose`, `work` — claim|land|drop|deposit) as tools;
+non-finalizing `work` tool (claim|land|drop);
 `decide` is excluded by construction, so nothing an agent does through MCP
 finalizes state.

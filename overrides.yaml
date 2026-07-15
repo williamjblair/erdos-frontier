@@ -3,11 +3,10 @@
 # still awaiting a statement match-check. Buckets here override the computed
 # bucket unless FC already has a formal_proof link.
 #
-# Statement-fidelity verdicts do NOT live here. Once a reviewer signs a
-# `vela attest` verdict it lands in the erdos-formalization Vela
-# frontier and is read back via the hub snapshot (FIDELITY_URL), with
-# sources/fidelity_cache.json as the offline fallback. A signed verdict supersedes any
-# bucket here, so problems with a signed verdict carry no row.
+# Statement-fidelity verdicts do NOT live here. Historical signed attestations
+# remain in the frontier event log. New truth-bearing review work must travel
+# through Receipt v1 and the ordinary human `vela sign` ceremony. A signed
+# verdict supersedes any bucket here, so problems with one carry no row.
 
 45:
   bucket: blocked-claim

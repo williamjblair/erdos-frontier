@@ -1,63 +1,67 @@
 # Contributing
 
-There are two ways to contribute, for two kinds of work. Neither asks you to
-trust the maintainer's word: everything is re-derived from a clean checkout by
-the [`Verify the signed frontier`](.github/workflows/vela-frontier.yml) gate.
+There are two contribution paths. Both keep activity, verification, and human
+judgment separate.
 
-## 1. Contribute a proof — the audit reads it automatically
+## Contribute a proof upstream
 
-If you formalize an Erdős problem in Lean, you do not touch this repo at all. Host
-the proof and the audit picks it up on its next run:
+Host the Lean proof in a tracked proof repository or contribute it to Formal
+Conjectures. This frontier's audit records the exact repository, commit,
+declaration, theorem assumptions, and axiom surface. A clean kernel check is
+evidence about the derivation; it is not by itself a judgment that the theorem
+faithfully states the informal Erdős problem.
 
-- add a `@[formal_proof using lean4 at "<url>"]` link in
-  [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures), or
-- add it to a tracked proof index (`plby/lean-proofs`, `Jayyhk/erdos-lean`,
-  `williamjblair/lean-proofs`).
+## Land research state through Receipt v1
 
-The daily audit loads your proof, runs the assumption extractor
-([`lean/`](lean/)), and reports mechanically whether it proves the problem
-**unconditionally** or only under an axiom / an undischarged hypothesis. Your
-proof appears on its [finding page](https://williamjblair.github.io/erdos-frontier/)
-with that verdict, and in the load-bearing condition map if it assumes something.
-No key, no review — the reading is a fact, not a judgment.
-
-If your proof closes a problem the frozen wiki recorded as solved-but-conditional,
-that discrepancy resolves on the next run.
-
-## 2. Propose a finding to the signed frontier — fork, propose, a maintainer accepts
-
-The `.vela/` frontier holds signed, replayable state. You do not need a key to
-**propose**; you need one only to **accept**, and accepting is the maintainer's
-job. Install [`vela`](https://github.com/constellate-science/vela) (`vela --version`
-should print `0.720.0`), then:
+Install Vela 0.800.9, clone the frontier, and use the task-first loop:
 
 ```bash
-# in your fork:
-vela finding add . \
-  --assertion "Your claim, scoped precisely." \
-  --type theoretical --source "<where it comes from>" \
-  --author "github:your-handle"        # NO --apply: this is a proposal, unsigned
-git add .vela/ && git commit -m "Propose: <claim>" && git push
-# then open a pull request.
+vela next . --json
+vela work <target> --frontier . --as agent:<your-name> --json
+
+# Produce and verify one bounded artifact, then land it through the session.
+vela land --frontier . --work <target> \
+  --claim "One scoped result a skeptical reviewer can evaluate." \
+  --type theoretical --replayability exact \
+  --artifact path/to/result.md:note \
+  --caveat "What this result does not establish." \
+  --as agent:<your-name> --json
 ```
 
-On the PR, the verify gate replays the event log and confirms your proposal is
-structurally valid and does **not** change the accepted state (it stays a pending
-`vpr_*`, not frontier truth). A maintainer reviews it and, if it holds, accepts it
-under their reviewer key:
+A signed policy routes the receipt. Permit admits only a class the human
+already delegated, Defer places the exact proposal in the human's sign queue,
+and Deny refuses canonical admission. Do not bypass that route by editing
+`.vela/`, `frontier.json`, `vela.lock`, or `proof/`.
+
+After landing, commit and push your branch and open a pull request. The Vela
+Action replays the event log and checks materialized-state parity. It never
+signs or supplies a verdict.
+
+## Formal Conjectures statements
+
+Statement candidates require both mechanical and semantic review:
+
+1. `python scripts/draft_statement.py <n>` gathers pinned inputs and stages the
+   candidate.
+2. Edit the Lean statement from the verbatim boxed problem text and record
+   every divergence from hosted formalizations.
+3. `bash scripts/gate_draft.sh <n>` runs the FC build and metadata checks.
+4. Land the exact draft and gate record as Receipt v1 artifacts with a caveat
+   that statement fidelity remains a human judgment.
+5. Stop at the pending proposal. A human uses `vela sign`; the outward FC
+   branch is prepared only from the exact accepted bytes.
+
+Never add a `formal_proof` link when the machine audit reports a conditional,
+axiomatic, partial, or mismatched theorem.
+
+## Verify locally
 
 ```bash
-vela accept . <vpr_id>     # emits the signed acceptance event; only then is it state
+vela check .                 # replay, signatures, and parity
+vela status . --json
+bash scripts/graph.sh build  # deterministic corpus projection
 ```
 
-For a **machine proof-attestation** (a Lean kernel axiom audit), your proof repo's
-CI can self-sign a `vpv_` under a `ci:` actor — that is signed *evidence*, not an
-accept, and the gate still governs whether the finding reaches verified.
-
-## The rule underneath
-
-Git stores and transports. The proof checker checks derivations. A verifier
-judges evidence. **A human key accepts the truth-bearing judgments — an agent may
-propose, extract, or attest evidence, but never signs an accept.** The reducer
-derives the view. If you can clone the repo and run `vela check . --strict`, you
-can verify every claim here yourself.
+`vela check . --strict` additionally treats the catalogue's declared-data
+condition debt as release-blocking. That debt is intentionally visible and is
+not waived by a non-strict pass.

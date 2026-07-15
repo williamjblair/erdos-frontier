@@ -8,9 +8,6 @@ from pathlib import Path
 
 import yaml
 
-from scripts.import_recovered_attempts import import_batches
-
-
 ROOT = Path(__file__).resolve().parents[1]
 RECOVERED_PATH = ROOT / "sources" / "recovered-attempts.yaml"
 REGISTRY_PATH = ROOT / "sources" / "work-registry.yaml"
@@ -191,25 +188,27 @@ def test_erdos_773_is_deferred_without_promoting_a_timeout_to_a_claim():
     assert "timeout" in record["reason"]
 
 
-def test_recovered_import_batches_pin_each_producer_artifact():
-    batches = import_batches(
-        ROOT / "sources" / "recovered-attempt-ledger.v2.json",
-        ROOT / "sources" / "recovered-attempt-import-map.yaml",
-        RECOVERED_PATH,
-    )
+def test_recovered_import_artifacts_remain_one_to_one_and_source_pinned():
+    recovered = load_yaml(RECOVERED_PATH)
+    mapping = load_yaml(RECOVERED_MAPPING_PATH)
+    with RECOVERED_LEDGER_PATH.open(encoding="utf-8") as handle:
+        ledger = json.load(handle)
 
-    assert len(batches) == 30
-    assert all(len(ledger["records"]) == 1 for ledger, _, _ in batches)
-    assert all(len(mapping["mappings"]) == 1 for _, mapping, _ in batches)
-    assert all("@" in source_ref and ":" in source_ref for _, _, source_ref in batches)
-    assert all(not source_ref.startswith("/") for _, _, source_ref in batches)
-    assert {
-        ledger["records"][0]["attempt_id"]
-        for ledger, _, _ in batches
-    } == {
-        mapping["mappings"][0]["attempt_id"]
-        for _, mapping, _ in batches
+    importable = {
+        record["record_id"]: record
+        for record in recovered["records"]
+        if record["classification"] == "importable_attempt"
     }
+    mappings = {entry["attempt_id"]: entry for entry in mapping["mappings"]}
+
+    assert len(ledger["records"]) == len(importable) == len(mappings) == 30
+    for attempt in ledger["records"]:
+        source_record = importable[attempt["legacy_id"]]
+        assert mappings[attempt["attempt_id"]]["expected_attempt_id"] == attempt["attempt_id"]
+        source = source_record["source"]
+        pinned_ref = f"{source['repository']}@{source['commit']}:{source['path']}"
+        assert "@" in pinned_ref and ":" in pinned_ref
+        assert not pinned_ref.startswith("/")
 
 
 def test_generated_unsigned_ledger_is_an_exact_projection_of_importable_records():

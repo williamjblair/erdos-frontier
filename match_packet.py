@@ -18,15 +18,13 @@ Usage:
     python match_packet.py                # all rows needing a match-check
     python match_packet.py --draft 24 93  # campaign drafts (statements/<n>/)
 
-`--draft` is the campaign's S3 gate: panel 2 becomes the STAGED draft statement
-(inlined from statements/<n>/<n>.lean) with the drafter's divergence notes
-surfaced, and the verdict stub is hash-bound to the exact draft bytes so the
-signed vsa_ pins what was reviewed.
+`--draft` makes panel 2 the staged draft statement and surfaces the drafter's
+divergence notes. The packet is review material only; it never signs or records
+a verdict.
 """
 
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
 import sys
@@ -172,37 +170,6 @@ def select_rows(payload: dict, problem: int | None) -> list[dict]:
     return sorted(rows, key=lambda r: (not r.get("discrepancy"), r["problem"]))
 
 
-def verdict_stub(row: dict) -> dict:
-    """A pre-filled row for `vela attest --batch`. The reviewer fills `verdict`
-    (faithful/variant/unfaithful) and `target` (the finding id) after reading the
-    packet; everything else is derived. `note` carries the machine hint, not a
-    judgment. Statement-faithfulness stays a human verdict signed under one key."""
-    fc = row.get("fc") or {}
-    machine = row.get("machine") or {}
-    wiki = row.get("wiki") or {}
-    hint = ""
-    if machine.get("named_assumptions"):
-        hint = ("machine: kernel-clean but conditional on "
-                + ", ".join(machine["named_assumptions"]))
-    elif machine.get("non_kernel_axioms"):
-        hint = "machine: conditional on axioms " + ", ".join(machine["non_kernel_axioms"])
-    if row.get("discrepancy") and wiki.get("outcome_label"):
-        hint = f"wiki records '{wiki['outcome_label']}'; " + (hint or "proof conditional")
-    # the proof actually audited is the hosted Lean source, not FC's statement file.
-    proof_url = row["proof_links"][0]["url"] if row.get("proof_links") else None
-    return {
-        "target": None,
-        "verdict": "",
-        "informal_ref": f"erdosproblems.com/{row['problem']}",
-        "formal_ref": (f"google-deepmind/formal-conjectures@HEAD:{fc['path']}"
-                       if fc.get("path") else None),
-        "hosted_proof": proof_url,
-        "discrepancy": bool(row.get("discrepancy")),
-        "formal_statement_hash": None,
-        "note": hint,
-    }
-
-
 DRAFT_DIR = Path("statements")
 DRAFT_PACKET_DIR = Path("packets/draft-review")
 
@@ -254,28 +221,8 @@ def render_draft_packet(problem: int, row: dict | None) -> str:
     return "\n".join(out)
 
 
-def draft_verdict_stub(problem: int) -> dict:
-    ddir = DRAFT_DIR / str(problem)
-    draft = json.loads((ddir / "draft.json").read_text())
-    lean_bytes = (ddir / f"{problem}.lean").read_bytes()
-    # `problem` is a convenience field for scripts/sign-batch.sh, which creates
-    # the finding, fills `target` with the vf_ id, strips the extra field, and
-    # hands vela a bare JSON array (the shape `vela attest --batch` parses).
-    return {
-        "problem": problem,
-        "target": "",
-        "verdict": "",
-        "informal_ref": f"erdosproblems.com/{problem}",
-        "formal_ref": f"campaign-draft:statements/{problem}/{problem}.lean",
-        "formal_statement_hash": hashlib.sha256(lean_bytes).hexdigest(),
-        "note": ("campaign draft; machine verdict on hosted proof: "
-                 f"{draft.get('machine_verdict')} ({draft.get('machine_source')})"),
-    }
-
-
 def draft_main(problems: list[int]) -> int:
     DRAFT_PACKET_DIR.mkdir(parents=True, exist_ok=True)
-    stubs = []
     for n in problems:
         ddir = DRAFT_DIR / str(n)
         if not (ddir / f"{n}.lean").exists():
@@ -291,15 +238,7 @@ def draft_main(problems: list[int]) -> int:
             continue
         path = DRAFT_PACKET_DIR / f"erdos_{n}.md"
         path.write_text(render_draft_packet(n, None))
-        stubs.append(draft_verdict_stub(n))
         print(f"wrote {path}")
-    if stubs:
-        stub_path = DRAFT_PACKET_DIR / "verdicts_stub.json"
-        stub_path.write_text(json.dumps(stubs, indent=2) + "\n")
-        print(f"wrote {stub_path} ({len(stubs)} rows) — fill each \"verdict\" "
-              "(faithful/variant/unfaithful) after reading the packets, then run "
-              "`bash scripts/sign-batch.sh` (it creates the findings, fills the "
-              "targets, and signs the batch under your key in one pass)")
     return 0
 
 
@@ -313,17 +252,11 @@ def main(argv: list[str]) -> int:
         target = f"problem {problem}" if problem is not None else "the match-check buckets"
         print(f"No rows found for {target}.")
         return 0
-    stubs = []
     for row in rows:
         path = write_packet(row)
-        stubs.append(verdict_stub(row))
         print(f"wrote {path}")
-    stub_path = Path(PACKET_DIR) / "verdicts_stub.jsonl"
-    stub_path.write_text("\n".join(json.dumps(s) for s in stubs) + "\n")
     if problem is None:
         write_index(rows)
-    print(f"wrote {stub_path} ({len(stubs)} rows) — fill verdict+target, then "
-          "`vela attest <frontier> --batch verdicts_stub.jsonl --as reviewer:will-blair --key <key>`")
     return 0
 
 

@@ -23,10 +23,28 @@ verification_sources:
     sha256: sha256:2ead974088965e6f070dbf130ef0270c0f4ea799e92f7132d433c7d62a8fb172
 draft_policy:
   actor: agent:erdos-campaign-review-draft
-  commands_create_proposals_only: true
-  apply_forbidden: true
+  receipt_schema: vela.receipt.v1
+  workflow:
+    select: next
+    session: work
+    submit: land
+    decision: sign
+  session_required: true
+  expected_route: defer
+  agent_finalization_forbidden: true
   human_acceptance_required: true
   statement_fidelity_requires_human_review: true
+  receipt_mapping:
+    claim: assertion
+    type:
+      theorem: theoretical
+      computation: computational
+    artifact_candidates:
+      - artifact
+      - source_claim.path
+    caveats:
+      - conditions
+      - statement_fidelity
 
 campaigns:
   - problem: 23
@@ -68,8 +86,6 @@ campaigns:
         This is the d = 2s - 2 all-nonbridge one-stub internal-cost closure. It is
         not the full Erdős 23 statement and does not discharge multi-stub or
         connected-core obligations.
-      draft_command: >-
-        vela finding add . --assertion 'At d equal to twice the slack minus two, fully nonbridge corridor geometry, the rooted cut condition, injective simple demand pairs, legality, and same-color endpoints imply the exact RL internal-cost budget across all five canonical two-defect shapes.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos23GapGBTwoDefectFinal.lean#Erdos23GapGBTwoDefectFinal.totalCost_le_rlBudget_of_twoDefect_allNonbridge_sameSide' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Partial d=2s-2 all-nonbridge one-stub closure; upstream problem remains open.' --confidence 0.98 --json
     residuals:
       - proposal_key: erdos-23-post-two-defect-residual
         disposition: propose
@@ -99,8 +115,6 @@ campaigns:
         machine_status:
           status: derived_from_attested_boundary_and_recorded_reduction
           review_reproduction: not_rerun
-        draft_command: >-
-          vela finding add . --assertion 'After the d = 2s - 2 closure, the one-stub all-nonbridge RL residual has 5 <= s and d <= 2s - 3; the multi-stub pair inequality and the final connected or 2-connected core remain separate obligations.' --author agent:erdos-campaign-review-draft --type open_question --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:codex/prompt_23_rl_star.md' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Exact post-boundary residual derived from the pinned reduction and attested d=2s-2 theorem.' --gap --confidence 0.92 --json
 
   - problem: 154
     upstream_state: proved
@@ -140,8 +154,6 @@ campaigns:
         The Lean theorem is a full asymptotic sumset-distribution statement under
         its displayed Sidon, support, growth, and cardinality hypotheses. Upstream
         is recorded as proved, but fidelity still requires human review.
-      draft_command: >-
-        vela finding add . --assertion 'For Sidon sets A with |A| ~ N^{1/2}, the sumset A+A is equidistributed over residue classes mod m: each class holds ~1/m of A+A.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos154Sumset.lean#Erdos154.erdos_154_sumset' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Lean-attested theorem; statement fidelity to canonical Erdős 154 remains pending human review.' --confidence 0.98 --json
     residuals: []
     review_obligations:
       - Confirm the theorem hypotheses and conclusion against the canonical Erdős 154 statement before acceptance.
@@ -182,8 +194,6 @@ campaigns:
       conditions: >-
         Conditional r=5 reduction only. It does not prove the extension-demand
         premise, the K26 finite case, or the all-r upstream statement.
-      draft_command: >-
-        vela finding add . --assertion 'Conditional reduction of the r=5 case: if every balanced coloring of K_26 has extension demand exceeding 25 at some vertex, the Erdos-Gyarfas conjecture holds for r=5.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos617.lean#Erdos617.statement_five_of_extension_demand' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Conditional r=5 reduction; upstream problem and K26 premise remain open.' --confidence 0.98 --json
     residuals:
       - proposal_key: erdos-617-k26-lrat-rat-certificate
         disposition: skip_duplicate
@@ -239,8 +249,6 @@ campaigns:
       conditions: >-
         This is an equivalence and refutation handoff, not a proof of either open
         hypothesis and not a machine-verified solution of Erdős 686.
-      draft_command: >-
-        vela finding add . --assertion 'The explicit final residual interface is logically equivalent to the conjunction of the updated odd-tail and large-smoothness hypotheses.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos686FinalResidual.lean#Erdos686.Erdos686Variant.finalResidual_iff_tail1000_and_smooth' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Exact conditional refutation interface; both terminal hypotheses remain open.' --confidence 0.98 --json
     residuals:
       - proposal_key: erdos-686-two-terminal-hypotheses
         disposition: propose
@@ -266,8 +274,6 @@ campaigns:
         machine_status:
           status: open_hypotheses_with_lean_attested_equivalence
           review_reproduction: not_rerun
-        draft_command: >-
-          vela finding add . --assertion 'The remaining mathematical content for the pinned Erdős 686 refutation is exactly OddThueTail1000Hypothesis and LargeKSmoothHypothesis; equivalently, it is FinalResidual686Hypothesis.' --author agent:erdos-campaign-review-draft --type open_question --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:PROGRESS_Erdos686.md' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Neither terminal hypothesis is proved; Erdős 686 remains open.' --gap --confidence 0.98 --json
 
   - problem: 699
     upstream_state: open
@@ -305,8 +311,6 @@ campaigns:
         Exact equivalence internal to the C2 lane. The source is committed Lean but
         is not registered in proofs.yaml or attestations.json at the pinned commit;
         no build was rerun for this review.
-      draft_command: >-
-        vela finding add . --assertion 'Coprime-refined existence-level C2 bridge. The extra coprimality condition is automatic from the split product identity, but recording it here matches the exact reduced-divisor obstruction used in the C2 analysis.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:lean/Erdos699/Proved/Basic.lean#Erdos699.exists_powerTwoQuotientKernel_iff_exists_reduced_divisor_survival_coprime_split' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Committed conditional C2 reduction; not proof-registry attested at this commit.' --confidence 0.80 --json
     residuals:
       - proposal_key: erdos-699-c2-no-survivor-and-global-rungs
         disposition: propose
@@ -336,8 +340,6 @@ campaigns:
         machine_status:
           status: open_mathematical_obligation
           review_reproduction: not_run
-        draft_command: >-
-          vela finding add . --assertion 'The exact C2 residual is a universal no-surviving reduced-divisor split theorem; beyond that internal kernel, T4, full T6 and T7, the global kernel, and all later rungs remain unclaimed.' --author agent:erdos-campaign-review-draft --type open_question --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:PROGRESS_Erdos699.md' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Internal C2 no-survivor theorem plus later global rungs are still open.' --gap --confidence 0.90 --json
 
   - problem: 727
     upstream_state: open
@@ -374,8 +376,6 @@ campaigns:
       conditions: >-
         Conditional k=2 infinitude only. The supply proposition is not proved, and
         the upstream statement quantifies over every fixed k >= 2.
-      draft_command: >-
-        vela finding add . --assertion 'theorem erdosK2_of_explicitDicksonAP12PrimeTupleSupply (hSupply : ExplicitDicksonAP12PrimeTupleSupplyK2) : erdosFixed 2' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos727.lean#Erdos727.erdosK2_of_explicitDicksonAP12PrimeTupleSupply' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Axiom-audit registered conditional k=2 reduction; no attestation entry and no unconditional supply.' --confidence 0.88 --json
     residuals:
       - proposal_key: erdos-727-explicit-dickson-ap12-supply
         disposition: propose
@@ -407,8 +407,6 @@ campaigns:
         machine_status:
           status: open_conjectural_supply_proposition
           review_reproduction: not_run
-        draft_command: >-
-          vela finding add . --assertion 'ExplicitDicksonAP12PrimeTupleSupplyK2 is the still-open assertion that for every U there is u >= U for which 48(12u)+29, 76(12u)+65, 38(12u)+23, and 48(12u)+41 are all prime; even this supplies only k=2, so the other fixed k >= 2 cases remain.' --author agent:erdos-campaign-review-draft --type open_question --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos727.lean#Erdos727.ExplicitDicksonAP12PrimeTupleSupplyK2' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Conjectural prime-tuple supply; not an axiom or theorem, and not the all-k upstream statement.' --gap --confidence 0.98 --json
 
   - problem: 730
     upstream_state: open
@@ -444,8 +442,6 @@ campaigns:
       conditions: >-
         Reusable first-power block identity only. It does not provide the global
         event cover or the remaining analytic budget.
-      draft_command: >-
-        vela finding add . --assertion 'At first power, subtracting the fixed block shift leaves a multiple of the square prime modulus.' --author agent:erdos-campaign-review-draft --type theoretical --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:ErdosProblems/Erdos730FirstPowerRoutes.lean#Erdos730.FirstPowerRoutes.first_power_fixed_upper_slope' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Lean-attested internal first-power identity; upstream problem remains open.' --confidence 0.98 --json
     residuals:
       - proposal_key: erdos-730-exhaustive-cover-and-budget
         disposition: propose
@@ -475,5 +471,3 @@ campaigns:
         machine_status:
           status: open_analytic_and_coverage_obligations
           review_reproduction: not_run
-        draft_command: >-
-          vela finding add . --assertion 'The exact remaining Erdős 730 gate is the exhaustive common-multiplicity event cover (23), followed by an explicit delta > 0 proving uniformly for X >= 2^57 that FirstPowerFar(X)/X + ShortTop(X)/X <= 1779/2500 - delta; neither step is proved at the pinned commit.' --author agent:erdos-campaign-review-draft --type open_question --source 'lean-proofs@eab646ceae7f270c024d5d08a8917305b07fd35d:compute730/campaign_uniform/repair/far/first_power_routes_hostile_audit.md' --source-type researcher_notes --evidence-type theoretical --conditions-text 'Both the exhaustive event cover and the explicit positive-margin budget are required.' --gap --confidence 0.98 --json

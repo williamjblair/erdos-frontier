@@ -1,8 +1,8 @@
 # Statement staging
 
-Drafts for the FC statement campaign live here, one directory per problem,
-until they are signed and submitted. Nothing in this directory is truth — a
-draft becomes an FC contribution only after it passes every gate:
+Drafts from the FC statement campaign live here, one directory per problem.
+Nothing in this directory is accepted frontier state. A new draft travels
+through the same Receipt v1 and human-sign path as every other claim:
 
     statements/<n>/
       inputs.md    the drafter's desk: verbatim problem LaTeX, upstream state,
@@ -20,11 +20,11 @@ Lifecycle (see campaign.yaml for batch state):
    divergence in draft.json `divergence_notes`.
 3. `bash scripts/gate_draft.sh <n>` — copies into the FC checkout, `lake build`
    (compiles + house linters), extract_names check, link-rule lint.
-4. `python match_packet.py --draft <n>` — the 3-panel fidelity packet; Will
-   reviews, then signs the batch: `vela attest . --batch <stub> --as
-   reviewer:will-blair`.
-5. `python scripts/submit_batch.py <batch>` — assembles the FC branch from
-   SIGNED drafts only; Will pushes and opens the PR.
+4. Land the exact Lean file, input packet, `draft.json`, and `gates.json` as
+   Receipt v1 artifacts. State explicitly that fidelity to the informal
+   problem remains a human judgment.
+5. Stop at the routed proposal. A human reviews it with `vela sign`; only the
+   exact accepted bytes may be prepared for an outward FC branch.
 
-A drafted `.lean` here is never edited after signing — post-sign changes
-invalidate the vsa_ statement hash and must go back through the gate.
+A drafted `.lean` is never edited after acceptance. Any byte change is a new
+artifact and must go through the gate and Receipt path again.

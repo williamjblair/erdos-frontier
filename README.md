@@ -22,17 +22,25 @@ Two axes, one trust rule:
 
 ## Verify it yourself
 
-The dashboard is a materialized view. The authority is a signed, replayable
-event log under [`.vela/`](.vela/) (Vela frontier `vfr_0a25edabc16db143`):
+The dashboard is a materialized view. Accepted scientific state is the
+replayable event log under [`.vela/`](.vela/) (Vela frontier
+`vfr_0a25edabc16db143`); external catalogue and proof inputs are commit-pinned
+in the source registry:
 
 ```bash
-git clone https://github.com/williamjblair/erdos-frontier
+git clone https://github.com/vela-science/erdos-frontier
 cd erdos-frontier
-vela check . --strict     # replay the log, verify every signature
+vela check .              # replay, signatures, and materialized-state parity
+vela status . --json
 ```
 
+`vela check . --strict` also promotes the catalogue's declared-data condition
+debt to a failing proof-readiness gate. The current 1,217-problem import keeps
+that debt visible rather than pretending every reference row is proof-ready.
+
 Everything under [`site/`](site/), plus `frontier.json` and `vela.lock`, is
-generated from that log and the locked sources. Nothing there is hand-authored.
+generated from the event log and locked sources. Nothing there confers
+authority by itself.
 
 ## Sources
 
@@ -77,25 +85,21 @@ bash scripts/graph.sh blast cond:maynard-tao  # what does retracting an input un
 bash scripts/graph.sh serve                   # the frontier over HTTP
 ```
 
-The repo also ships [`.mcp.json`](.mcp.json): any MCP client opened here gets
-the read-only Vela tool set over the signed frontier.
+The repo also ships [`.mcp.json`](.mcp.json): an MCP client opened here gets
+the read surface plus nonfinalizing `work` and `land` operations. The draft
+profile has no decision tool.
 
 ## Contributing
 
 Two paths, detailed in [CONTRIBUTING.md](CONTRIBUTING.md): host a proof the
-audit reads, or fork and propose a finding a maintainer accepts.
+audit reads, or land a portable Receipt v1 through Vela's task-first loop.
 [VISION.md](VISION.md) explains the two layers and the trust rule.
 [STANDARD_CHECK.md](STANDARD_CHECK.md) is the proposal for a layered
 statement-review check upstream in formal-conjectures.
 
-To review and sign a statement-fidelity verdict (reviewer key only, no AI
-signs):
-
-```bash
-python match_packet.py <n>    # three-panel review packet: upstream statement,
-                              # formal theorem, hosted theorem signature
-bash scripts/sign-fidelity.sh <problem> <faithful|variant|unfaithful> "<note>" --sign
-```
+Agents use `vela next -> work -> land` and stop. A human handles deferred
+truth-bearing proposals through the single `vela sign` ceremony. Historical
+statement-fidelity attestations remain immutable audit material.
 
 [`overrides.yaml`](overrides.yaml) is the only hand-maintained classification
 input. Use it for facts the sources cannot know: a mismatched quantifier, a

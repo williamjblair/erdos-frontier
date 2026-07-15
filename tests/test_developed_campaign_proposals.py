@@ -52,18 +52,30 @@ def test_proposals_keep_status_dimensions_orthogonal():
             assert "machine_status" in record
 
 
-def test_draft_commands_never_apply_or_accept_and_duplicates_are_skipped():
+def test_proposals_use_receipt_v1_and_defer_without_legacy_write_commands():
     pack = load_pack()
+    policy = pack["draft_policy"]
+    assert policy["receipt_schema"] == "vela.receipt.v1"
+    assert policy["workflow"] == {
+        "select": "next",
+        "session": "work",
+        "submit": "land",
+        "decision": "sign",
+    }
+    assert policy["session_required"] is True
+    assert policy["expected_route"] == "defer"
+    assert policy["agent_finalization_forbidden"] is True
+    assert policy["human_acceptance_required"] is True
+
     proposed = []
     duplicates = []
     for problem, record in iter_records(pack):
         if record["disposition"] == "propose":
             proposed.append((problem, record["proposal_key"]))
-            command = record["draft_command"]
-            assert command.startswith("vela finding add . ")
-            assert " --apply" not in command
-            assert "accept" not in command
-            assert "--author agent:erdos-campaign-review-draft" in command
+            assert "draft_command" not in record
+            assert record["assertion"]
+            assert record["activity"] in policy["receipt_mapping"]["type"]
+            assert record["statement_fidelity"]["status"] == "pending_human_review"
         else:
             assert record["disposition"] == "skip_duplicate"
             duplicates.append((problem, record["duplicate_finding_id"]))

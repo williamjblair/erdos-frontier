@@ -10,23 +10,26 @@ Generated from VELA.md. Edit VELA.md and run `vela agents sync`; do not edit her
 
 Agents may:
 
-- inspect frontier state (`vela status/inbox/log/check`), the corpus graph
-  (`scripts/graph.sh blast`), and every derived view
-- create keyless proposals (`vela finding add . --author agent:<you>`)
-- land results and verifier evidence (`vela land`, routed by the signed policy)
-- draft FC statements, run the lake gates, regenerate reducer outputs
-- assemble FC branches and PR bodies for the human to send
+- inspect state, ranked targets, graph slices, provenance, proposals, and
+  schemas
+- claim one target with `vela work` as an explicit `agent:` actor
+- run local frozen verifiers and the focused frontier checks
+- land one scoped Receipt v1 through the claimed work session
+- draft retirement of a malformed or obsolete artifact; the result remains
+  pending until a human signs it
+- regenerate derived views with `vela frontier materialize .`
+- draft Formal Conjectures statements, run their mechanical gates, and prepare
+  keyless handoff artifacts
 
 Agents may not:
 
-- accept, reject, review, or otherwise decide (`accept`, `review`,
-  `proposals reject`) — key-custody human verbs, engine-enforced
-- run any `vela` write without `VELA_ACTOR_ID=agent:<you>` set and
-  `--author agent:<you>` given
+- run `vela sign`, sign a policy, accept, reject, apply, or finalize a
+  truth-bearing proposal
+- read, handle, or use a human private key, or put a model in a trust path
 - hand-edit `.vela/`, `frontier.json`, `vela.lock`, or `proof/`
-- link `formal_proof` on a machine-conditional proof, or rephrase a
-  problem docstring
-- send outward PRs (FC, teorth) — staged by you, sent by the human
+- link `formal_proof` to a machine-conditional proof or rephrase an upstream
+  problem statement
+- publish an outward Formal Conjectures contribution in a human's name
 
 Use `vela status --json` before proposing changes. Every proposed transition is a
 draft until a key-holding human accepts it. The full charter is VELA.md.

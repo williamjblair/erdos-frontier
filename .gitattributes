@@ -1,0 +1,20 @@
+# Ordinary text is normalized across platforms. More specific rules below win.
+* text=auto eol=lf
+
+# Canonical records are raw Git blobs. No checkout filter, keyword expansion,
+# working-tree encoding, or semantic merge driver may transform them.
+.vela/** -filter -ident -working-tree-encoding -merge -text
+.vela/events/** -filter -ident -working-tree-encoding -merge diff text eol=lf
+.vela/proposals/** -filter -ident -working-tree-encoding -merge diff text eol=lf
+.vela/records/** -filter -ident -working-tree-encoding -merge diff text eol=lf
+records/** -filter -ident -working-tree-encoding -merge diff text eol=lf
+sources/** -filter -ident -working-tree-encoding -merge -text
+artifacts/** -filter -ident -working-tree-encoding -merge -text
+review/** -filter -ident -working-tree-encoding -merge -text
+proof/** -filter -ident -working-tree-encoding -merge -text
+frontier.yaml -filter -ident -working-tree-encoding -merge diff text eol=lf
+frontier.json -filter -ident -working-tree-encoding -merge diff text eol=lf
+vela.lock -filter -ident -working-tree-encoding -merge diff text eol=lf
+
+# Large witnesses may use LFS. Receipt digests remain their content identity.
+witnesses/** filter=lfs diff=lfs merge=lfs -text

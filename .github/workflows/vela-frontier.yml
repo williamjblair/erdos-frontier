@@ -1,28 +1,12 @@
 name: Verify the signed frontier
 
-# The git-native gate, via the shared action: on every change to the signed
-# frontier, constellate-science/vela re-derives it from a clean checkout and
-# proves the working tree IS the signed state (replay + hash parity). It NEVER
-# signs: the human-key accept stays the reviewer's signed event in the repo.
+# The git-native gate: every main push and pull request runs the released Vela
+# action. It re-derives state from a clean checkout and proves replay + hash
+# parity. It never signs or supplies a scientific verdict.
 on:
   push:
     branches: [main]
-    paths:
-      - ".vela/**"
-      - "frontier.json"
-      - "frontier.yaml"
-      - "vela.lock"
-      - "proof/**"
-      - "witnesses/**"
-      - ".github/workflows/vela-frontier.yml"
-  pull_request:
-    paths:
-      - ".vela/**"
-      - "frontier.json"
-      - "frontier.yaml"
-      - "vela.lock"
-      - "proof/**"
-      - "witnesses/**"
+  pull_request: {}
   workflow_dispatch: {}
 
 permissions:
@@ -30,22 +14,11 @@ permissions:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-      - uses: constellate-science/vela@main
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+      - uses: vela-science/vela@v0.800.9
         with:
-          # vela-version defaults to the vela_version pinned in vela.lock, so
-          # the gating binary always matches the one that materialized state.
-          # Non-strict since v0.745.0: the frontier now holds the full 1217-problem
-          # corpus as declared-fact findings (agent-anchored, unreviewed by design —
-          # catalog facts, not proof-bearing claims). `vela check` replay + signature
-          # + parity still gate hard; only --strict proof-readiness (which reads the
-          # 2676 unreviewed corpus findings as debt) is acknowledged and non-blocking.
-          strict: "false"
-      # The Erdős reproduce gate lives here now (its home), not in the retired
-      # examples/erdos-problems copy: a stranger re-runs every frozen verifier on
-      # every stored witness from a clean checkout. `vela` is on PATH from the
-      # action above.
+          vela-version: v0.800.9
       - name: Reproduce every witness from scratch
         run: vela reproduce .

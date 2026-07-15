@@ -1,121 +1,99 @@
-# erdos-frontier — agent charter
+# Erdős frontier — agent charter
 
-This repo is a live Vela frontier (`vfr_0a25edabc16db143`): the Erdős
-formalization fidelity audit, its corpus graph, and the FC statement campaign.
-An agent working here drives **vela directly** — the way a coding agent drives
-git — plus plain `lake`, `git`, and `gh`. There is no script ceremony between
-you and the state; the few scripts that exist are data-prep helpers you run
-yourself, not workflow you hand to the human.
+This repository is the standalone Vela frontier for the Erdős research
+portfolio and formalization-fidelity audit (`vfr_0a25edabc16db143`). Its
+content-addressed event log is the scientific state. The audit feeds, corpus
+graph, site, `frontier.json`, `vela.lock`, and proof packet are projections over
+that state plus commit-pinned sources.
+
+The ordinary contribution path is `next -> work -> land -> sign`. Agents do
+the first three steps. Only a human key or a previously human-signed Permit
+policy can change accepted truth-bearing state. Git transports and publishes
+the resulting bytes; it does not confer authority.
+
+`vela agents sync` regenerates `AGENTS.md`, `CLAUDE.md`, the editor adapters,
+the MCP profile, and the local Vela skill from this file. Edit this file, never
+the generated adapters.
 
 ## Agent rules
 
 Agents may:
 
-- inspect frontier state (`vela status/inbox/log/check`), the corpus graph
-  (`scripts/graph.sh blast`), and every derived view
-- create keyless proposals (`vela finding add . --author agent:<you>`)
-- land results and verifier evidence (`vela land`, routed by the signed policy)
-- draft FC statements, run the lake gates, regenerate reducer outputs
-- assemble FC branches and PR bodies for the human to send
+- inspect state, ranked targets, graph slices, provenance, proposals, and
+  schemas
+- claim one target with `vela work` as an explicit `agent:` actor
+- run local frozen verifiers and the focused frontier checks
+- land one scoped Receipt v1 through the claimed work session
+- draft retirement of a malformed or obsolete artifact; the result remains
+  pending until a human signs it
+- regenerate derived views with `vela frontier materialize .`
+- draft Formal Conjectures statements, run their mechanical gates, and prepare
+  keyless handoff artifacts
 
 Agents may not:
 
-- accept, reject, review, or otherwise decide (`accept`, `review`,
-  `proposals reject`) — key-custody human verbs, engine-enforced
-- run any `vela` write without `VELA_ACTOR_ID=agent:<you>` set and
-  `--author agent:<you>` given
+- run `vela sign`, sign a policy, accept, reject, apply, or finalize a
+  truth-bearing proposal
+- read, handle, or use a human private key, or put a model in a trust path
 - hand-edit `.vela/`, `frontier.json`, `vela.lock`, or `proof/`
-- link `formal_proof` on a machine-conditional proof, or rephrase a
-  problem docstring
-- send outward PRs (FC, teorth) — staged by you, sent by the human
-
-## The one rule, and why
-
-**Agents propose, attach evidence, and draft. Humans decide.** Every
-truth-bearing act — accepting a finding, rejecting a proposal, signing a
-statement-fidelity verdict — is a named human reviewer's key. The engine
-enforces this (an `agent:` actor is refused at accept, reject, and review),
-but you must also hold up your side:
-
-- Set `VELA_ACTOR_ID=agent:<your-name>` in your environment before any
-  `vela` write. Never run a review verb bare: the CLI would resolve the
-  human's configured identity and key, and a signature would exist that no
-  human intended. This happened once (2026-07-01, a test reject silently
-  signed as `reviewer:will-blair`); the state was restored, the reject-path
-  guard was added to the substrate, and this rule is why.
-- `--author agent:<your-name>` on every `finding add`. No exceptions.
+- link `formal_proof` to a machine-conditional proof or rephrase an upstream
+  problem statement
+- publish an outward Formal Conjectures contribution in a human's name
 
 ## Fast commands
 
 ```bash
-vela status .                                   # one-screen frontier state
-vela sign --frontier . --json                   # what awaits the human key
-vela check . --strict                           # replay + verify every signature
-bash scripts/graph.sh blast cond:maynard-tao    # dependency impact over the corpus
-python erdos_frontier.py && uv run pytest -q    # regenerate the join + tests
-python scripts/build_graph.py                   # rebuild the corpus graph
+vela next . --json
+vela work <target> --frontier . --as agent:<name> --json
+vela land --frontier . --work <target> --claim <claim> \
+  --type theoretical --replayability exact \
+  --artifact <path>:<kind> --caveat <scope-limit> \
+  --as agent:<name> --json
+vela proposals list . --status pending_review --json
+vela status . --json
+vela check .
+vela reproduce .
+vela artifact retract . <va_id> --as agent:<name> --reason <why> --json
+vela frontier materialize .
+bash scripts/graph.sh blast <node>
 ```
 
-## What an agent does here
+Use `vela check . --strict` when working down proof-readiness debt. The full
+catalogue currently contains declared reference findings whose missing
+condition boundaries are intentionally visible as strict warnings; never hide
+that debt or describe a non-strict replay pass as a strict pass.
 
-Read state:
-    vela status .            one-screen frontier state
-    vela next .              the offer: ranked open targets
-    vela sign                what awaits the human key
-    vela log .               recent signed events
-    vela check . --strict    replay + verify every signature
-    bash scripts/graph.sh blast <node>    dependency impact over the corpus
-                                          (e.g. cond:maynard-tao, erdos:997)
+## Working loop
 
-Write state (all keyless, all pending until a human accepts):
-    vela finding add . --assertion "..." --type theoretical \
-        --source "<where it came from>" --author agent:<you> \
-        --url "<artifact at a pinned commit>" --json
-    vela land <receipt.json>   # record -> propose -> policy-routed
-        # mechanical evidence (lean_kernel etc.) — a process kind agents may land
+1. Run `vela next . --json` and use its ranked target and briefing.
+2. Claim exactly one target with `vela work ... --as agent:<name>`.
+3. Produce a bounded artifact and run only the verifier that actually checks
+   it. Preserve negative results and scope limits.
+4. Land the result through the session. The signed policy either permits it,
+   defers it to the human queue, or denies it. A broken or absent policy never
+   fails open.
+5. Stop. The human reviews deferred work with `vela sign`.
 
-Regenerate derived views (reducer outputs, never authored):
-    python erdos_frontier.py           the join (status/verdicts/site feeds)
-    python scripts/build_graph.py      the corpus graph
-    python match_packet.py             human review packets
+For a producer outside this repository, import the same portable Receipt v1
+with `vela land receipt.json --frontier . --as agent:<name> --json`.
 
-## The campaign (FC statements), vela-native
+## Formal Conjectures staging
 
-1. **Select + anti-collision**: `python scripts/draft_statement.py <n>…`
-   (refuses on any open FC PR touching the problem; stages inputs + scaffold
-   under `statements/<n>/`).
-2. **Draft**: you write `statements/<n>/<n>.lean` in FC house style from the
-   verbatim problem text; hosted proofs are shape priors; record every
-   divergence in `draft.json`.
-3. **Gate**: `bash scripts/gate_draft.sh <n>` (lake build + extract_names +
-   link-rule in the FC checkout).
-4. **Propose**: `vela finding add .` per drafted problem (author agent:you,
-   url = the draft at a pinned commit, the divergence digest in the
-   assertion's conditions), then `vela land` the gate result as a
-   `lean_kernel` verifier attachment.
-5. **Human session** (the only non-agent steps, 2–3 verbs):
-       vela sign        # the one ceremony: decisions + verdicts + hygiene
-       vela review . --batch <verdicts.json> --as reviewer:<name>
-   You prepare the review batch file from the reviewer's stated verdicts.
-6. **Submit to FC**: assemble the branch with plain git in the FC checkout,
-   body in the #4319 format; the human pushes and opens the PR (their
-   account, their voice). Claim batches by comment on FC issue #3998 first.
+`scripts/draft_statement.py` prepares a candidate from pinned inputs and
+`scripts/gate_draft.sh` runs the local FC mechanical gate. The resulting Lean
+file, input packet, metadata, and gate record are evidence, not accepted state.
+Land them as Receipt v1 artifacts with an explicit statement-fidelity caveat.
+Only after the human signs the exact proposal may an agent prepare an outward
+branch for the human to review and send.
 
 ## Hard boundaries
 
-- Never `vela sign` or `vela policy sign` — those
-  are the human's verbs even when the CLI would let a configured key through.
-- Never edit `.vela/`, `frontier.json`, `vela.lock`, or `proof/` by hand;
-  they replay from the signed log (`vela frontier materialize .`).
-- Never put a `formal_proof` link on a proof the machine audit calls
-  conditional; never rephrase a problem docstring (verbatim, always).
-- Outward PRs (FC, teorth) are the human's send. You stage everything.
-
-## Layout
-
-    .vela/ frontier.json vela.lock proof/   the signed spine (replayable)
-    graph/                                  the corpus graph (derived index)
-    site/                                   the public dashboard + map (derived)
-    statements/ campaign.yaml               FC campaign staging + ledger
-    lean/                                   the machine audit (assumption extractor)
-    sources/ sources.yaml sources.lock.json the ingested corpora + locks
+- Historical event, proposal, artifact, and policy bytes are immutable audit
+  material. Retired names inside those bytes remain historical provenance.
+- Accepted events and all derived views are regenerated, never edited.
+- A `sorry`-free theorem can still be conditional on an unproved hypothesis.
+  The Lean audit and the human statement-fidelity judgment remain separate.
+- Heavy external Lean re-audits are explicit campaign jobs, not part of a Vela
+  protocol release check.
+- The draft MCP profile exposes reads plus nonfinalizing work operations. It has
+  no decision tool.
