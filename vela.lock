@@ -30,7 +30,7 @@ verifiers:
   - union_free
   - unit_fraction_decomp
   - unsat_cert
-snapshot_hash: sha256:a4d62c3b7a2ca0a02a1bf4ce1b4ad0ffb06b6f2f61ff9f5b58ed8ee07d8b2bf1
+snapshot_hash: sha256:61a6817b0f5ba3620faaf99061a7d356b9dc38c3cfe0a4b7796fcdb690dd16fb
 event_log_hash: sha256:e16e57f2e39957ddc2fb529e1b715547c27935fa04730e3c78b4a997eb6f4678
 proposal_state_hash: sha256:3819f3e4492ce20432485841c7ed1703156a884f23e88fee913456b771b28b02
 sources_hash: sha256:a7498dfa9aa43c5309bdcfd67041ecd884ccb409d9b1804358185bd82a50646a
@@ -39,7 +39,7 @@ review_hash: sha256:4d2dea43f30482364752cf60a24d68ccc915b1f2aee6946f474a268a1e39
 proof_freshness: fresh
 proof:
   latest: proof/latest.json
-  digest: sha256:36e34f3164e1a83298257491dabefcf08c78de52caa193c10e4e093d0b0d3770
+  digest: sha256:d92f6b9398103a8e50f337ac91f2bc16b7666176359b892a3b378efbf52a7ec7
   freshness: fresh
   events_manifest: proof/events.manifest.jsonl
   replay_trace: proof/replay.trace.jsonl
