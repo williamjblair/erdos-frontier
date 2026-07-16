@@ -13,7 +13,7 @@ faithfully states the informal Erdős problem.
 
 ## Land research state through Receipt v1
 
-Install Vela 0.800.9, clone the frontier, and use the task-first loop:
+Install Vela 0.800.17, clone the frontier, and use the task-first loop:
 
 ```bash
 vela next . --json

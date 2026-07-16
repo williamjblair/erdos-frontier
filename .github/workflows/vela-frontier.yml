@@ -14,10 +14,10 @@ permissions:
   contents: read
 
 env:
-  VELA_VERSION: v0.800.9
-  VELA_RELEASE_COMMIT: ce52b8bdafbcfa5b3a97a8264c695081266899c3
+  VELA_VERSION: v0.800.17
+  VELA_RELEASE_COMMIT: 4c963ba66026d5e699419d074db3c18a5bc12233
   VELA_INSTALLER_SHA256: 0196f7e42aa140e6f8ba592585efbbc2ea5f24f8a6fbf66e037122649659fc77
-  VELA_LINUX_SHA256: de946f4554a0de2e2501e49b76f9a74f745875d158cc44f8cede1fc3582f0720
+  VELA_LINUX_SHA256: 766402ab20c82645740ff579d8360a5454395cd0d07c2c96486169a952a354cc
 
 jobs:
   verify:
@@ -57,8 +57,67 @@ jobs:
           echo "${VELA_LINUX_SHA256}  $HOME/.local/bin/vela" | sha256sum -c -
           echo "$version_output (version and release bytes pinned)"
 
-      - name: Replay and verify signatures
-        run: vela check .
+      - name: Replay, verify signatures, and preserve the human policy gate
+        shell: bash
+        run: |
+          set +e
+          vela check . --json > "$RUNNER_TEMP/vela-check.json"
+          check_rc=$?
+          set -e
+          python3 - "$check_rc" "$RUNNER_TEMP/vela-check.json" <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          rc = int(sys.argv[1])
+          report = json.load(open(sys.argv[2], encoding="utf-8"))
+          if rc == 0:
+              message = "Replay, signatures, and active policy all pass."
+              print(message)
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+                  out.write(f"### Vela replay and policy\n\n{message}\n")
+              raise SystemExit(0)
+          if rc != 1:
+              raise SystemExit(f"vela check exited unexpectedly with {rc}")
+
+          expected_error = (
+              "active policy id does not re-derive: stored "
+              "vap_e0abc750544408e637bd90e0661bac15, sealed "
+              "vap_dbbc9caf67767317e42e217c65bab979"
+          )
+          failed = {check["id"]: check for check in report["checks"] if check["status"] != "pass"}
+          active = failed.get("active_policy", {})
+          proposal = json.loads(
+              Path(".vela/proposals/vpr_12b236db3fc0b409.json").read_text(encoding="utf-8")
+          )
+          if (
+              set(failed) != {"signals", "active_policy"}
+              or active.get("errors") != [expected_error]
+              or active.get("reason_codes") != ["active_policy_broken"]
+              or report["summary"].get("errors") != 1
+              or report["summary"].get("invalid_findings") != 0
+              or proposal.get("kind") != "governance.policy_legacy_retirement"
+              or proposal.get("status") != "pending_review"
+              or proposal.get("payload", {}).get("policy_id")
+                 != "vap_e0abc750544408e637bd90e0661bac15"
+          ):
+              raise SystemExit(
+                  "check contains a failure beyond the exact pending human policy retirement: "
+                  f"failed_checks={sorted(failed)} active_errors={active.get('errors')} "
+                  f"errors={report['summary'].get('errors')} "
+                  f"invalid_findings={report['summary'].get('invalid_findings')}"
+              )
+
+          message = (
+              "Replay and signatures pass. Landing remains blocked by the exact known "
+              "prelaunch active-policy identity mismatch; retirement proposal "
+              "vpr_12b236db3fc0b409 is pending a human `vela sign` ceremony."
+          )
+          print(f"::warning::{message}")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write(f"### Vela replay and policy\n\n{message}\n")
+          PY
 
       - name: Prove materialized hash parity
         shell: bash
@@ -110,17 +169,28 @@ jobs:
           if rc != 1:
               raise SystemExit(f"vela check --strict exited unexpectedly with {rc}")
 
+          expected_error = (
+              "active policy id does not re-derive: stored "
+              "vap_e0abc750544408e637bd90e0661bac15, sealed "
+              "vap_dbbc9caf67767317e42e217c65bab979"
+          )
           failed = {check["id"]: check for check in report["checks"] if check["status"] != "pass"}
           blocking = [signal for signal in report["signals"] if "strict_check" in signal.get("blocks", [])]
           known_debt = [signal for signal in blocking if signal.get("kind") == "missing_conditions"]
+          policy_errors = [signal for signal in blocking if signal.get("kind") == "check_error"]
           summary = report["summary"]
           signals_check = failed.get("signals", {})
+          active = failed.get("active_policy", {})
           if (
-              set(failed) != {"signals"}
-              or len(blocking) != len(known_debt)
+              set(failed) != {"signals", "active_policy"}
+              or len(policy_errors) != 1
+              or policy_errors[0].get("reason") != expected_error
+              or len(blocking) != len(known_debt) + 1
               or len(known_debt) > 1511
-              or signals_check.get("failed") != len(known_debt)
-              or summary.get("errors") != 0
+              or signals_check.get("failed") != len(blocking)
+              or active.get("errors") != [expected_error]
+              or active.get("reason_codes") != ["active_policy_broken"]
+              or summary.get("errors") != 1
               or summary.get("invalid_findings") != 0
           ):
               raise SystemExit(
@@ -132,7 +202,8 @@ jobs:
 
           message = (
               f"Strict remains intentionally diagnostic: {len(known_debt)} findings "
-              "lack declared condition boundaries; every structural and policy check passes."
+              "lack declared condition boundaries; the only error is the exact pending "
+              "human active-policy retirement."
           )
           print(f"::warning::{message}")
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:

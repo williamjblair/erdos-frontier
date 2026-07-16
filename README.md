@@ -30,7 +30,7 @@ in the source registry:
 ```bash
 git clone https://github.com/vela-science/erdos-frontier
 cd erdos-frontier
-vela check .              # replay, signatures, and materialized-state parity
+vela check . --json       # replay/signatures; exits 1 only for the named human policy gate
 vela status . --json
 ```
 
