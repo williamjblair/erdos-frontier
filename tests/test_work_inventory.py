@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import pathlib
 import re
@@ -26,6 +27,10 @@ def _row(problem: int) -> dict:
 
 def _row_detail(problem: int) -> dict:
     return json.loads((HERE / "site" / "problems" / f"{problem}.json").read_text())
+
+
+def _target_index() -> dict:
+    return json.loads((HERE / "targets.json").read_text())
 
 
 def test_generated_inventory_is_current_and_deterministic():
@@ -58,6 +63,44 @@ def test_exact_inventory_lenses_and_corpus_coverage():
     actual = [row["problem"] for row in index["problems"]
               if row["lenses"]["all_authored"]]
     assert actual == expected
+
+
+def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
+    index = _target_index()
+    assert index["schema"] == "vela.target-index.v1"
+    assert index["frontier_id"] == json.loads((HERE / "frontier.json").read_text())["frontier_id"]
+    assert index["counts"] == {
+        "targets": 1217,
+        "open": 650,
+        "paused": 7,
+        "done": 560,
+    }
+    assert index["claim_boundary"] == {
+        "derived": True,
+        "authoritative": False,
+        "deletable": True,
+        "packets_are_briefing_not_accepted_truth": True,
+        "canonical_state_remains_vela_events": True,
+    }
+    assert [target["id"] for target in index["targets"]] == [
+        f"erdos:{problem}" for problem in range(1, 1218)
+    ]
+
+    for target in index["targets"]:
+        packet_path = HERE / target["packet"]["path"]
+        assert packet_path.is_file()
+        assert target["packet"]["sha256"] == (
+            "sha256:" + hashlib.sha256(packet_path.read_bytes()).hexdigest()
+        )
+        packet = json.loads(packet_path.read_text())
+        assert packet["problem"] == int(target["id"].split(":")[1])
+        assert packet["schema"] == target["packet"]["schema"]
+
+    target_1056 = index["targets"][1055]
+    assert target_1056["state"] == "open"
+    assert "residual-obligations" in target_1056["labels"]
+    assert "without repeating banked routes" in target_1056["objective"]
+    assert index["targets"][1]["state"] == "done"
 
 
 def test_migration_accounts_for_every_record_and_preserves_numbered_ids():
@@ -453,6 +496,7 @@ def test_frontier_duplicate_is_reconciled_without_a_json_merge():
 
 def test_public_outputs_have_no_local_absolute_paths_or_wall_clock_field():
     public_paths = [
+        HERE / "targets.json",
         HERE / "site" / "work-index.json",
         HERE / "graph" / "claim-graph.json",
         HERE / "graph" / "frontier-map.json",

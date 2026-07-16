@@ -37,10 +37,35 @@ vela status . --json
 `vela check . --strict` also promotes the catalogue's declared-data condition
 debt to a failing proof-readiness gate. The current 1,217-problem import keeps
 that debt visible rather than pretending every reference row is proof-ready.
+The check also reports the known prelaunch active-policy identity mismatch.
+Proposal `vpr_12b236db3fc0b409` fingerprints and retires that unsupported byte
+pair without changing the scientific snapshot; it remains `pending_review`
+until a key-custody human performs the ordinary `vela sign` ceremony.
 
 Everything under [`site/`](site/), plus `frontier.json` and `vela.lock`, is
 generated from the event log and locked sources. Nothing there confers
 authority by itself.
+
+## Native Vela work surface
+
+The repository is the complete 1,217-problem Erdős work atlas, not only a
+dashboard. [`targets.json`](targets.json) gives every problem a stable
+`erdos:<n>` handle and an exact digest for its full packet under
+[`site/problems/`](site/problems/). Each packet joins the upstream statement
+and status, formal theorem and proof records, attempts, residual obligations,
+dependencies, witnesses, source locks, and trust labels.
+
+```bash
+vela next . --json
+vela work erdos:1056 --frontier . --as agent:<you> --json
+vela reproduce .
+```
+
+`next` ranks current open, unpaused problems and loads only the selected
+packet. Solved, disproved, independent, or in-flight entries stay out of the
+suggestion queue but remain directly addressable for inspection and
+reproduction. The index and packets are derived, deletable briefing
+projections; only signed Vela events carry accepted truth.
 
 ## Sources
 
@@ -69,6 +94,8 @@ toolchains, strongest verdict per problem), applies
 
 Machine-readable outputs, one URL each:
 
+- [`targets.json`](targets.json): native Vela target index for all 1,217 problems
+- [`site/problems/`](site/problems/): hash-pinned complete per-problem work packets
 - [`site/verdicts.json`](site/verdicts.json): the audit feed, one row per problem
 - [`site/status.json`](site/status.json) / [`site/STATUS.md`](site/STATUS.md): the proof-status join and bucket counts
 - [`site/NEXT_BATCH.md`](site/NEXT_BATCH.md): ranked safe `statement` candidates for FC

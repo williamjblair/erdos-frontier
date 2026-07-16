@@ -41,6 +41,7 @@ FORMAL_CONJECTURES_ACTIVITY_PATH = (
     HERE / "sources" / "formal-conjectures-activity.yaml"
 )
 WORK_INDEX_PATH = HERE / "site" / "work-index.json"
+TARGET_INDEX_PATH = HERE / "targets.json"
 PROBLEM_DIR = HERE / "site" / "problems"
 WORK_INVENTORY_PATH = HERE / "graph" / "work-inventory.json"
 CLAIM_GRAPH_PATH = HERE / "graph" / "claim-graph.json"
@@ -104,6 +105,10 @@ def _yaml_bytes(value: Any) -> bytes:
 
 def _sha256(path: pathlib.Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _sha256_bytes(value: bytes) -> str:
+    return "sha256:" + hashlib.sha256(value).hexdigest()
 
 
 def _short(text: str, limit: int = 180) -> str:
@@ -2114,6 +2119,114 @@ def _problem_detail(
     }
 
 
+def _native_target_entry(profile: dict, detail: dict, packet_bytes: bytes) -> dict:
+    problem = profile["problem"]
+    upstream = profile["upstream_state"]
+    lifecycle = profile["lifecycle"]
+    residual_count = len(detail["residual_obligations"])
+    proof_count = len(detail["proof_artifacts"])
+    attempt_count = profile["attempt_count"]
+    formal = detail["statement"].get("formal_statement")
+
+    if upstream == "open" and lifecycle == "paused":
+        state = "paused"
+    elif upstream == "open":
+        state = "open"
+    else:
+        state = "done"
+
+    if state == "open" and (residual_count or attempt_count):
+        rank_group = 0
+    elif state == "open" and (formal or proof_count):
+        rank_group = 1
+    elif state == "open":
+        rank_group = 2
+    elif state == "paused":
+        rank_group = 3
+    else:
+        rank_group = 4
+    priority_signal = min(
+        10_000,
+        residual_count * 100
+        + attempt_count * 10
+        + proof_count * 5
+        + (1 if formal else 0),
+    )
+
+    if residual_count:
+        why = (
+            f"{residual_count} pinned residual obligation"
+            f"{'s' if residual_count != 1 else ''}; "
+            f"{attempt_count} recorded attempt"
+            f"{'s' if attempt_count != 1 else ''}; upstream {upstream}."
+        )
+    elif attempt_count:
+        why = (
+            f"{attempt_count} recorded attempt"
+            f"{'s' if attempt_count != 1 else ''}; upstream {upstream}; "
+            f"machine status {profile['machine_status']}."
+        )
+    elif formal or proof_count:
+        why = (
+            f"Pinned formal/proof context is available; upstream {upstream}; "
+            f"statement fidelity {profile['statement_fidelity']}."
+        )
+    else:
+        why = (
+            f"Complete pinned corpus entry; upstream {upstream}; "
+            "no authored attempt is currently recorded."
+        )
+
+    labels = [
+        "erdos",
+        f"upstream-{upstream}",
+        f"lifecycle-{lifecycle}",
+        f"machine-{profile['machine_status']}",
+    ]
+    labels.extend(f"activity-{kind}" for kind in profile["activity_types"])
+    if formal:
+        labels.append("formal-statement")
+    if proof_count:
+        labels.append("proof-artifact")
+    if residual_count:
+        labels.append("residual-obligations")
+
+    if state == "open":
+        objective = (
+            f"Advance Erdős problem {problem} from its pinned statement, theorem and proof "
+            "records, attempts, residual obligations, dependency context, and source locks; "
+            "produce one decision-relevant artifact or an informative negative result without "
+            "repeating banked routes."
+        )
+    elif state == "paused":
+        objective = (
+            f"Inspect the pinned record for Erdős problem {problem} and resume it only after "
+            "checking the recorded in-flight coordination; preserve prior attempts, proof "
+            "records, dependencies, and source locks."
+        )
+    else:
+        objective = (
+            f"Inspect, reproduce, or extend the pinned completed record for Erdős problem "
+            f"{problem}; do not reopen its upstream status without new decision-relevant "
+            "evidence."
+        )
+
+    return {
+        "id": f"erdos:{problem}",
+        "title": profile["label"],
+        "why": why,
+        "state": state,
+        "rank": rank_group * 100_000_000 + (10_000 - priority_signal) * 2_000 + problem,
+        "objective": objective,
+        "labels": sorted(set(labels)),
+        "packet": {
+            "path": f"site/problems/{problem}.json",
+            "sha256": _sha256_bytes(packet_bytes),
+            "schema": detail["schema"],
+        },
+    }
+
+
 def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
     registry = _load_yaml(REGISTRY_PATH)
     migration = _load_yaml(MIGRATION_PATH)
@@ -2284,6 +2397,7 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
     drafts_by_problem: dict[int, list[dict]] = defaultdict(list)
     for draft in developed_drafts:
         drafts_by_problem[draft["problem"]].append(draft)
+    native_targets = []
     for problem in range(1, 1218):
         detail = _problem_detail(
             profile_by_problem[problem], status_by_problem[problem],
@@ -2291,7 +2405,31 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
             attempts_by_problem.get(problem, []), drafts_by_problem.get(problem, []),
             operational, source_locks,
         )
-        outputs[PROBLEM_DIR / f"{problem}.json"] = _json_bytes(detail, compact=True)
+        packet_bytes = _json_bytes(detail, compact=True)
+        outputs[PROBLEM_DIR / f"{problem}.json"] = packet_bytes
+        native_targets.append(
+            _native_target_entry(profile_by_problem[problem], detail, packet_bytes)
+        )
+
+    outputs[TARGET_INDEX_PATH] = _json_bytes({
+        "schema": "vela.target-index.v1",
+        "frontier_id": registry["frontier_id"],
+        "as_of": state_pins,
+        "counts": {
+            "targets": len(native_targets),
+            "open": sum(target["state"] == "open" for target in native_targets),
+            "paused": sum(target["state"] == "paused" for target in native_targets),
+            "done": sum(target["state"] == "done" for target in native_targets),
+        },
+        "claim_boundary": {
+            "derived": True,
+            "authoritative": False,
+            "deletable": True,
+            "packets_are_briefing_not_accepted_truth": True,
+            "canonical_state_remains_vela_events": True,
+        },
+        "targets": native_targets,
+    }, compact=True)
 
     # A hard public-data guard: generated feeds never leak workstation paths.
     for path, data in outputs.items():

@@ -14,10 +14,10 @@
   },
   "proposal_state_hash": "sha256:3819f3e4492ce20432485841c7ed1703156a884f23e88fee913456b771b28b02",
   "reducer": {
-    "digest": "sha256:b15358289c64f19dfa5ea4f48aea689be822d91782597fae18a861827c5b64d4",
+    "digest": "sha256:879ef96fcc1bc555012c2f0888a757d3c9bfc66c18002c59cf3ee62c20e4b011",
     "name": "vela",
-    "package": "vela@0.800.9",
-    "version": "0.800.9"
+    "package": "vela@0.800.16",
+    "version": "0.800.16"
   },
   "schema": "vela.frontier_repo_proof.v0.1",
   "warning": "Do not edit frontier.json directly. Use Vela's task-first receipt, signing, materialization, and proof commands."

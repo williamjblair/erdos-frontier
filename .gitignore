@@ -22,3 +22,4 @@ records/
 /.vela/workspaces/
 /.vela/source-inbox/
 /.vela/artifact-blobs/
+/.hypothesis/
