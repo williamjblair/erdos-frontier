@@ -6,8 +6,7 @@ content-addressed event log is the scientific state. The audit feeds, corpus
 graph, site, `frontier.json`, `vela.lock`, and proof packet are projections over
 that state plus commit-pinned sources.
 
-The ordinary contribution path is `next -> work -> land -> sign`. Agents do
-the first three steps. Only a human key or a previously human-signed Permit
+The ordinary producer path is `next -> work -> land`. Only a human key or a previously human-signed Permit
 policy can change accepted truth-bearing state. Git transports and publishes
 the resulting bytes; it does not confer authority.
 
@@ -25,15 +24,18 @@ Agents may:
 - run local frozen verifiers and the focused frontier checks
 - land one scoped Receipt v1 through the claimed work session
 - draft retirement of a malformed or obsolete artifact; the result remains
-  pending until a human signs it
+  pending until a human decides it
+- inspect the newest-first review queue and one exact Decision Brief
+- prepare and invoke one root-bound protected decision request; only the
+  registered human may approve or decline its exact decision card
 - regenerate derived views with `vela frontier materialize .`
 - draft Formal Conjectures statements, run their mechanical gates, and prepare
   keyless handoff artifacts
 
 Agents may not:
 
-- run `vela sign`, sign a policy, accept, reject, apply, or finalize a
-  truth-bearing proposal
+- run legacy `vela sign`, approve a protected decision card, sign a policy, or
+  claim that requesting a decision accepted or rejected a proposal
 - read, handle, or use a human private key, or put a model in a trust path
 - hand-edit `.vela/`, `frontier.json`, `vela.lock`, or `proof/`
 - link `formal_proof` to a machine-conditional proof or rephrase an upstream
@@ -49,7 +51,9 @@ vela land --frontier . --work <target> --claim <claim> \
   --type theoretical --replayability exact \
   --artifact <path>:<kind> --caveat <scope-limit> \
   --as agent:<name> --json
-vela proposals list . --status pending_review --json
+vela review list . --json
+vela review show . <vpr_id> --json
+vela review decide . <vpr_id> --accept|--reject --reason <why> --json
 vela status . --json
 vela check .
 vela reproduce .
@@ -72,7 +76,8 @@ that debt or describe a non-strict replay pass as a strict pass.
 4. Land the result through the session. The signed policy either permits it,
    defers it to the human queue, or denies it. A broken or absent policy never
    fails open.
-5. Stop. The human reviews deferred work with `vela sign`.
+5. Stop. The human reviews one deferred proposal through an exact protected
+   `vela review decide` request.
 
 For a producer outside this repository, import the same portable Receipt v1
 with `vela land receipt.json --frontier . --as agent:<name> --json`.
@@ -83,7 +88,7 @@ with `vela land receipt.json --frontier . --as agent:<name> --json`.
 `scripts/gate_draft.sh` runs the local FC mechanical gate. The resulting Lean
 file, input packet, metadata, and gate record are evidence, not accepted state.
 Land them as Receipt v1 artifacts with an explicit statement-fidelity caveat.
-Only after the human signs the exact proposal may an agent prepare an outward
+Only after the human accepts the exact proposal may an agent prepare an outward
 branch for the human to review and send.
 
 ## Hard boundaries

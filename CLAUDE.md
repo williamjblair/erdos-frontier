@@ -14,15 +14,18 @@ Agents may:
 - run local frozen verifiers and the focused frontier checks
 - land one scoped Receipt v1 through the claimed work session
 - draft retirement of a malformed or obsolete artifact; the result remains
-  pending until a human signs it
+  pending until a human decides it
+- inspect the newest-first review queue and one exact Decision Brief
+- prepare and invoke one root-bound protected decision request; only the
+  registered human may approve or decline its exact decision card
 - regenerate derived views with `vela frontier materialize .`
 - draft Formal Conjectures statements, run their mechanical gates, and prepare
   keyless handoff artifacts
 
 Agents may not:
 
-- run `vela sign`, sign a policy, accept, reject, apply, or finalize a
-  truth-bearing proposal
+- run legacy `vela sign`, approve a protected decision card, sign a policy, or
+  claim that requesting a decision accepted or rejected a proposal
 - read, handle, or use a human private key, or put a model in a trust path
 - hand-edit `.vela/`, `frontier.json`, `vela.lock`, or `proof/`
 - link `formal_proof` to a machine-conditional proof or rephrase an upstream
@@ -38,7 +41,9 @@ vela land --frontier . --work <target> --claim <claim> \
   --type theoretical --replayability exact \
   --artifact <path>:<kind> --caveat <scope-limit> \
   --as agent:<name> --json
-vela proposals list . --status pending_review --json
+vela review list . --json
+vela review show . <vpr_id> --json
+vela review decide . <vpr_id> --accept|--reject --reason <why> --json
 vela status . --json
 vela check .
 vela reproduce .
