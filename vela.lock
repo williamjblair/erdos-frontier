@@ -30,16 +30,16 @@ verifiers:
   - union_free
   - unit_fraction_decomp
   - unsat_cert
-snapshot_hash: sha256:7fe71b4e13c8d97da02b93ce2d9ee7762986da93111bfa1d0bcc4c47fa2b5864
+snapshot_hash: sha256:1faedc24f040a60a22177b456c74b969a61ce8836082297b1835797a57b4fa56
 event_log_hash: sha256:a06797bc0d1b0e3c88a2f97507fe0832661e3992d8df41187a0aa6d3ceee9bde
-proposal_state_hash: sha256:2a007d645365df5f916e21a1a6be84fc01c76a16238d52162ed1597021f66968
+proposal_state_hash: sha256:e69b38037814f2e8ca826942cfc50ab370993889be2913cac1c0b3e77711160f
 sources_hash: sha256:a7498dfa9aa43c5309bdcfd67041ecd884ccb409d9b1804358185bd82a50646a
-artifacts_hash: sha256:8d38d12e4e00ef23ecd0eb0d95c75d4a0b3de0f7b3a207fb580393b0e66a3ae0
+artifacts_hash: sha256:142df2095255a787a1d056587cb3c0dcc3ed543079ebf09c1243c9538190eab2
 review_hash: sha256:4d2dea43f30482364752cf60a24d68ccc915b1f2aee6946f474a268a1e3968d3
 proof_freshness: fresh
 proof:
   latest: proof/latest.json
-  digest: sha256:1554b6430c2c50e1b9788f825371428a923085f4cb754c32b41596ca4fbb8a7d
+  digest: sha256:0e0b0fbb34e91f2b17db9955bf85286a54d073040f7f7191c202e3b41ddd7e1e
   freshness: fresh
   events_manifest: proof/events.manifest.jsonl
   replay_trace: proof/replay.trace.jsonl

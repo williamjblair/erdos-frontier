@@ -6,7 +6,7 @@ Current proof status: fresh
 
 Accepted events: 2189
 Event log hash: `sha256:a06797bc0d1b0e3c88a2f97507fe0832661e3992d8df41187a0aa6d3ceee9bde`
-Snapshot hash: `sha256:7fe71b4e13c8d97da02b93ce2d9ee7762986da93111bfa1d0bcc4c47fa2b5864`
+Snapshot hash: `sha256:1faedc24f040a60a22177b456c74b969a61ce8836082297b1835797a57b4fa56`
 
 Run:
 
