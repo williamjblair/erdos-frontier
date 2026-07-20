@@ -17,7 +17,7 @@
   "developed_proposals": {
     "path": "review/developed-campaign-proposals.v1.yaml",
     "pending": 12,
-    "proposal_state_hash": "sha256:8d7eaa08e77d6e8b2d6bdbbc79962778e467535cd0c572fa6f5b5ab7446d89ce",
+    "proposal_state_hash": "sha256:e69b38037814f2e8ca826942cfc50ab370993889be2913cac1c0b3e77711160f",
     "sha256": "sha256:7a36e1bf14b692e8ccca8633f4cff4e2b8ecd753cd3cd62d824f4671b4cea31f"
   },
   "excluded_special_activity": {
@@ -53,7 +53,7 @@
     }
   },
   "frontier_id": "vfr_0a25edabc16db143",
-  "frontier_root": "sha256:8877c4a27dd75ef8525566b0dd11b94ccd1ea00af95a204dc7b34a22a41d3125",
+  "frontier_root": "sha256:1faedc24f040a60a22177b456c74b969a61ce8836082297b1835797a57b4fa56",
   "history_only_campaigns": [
     42,
     92,
@@ -684,8 +684,8 @@
     982
   ],
   "state_pins": {
-    "event_log_hash": "sha256:dea8bb4583376851a63587551205be3916c19cb28a609c8d81ba8321853cc6b3",
-    "proposal_state_hash": "sha256:8d7eaa08e77d6e8b2d6bdbbc79962778e467535cd0c572fa6f5b5ab7446d89ce",
-    "snapshot_hash": "sha256:8877c4a27dd75ef8525566b0dd11b94ccd1ea00af95a204dc7b34a22a41d3125"
+    "event_log_hash": "sha256:a06797bc0d1b0e3c88a2f97507fe0832661e3992d8df41187a0aa6d3ceee9bde",
+    "proposal_state_hash": "sha256:e69b38037814f2e8ca826942cfc50ab370993889be2913cac1c0b3e77711160f",
+    "snapshot_hash": "sha256:1faedc24f040a60a22177b456c74b969a61ce8836082297b1835797a57b4fa56"
   }
 }
