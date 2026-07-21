@@ -33,7 +33,7 @@ def test_frontier_workflow_uses_the_lock_matching_released_vela():
         "5a270f8b5ec038ade7c1274dc64a33dd99117851"
     )
     assert workflow["env"]["VELA_LINUX_SHA256"] == (
-        "51743b4e0fdd5a53471eed5faf1cc862ee06c36ee75251824a9bfb3d5ee19806"
+        "cf30a1dc5f575e74055396a9afde59f9b64fb82fc01e58a3e1863a5e36d6444e"
     )
 
 
