@@ -34,7 +34,12 @@ receipts, verifier attachments, repositories, commits, producers, channels,
 leases, and historical records. It is derived navigation data and cannot
 establish a claim, proof, or statement-fidelity verdict.
 
-`site/graph.json` remains a compatibility projection during migration.
+`site/graph.json` remains a compatibility projection during migration. Remove
+it only after every maintained consumer reads `graph/frontier-map.json` (or a
+root-bound Observatory projection of that file), repository search finds no
+remaining consumer, and one released Observatory build has passed exact
+node/edge parity without it. Until then it is generated from the canonical map,
+never read back as authority.
 
 ## Independent status axes
 

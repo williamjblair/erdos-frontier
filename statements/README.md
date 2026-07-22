@@ -2,7 +2,8 @@
 
 Drafts from the FC statement campaign live here, one directory per problem.
 Nothing in this directory is accepted frontier state. A new draft travels
-through the same Receipt v1 and human-sign path as every other claim:
+through the same Receipt v1 and protected human-decision path as every other
+claim:
 
     statements/<n>/
       inputs.md    the drafter's desk: verbatim problem LaTeX, upstream state,
@@ -23,7 +24,9 @@ Lifecycle (see campaign.yaml for batch state):
 4. Land the exact Lean file, input packet, `draft.json`, and `gates.json` as
    Receipt v1 artifacts. State explicitly that fidelity to the informal
    problem remains a human judgment.
-5. Stop at the routed proposal. A human reviews it with `vela sign`; only the
+5. Stop at the routed proposal. An agent may prepare one exact, key-free plan
+   with `vela review decide . <vpr_id> --accept|--reject --reason <text> --json`;
+   only the registered human may approve its protected decision card. Only
    exact accepted bytes may be prepared for an outward FC branch.
 
 A drafted `.lean` is never edited after acceptance. Any byte change is a new

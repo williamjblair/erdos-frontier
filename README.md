@@ -1,8 +1,9 @@
 # Erdős Problems Frontier
 
-A standalone Vela custody source for the Erdős-problem audit and bounded
-research state. The read-only published projection is available in
-[Vela Observatory](https://app.vela.space/frontiers/erdos).
+The canonical Git frontier for the Erdős-problem audit and its bounded
+research state. Inspect its read-only projection in
+[Vela Observatory](https://app.vela.space/frontiers/erdos), or clone this
+repository to verify the exact state yourself.
 
 The audit asks which formally solved Erdős problems rest on an unconditional
 Lean proof and which silently assume an unproven result.
@@ -23,9 +24,24 @@ Two axes, one trust rule:
   A human judgment, signed by a named reviewer. Never inferred, never
   auto-filled: a problem with no signed verdict shows blank.
 
+## How the pieces fit
+
+The product loop is deliberately small:
+
+1. **Produce.** Any suitable tool can produce a proof, computation, note, or
+   portable Receipt v1. Canopus is optional producer scaffolding.
+2. **Preserve.** This Git repository preserves the canonical frontier history
+   and content-addressed evidence.
+3. **Check.** Vela replays the event log, checks signatures and roots, and runs
+   the declared verifiers.
+4. **Decide.** Signed policy or one protected, proposal-specific human decision
+   controls whether a truth-bearing proposal changes accepted state.
+5. **Reuse.** The Observatory and other replaceable, read-only consumers help
+   people inspect, reproduce, and continue the work. They hold no authority.
+
 ## Verify it yourself
 
-The dashboard is a materialized view. Accepted scientific state is the
+The Observatory is a read-only projection. Accepted scientific state is the
 replayable event log under [`.vela/`](.vela/) (Vela frontier
 `vfr_0a25edabc16db143`); external catalogue and proof inputs are commit-pinned
 in the source registry:
@@ -45,14 +61,14 @@ proposal `vpr_12b236db3fc0b409`, retiring the unsupported prelaunch active-polic
 byte pair without changing scientific state. The frontier now has no active
 policy and is intentionally human-only for future truth-bearing decisions.
 
-Everything under [`site/`](site/), plus `frontier.json` and `vela.lock`, is
-generated from the event log and locked sources. Nothing there confers
-authority by itself.
+Everything under [`site/`](site/) is a generated compatibility projection.
+`frontier.json` and `vela.lock` are also replayed materializations. None of
+these files confers authority by itself.
 
 ## Native Vela work surface
 
-The repository is the complete 1,217-problem Erdős work atlas, not only a
-dashboard. [`targets.json`](targets.json) gives every problem a stable
+The repository is the complete 1,217-problem Erdős work atlas, not merely its
+read projection. [`targets.json`](targets.json) gives every problem a stable
 `erdos:<n>` handle and an exact digest for its full packet under
 [`site/problems/`](site/problems/). Each packet joins the upstream statement
 and status, formal theorem and proof records, attempts, residual obligations,
@@ -91,11 +107,12 @@ or a conditional proof gets linked as if it proved the boxed statement.
 [`erdos_frontier.py`](erdos_frontier.py) fetches the sources, joins them, folds
 in the machine verdicts from the Lean extractor ([`lean/`](lean/), multiple
 toolchains, strongest verdict per problem), applies
-[`overrides.yaml`](overrides.yaml) and any signed verdicts, and regenerates
-[`site/`](site/). A GitHub Action reruns it daily; the heavier Lean re-audit
+[`overrides.yaml`](overrides.yaml) and any signed verdicts, and regenerates the
+compatibility feeds under [`site/`](site/). A scheduled GitHub Action refreshes
+those derived feeds; the heavier Lean re-audit
 ([`lean/reaudit.sh`](lean/reaudit.sh)) runs on demand.
 
-Machine-readable outputs, one URL each:
+Derived work and compatibility outputs:
 
 - [`targets.json`](targets.json): native Vela target index for all 1,217 problems
 - [`site/problems/`](site/problems/): hash-pinned complete per-problem work packets
@@ -112,7 +129,7 @@ signed state:
 ```bash
 bash scripts/graph.sh build                   # rebuild from the sources
 bash scripts/graph.sh blast cond:maynard-tao  # what does retracting an input unsettle?
-bash scripts/graph.sh serve                   # the frontier over HTTP
+bash scripts/graph.sh serve                   # inspect the local derived graph
 ```
 
 The repo also ships [`.mcp.json`](.mcp.json): an MCP client opened here gets
@@ -127,9 +144,12 @@ audit reads, or land a portable Receipt v1 through Vela's task-first loop.
 [STANDARD_CHECK.md](STANDARD_CHECK.md) is the proposal for a layered
 statement-review check upstream in formal-conjectures.
 
-Agents use `vela next -> work -> land` and stop. A human handles deferred
-truth-bearing proposals through the single `vela sign` ceremony. Historical
-statement-fidelity attestations remain immutable audit material.
+Agents use `vela next -> work -> land` and stop. For a deferred truth-bearing
+proposal, an agent may prepare one key-free plan with
+`vela review decide . <vpr_id> --accept|--reject --reason <text> --json`.
+Only the registered human may approve the resulting protected, root-bound
+decision card. Historical statement-fidelity attestations remain immutable
+audit material.
 
 [`overrides.yaml`](overrides.yaml) is the only hand-maintained classification
 input. Use it for facts the sources cannot know: a mismatched quantifier, a
@@ -152,7 +172,7 @@ classification and rendering offline.
 ```
 erdos_frontier.py     fetch, join, classify, render
 match_packet.py       human-review packets for the discrepancies
-site/                 the published surface (generated; GitHub Pages serves it)
+site/                 generated compatibility feeds; not the authority surface
 sources/              ingested claim snapshots (wiki, gpt-erdos, fidelity cache)
 lean/                 the Lean assumption-extractor + committed machine verdicts
 overrides.yaml        the only hand-maintained classification input

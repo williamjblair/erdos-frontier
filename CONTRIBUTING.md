@@ -13,7 +13,8 @@ faithfully states the informal Erdős problem.
 
 ## Land research state through Receipt v1
 
-Install Vela 0.800.17, clone the frontier, and use the task-first loop:
+Install the Vela version declared by [`vela.lock`](vela.lock) (currently
+`0.901.0`), clone the frontier, and use the task-first loop:
 
 ```bash
 vela next . --json
@@ -48,8 +49,10 @@ Statement candidates require both mechanical and semantic review:
 3. `bash scripts/gate_draft.sh <n>` runs the FC build and metadata checks.
 4. Land the exact draft and gate record as Receipt v1 artifacts with a caveat
    that statement fidelity remains a human judgment.
-5. Stop at the pending proposal. A human uses `vela sign`; the outward FC
-   branch is prepared only from the exact accepted bytes.
+5. Stop at the pending proposal. An agent may prepare its key-free Decision
+   Plan with `vela review decide . <vpr_id> --accept|--reject --reason <text> --json`;
+   only the registered human may approve the protected, root-bound decision
+   card. The outward FC branch is prepared only from the exact accepted bytes.
 
 Never add a `formal_proof` link when the machine audit reports a conditional,
 axiomatic, partial, or mismatched theorem.
