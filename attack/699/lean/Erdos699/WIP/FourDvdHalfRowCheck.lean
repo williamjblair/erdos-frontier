@@ -1,0 +1,8 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check half_sub_one_coprime_four_of_four_dvd
+#check i_three_caseI_factor_sq_squeeze_of_four_dvd_from_row_bound
+
+end Erdos699

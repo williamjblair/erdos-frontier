@@ -1,0 +1,8 @@
+{
+  "results": [
+    {"chosen_landing":"2/25","gap_from_2_25":"0/1","kind":"orbit-invariant","max_active_profiles":8,"positive_root_types":26,"root_order":7,"state_order":9,"verdict":"PASS_AT_OR_BELOW_2_25"},
+    {"chosen_landing":"6418/78125","gap_from_2_25":"168/78125","kind":"orbit-invariant","max_active_profiles":9,"positive_root_types":41,"root_order":8,"state_order":10,"verdict":"CHOSEN_COLORING_ABOVE_SHARP_BOUND"},
+    {"chosen_landing":"2/25","gap_from_2_25":"0/1","kind":"aut-averaged","max_active_profiles":128,"positive_root_types":26,"root_order":7,"state_order":9,"verdict":"PASS_AT_OR_BELOW_2_25"},
+    {"chosen_landing":"2/25","gap_from_2_25":"0/1","kind":"aut-averaged","max_active_profiles":256,"positive_root_types":41,"root_order":8,"state_order":10,"verdict":"PASS_AT_OR_BELOW_2_25"}
+  ]
+}

@@ -1,0 +1,60 @@
+INJECTED C_5[3]: C2=PASS_UNIFORM
+INJECTED C_5[4]: Gamma=400 N2=400  C3=PASS_UNIFORM 
+INJECTED C_7[2]: Gamma=196 N2=196  C3=PASS_UNIFORM 
+INJECTED C_7[2]: C2=PASS_UNIFORM
+
+--- C3 (local load <= N) stats by (n, verdict):
+  n= 5 PASS_UNIFORM   5
+  n= 6 PASS_UNIFORM   8
+  n= 7 PASS_UNIFORM   53
+  n= 8 KILL_HUB       27
+  n= 8 PASS_UNIFORM   253
+  n= 9 KILL_HUB       356
+  n= 9 PASS_UNIFORM   1563
+  n=10 KILL_HUB       115
+  n=10 PASS_LP        175
+  n=10 PASS_UNIFORM   15884
+  n=11 KILL_HUB       5
+  n=11 PASS_LP        66
+  n=11 PASS_UNIFORM   92
+  n=12 KILL_HUB       9
+  n=12 KILL_LP        11
+  n=12 PASS_LP        26
+  n=12 PASS_UNIFORM   39
+--- C2 (edge congestion <= 1) stats by (n, verdict):
+  n= 5 PASS_UNIFORM   5
+  n= 6 PASS_UNIFORM   8
+  n= 7 PASS_UNIFORM   53
+  n= 8 PASS_LP_FLOAT  8
+  n= 8 PASS_UNIFORM   272
+  n= 9 PASS_LP_FLOAT  227
+  n= 9 PASS_UNIFORM   1692
+  n=10 PASS_UNIFORM   31
+  n=11 PASS_LP_FLOAT  91
+  n=11 PASS_UNIFORM   72
+  n=12 PASS_LP_FLOAT  47
+  n=12 PASS_UNIFORM   38
+
+C3 kills: 523
+  KILL3 (10, 'I??CF@wFo', 63, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF@wFo', 126, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF@wFo', 127, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?Z^?', 63, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?Z^?', 126, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?Z^?', 127, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?^^?', 63, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?^^?', 126, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??CF?^^?', 127, 'KILL_HUB', ('hub', 7, 12), 74)
+  KILL3 (10, 'I??E@fKJ_', 63, 'KILL_HUB', ('hub', 6, 12), 74)
+  KILL3 (10, 'I??E@fKJ_', 183, 'KILL_HUB', ('hub', 6, 12), 74)
+  KILL3 (10, 'I??E@fKJ_', 179, 'KILL_HUB', ('hub', 6, 12), 74)
+  KILL3 (10, 'I??E@fKN_', 63, 'KILL_HUB', ('hub', 6, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 31, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 63, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 62, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 126, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 127, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 125, 'KILL_HUB', ('hub', 8, 12), 74)
+  KILL3 (10, 'I?AAD@wF_', 124, 'KILL_HUB', ('hub', 8, 12), 74)
+C2 kills: 0
+unresolved: 0

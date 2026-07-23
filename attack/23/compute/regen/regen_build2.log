@@ -1,0 +1,31 @@
+[      0s] stage1: loaded cached my_moments_n9.pkl (1897 states)
+[      0s] stage1 OK: flag dims match shipped atom dims {'K0': 7, 'K1': 35, 'EDGE': 34, 'NON': 57}
+T_9 perfect-hash map built (1897 keys, no canonical)
+T_10=12172; building D, gamma...
+  J 0/12172  (0s)
+  J 1000/12172  (3s)
+  J 2000/12172  (5s)
+  J 3000/12172  (8s)
+  J 4000/12172  (11s)
+  J 5000/12172  (14s)
+  J 6000/12172  (17s)
+  J 7000/12172  (20s)
+  J 8000/12172  (23s)
+  J 9000/12172  (27s)
+  J 10000/12172  (29s)
+  J 11000/12172  (32s)
+  J 12000/12172  (35s)
+build done in 35s
+[     36s] stage2 OK: D built, nnz=94703, nJ=12172
+[     36s] stage2 sanity: 45*(D^T dedge9) == independent edge counts for all 12172 states: True
+[     61s] stage3: atom 10/87
+[     85s] stage3: atom 20/87
+[    116s] stage3: atom 30/87
+[    155s] stage3: atom 40/87
+[    188s] stage3: atom 50/87
+[    226s] stage3: atom 60/87
+[    256s] stage3: atom 70/87
+[    292s] stage3: atom 80/87
+[    318s] stage3: bit-for-bit compare vs shipped mom_term_exact.pkl: mismatches = 0 / 12172
+
+>>> REGEN RESULT: moment term MATCHES SHIPPED BIT-FOR-BIT (12172/12172) <<<

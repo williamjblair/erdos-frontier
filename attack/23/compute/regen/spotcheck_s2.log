@@ -1,0 +1,4 @@
+[     0s] [S2] states9 (author pipeline) aligns index-for-index with my geng/labelg T_9: True
+[     7s] [S2] D columns, 500 seeded samples: mismatching columns = 0
+
+>>> SPOTCHECK[s2]: ALL PASS (S1a K0-all=None, S1b sample200=None, S2 D500=True) <<<

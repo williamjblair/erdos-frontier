@@ -1,0 +1,4 @@
+[    23s] [S1a] K0 full recount, all 1897 states: mismatching matrices = 0
+[    32s] [S1b] sampled recount K1/EDGE/NON, 200 (label,state) pairs: mismatches = 0
+
+>>> SPOTCHECK[s1]: ALL PASS (S1a K0-all=True, S1b sample200=True) <<<

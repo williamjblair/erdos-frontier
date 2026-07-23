@@ -1,0 +1,2 @@
+SUMMARY n=12 graphs=1144061 maxcut_instances=2640775 withM=2427995 EQ=0 CEX=0 dumped=85
+MAXNONEQ n=12 Gamma=130 N2=144 g6=K???CB_Fbo?{ S=127

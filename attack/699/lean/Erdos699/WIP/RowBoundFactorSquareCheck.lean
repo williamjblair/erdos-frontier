@@ -1,0 +1,9 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check two_mul_t_le_X_of_factorized_half_bound
+#check i_three_caseI_factor_sq_squeeze_of_half_bound_from_row_bound
+#check i_three_caseI_factor_sq_squeeze_of_half_coprime_four_from_row_bound
+
+end Erdos699

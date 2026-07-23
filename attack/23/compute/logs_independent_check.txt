@@ -1,0 +1,33 @@
+== [A] delta_final re-derived from raw dual ==
+  [PASS] delta_mine == delta_saved (exact Fraction)  -- delta = 21642965260808215764969346692426756225594007/445715542131112582219485585645190814873007000000 = 4.8557798001e-05
+  [PASS] saved verdict flag is True
+  [PASS] eps == 1/10^6 (the declared robust slack)  -- eps=1/1000000
+== [B] manifest PSD: all Gram weights nonnegative ==
+  [PASS] all 394 atom weights >= 0
+  [PASS] all 87 support weights >= 0  -- min support w = 9.179e-08
+  [PASS] support indices in range and distinct
+  [PASS] atoms_lab/atoms_vv lengths match support
+== [C] a7 + a8 == 1 exactly (saved producer values) ==
+  [PASS] a7 + a8 == 1  -- a7=17385456844918507352725039980966053419/17802816502723805133238793794202935440 (0.976556538), a8=417359657805297780513753813236882021/17802816502723805133238793794202935440 (0.023443462)
+  [PASS] a7 >= 0 and a8 >= 0
+== [D] closure arithmetic (exact, no floats) ==
+  [PASS] delta < 1/20000  (= 2/(25*40^2), i.e. n=40 closes)
+  [PASS] (25/2)*40^2*delta < 1  -- (25/2)*1600*delta = 0.971156
+  [PASS] (25/2)*41^2*delta >= 1  (n=41 does NOT close)  -- (25/2)*1681*delta = 1.020321
+  [PASS] margin at n=40 is ~2.88% as claimed  -- margin = 2.8844%
+  [PASS] 2/(25*1600) == 5e-5 == 1/20000
+  [PASS] n=41 threshold 2/(25*1681) ~ 4.7591e-5
+== [E] blow-up lemma mc(G[t]) = t^2 mc(G), beta(G[t]) = t^2 beta(G) (brute force) ==
+  [PASS] count of triangle-free graphs on 6 vertices == 38 (A006785)  -- got 38
+  [PASS] mc(G[2])=4mc(G), beta(G[2])=4beta(G) for all 38 triangle-free order-6 graphs
+  [PASS] beta(C5[t]) = t^2 for t=1,2,3 (sharpness witness)
+  [PASS] beta(C7[2]) = 4*beta(C7) = 4
+== [F] transfer arithmetic ==
+  [PASS] N=5n: N^2/25 == n^2 and N^2 delta/2 == (25/2) n^2 delta, n=1..40
+  [PASS] floor(n^2 + (25/2) n^2 delta) == n^2 for n=1..40 (integrality rounding)
+
+=== INDEPENDENT CHECK: 21/21 PASS ===
+NOT verifiable from the shipped package (requires regeneration of missing caches):
+  - per-state dual feasibility over the 12172 order-10 states (condition 4)
+  - derivation of a7/a8 from the raw dual (env table not shipped)
+  - envelope-row coefficients g_sigma_c and the exact moment term

@@ -1,0 +1,17 @@
+HEAD commit: 5ca9b7d7fe0d8a6a99819b59c1a87eb60a4b45e9
+date: 2026-07-10T14:43:59Z
+blob dbb9dec61483e90e213d69e0e4d5ace53d13046d  build_cache.py
+blob b36c3a3eae22ba487078b5578fb029e14f876c1b  c5_lift_diag.py
+blob 61de299dd75f73d15eb2af38ee9742512dd74603  complete_v2_cert.txt
+blob aabd24560cfd39850bcba5257634bb16b770d783  envelope_horn.py
+blob cdf17d7ede259c3d9c02f44bf218b9dbcc2343d6  flag_cutgen.py
+blob b1dfc1b83e045db9d0ce81d0b5204ea9c1da8561  flag_exact.py
+blob f2f0f0fdadcb769c7914c634edd49124831194ed  flag_localcut.py
+blob 969b7eb1620616cbc58271468560e7d2d445fd3a  flag_localizer.py
+blob 7b97a0966e9b77fa1c9d0d2e2584111f7c21a88b  flag_sdp.py
+blob cc8ce0b213817f900f35c84cf278912957996bdf  horn_Rcbh_exact.py
+blob 4af5f64dd5eab46e8ae4cdaddea4dfc17a3bf345  horn_Rcbh_exact.txt
+blob a64063f8c81843d0ae445f197b5c99bf366bcd71  horn_dual_extract.py
+blob 46e2f03a549e7eb42a59399151296a2c46fa4d7a  moment_gram_exact_verify.txt
+blob 152865a8523014a79d98e8e18b66054569547281  moment_gram_lp.txt
+blob 74978d43c11f6422332f21bccf1d0d42efc69c27  prove_cert.py

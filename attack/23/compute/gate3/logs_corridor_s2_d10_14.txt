@@ -1,0 +1,4 @@
+d=10 s=2 n=13: configs=542 maxΓ=25 rhs=56 slack=31  bestM=((0, 4),) D's=[4] t=21s
+d=11 s=2 n=14: configs=642 maxΓ=25 rhs=56 slack=31  bestM=((0, 4),) D's=[4] t=96s
+d=12 s=2 n=15: configs=750 maxΓ=25 rhs=64 slack=39  bestM=((0, 4),) D's=[4] t=397s
+d=13 s=2 n=16: configs=866 maxΓ=25 rhs=64 slack=39  bestM=((0, 4),) D's=[4] t=1578s

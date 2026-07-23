@@ -1,0 +1,30 @@
+EQ 5 DUW 3 mc=4 |M|=1 Gamma=25
+EQ 5 DUW 6 mc=4 |M|=1 Gamma=25
+EQ 5 DUW 7 mc=4 |M|=1 Gamma=25
+EQ 5 DUW 12 mc=4 |M|=1 Gamma=25
+EQ 5 DUW 14 mc=4 |M|=1 Gamma=25
+SUMMARY n=5 graphs=6 maxcut_instances=10 withM=5 EQ=5 CEX=0 dumped=5
+SUMMARY n=6 graphs=19 maxcut_instances=25 withM=8 EQ=0 CEX=0 dumped=8
+MAXNONEQ n=6 Gamma=25 N2=36 g6=ECpo S=7
+EQ 7 FCp`_ 7 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 15 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 14 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 30 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 28 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 60 mc=6 |M|=1 Gamma=49
+EQ 7 FCp`_ 56 mc=6 |M|=1 Gamma=49
+SUMMARY n=7 graphs=59 maxcut_instances=97 withM=53 EQ=7 CEX=0 dumped=53
+MAXNONEQ n=7 Gamma=25 N2=49 g6=F?bBo S=15
+SUMMARY n=8 graphs=267 maxcut_instances=462 withM=280 EQ=0 CEX=0 dumped=280
+MAXNONEQ n=8 Gamma=50 N2=64 g6=G?`F`w S=15
+EQ 9 H?bB@_W 15 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 30 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 31 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 60 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 62 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 120 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 124 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 240 mc=8 |M|=1 Gamma=81
+EQ 9 H?bB@_W 248 mc=8 |M|=1 Gamma=81
+SUMMARY n=9 graphs=1380 maxcut_instances=2649 withM=1919 EQ=9 CEX=0 dumped=1919
+MAXNONEQ n=9 Gamma=74 N2=81 g6=H?AFBo] S=31

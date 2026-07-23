@@ -1,0 +1,10 @@
+n=2 done t=0s checked={'se1': 0, 'se2': 0, 'g1': 0, 'msl': 0}
+n=3 done t=0s checked={'se1': 0, 'se2': 0, 'g1': 0, 'msl': 0}
+n=4 done t=0s checked={'se1': 0, 'se2': 0, 'g1': 0, 'msl': 0}
+n=5 done t=0s checked={'se1': 0, 'se2': 0, 'g1': 0, 'msl': 0}
+n=6 done t=1s checked={'se1': 34, 'se2': 34, 'g1': 42, 'msl': 42}
+n=7 done t=1s checked={'se1': 588, 'se2': 588, 'g1': 776, 'msl': 776}
+n=8 done t=1s checked={'se1': 7940, 'se2': 7940, 'g1': 11230, 'msl': 11230}
+n=9 done t=3s checked={'se1': 89016, 'se2': 89016, 'g1': 136712, 'msl': 136712}
+
+FAILURES: 0

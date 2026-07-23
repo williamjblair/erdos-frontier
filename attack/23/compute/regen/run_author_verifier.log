@@ -1,0 +1,13 @@
+synthesized cp_cache.pkl (ns0=1897, dedge; rows/provtypes empty)
+wrote cache_n9.pkl (states/dedge/moments from regenerated tables)
+copied shipped certificate pickles (horn_dual, moment_gram_w, mom_term_exact)
+NOT present (unavailable anywhere): horn_cert_state_it16.pkl
+--- running author's complete_v2_cert.py ---
+
+Traceback (most recent call last):
+  File "/Users/williamblair/personal/lean-proofs/compute23/regen/../src/anc/complete_v2_cert.py", line 20, in <module>
+    st=pickle.load(open("horn_cert_state_it16.pkl","rb")); env=st["env"]
+                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'horn_cert_state_it16.pkl'
+
+exit code: 1

@@ -1,0 +1,16 @@
+EQ 13 L??CE@_K?o@_@_ 63 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 126 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 127 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 252 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 254 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 504 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 508 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 1008 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 1016 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 2016 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 2032 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 4032 mc=12 |M|=1 Gamma=169
+EQ 13 L??CE@_K?o@_@_ 4064 mc=12 |M|=1 Gamma=169
+SUMMARY n=13 graphs=19425052 maxcut_instances=46831869 withM=44590139 EQ=13 CEX=0 dumped=269
+MAXNONEQ n=13 Gamma=150 N2=169 g6=L??ED@_~?~^_Fw S=63
+exit=0

@@ -1,0 +1,13 @@
+EQ 11 J?AEB?oE?W? 31 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 63 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 62 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 126 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 124 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 252 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 248 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 504 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 496 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 1008 mc=10 |M|=1 Gamma=121
+EQ 11 J?AEB?oE?W? 992 mc=10 |M|=1 Gamma=121
+SUMMARY n=11 graphs=90842 maxcut_instances=199191 withM=173593 EQ=11 CEX=0 dumped=163
+MAXNONEQ n=11 Gamma=106 N2=121 g6=J??CE@oN?\? S=63

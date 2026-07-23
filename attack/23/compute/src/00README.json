@@ -1,0 +1,69 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "erdos23_step1.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/README.md"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/SHA256SUMS"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/brute_dmono.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/complete_v2_cert.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/flag_engine.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/g1_exact_psd.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/g1_graphon_density.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/horn_dual.pkl"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/mom_term_exact.pkl"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/moment_gram_exact_verify.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/moment_gram_lp.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/moment_gram_w.pkl"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/step1_v2_independent_gate.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/v2_cert_complete.pkl"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

@@ -1,0 +1,8 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check i_three_caseI_exists_joint_half_sub_one_large_part_cube_bound
+#check i_three_caseI_noncentral_half_sub_one_large_part_cube_bound
+
+end Erdos699

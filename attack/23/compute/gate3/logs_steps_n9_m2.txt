@@ -1,0 +1,11 @@
+n=2 done t=0.1s
+n=3 done t=0.1s
+n=4 done t=0.1s
+n=5 done t=0.1s
+n=6 done t=0.2s
+n=7 done t=0.5s
+n=8 done t=3.6s
+n=9 done t=30.5s
+
+counts: {'pendant': 3638, 'leafdel': 147378, 'mleafdel': 78586, 'rootmove': 18929, 'stubmove': 18929, 'attach': 234540, 'suffix': 234540, 's01': 148332, 'tree': 9590}
+FAILURES: 0

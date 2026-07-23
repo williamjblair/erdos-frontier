@@ -1,0 +1,7 @@
+loaded 394 atoms, labels {'NON', 'K1', 'EDGE', 'K0'} [0s]
+built a_c matrix (12172, 394) [1s]
+LP status: success=True msg=0 [4s]
+  FEASIBLE: support |w>0|=77/394; sum w=40.6617; min slack (R_cbh - <Q,Ptilde>) = -6.664e-09
+  => moment block CLOSES via 77 G1 atoms; full residual min would be -6.664e-09 (>=0 needed)
+  saved moment_gram_w.pkl (support atoms for exact verify)
+DONE

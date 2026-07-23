@@ -1,0 +1,11 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check t_le_X_of_factorized_half_bound
+#check i_three_caseI_row_one_sub_one_dvd_t_mul_X_sub_t_from_row_bound
+#check i_three_caseI_row_one_exists_factor_from_row_bound
+#check i_three_caseI_row_one_four_mul_sub_one_le_X_sq_from_row_bound
+#check i_three_caseI_row_one_four_mul_factor_le_X_from_row_bound
+
+end Erdos699

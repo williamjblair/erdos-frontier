@@ -1,0 +1,1 @@
+trials=6000 M-sets tested=4533 rooted instances=737542 t=3s FAILURES=0

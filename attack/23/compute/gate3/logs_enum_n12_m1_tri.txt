@@ -1,0 +1,210 @@
+n=2: valid one-stub instances=2, cum sigs=1, t=0.2s
+n=3: valid one-stub instances=6, cum sigs=3, t=0.3s
+n=4: valid one-stub instances=36, cum sigs=6, t=0.4s
+n=5: valid one-stub instances=100, cum sigs=10, t=0.6s
+n=6: valid one-stub instances=544, cum sigs=17, t=0.8s
+n=7: valid one-stub instances=2402, cum sigs=27, t=1.0s
+n=8: valid one-stub instances=17400, cum sigs=41, t=1.3s
+n=9: valid one-stub instances=121904, cum sigs=59, t=1.6s
+n=10: valid one-stub instances=1113398, cum sigs=83, t=3.9s
+n=11: valid one-stub instances=11004490, cum sigs=112, t=25.5s
+n=12: valid one-stub instances=132046234, cum sigs=148, t=296.3s
+
+TOTAL valid one-stub instances: 144306516
+distinct signatures (n, Γ, d): 148
+RL violations: 0
+
+--- signature table (n, Γ, d) : s, rhs, slack, count ---
+  ( 2,   0,  1)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 3,   0,  1)  s=1  rhs= 11  slack= 11  count=4
+  ( 3,   0,  2)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 4,   0,  1)  s=2  rhs= 24  slack= 24  count=20
+  ( 4,   0,  2)  s=1  rhs= 11  slack= 11  count=14
+  ( 4,   0,  3)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 5,   0,  1)  s=3  rhs= 39  slack= 39  count=46
+  ( 5,   0,  2)  s=2  rhs= 24  slack= 24  count=42
+  ( 5,   0,  3)  s=1  rhs= 11  slack= 11  count=10
+  ( 5,   0,  4)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 6,   0,  1)  s=4  rhs= 56  slack= 56  count=212
+  ( 6,   0,  2)  s=3  rhs= 39  slack= 39  count=210
+  ( 6,   0,  3)  s=2  rhs= 24  slack= 24  count=72
+  ( 6,   0,  4)  s=1  rhs= 15  slack= 15  count=14
+  ( 6,   0,  5)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 6,  25,  1)  s=4  rhs= 56  slack= 31  count=26
+  ( 6,  25,  2)  s=3  rhs= 39  slack= 14  count=8
+  ( 7,   0,  1)  s=5  rhs= 75  slack= 75  count=682
+  ( 7,   0,  2)  s=4  rhs= 56  slack= 56  count=750
+  ( 7,   0,  3)  s=3  rhs= 39  slack= 39  count=312
+  ( 7,   0,  4)  s=2  rhs= 32  slack= 32  count=88
+  ( 7,   0,  5)  s=1  rhs= 15  slack= 15  count=14
+  ( 7,   0,  6)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 7,  25,  1)  s=5  rhs= 75  slack= 50  count=330
+  ( 7,  25,  2)  s=4  rhs= 56  slack= 31  count=190
+  ( 7,  25,  3)  s=3  rhs= 39  slack= 14  count=32
+  ( 7,  25,  4)  s=2  rhs= 32  slack=  7  count=2
+  ( 8,   0,  1)  s=6  rhs= 96  slack= 96  count=3492
+  ( 8,   0,  2)  s=5  rhs= 75  slack= 75  count=4048
+  ( 8,   0,  3)  s=4  rhs= 56  slack= 56  count=1946
+  ( 8,   0,  4)  s=3  rhs= 51  slack= 51  count=568
+  ( 8,   0,  5)  s=2  rhs= 32  slack= 32  count=118
+  ( 8,   0,  6)  s=1  rhs= 19  slack= 19  count=18
+  ( 8,   0,  7)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 8,  25,  1)  s=6  rhs= 96  slack= 71  count=3410
+  ( 8,  25,  2)  s=5  rhs= 75  slack= 50  count=2710
+  ( 8,  25,  3)  s=4  rhs= 56  slack= 31  count=882
+  ( 8,  25,  4)  s=3  rhs= 51  slack= 26  count=156
+  ( 8,  25,  5)  s=2  rhs= 32  slack=  7  count=2
+  ( 8,  49,  1)  s=6  rhs= 96  slack= 47  count=36
+  ( 8,  49,  2)  s=5  rhs= 75  slack= 26  count=12
+  ( 9,   0,  1)  s=7  rhs=119  slack=119  count=16728
+  ( 9,   0,  2)  s=6  rhs= 96  slack= 96  count=20612
+  ( 9,   0,  3)  s=5  rhs= 75  slack= 75  count=10838
+  ( 9,   0,  4)  s=4  rhs= 72  slack= 72  count=3434
+  ( 9,   0,  5)  s=3  rhs= 51  slack= 51  count=780
+  ( 9,   0,  6)  s=2  rhs= 40  slack= 40  count=148
+  ( 9,   0,  7)  s=1  rhs= 19  slack= 19  count=18
+  ( 9,   0,  8)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  ( 9,  25,  1)  s=7  rhs=119  slack= 94  count=28088
+  ( 9,  25,  2)  s=6  rhs= 96  slack= 71  count=26912
+  ( 9,  25,  3)  s=5  rhs= 75  slack= 50  count=10880
+  ( 9,  25,  4)  s=4  rhs= 72  slack= 47  count=2274
+  ( 9,  25,  5)  s=3  rhs= 51  slack= 26  count=176
+  ( 9,  25,  6)  s=2  rhs= 40  slack= 15  count=4
+  ( 9,  49,  1)  s=7  rhs=119  slack= 70  count=608
+  ( 9,  49,  2)  s=6  rhs= 96  slack= 47  count=340
+  ( 9,  49,  3)  s=5  rhs= 75  slack= 26  count=58
+  ( 9,  49,  4)  s=4  rhs= 72  slack= 23  count=4
+  (10,   0,  1)  s=8  rhs=144  slack=144  count=109768
+  (10,   0,  2)  s=7  rhs=119  slack=119  count=141592
+  (10,   0,  3)  s=6  rhs= 96  slack= 96  count=79460
+  (10,   0,  4)  s=5  rhs= 95  slack= 95  count=24862
+  (10,   0,  5)  s=4  rhs= 72  slack= 72  count=5822
+  (10,   0,  6)  s=3  rhs= 63  slack= 63  count=1164
+  (10,   0,  7)  s=2  rhs= 40  slack= 40  count=188
+  (10,   0,  8)  s=1  rhs= 23  slack= 23  count=22
+  (10,   0,  9)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  (10,  25,  1)  s=8  rhs=144  slack=119  count=262766
+  (10,  25,  2)  s=7  rhs=119  slack= 94  count=288990
+  (10,  25,  3)  s=6  rhs= 96  slack= 71  count=142216
+  (10,  25,  4)  s=5  rhs= 95  slack= 70  count=36880
+  (10,  25,  5)  s=4  rhs= 72  slack= 47  count=4646
+  (10,  25,  6)  s=3  rhs= 63  slack= 38  count=274
+  (10,  25,  7)  s=2  rhs= 40  slack= 15  count=4
+  (10,  49,  1)  s=8  rhs=144  slack= 95  count=7342
+  (10,  49,  2)  s=7  rhs=119  slack= 70  count=5422
+  (10,  49,  3)  s=6  rhs= 96  slack= 47  count=1612
+  (10,  49,  4)  s=5  rhs= 95  slack= 46  count=274
+  (10,  49,  5)  s=4  rhs= 72  slack= 23  count=28
+  (10,  49,  6)  s=3  rhs= 63  slack= 14  count=2
+  (10,  81,  1)  s=8  rhs=144  slack= 63  count=46
+  (10,  81,  2)  s=7  rhs=119  slack= 38  count=16
+  (11,   0,  1)  s=9  rhs=171  slack=171  count=816594
+  (11,   0,  2)  s=8  rhs=144  slack=144  count=1102542
+  (11,   0,  3)  s=7  rhs=119  slack=119  count=645390
+  (11,   0,  4)  s=6  rhs=120  slack=120  count=196448
+  (11,   0,  5)  s=5  rhs= 95  slack= 95  count=44066
+  (11,   0,  6)  s=4  rhs= 88  slack= 88  count=8942
+  (11,   0,  7)  s=3  rhs= 63  slack= 63  count=1548
+  (11,   0,  8)  s=2  rhs= 48  slack= 48  count=226
+  (11,   0,  9)  s=1  rhs= 23  slack= 23  count=22
+  (11,   0, 10)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  (11,  25,  1)  s=9  rhs=171  slack=146  count=2572528
+  (11,  25,  2)  s=8  rhs=144  slack=119  count=3132672
+  (11,  25,  3)  s=7  rhs=119  slack= 94  count=1729192
+  (11,  25,  4)  s=6  rhs=120  slack= 95  count=489444
+  (11,  25,  5)  s=5  rhs= 95  slack= 70  count=73882
+  (11,  25,  6)  s=4  rhs= 88  slack= 63  count=6904
+  (11,  25,  7)  s=3  rhs= 63  slack= 38  count=348
+  (11,  25,  8)  s=2  rhs= 48  slack= 23  count=6
+  (11,  49,  1)  s=9  rhs=171  slack=122  count=76820
+  (11,  49,  2)  s=8  rhs=144  slack= 95  count=69190
+  (11,  49,  3)  s=7  rhs=119  slack= 70  count=27966
+  (11,  49,  4)  s=6  rhs=120  slack= 71  count=6904
+  (11,  49,  5)  s=5  rhs= 95  slack= 46  count=1146
+  (11,  49,  6)  s=4  rhs= 88  slack= 39  count=122
+  (11,  49,  7)  s=3  rhs= 63  slack= 14  count=2
+  (11,  81,  1)  s=9  rhs=171  slack= 90  count=970
+  (11,  81,  2)  s=8  rhs=144  slack= 63  count=524
+  (11,  81,  3)  s=7  rhs=119  slack= 38  count=84
+  (11,  81,  4)  s=6  rhs=120  slack= 39  count=6
+  (12,   0,  1)  s=10  rhs=200  slack=200  count=7909976
+  (12,   0,  2)  s=9  rhs=171  slack=171  count=11120072
+  (12,   0,  3)  s=8  rhs=144  slack=144  count=6679128
+  (12,   0,  4)  s=7  rhs=147  slack=147  count=1901054
+  (12,   0,  5)  s=6  rhs=120  slack=120  count=387370
+  (12,   0,  6)  s=5  rhs=115  slack=115  count=73754
+  (12,   0,  7)  s=4  rhs= 88  slack= 88  count=13202
+  (12,   0,  8)  s=3  rhs= 75  slack= 75  count=2102
+  (12,   0,  9)  s=2  rhs= 48  slack= 48  count=274
+  (12,   0, 10)  s=1  rhs= 27  slack= 27  count=26
+  (12,   0, 11)  s=0  rhs=  0  slack=  0  count=2 TIGHT
+  (12,  25,  1)  s=10  rhs=200  slack=175  count=30068784
+  (12,  25,  2)  s=9  rhs=171  slack=146  count=39631208
+  (12,  25,  3)  s=8  rhs=144  slack=119  count=23715256
+  (12,  25,  4)  s=7  rhs=147  slack=122  count=6999786
+  (12,  25,  5)  s=6  rhs=120  slack= 95  count=1145864
+  (12,  25,  6)  s=5  rhs=115  slack= 90  count=127692
+  (12,  25,  7)  s=4  rhs= 88  slack= 63  count=9808
+  (12,  25,  8)  s=3  rhs= 75  slack= 50  count=458
+  (12,  25,  9)  s=2  rhs= 48  slack= 23  count=6
+  (12,  49,  1)  s=10  rhs=200  slack=151  count=810434
+  (12,  49,  2)  s=9  rhs=171  slack=122  count=844528
+  (12,  49,  3)  s=8  rhs=144  slack= 95  count=418994
+  (12,  49,  4)  s=7  rhs=147  slack= 98  count=127692
+  (12,  49,  5)  s=6  rhs=120  slack= 71  count=27720
+  (12,  49,  6)  s=5  rhs=115  slack= 66  count=4222
+  (12,  49,  7)  s=4  rhs= 88  slack= 39  count=238
+  (12,  49,  8)  s=3  rhs= 75  slack= 26  count=4
+  (12,  81,  1)  s=10  rhs=200  slack=119  count=13724
+  (12,  81,  2)  s=9  rhs=171  slack= 90  count=9580
+  (12,  81,  3)  s=8  rhs=144  slack= 63  count=2686
+  (12,  81,  4)  s=7  rhs=147  slack= 66  count=458
+  (12,  81,  5)  s=6  rhs=120  slack= 39  count=52
+  (12,  81,  6)  s=5  rhs=115  slack= 34  count=4
+  (12, 121,  1)  s=10  rhs=200  slack= 79  count=56
+  (12, 121,  2)  s=9  rhs=171  slack= 50  count=20
+
+--- minimal slack per (d, s), Γ>0 only ---
+  d=1 s=4: slack=31 sig=(6, 25, 1) g6=E?qo M=((1, 2),) w=3 x0=5
+  d=1 s=5: slack=50 sig=(7, 25, 1) g6=F?BDo M=((1, 2),) w=3 x0=6
+  d=1 s=6: slack=47 sig=(8, 49, 1) g6=G?BDAo M=((2, 3),) w=4 x0=7
+  d=1 s=7: slack=70 sig=(9, 49, 1) g6=H??ED@[ M=((2, 3),) w=4 x0=8
+  d=1 s=8: slack=63 sig=(10, 81, 1) g6=I??ED@OJ? M=((3, 4),) w=5 x0=9
+  d=1 s=9: slack=90 sig=(11, 81, 1) g6=J???EA_S@[? M=((3, 4),) w=5 x0=10
+  d=1 s=10: slack=79 sig=(12, 121, 1) g6=K???EA_S@OAo M=((4, 5),) w=6 x0=11
+  d=2 s=3: slack=14 sig=(6, 25, 2) g6=E?zO M=((2, 3),) w=0 x0=1
+  d=2 s=4: slack=31 sig=(7, 25, 2) g6=F?BDo M=((1, 2),) w=3 x0=4
+  d=2 s=5: slack=26 sig=(8, 49, 2) g6=G?B@t_ M=((1, 4),) w=2 x0=3
+  d=2 s=6: slack=47 sig=(9, 49, 2) g6=H??ED@[ M=((2, 3),) w=4 x0=5
+  d=2 s=7: slack=38 sig=(10, 81, 2) g6=I??ED?[U? M=((2, 5),) w=3 x0=4
+  d=2 s=8: slack=63 sig=(11, 81, 2) g6=J???EA_S@[? M=((3, 4),) w=5 x0=6
+  d=2 s=9: slack=50 sig=(12, 121, 2) g6=K???EA_S?[D_ M=((3, 6),) w=4 x0=5
+  d=3 s=3: slack=14 sig=(7, 25, 3) g6=F?Beo M=((2, 3),) w=4 x0=5
+  d=3 s=4: slack=31 sig=(8, 25, 3) g6=G??FEw M=((2, 3),) w=4 x0=6
+  d=3 s=5: slack=26 sig=(9, 49, 3) g6=H??ED_{ M=((1, 4),) w=5 x0=7
+  d=3 s=6: slack=47 sig=(10, 49, 3) g6=I???EAoN_ M=((1, 4),) w=5 x0=8
+  d=3 s=7: slack=38 sig=(11, 81, 3) g6=J???EA_U?{? M=((2, 5),) w=6 x0=9
+  d=3 s=8: slack=63 sig=(12, 81, 3) g6=K????B?gAoBw M=((2, 5),) w=6 x0=10
+  d=4 s=2: slack=7 sig=(7, 25, 4) g6=F?ov_ M=((4, 5),) w=4 x0=5
+  d=4 s=3: slack=26 sig=(8, 25, 4) g6=G??FeW M=((2, 4),) w=3 x0=5
+  d=4 s=4: slack=23 sig=(9, 49, 4) g6=H??F?zW M=((2, 5),) w=6 x0=7
+  d=4 s=5: slack=46 sig=(10, 49, 4) g6=I???E?{k_ M=((1, 4),) w=5 x0=6
+  d=4 s=6: slack=39 sig=(11, 81, 4) g6=J???E?w``k? M=((1, 4),) w=8 x0=9
+  d=4 s=7: slack=66 sig=(12, 81, 4) g6=K????B?g?{JG M=((2, 5),) w=6 x0=7
+  d=5 s=2: slack=7 sig=(8, 25, 5) g6=G?B@v_ M=((5, 6),) w=4 x0=5
+  d=5 s=3: slack=26 sig=(9, 25, 5) g6=H??CBrc M=((3, 5),) w=4 x0=6
+  d=5 s=4: slack=23 sig=(10, 49, 5) g6=I???F?]u? M=((2, 5),) w=6 x0=7
+  d=5 s=5: slack=46 sig=(11, 49, 5) g6=J????B_u?}? M=((2, 5),) w=6 x0=8
+  d=5 s=6: slack=39 sig=(12, 81, 5) g6=K????B?k?]F_ M=((1, 6),) w=7 x0=9
+  d=6 s=2: slack=15 sig=(9, 25, 6) g6=H??F?zW M=((6, 7),) w=2 x0=5
+  d=6 s=3: slack=14 sig=(10, 49, 6) g6=I??E@bKN? M=((6, 7),) w=6 x0=7
+  d=6 s=4: slack=39 sig=(11, 49, 6) g6=J????BoBuW? M=((2, 6),) w=3 x0=7
+  d=6 s=5: slack=34 sig=(12, 81, 6) g6=K????B_FEEBW M=((2, 5),) w=8 x0=9
+  d=7 s=2: slack=15 sig=(10, 25, 7) g6=I??CBaKZ? M=((7, 8),) w=3 x0=6
+  d=7 s=3: slack=14 sig=(11, 49, 7) g6=J???E?wp`k? M=((7, 8),) w=4 x0=7
+  d=7 s=4: slack=39 sig=(12, 49, 7) g6=K????A?]BKRG M=((5, 7),) w=6 x0=8
+  d=8 s=2: slack=23 sig=(11, 25, 8) g6=J???E?w``k? M=((8, 9),) w=1 x0=4
+  d=8 s=3: slack=26 sig=(12, 49, 8) g6=K????B_FEEBW M=((8, 9),) w=2 x0=5
+  d=9 s=2: slack=23 sig=(12, 25, 9) g6=K???CB?MAKEo M=((9, 10),) w=4 x0=7
+
+signatures with Γ>0: 82; with Γ=0: 66

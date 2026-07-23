@@ -1,0 +1,8 @@
+d=4 s=3 n=8: configs=2330 maxΓ=25 rhs=51 slack=26  bestM=((1, 6),) D's=[4] t=0s
+d=5 s=3 n=9: configs=3910 maxΓ=25 rhs=51 slack=26  bestM=((1, 7),) D's=[4] t=2s
+d=6 s=3 n=10: configs=5922 maxΓ=49 rhs=63 slack=14  bestM=((0, 6),) D's=[6] t=8s
+d=7 s=3 n=11: configs=8414 maxΓ=49 rhs=63 slack=14  bestM=((0, 6),) D's=[6] t=24s
+d=8 s=3 n=12: configs=11434 maxΓ=49 rhs=75 slack=26  bestM=((0, 6),) D's=[6] t=70s
+d=9 s=3 n=13: configs=15030 maxΓ=49 rhs=75 slack=26  bestM=((0, 6),) D's=[6] t=190s
+d=10 s=3 n=14: configs=19250 maxΓ=49 rhs=87 slack=38  bestM=((0, 6),) D's=[6] t=542s
+d=11 s=3 n=15: configs=24142 maxΓ=49 rhs=87 slack=38  bestM=((0, 6),) D's=[6] t=1552s

@@ -1,0 +1,3 @@
+n=9: max d_mono IN BAND = 0.049383 (e=10 maxcut=8 d_edge=0.2778) | max d_mono ALL = 0.049383 (d_edge=0.2778)  [target 0.08]
+n=10: max d_mono IN BAND = 0.040000 (e=12 maxcut=10 d_edge=0.2667) | max d_mono ALL = 0.080000 (d_edge=0.4444)  [target 0.08]
+DONE

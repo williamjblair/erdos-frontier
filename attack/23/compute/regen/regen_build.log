@@ -1,0 +1,11 @@
+[      0s] stage1: 1897 order-9 states enumerated
+[     21s] stage1: moment block K0: t=7 s=4 built
+[    123s] stage1: moment block K1: t=35 s=4 built
+[    169s] stage1: moment block EDGE: t=34 s=3 built
+[    272s] stage1: moment block NON: t=57 s=3 built
+[    272s] stage1: saved my_moments_n9.pkl
+Traceback (most recent call last):
+  File "/Users/williamblair/personal/lean-proofs/compute23/regen/regen_build.py", line 64, in <module>
+    assert tt == exp_dims[lab], (lab, tt)
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('K1', 35)

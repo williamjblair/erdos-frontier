@@ -1,0 +1,18 @@
+rationalized duals: rho=1.923035e-03 mu_hi=0.00e+00 mu_lo=0.00e+00 a8=0.0234
+  500 cuts [1s]
+  1000 cuts [3s]
+  1500 cuts [7s]
+  2000 cuts [14s]
+  2500 cuts [21s]
+  3000 cuts [28s]
+  3500 cuts [33s]
+  4000 cuts [41s]
+  4500 cuts [46s]
+  5000 cuts [50s]
+  5500 cuts [55s]
+  6000 cuts [60s]
+EXACT R_cbh: min=-3.044658e-03 (state 11957) max=1.207989e-01  [62s, 6359 cuts]
+  delta(exact)=125361431662/2636021532814425=4.755706e-05  <5e-5? True  <1/450? True
+  (moment step must find Q>=0 with sum_t D[t,s]<Q,P_t> <= R_cbh[s]; feasible since float Q* exists)
+saved horn_Rcbh_exact.pkl
+DONE

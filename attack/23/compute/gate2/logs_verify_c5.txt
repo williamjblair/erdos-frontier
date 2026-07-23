@@ -1,0 +1,36 @@
+PASS C_5[1] triangle-free
+PASS C_5[1]: blow-up cut is max, mc = 4q^2 = 4
+PASS C_5[1]: |M| = q^2 = 1, all d_B = 4
+PASS C_5[1]: Gamma = 25 = N^2 = 25  (EQUALITY)
+PASS C_5[2] triangle-free
+PASS C_5[2]: blow-up cut is max, mc = 4q^2 = 16
+PASS C_5[2]: |M| = q^2 = 4, all d_B = 4
+PASS C_5[2]: Gamma = 100 = N^2 = 100  (EQUALITY)
+PASS C_5[3] triangle-free
+PASS C_5[3]: blow-up cut is max, mc = 4q^2 = 36
+PASS C_5[3]: |M| = q^2 = 9, all d_B = 4
+PASS C_5[3]: Gamma = 225 = N^2 = 225  (EQUALITY)
+PASS C_5[4] triangle-free
+PASS C_5[4]: blow-up cut is max, mc = 4q^2 = 64
+PASS C_5[4]: |M| = q^2 = 16, all d_B = 4
+PASS C_5[4]: Gamma = 400 = N^2 = 400  (EQUALITY)
+PASS C_5[1]: ALL 5 max cuts have Gamma = N^2 (values [25])
+PASS C_5[2]: ALL 15 max cuts have Gamma = N^2 (values [100])
+PASS C_5: mc = N-1
+PASS C_5: all 5 max cuts give Gamma = N^2 = 25  (EQUALITY)
+PASS C_7: mc = N-1
+PASS C_7: all 7 max cuts give Gamma = N^2 = 49  (EQUALITY)
+PASS C_9: mc = N-1
+PASS C_9: all 9 max cuts give Gamma = N^2 = 81  (EQUALITY)
+PASS C_11: mc = N-1
+PASS C_11: all 11 max cuts give Gamma = N^2 = 121  (EQUALITY)
+PASS C_13: mc = N-1
+PASS C_13: all 13 max cuts give Gamma = N^2 = 169  (EQUALITY)
+PASS C_5[2, 1, 1, 1, 1]: max Gamma over all 3 max cuts = 25 < N^2 = 36 (STRICT)
+PASS C_5[3, 2, 2, 2, 2]: max Gamma over all 7 max cuts = 100 < N^2 = 121 (STRICT)
+PASS C_5[2, 2, 2, 2, 1]: max Gamma over all 2 max cuts = 50 < N^2 = 81 (STRICT)
+PASS C_7[2]: blow-up cut is a max cut (cut = 24, mc = 24)
+PASS C_7[2]: |M| = 4, all d_B = 6, Gamma = 196 = N^2 = 196  (EQUALITY beyond C_5 blow-ups)
+PASS C_5[2]: flip condition e_M(dT) <= e_B(dT) holds for ALL 2^9 T
+
+ALL PASS

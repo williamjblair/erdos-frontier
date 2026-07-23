@@ -1,0 +1,17 @@
+EQ 10 I?rFf_{N? 15 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 31 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 60 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 61 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 63 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 62 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 47 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 124 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 240 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 244 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 252 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 248 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 188 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 496 mc=16 |M|=4 Gamma=100
+EQ 10 I?rFf_{N? 271 mc=16 |M|=4 Gamma=100
+SUMMARY n=10 graphs=9832 maxcut_instances=20206 withM=16174 EQ=15 CEX=0 dumped=16174
+MAXNONEQ n=10 Gamma=81 N2=100 g6=I?AEB?oF? S=31

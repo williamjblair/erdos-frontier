@@ -1,0 +1,74 @@
+n_B=2: valid rooted instances counted=2, cumulative signatures=1
+n_B=3: valid rooted instances counted=7, cumulative signatures=4
+n_B=4: valid rooted instances counted=67, cumulative signatures=10
+n_B=5: valid rooted instances counted=210, cumulative signatures=19
+n_B=6: valid rooted instances counted=1436, cumulative signatures=35
+n_B=7: valid rooted instances counted=6628, cumulative signatures=61
+n_B=8: valid rooted instances counted=52726, cumulative signatures=102
+n_B=9: valid rooted instances counted=416924, cumulative signatures=165
+
+total distinct signatures: 165
+
+Stage B': TRUE pair inequality over 2463 compatible signature pairs: violations=1, equalities=19
+  TRUE-PAIR-VIOL (4, 0, (2, 2)) x (4, 0, (2, 2)) perm=(2, 2) lhs=50 > N^2=49
+  TRUE-PAIR-EQ   (2, 0, (1,)) x (4, 0, (3,)) perm=(3,) lhs=25
+  TRUE-PAIR-EQ   (2, 0, (1,)) x (6, 0, (5,)) perm=(5,) lhs=49
+  TRUE-PAIR-EQ   (2, 0, (1,)) x (8, 0, (7,)) perm=(7,) lhs=81
+  TRUE-PAIR-EQ   (3, 0, (2,)) x (3, 0, (2,)) perm=(2,) lhs=25
+  TRUE-PAIR-EQ   (3, 0, (2,)) x (5, 0, (4,)) perm=(4,) lhs=49
+  TRUE-PAIR-EQ   (3, 0, (2,)) x (7, 0, (6,)) perm=(6,) lhs=81
+  TRUE-PAIR-EQ   (3, 0, (2,)) x (9, 0, (8,)) perm=(8,) lhs=121
+  TRUE-PAIR-EQ   (4, 0, (3,)) x (4, 0, (3,)) perm=(3,) lhs=49
+  TRUE-PAIR-EQ   (4, 0, (3,)) x (6, 0, (5,)) perm=(5,) lhs=81
+  TRUE-PAIR-EQ   (4, 0, (3,)) x (8, 0, (7,)) perm=(7,) lhs=121
+  TRUE-PAIR-EQ   (5, 0, (4,)) x (5, 0, (4,)) perm=(4,) lhs=81
+  TRUE-PAIR-EQ   (5, 0, (4,)) x (7, 0, (6,)) perm=(6,) lhs=121
+  TRUE-PAIR-EQ   (5, 0, (4,)) x (9, 0, (8,)) perm=(8,) lhs=169
+  TRUE-PAIR-EQ   (6, 0, (5,)) x (6, 0, (5,)) perm=(5,) lhs=121
+  TRUE-PAIR-EQ   (6, 0, (5,)) x (8, 0, (7,)) perm=(7,) lhs=169
+  TRUE-PAIR-EQ   (7, 0, (6,)) x (7, 0, (6,)) perm=(6,) lhs=169
+  TRUE-PAIR-EQ   (7, 0, (6,)) x (9, 0, (8,)) perm=(8,) lhs=225
+  TRUE-PAIR-EQ   (8, 0, (7,)) x (8, 0, (7,)) perm=(7,) lhs=225
+  TRUE-PAIR-EQ   (9, 0, (8,)) x (9, 0, (8,)) perm=(8,) lhs=289
+
+D' (fixed t=1/2) violations among 165 signatures: 3
+  D'-VIOL sig=(4, 0, (2, 2))  Psi=25/2 > 49/4
+  D'-VIOL sig=(6, 25, (2,))  Psi=125/4 > 121/4
+  D'-VIOL sig=(7, 25, (4,))  Psi=181/4 > 169/4
+
+compatible signature pairs tested: 2842, PAIRBOUND failures: 15
+  PAIR-FAIL (3, 0, (2,)) x (7, 25, (4,)) perm=(4,) min||v1||+||v2||~9.0711 N=9
+  PAIR-FAIL (4, 0, (2, 2)) x (4, 0, (2, 2)) perm=(2, 2) min||v1||+||v2||~7.0711 N=7
+  PAIR-FAIL (4, 0, (2, 2)) x (4, 0, (2, 2)) perm=(2, 2) min||v1||+||v2||~7.0711 N=7
+  PAIR-FAIL (5, 0, (4,)) x (7, 25, (4,)) perm=(4,) min||v1||+||v2||~11.0711 N=11
+  PAIR-FAIL (6, 25, (2,)) x (6, 25, (2,)) perm=(2,) min||v1||+||v2||~11.1803 N=11
+  PAIR-FAIL (6, 25, (2,)) x (7, 25, (4,)) perm=(4,) min||v1||+||v2||~12.2341 N=12
+  PAIR-FAIL (6, 25, (2,)) x (8, 49, (2,)) perm=(2,) min||v1||+||v2||~13.0000 N=13
+  PAIR-FAIL (6, 25, (2,)) x (8, 50, (2,)) perm=(2,) min||v1||+||v2||~13.0656 N=13
+  PAIR-FAIL (7, 0, (6,)) x (7, 25, (4,)) perm=(4,) min||v1||+||v2||~13.0711 N=13
+  PAIR-FAIL (7, 25, (4,)) x (7, 25, (4,)) perm=(4,) min||v1||+||v2||~13.4536 N=13
+  PAIR-FAIL (7, 25, (4,)) x (8, 49, (2,)) perm=(2,) min||v1||+||v2||~14.0189 N=14
+  PAIR-FAIL (7, 25, (4,)) x (8, 50, (2,)) perm=(2,) min||v1||+||v2||~14.0843 N=14
+  PAIR-FAIL (7, 25, (4,)) x (9, 0, (8,)) perm=(8,) min||v1||+||v2||~15.0711 N=15
+  PAIR-FAIL (7, 25, (4,)) x (9, 49, (4,)) perm=(4,) min||v1||+||v2||~15.0054 N=15
+  PAIR-FAIL (7, 25, (4,)) x (9, 50, (4,)) perm=(4,) min||v1||+||v2||~15.0634 N=15
+
+Stage C: direct verification of flagged pairs (composites)
+  composite N=9 Gamma=74 N^2=81  Gamma<=N^2 HOLDS  (pair (3, 0, (2,)) x (7, 25, (4,)), perm=(4,), minSOC~9.0711 > N=9)
+  [assembly blocked] (4, 0, (2, 2)) x (4, 0, (2, 2)) perm=(2, 2) (multi-edge/triangle)
+  [assembly blocked] (4, 0, (2, 2)) x (4, 0, (2, 2)) perm=(2, 2) (multi-edge/triangle)
+  composite N=11 Gamma=106 N^2=121  Gamma<=N^2 HOLDS  (pair (5, 0, (4,)) x (7, 25, (4,)), perm=(4,), minSOC~11.0711 > N=11)
+  composite N=11 Gamma=75 N^2=121  Gamma<=N^2 HOLDS  (pair (6, 25, (2,)) x (6, 25, (2,)), perm=(2,), minSOC~11.1803 > N=11)
+  composite N=12 Gamma=99 N^2=144  Gamma<=N^2 HOLDS  (pair (6, 25, (2,)) x (7, 25, (4,)), perm=(4,), minSOC~12.2341 > N=12)
+  composite N=13 Gamma=99 N^2=169  Gamma<=N^2 HOLDS  (pair (6, 25, (2,)) x (8, 49, (2,)), perm=(2,), minSOC~13.0000 > N=13)
+  composite N=13 Gamma=100 N^2=169  Gamma<=N^2 HOLDS  (pair (6, 25, (2,)) x (8, 50, (2,)), perm=(2,), minSOC~13.0656 > N=13)
+  composite N=13 Gamma=146 N^2=169  Gamma<=N^2 HOLDS  (pair (7, 0, (6,)) x (7, 25, (4,)), perm=(4,), minSOC~13.0711 > N=13)
+  [assembly blocked] (7, 25, (4,)) x (7, 25, (4,)) perm=(4,) (multi-edge/triangle)
+  composite N=14 Gamma=123 N^2=196  Gamma<=N^2 HOLDS  (pair (7, 25, (4,)) x (8, 49, (2,)), perm=(2,), minSOC~14.0189 > N=14)
+  composite N=14 Gamma=124 N^2=196  Gamma<=N^2 HOLDS  (pair (7, 25, (4,)) x (8, 50, (2,)), perm=(2,), minSOC~14.0843 > N=14)
+  composite N=15 Gamma=194 N^2=225  Gamma<=N^2 HOLDS  (pair (7, 25, (4,)) x (9, 0, (8,)), perm=(8,), minSOC~15.0711 > N=15)
+  composite N=15 Gamma=155 N^2=225  Gamma<=N^2 HOLDS  (pair (7, 25, (4,)) x (9, 49, (4,)), perm=(4,), minSOC~15.0054 > N=15)
+  [assembly blocked] (7, 25, (4,)) x (9, 50, (4,)) perm=(4,) (multi-edge/triangle)
+
+(sanity) K_{2,2}+double-stub D' witness check:
+  sig=(4, 0, (2, 2)): Psi=25/2 vs bound=49/4 -> VIOLATES D-prime; witness g6=C] w=0 sigma={1: 2}

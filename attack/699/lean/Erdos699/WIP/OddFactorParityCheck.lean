@@ -1,0 +1,9 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check four_dvd_right_factor_of_four_dvd_mul_odd
+#check i_three_caseI_row_one_four_mul_factor_le_X_of_four_dvd_odd_factor_from_row_bound
+#check i_three_caseI_factor_sq_squeeze_of_four_dvd_odd_factor_from_row_bound
+
+end Erdos699

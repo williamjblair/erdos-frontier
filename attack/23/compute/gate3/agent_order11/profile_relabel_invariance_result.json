@@ -1,0 +1,17 @@
+{
+  "additional_random_relabelings": 40,
+  "aut_averaged_rule_invariant_on_all_tests": true,
+  "exhaustive_fixture_relabelings": [
+    {"graph6": "CQ", "n": 4, "relabelings": 24},
+    {"graph6": "DEo", "n": 5, "relabelings": 120},
+    {"graph6": "ECR_", "n": 6, "relabelings": 720},
+    {"graph6": "F?q`o", "n": 7, "relabelings": 5040},
+    {"graph6": "G?b@bo", "n": 8, "relabelings": 40320}
+  ],
+  "frozen_witnesses": [
+    {"aut_averaged_equal": true, "graph6": "H?Bedrw", "n": 9, "raw_after": "6/30", "raw_before": "8/30"},
+    {"aut_averaged_equal": true, "graph6": "I??E@bG}?", "n": 10, "raw_after": "12/24", "raw_before": "10/24"}
+  ],
+  "raw_canonical_rule_invariant": false,
+  "verdict": "PASS"
+}

@@ -1,0 +1,6 @@
+(1) Q manifest PSD  : all w_c >= 0  -> True   (n_atoms=394, support=87, min_support_w=9.179e-08, sum_w=40.6618)
+(2) a7 + a8 = 1     : True
+(3) delta_final     : my re-derivation 4.8557798001e-05  ==  saved 4.8557798001e-05 ? True;  < 5e-5 ? True  -> n<=40, N<=200
+(4) per-state resid : exact-Fraction check in complete_v2_cert.py reproduced VALID (saved verdict valid=True); moment term sound by (1)+G1, cuts by 7-agent audit; bound brute-true.
+
+>>> STEP-1 INDEPENDENT GATE: PASS -- v2 cert VALID, a(5n)=n^2 for N<=200. SHIP v2. <<<

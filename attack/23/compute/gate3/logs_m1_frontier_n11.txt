@@ -1,0 +1,55 @@
+n=2 done, triples=0, t=0s
+n=3 done, triples=0, t=0s
+n=4 done, triples=0, t=0s
+n=5 done, triples=0, t=0s
+n=6 done, triples=2, t=0s
+n=7 done, triples=6, t=0s
+n=8 done, triples=13, t=0s
+n=9 done, triples=23, t=0s
+n=10 done, triples=38, t=1s
+n=11 done, triples=57, t=11s
+
+realizable (d, s, D) with |M|=1, n <= 11
+  D=4:
+    s=2: d in [4, 5, 6, 7, 8]
+    s=3: d in [2, 3, 4, 5, 6, 7]
+    s=4: d in [1, 2, 3, 4, 5, 6]
+    s=5: d in [1, 2, 3, 4, 5]
+    s=6: d in [1, 2, 3, 4]
+    s=7: d in [1, 2, 3]
+    s=8: d in [1, 2]
+    s=9: d in [1]
+  D=6:
+    s=3: d in [6, 7]
+    s=4: d in [4, 5, 6]
+    s=5: d in [2, 3, 4, 5]
+    s=6: d in [1, 2, 3, 4]
+    s=7: d in [1, 2, 3]
+    s=8: d in [1, 2]
+    s=9: d in [1]
+  D=8:
+    s=6: d in [4]
+    s=7: d in [2, 3]
+    s=8: d in [1, 2]
+    s=9: d in [1]
+
+min d for each (s, D):
+  s=2 D=4: min d=4   [(D+1)^2=25 vs rhs at min d=32]
+  s=3 D=4: min d=2   [(D+1)^2=25 vs rhs at min d=39]
+  s=3 D=6: min d=6   [(D+1)^2=49 vs rhs at min d=63]
+  s=4 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=56]
+  s=4 D=6: min d=4   [(D+1)^2=49 vs rhs at min d=72]
+  s=5 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=75]
+  s=5 D=6: min d=2   [(D+1)^2=49 vs rhs at min d=75]
+  s=6 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=96]
+  s=6 D=6: min d=1   [(D+1)^2=49 vs rhs at min d=96]
+  s=6 D=8: min d=4   [(D+1)^2=81 vs rhs at min d=120]
+  s=7 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=119]
+  s=7 D=6: min d=1   [(D+1)^2=49 vs rhs at min d=119]
+  s=7 D=8: min d=2   [(D+1)^2=81 vs rhs at min d=119]
+  s=8 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=144]
+  s=8 D=6: min d=1   [(D+1)^2=49 vs rhs at min d=144]
+  s=8 D=8: min d=1   [(D+1)^2=81 vs rhs at min d=144]
+  s=9 D=4: min d=1   [(D+1)^2=25 vs rhs at min d=171]
+  s=9 D=6: min d=1   [(D+1)^2=49 vs rhs at min d=171]
+  s=9 D=8: min d=1   [(D+1)^2=81 vs rhs at min d=171]

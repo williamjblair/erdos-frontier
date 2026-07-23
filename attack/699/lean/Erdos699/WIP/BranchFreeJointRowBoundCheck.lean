@@ -1,0 +1,12 @@
+import Erdos699.Proved.Basic
+
+namespace Erdos699
+
+#check x_sub_two_t_pos_of_row_bound
+#check i_three_caseI_exists_joint_large_part_factor_le_from_row_bound
+#check i_three_caseI_exists_joint_large_part_gap_bound_from_row_bound
+#check i_three_caseI_exists_joint_large_part_cube_bound_from_row_bound
+#check i_three_caseI_exists_joint_half_large_part_cube_from_row_bound
+#check i_three_caseI_half_large_part_cube_from_row_bound
+
+end Erdos699
