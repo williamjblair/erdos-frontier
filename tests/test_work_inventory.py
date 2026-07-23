@@ -71,9 +71,9 @@ def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
     assert index["frontier_id"] == json.loads((HERE / "frontier.json").read_text())["frontier_id"]
     assert index["counts"] == {
         "targets": 1217,
-        "open": 650,
+        "open": 646,
         "paused": 7,
-        "done": 560,
+        "done": 564,
     }
     assert index["claim_boundary"] == {
         "derived": True,
@@ -101,6 +101,15 @@ def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
     assert "residual-obligations" in target_1056["labels"]
     assert "without repeating banked routes" in target_1056["objective"]
     assert index["targets"][1]["state"] == "done"
+
+    # These four corpus records changed from open to terminal upstream states
+    # in the pinned source refresh. Keep the exact transitions explicit so a
+    # stale aggregate count cannot hide which target states moved.
+    for problem in (119, 123, 320, 321):
+        target = index["targets"][problem - 1]
+        assert target["id"] == f"erdos:{problem}"
+        assert target["state"] == "done"
+        assert "upstream-proved" in target["labels"]
 
 
 def test_migration_accounts_for_every_record_and_preserves_numbered_ids():
