@@ -2438,6 +2438,7 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
         native_targets.append(
             _native_target_entry(profile_by_problem[problem], detail, packet_bytes)
         )
+    native_targets.sort(key=lambda target: (target["rank"], target["id"]))
 
     outputs[TARGET_INDEX_CANDIDATE_PATH] = _json_bytes({
         "schema": "vela.target-index-candidate.v1",
