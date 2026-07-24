@@ -14,9 +14,9 @@ permissions:
   contents: read
 
 env:
-  VELA_VERSION: v0.901.0
-  VELA_LINUX_ARCHIVE_SHA256: 29ff6001374196a24fba3766462474f09fc197721cc38e353dabca01eecad2fa
-  VELA_LINUX_SHA256: cf30a1dc5f575e74055396a9afde59f9b64fb82fc01e58a3e1863a5e36d6444e
+  VELA_VERSION: v0.914.0
+  VELA_LINUX_ARCHIVE_SHA256: c04338e952aae0fe52727be0dc4207854a4094e51147f6f86e9c3865aedb1556
+  VELA_LINUX_SHA256: 29a351f0840d36beaa10156167a42de9ca1652d2a3c8953f1145725f3ada3470
 
 jobs:
   verify:
@@ -119,21 +119,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          committed_snapshot="$(awk '/^snapshot_hash:/{print $2}' vela.lock)"
-          committed_events="$(awk '/^event_log_hash:/{print $2}' vela.lock)"
+          committed_scientific_state="$(awk '/^scientific_state_root:/{print $2}' vela.lock)"
+          committed_events="$(awk '/^event_log_root:/{print $2}' vela.lock)"
 
           restore_materialized() {
             git restore --source=HEAD --worktree -- frontier.json vela.lock proof
           }
           trap restore_materialized EXIT
           materialized="$(vela frontier materialize . --json)"
-          recomputed_snapshot="$(printf '%s' "$materialized" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("snapshot_hash", ""))')"
-          recomputed_events="$(printf '%s' "$materialized" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("event_log_hash", ""))')"
+          recomputed_scientific_state="$(printf '%s' "$materialized" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("scientific_state_root", ""))')"
+          recomputed_events="$(printf '%s' "$materialized" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("event_log_root", ""))')"
 
-          echo "committed:  snapshot=$committed_snapshot event_log=$committed_events"
-          echo "recomputed: snapshot=$recomputed_snapshot event_log=$recomputed_events"
-          if [ -z "$recomputed_snapshot" ] || \
-             [ "$recomputed_snapshot" != "$committed_snapshot" ] || \
+          echo "committed:  scientific_state=$committed_scientific_state event_log=$committed_events"
+          echo "recomputed: scientific_state=$recomputed_scientific_state event_log=$recomputed_events"
+          if [ -z "$recomputed_scientific_state" ] || \
+             [ "$recomputed_scientific_state" != "$committed_scientific_state" ] || \
              [ "$recomputed_events" != "$committed_events" ]; then
             echo "::error::committed materialized state does not reproduce from the event log"
             exit 1

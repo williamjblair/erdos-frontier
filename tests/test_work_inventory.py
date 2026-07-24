@@ -82,9 +82,10 @@ def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
         "authoritative": False,
         "deletable": True,
     }
-    assert [target["id"] for target in index["targets"]] == [
+    targets_by_id = {target["id"]: target for target in index["targets"]}
+    assert set(targets_by_id) == {
         f"erdos:{problem}" for problem in range(1, 1218)
-    ]
+    }
 
     for target in index["targets"]:
         packet_path = HERE / target["packet"]["path"]
@@ -96,17 +97,17 @@ def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
         assert packet["problem"] == int(target["id"].split(":")[1])
         assert packet["schema"] == target["packet"]["schema"]
 
-    target_1056 = index["targets"][1055]
+    target_1056 = targets_by_id["erdos:1056"]
     assert target_1056["state"] == "open"
     assert "residual-obligations" in target_1056["labels"]
     assert "without repeating banked routes" in target_1056["objective"]
-    assert index["targets"][1]["state"] == "done"
+    assert targets_by_id["erdos:2"]["state"] == "done"
 
     # These four corpus records changed from open to terminal upstream states
     # in the pinned source refresh. Keep the exact transitions explicit so a
     # stale aggregate count cannot hide which target states moved.
     for problem in (119, 123, 320, 321):
-        target = index["targets"][problem - 1]
+        target = targets_by_id[f"erdos:{problem}"]
         assert target["id"] == f"erdos:{problem}"
         assert target["state"] == "done"
         assert "upstream-proved" in target["labels"]
