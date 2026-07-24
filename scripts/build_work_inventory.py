@@ -2471,11 +2471,16 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
     }
 
 
-def write_outputs() -> dict:
+def write_outputs(target_candidate_output: pathlib.Path | None = None) -> dict:
     outputs, summary = build_outputs()
     for path, data in outputs.items():
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(data)
+        destination = (
+            target_candidate_output
+            if path == TARGET_INDEX_CANDIDATE_PATH and target_candidate_output is not None
+            else path
+        )
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
     expected_shards = {path.name for path in outputs if path.parent == PROBLEM_DIR}
     for stale in PROBLEM_DIR.glob("*.json"):
         if stale.name not in expected_shards:
@@ -2546,9 +2551,27 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true",
                         help="validate and byte-compare without writing")
+    parser.add_argument(
+        "--target-candidate-output",
+        type=pathlib.Path,
+        help=(
+            "write the Target Index candidate to this path; repository "
+            "migration requires a path outside the Frontier checkout"
+        ),
+    )
     args = parser.parse_args()
     try:
-        summary = check_outputs() if args.check else write_outputs()
+        if args.check and args.target_candidate_output is not None:
+            raise InventoryError("--check and --target-candidate-output are mutually exclusive")
+        summary = (
+            check_outputs()
+            if args.check
+            else write_outputs(
+                args.target_candidate_output.expanduser().resolve()
+                if args.target_candidate_output is not None
+                else None
+            )
+        )
     except (InventoryError, KeyError, TypeError, yaml.YAMLError, json.JSONDecodeError) as exc:
         print(f"work inventory: ERROR: {exc}", file=sys.stderr)
         return 1
