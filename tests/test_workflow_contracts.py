@@ -1,6 +1,7 @@
 """Contracts that keep expensive external audits outside routine automation."""
 
 from pathlib import Path
+import json
 import re
 import subprocess
 
@@ -42,11 +43,20 @@ def test_frontier_workflow_uses_the_lock_matching_released_vela():
     trust_step = next(
         step
         for step in workflow["jobs"]["verify"]["steps"]
-        if step.get("name") == "Install the reviewed consumer trust pin"
+        if step.get("name") == "Install the reviewed consumer trust anchor"
     )
-    assert "--boundary-root \"$VELA_REPOSITORY_BOUNDARY_ROOT\"" in trust_step["run"]
-    assert "--confirm-root \"$confirm_root\"" in trust_step["run"]
-    assert "--confirm-at \"$confirm_at\"" in trust_step["run"]
+    anchor = json.loads(
+        (ROOT / ".github" / "consumer-trust" / "vfr_0a25edabc16db143.json").read_text()
+    )
+    assert anchor == {
+        "schema": "vela.repository-trust-anchor.v1",
+        "frontier_id": "vfr_0a25edabc16db143",
+        "identity_root": "sha256:a767c4b5c4645ebcbb3862c20a8cbd533bcd7f05f112f2423f4c6c76573e9b45",
+        "boundary_content_root": boundary_root,
+        "administrator_actor_id": "reviewer:will-blair",
+        "administrator_public_key": "4892f93877e637b5f59af31d9ec6704814842fb278cacb0eb94704baef99455e",
+    }
+    assert "install -m 0600" in trust_step["run"]
 
 
 def test_artifact_hash_cannot_depend_on_ignored_workspace_files():
