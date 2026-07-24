@@ -78,6 +78,8 @@ jobs:
           ):
               raise SystemExit("reviewed repository trust anchor does not match the workflow pin")
           PY
+          install -d -m 0700 "$HOME/.vela"
+          install -d -m 0700 "$HOME/.vela/trust"
           install -d -m 0700 "$HOME/.vela/trust/frontiers"
           install -m 0600 "$anchor" "$HOME/.vela/trust/frontiers/vfr_0a25edabc16db143.json"
 
