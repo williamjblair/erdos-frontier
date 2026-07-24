@@ -63,9 +63,12 @@ VALID_ROLES = {
 }
 VAT_RE = re.compile(r"^vat_[0-9a-f]{16}$")
 ABSOLUTE_PATH_RE = re.compile(r"(?:/Users/[^/]+|/home/[^/]+)(?:/[^\s\"']*)?")
+# The candidate context separately binds the exact event, scientific-state,
+# proposal, and repository roots. Migration-derived frontier.json and vela.lock
+# are therefore deliberately excluded so a byte-compatible materialization
+# cannot make every sealed target stale.
 TARGET_INDEX_INPUT_PATHS = sorted([
     "attack/attempt-ledger.v2.json",
-    "frontier.json",
     "review/developed-campaign-proposals.v1.yaml",
     "scripts/build_work_inventory.py",
     "site/status.json",
@@ -78,7 +81,6 @@ TARGET_INDEX_INPUT_PATHS = sorted([
     "sources/recovered-attempt-ledger.v2.json",
     "sources/recovered-attempts.yaml",
     "sources/work-registry.yaml",
-    "vela.lock",
 ])
 
 ATTEMPT_ACTIVITY = {
