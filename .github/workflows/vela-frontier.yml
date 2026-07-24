@@ -17,6 +17,7 @@ env:
   VELA_VERSION: v0.914.1
   VELA_LINUX_ARCHIVE_SHA256: b0886a25ea22eb0bd1be957e3a997a527ff21b265dc4dbdb3a948f9432dc2d52
   VELA_LINUX_SHA256: d8bf9c6e708cff8837601b4cd675085dcaedc08d37368eeb4077d0219462d754
+  VELA_REPOSITORY_BOUNDARY_ROOT: sha256:4391ce03513626317287c92681c04da7f6b9813d70d01cd300d46b38adfd6fae
 
 jobs:
   verify:
@@ -59,6 +60,36 @@ jobs:
           fi
           echo "${VELA_LINUX_SHA256}  $HOME/.local/bin/vela" | sha256sum -c -
           echo "$version_output (version and release bytes pinned)"
+
+      - name: Install the reviewed consumer trust pin
+        shell: bash
+        run: |
+          set -euo pipefail
+          preview="$(
+            vela frontier trust pin . \
+              --boundary-root "$VELA_REPOSITORY_BOUNDARY_ROOT" \
+              --json
+          )"
+          confirm_root="$(printf '%s' "$preview" | python3 -c 'import json,sys; print(json.load(sys.stdin)["plan_root"])')"
+          confirm_at="$(printf '%s' "$preview" | python3 -c 'import json,sys; print(json.load(sys.stdin)["observed_at"])')"
+          vela frontier trust pin . \
+            --boundary-root "$VELA_REPOSITORY_BOUNDARY_ROOT" \
+            --confirm-root "$confirm_root" \
+            --confirm-at "$confirm_at" \
+            --json > "$RUNNER_TEMP/vela-trust-pin.json"
+          python3 - "$RUNNER_TEMP/vela-trust-pin.json" <<'PY'
+          import json
+          import sys
+
+          result = json.load(open(sys.argv[1], encoding="utf-8"))
+          if (
+              not result.get("ok")
+              or not result.get("installed")
+              or result.get("plan", {}).get("supplied_first_boundary_root")
+                 != "sha256:4391ce03513626317287c92681c04da7f6b9813d70d01cd300d46b38adfd6fae"
+          ):
+              raise SystemExit("reviewed repository trust pin did not install exactly")
+          PY
 
       - name: Replay and verify the applied policy retirement
         shell: bash

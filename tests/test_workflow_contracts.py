@@ -32,11 +32,21 @@ def test_frontier_workflow_uses_the_lock_matching_released_vela():
     checkout = workflow["jobs"]["verify"]["steps"][0]
     assert checkout["with"]["fetch-depth"] == "0"
     assert workflow["env"]["VELA_LINUX_ARCHIVE_SHA256"] == (
-        "c04338e952aae0fe52727be0dc4207854a4094e51147f6f86e9c3865aedb1556"
+        "b0886a25ea22eb0bd1be957e3a997a527ff21b265dc4dbdb3a948f9432dc2d52"
     )
     assert workflow["env"]["VELA_LINUX_SHA256"] == (
-        "29a351f0840d36beaa10156167a42de9ca1652d2a3c8953f1145725f3ada3470"
+        "d8bf9c6e708cff8837601b4cd675085dcaedc08d37368eeb4077d0219462d754"
     )
+    boundary_root = "sha256:4391ce03513626317287c92681c04da7f6b9813d70d01cd300d46b38adfd6fae"
+    assert workflow["env"]["VELA_REPOSITORY_BOUNDARY_ROOT"] == boundary_root
+    trust_step = next(
+        step
+        for step in workflow["jobs"]["verify"]["steps"]
+        if step.get("name") == "Install the reviewed consumer trust pin"
+    )
+    assert "--boundary-root \"$VELA_REPOSITORY_BOUNDARY_ROOT\"" in trust_step["run"]
+    assert "--confirm-root \"$confirm_root\"" in trust_step["run"]
+    assert "--confirm-at \"$confirm_at\"" in trust_step["run"]
 
 
 def test_artifact_hash_cannot_depend_on_ignored_workspace_files():
