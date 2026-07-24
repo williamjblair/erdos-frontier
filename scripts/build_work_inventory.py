@@ -17,6 +17,7 @@ import hashlib
 import json
 import pathlib
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from typing import Any, Iterable
@@ -42,6 +43,7 @@ FORMAL_CONJECTURES_ACTIVITY_PATH = (
 )
 WORK_INDEX_PATH = HERE / "site" / "work-index.json"
 TARGET_INDEX_PATH = HERE / "targets.json"
+TARGET_INDEX_CANDIDATE_PATH = HERE / ".vela" / "tmp" / "target-index-candidate.json"
 PROBLEM_DIR = HERE / "site" / "problems"
 WORK_INVENTORY_PATH = HERE / "graph" / "work-inventory.json"
 CLAIM_GRAPH_PATH = HERE / "graph" / "claim-graph.json"
@@ -61,6 +63,23 @@ VALID_ROLES = {
 }
 VAT_RE = re.compile(r"^vat_[0-9a-f]{16}$")
 ABSOLUTE_PATH_RE = re.compile(r"(?:/Users/[^/]+|/home/[^/]+)(?:/[^\s\"']*)?")
+TARGET_INDEX_INPUT_PATHS = sorted([
+    "attack/attempt-ledger.v2.json",
+    "frontier.json",
+    "review/developed-campaign-proposals.v1.yaml",
+    "scripts/build_work_inventory.py",
+    "site/status.json",
+    "site/verdicts.json",
+    "sources.lock.json",
+    "sources/attempt-import-map.yaml",
+    "sources/attempt-migration.yaml",
+    "sources/formal-conjectures-activity.yaml",
+    "sources/recovered-attempt-import-map.yaml",
+    "sources/recovered-attempt-ledger.v2.json",
+    "sources/recovered-attempts.yaml",
+    "sources/work-registry.yaml",
+    "vela.lock",
+])
 
 ATTEMPT_ACTIVITY = {
     "verified_witness": "computation",
@@ -109,6 +128,15 @@ def _sha256(path: pathlib.Path) -> str:
 
 def _sha256_bytes(value: bytes) -> str:
     return "sha256:" + hashlib.sha256(value).hexdigest()
+
+def _git_head() -> str:
+    result = subprocess.run(
+        ["git", "-C", str(HERE), "rev-parse", "HEAD^{commit}"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return result.stdout.strip()
 
 
 def _short(text: str, limit: int = 180) -> str:
@@ -2411,24 +2439,23 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
             _native_target_entry(profile_by_problem[problem], detail, packet_bytes)
         )
 
-    outputs[TARGET_INDEX_PATH] = _json_bytes({
-        "schema": "vela.target-index.v1",
+    outputs[TARGET_INDEX_CANDIDATE_PATH] = _json_bytes({
+        "schema": "vela.target-index-candidate.v1",
         "frontier_id": registry["frontier_id"],
-        "as_of": state_pins,
-        "counts": {
-            "targets": len(native_targets),
-            "open": sum(target["state"] == "open" for target in native_targets),
-            "paused": sum(target["state"] == "paused" for target in native_targets),
-            "done": sum(target["state"] == "done" for target in native_targets),
+        "source": {
+            "git_commit": _git_head(),
+            "input_paths": TARGET_INDEX_INPUT_PATHS,
         },
-        "claim_boundary": {
-            "derived": True,
-            "authoritative": False,
-            "deletable": True,
-            "packets_are_briefing_not_accepted_truth": True,
-            "canonical_state_remains_vela_events": True,
-        },
-        "targets": native_targets,
+        "targets": [
+            {
+                **{key: value for key, value in target.items() if key != "packet"},
+                "packet": {
+                    "schema": target["packet"]["schema"],
+                    "path": target["packet"]["path"],
+                },
+            }
+            for target in native_targets
+        ],
     }, compact=True)
 
     # A hard public-data guard: generated feeds never leak workstation paths.
@@ -2459,6 +2486,8 @@ def check_outputs() -> dict:
     outputs, summary = build_outputs()
     failures = []
     for path, expected in outputs.items():
+        if path == TARGET_INDEX_CANDIDATE_PATH:
+            continue
         if not path.exists():
             failures.append(f"missing {path.relative_to(HERE)}")
         elif path.read_bytes() != expected:
@@ -2467,6 +2496,46 @@ def check_outputs() -> dict:
     extra_shards = sorted(path.name for path in PROBLEM_DIR.glob("*.json")
                           if path.name not in expected_shards)
     failures.extend(f"unexpected site/problems/{name}" for name in extra_shards)
+    try:
+        candidate = json.loads(outputs[TARGET_INDEX_CANDIDATE_PATH])
+        sealed = _load_json(TARGET_INDEX_PATH)
+        if sealed.get("schema") != "vela.target-index.v2":
+            failures.append("targets.json is not a sealed vela.target-index.v2")
+        elif sealed.get("frontier_id") != candidate["frontier_id"]:
+            failures.append("targets.json frontier_id differs from the generated candidate")
+        else:
+            expected_targets = candidate["targets"]
+            actual_targets = sealed.get("targets", [])
+            if len(actual_targets) != len(expected_targets):
+                failures.append(
+                    f"targets.json has {len(actual_targets)} targets; expected {len(expected_targets)}"
+                )
+            for expected, actual in zip(expected_targets, actual_targets):
+                expected_common = {
+                    key: value for key, value in expected.items() if key != "packet"
+                }
+                actual_common = {
+                    key: actual.get(key) for key in expected_common
+                }
+                if actual_common != expected_common:
+                    failures.append(
+                        f"targets.json semantics differ for {expected['id']}"
+                    )
+                    break
+                packet_path = HERE / expected["packet"]["path"]
+                packet = actual.get("packet", {})
+                if (
+                    packet.get("schema") != expected["packet"]["schema"]
+                    or packet.get("path") != expected["packet"]["path"]
+                    or packet.get("size") != packet_path.stat().st_size
+                    or packet.get("sha256") != _sha256(packet_path)
+                ):
+                    failures.append(
+                        f"targets.json packet binding differs for {expected['id']}"
+                    )
+                    break
+    except (KeyError, OSError, TypeError, json.JSONDecodeError) as exc:
+        failures.append(f"cannot validate sealed targets.json: {exc}")
     if failures:
         raise InventoryError("generated inventory check failed:\n  " + "\n  ".join(failures))
     return summary
