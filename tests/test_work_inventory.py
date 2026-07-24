@@ -8,6 +8,7 @@ import pathlib
 import re
 import subprocess
 import sys
+from collections import Counter
 
 import pytest
 import yaml
@@ -67,10 +68,11 @@ def test_exact_inventory_lenses_and_corpus_coverage():
 
 def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
     index = _target_index()
-    assert index["schema"] == "vela.target-index.v1"
+    assert index["schema"] == "vela.target-index.v2"
     assert index["frontier_id"] == json.loads((HERE / "frontier.json").read_text())["frontier_id"]
-    assert index["counts"] == {
-        "targets": 1217,
+    target_states = Counter(target["state"] for target in index["targets"])
+    assert len(index["targets"]) == 1217
+    assert target_states == {
         "open": 646,
         "paused": 7,
         "done": 564,
@@ -79,8 +81,6 @@ def test_all_corpus_problems_are_native_hash_pinned_vela_targets():
         "derived": True,
         "authoritative": False,
         "deletable": True,
-        "packets_are_briefing_not_accepted_truth": True,
-        "canonical_state_remains_vela_events": True,
     }
     assert [target["id"] for target in index["targets"]] == [
         f"erdos:{problem}" for problem in range(1, 1218)
@@ -170,7 +170,7 @@ def test_signed_import_is_reflected_without_confusing_activity_with_truth():
         if row["target_attempt_id"] == campaign_audit["attempt_id"]
     )
     assert audit_row["target_identity"] == "erdos:0"
-    assert index["frontier_root"] == frontier["_meta"]["snapshot_hash"]
+    assert index["frontier_root"] == frontier["_meta"]["scientific_state_root"]
     assert sum(row["banked_attempt_count"] for row in index["problems"]) == 242
     assert all(row["accepted_activity"] is False for row in index["problems"])
     operational = json.loads((HERE / "graph" / "frontier-map.json").read_text())
@@ -320,13 +320,12 @@ def test_graph_planes_are_separate_and_operational_edges_are_attributed():
     assert claims["schema"] == "vela.frontier_graph.claims.v0.1"
     assert claims["frontier_dependencies"] == [{
         "name": "formal-conjectures-frontier",
-        "source": "vela.hub",
+        "source": "git",
         "frontier_id": "vfr_97d7d25957384f80",
-        "snapshot_hash": "sha256:48ec4e84bb4640fa54023db58d7eabc6a713a46b053b6ccc3050414ab18520ec",
+        "snapshot_hash": "sha256:4924adbbea6dfe288d14af03cf3d544f73c511df6b6ef8b938c8291685101444",
         "locator": (
-            "https://raw.githubusercontent.com/constellate-science/"
-            "formal-conjectures-frontier/a143c351f8488e0c621598307e248373d9dc3374/"
-            "frontier.json"
+            "https://github.com/constellate-science/formal-conjectures-frontier/"
+            "tree/a143c351f8488e0c621598307e248373d9dc3374"
         ),
     }]
     assert claims["claim_boundary"]["federated_findings_are_referenced_not_copied"] is True

@@ -763,24 +763,35 @@ def _normalize_formal_conjectures_activity(
 
 def _frontier_dependencies(vela_lock: dict, registry: dict) -> list[dict]:
     dependencies = []
+    reconciliation = registry["frontier_reconciliation"]
+    canonical_key = reconciliation["canonical"]
+    canonical_repository = registry["repositories"][canonical_key]
     for dependency in vela_lock.get("dependencies") or []:
-        vfr_id = dependency.get("vfr_id")
-        snapshot = dependency.get("pinned_snapshot_hash")
-        locator = dependency.get("locator")
+        vfr_id = dependency.get("frontier_id")
+        snapshot = dependency.get("scientific_state_root")
+        commit = dependency.get("git_commit")
+        remote = canonical_repository.get("remote")
+        locator = (
+            f"{remote.removesuffix('.git')}/tree/{commit}"
+            if isinstance(remote, str) and isinstance(commit, str)
+            else None
+        )
         if not re.fullmatch(r"vfr_[0-9a-f]{16}", str(vfr_id or "")):
             raise InventoryError("frontier dependency has no valid frontier id")
         if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(snapshot or "")):
-            raise InventoryError(f"{vfr_id}: frontier dependency has no snapshot pin")
+            raise InventoryError(
+                f"{vfr_id}: frontier dependency has no scientific-state pin"
+            )
         if not isinstance(locator, str) or not locator.startswith("https://"):
             raise InventoryError(f"{vfr_id}: frontier dependency has no stable locator")
         dependencies.append({
-            "name": dependency.get("name") or vfr_id,
-            "source": dependency.get("source") or "unknown",
+            "name": canonical_key.replace("_", "-"),
+            "source": "git",
             "frontier_id": vfr_id,
             "snapshot_hash": snapshot,
             "locator": locator,
         })
-    expected = registry["frontier_reconciliation"]["frontier_id"]
+    expected = reconciliation["frontier_id"]
     if [dependency["frontier_id"] for dependency in dependencies] != [expected]:
         raise InventoryError(
             "vela.lock must pin the standalone formal-conjectures frontier dependency"
@@ -1134,9 +1145,9 @@ def _build_operational_graph(
     claim_graph: dict,
     finding_problems: dict[int, list[dict]],
 ) -> dict:
-    frontier_root = (frontier.get("_meta") or {}).get("snapshot_hash")
+    frontier_root = (frontier.get("_meta") or {}).get("scientific_state_root")
     if not isinstance(frontier_root, str):
-        raise InventoryError("materialized frontier has no snapshot hash")
+        raise InventoryError("materialized frontier has no scientific state root")
     deposited = {attempt.get("attempt_id"): attempt for attempt in frontier.get("attempts") or []}
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
@@ -2275,19 +2286,31 @@ def build_outputs() -> tuple[dict[pathlib.Path, bytes], dict]:
     validate_repository_roles(registry["repositories"], locks)
     if registry["frontier_id"] != frontier.get("frontier_id"):
         raise InventoryError("registry frontier id differs from materialized state")
-    frontier_root = (frontier.get("_meta") or {}).get("snapshot_hash")
+    materialized_meta = frontier.get("_meta") or {}
+    frontier_root = materialized_meta.get("scientific_state_root")
     if not isinstance(frontier_root, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", frontier_root):
-        raise InventoryError("materialized frontier has no valid snapshot hash")
+        raise InventoryError("materialized frontier has no valid scientific state root")
+    # The public work-inventory projection retains its v1 field names until a
+    # separately versioned projection migration. Their values come only from
+    # the current Vela 0.914 materialization and lock vocabulary.
     state_pins = {
         "snapshot_hash": frontier_root,
-        "event_log_hash": (frontier.get("_meta") or {}).get("event_log_hash"),
-        "proposal_state_hash": vela_lock.get("proposal_state_hash"),
+        "event_log_hash": materialized_meta.get("event_log_root"),
+        "proposal_state_hash": vela_lock.get("proposal_root"),
+    }
+    lock_fields = {
+        "snapshot_hash": "scientific_state_root",
+        "event_log_hash": "event_log_root",
+        "proposal_state_hash": "proposal_root",
     }
     for name, digest in state_pins.items():
         if not isinstance(digest, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", digest):
             raise InventoryError(f"materialized frontier has no valid {name}")
-        if vela_lock.get(name) != digest:
-            raise InventoryError(f"vela.lock {name} differs from materialized state")
+        lock_field = lock_fields[name]
+        if vela_lock.get(lock_field) != digest:
+            raise InventoryError(
+                f"vela.lock {lock_field} differs from materialized state"
+            )
     if _sha256(LEDGER_PATH) != migration["source"]["sha256"]:
         raise InventoryError("legacy attempt ledger differs from its migration pin")
     records = ledger.get("records") or []
