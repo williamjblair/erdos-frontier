@@ -5,7 +5,7 @@
   "freshness": "fresh",
   "frontier_id": "vfr_0a25edabc16db143",
   "identity_root": "sha256:a767c4b5c4645ebcbb3862c20a8cbd533bcd7f05f112f2423f4c6c76573e9b45",
-  "legacy_snapshot_root": "sha256:f25a03b39a1fa6bad0cc16b4390bcc88b4596ae60dc410452045ff5e54ddac72",
+  "legacy_snapshot_root": "sha256:97539a304f79fccc20056fc380825b25563de2ad157adfbb7d2bfc49d6a3f3a9",
   "materialized_at": "2026-07-24T07:04:36.270065+00:00",
   "paths": {
     "events_authority": ".vela/events/",
@@ -15,12 +15,12 @@
     "replay_trace": "proof/replay.trace.jsonl"
   },
   "profile_root": "sha256:ee310fae5233e48f5b190dbdc34e9a14d273dedab35ee7c5faee4a2ce27d666f",
-  "proposal_root": "sha256:e69b38037814f2e8ca826942cfc50ab370993889be2913cac1c0b3e77711160f",
+  "proposal_root": "sha256:c975fd10f75934265baf1d0c2c7701ac36125b6d29cf9214df369fedc98ac9c5",
   "reducer": {
-    "digest": "sha256:035e121878fbe65da0cdbfef9da4308d90c67b607a822dde065fd6a4490aca7a",
+    "digest": "sha256:c37b83d62936e24d5a9350148cc1501cf7338d338061d5c00a75225d94f3fdfa",
     "name": "vela",
-    "package": "vela@0.914.0",
-    "version": "0.914.0"
+    "package": "vela@0.914.1",
+    "version": "0.914.1"
   },
   "schema": "vela.frontier_repo_proof.v1",
   "scientific_state_root": "sha256:540d4967071425f77c693e61f62053208b07d67667490dcb9eeef62ec3f1d316",
